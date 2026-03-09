@@ -889,7 +889,10 @@ func resolve_nest_breeding(week_cleared: int) -> Dictionary:
 			base_tier -= 1
 		base_tier = clamp(base_tier, 1, MAX_TIER)
 		if baby_trait == "VOID":
-			base_tier = 0
+			if str(a.get("trait", "")) == "VOID" and str(b.get("trait", "")) == "VOID":
+				base_tier = max(1, base_tier)  # VOID-VOID nest: min tier 1
+			else:
+				base_tier = 0  # mixed-VOID: stays 0
 		var parent_a_tid: String = str(a.get("trait_id", ""))
 		var parent_b_tid: String = str(b.get("trait_id", ""))
 		var parent_a_template: String = _combo_template_id(parent_a_tid)
@@ -1047,7 +1050,10 @@ func resolve_wild_breeding(week_cleared: int) -> Dictionary:
 			base_tier -= 1
 		base_tier = clamp(base_tier, 1, MAX_TIER)
 		if baby_trait == "VOID":
-			base_tier = 0
+			if str(a.get("trait", "")) == "VOID" and str(b.get("trait", "")) == "VOID":
+				base_tier = max(1, base_tier)  # VOID-VOID wild: min tier 1
+			else:
+				base_tier = 0  # mixed-VOID: stays 0
 		var trait_id: String = _roll_wild_breeding_trait(a, b)
 		if pool.size() >= get_pool_cap():
 			trimmed += 1
