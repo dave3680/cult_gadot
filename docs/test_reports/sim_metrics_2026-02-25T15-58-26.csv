@@ -1,0 +1,95 @@
+section,profile,doctrine,week,target,pass_rate,avg_round,avg_week,avg_overflow,avg_early,avg_blood_earned,avg_blood_spent,avg_pool,avg_week_target_min,avg_week_target_max,pass_rate_min,pass_rate_max,relic,avg_week_relic,avg_score_relic,runs_with_relic,runs,total_devotion,total_weeks_played,avg_score_per_week,blood_gained,blood_spent,count
+week_metrics,expert,,1,40,1.0000,37.47,59.89,9.82,8.03,22.14,20.32,12.68,38.00,54.00,0.9000,0.9900,,,,,,,,,,,
+week_metrics,expert,,2,60,0.8983,39.15,71.71,5.73,3.37,15.94,4.82,8.94,57.00,81.00,0.8667,0.9744,,,,,,,,,,,
+week_metrics,expert,,3,90,0.0467,32.82,58.75,0.22,0.13,9.49,0.46,4.06,85.50,121.50,0.8333,0.9589,,,,,,,,,,,
+week_metrics,expert,,4,135,0.0000,28.64,2.67,0.00,0.00,0.45,0.00,3.14,128.25,182.25,0.8000,0.9433,,,,,,,,,,,
+week_metrics,expert,,5,205,0.0000,0.00,0.00,0.00,0.00,0.00,0.00,0.00,194.75,276.75,0.7667,0.9278,,,,,,,,,,,
+week_metrics,expert,,6,305,0.0000,0.00,0.00,0.00,0.00,0.00,0.00,0.00,289.75,411.75,0.7333,0.9122,,,,,,,,,,,
+week_metrics,expert,,7,455,0.0000,0.00,0.00,0.00,0.00,0.00,0.00,0.00,432.25,614.25,0.7000,0.8967,,,,,,,,,,,
+week_metrics,expert,,8,685,0.0000,0.00,0.00,0.00,0.00,0.00,0.00,0.00,650.75,924.75,0.6667,0.8811,,,,,,,,,,,
+week_metrics,expert,,9,1025,0.0000,0.00,0.00,0.00,0.00,0.00,0.00,0.00,973.75,1383.75,0.6333,0.8656,,,,,,,,,,,
+week_metrics,expert,,10,1540,0.0000,0.00,0.00,0.00,0.00,0.00,0.00,0.00,1463.00,2079.00,0.6000,0.8500,,,,,,,,,,,
+week_metrics,average,,1,40,0.9817,26.98,52.16,5.89,1.33,14.43,10.76,11.88,32.00,46.00,0.7500,0.9200,,,,,,,,,,,
+week_metrics,average,,2,60,0.4133,30.90,59.84,1.89,0.53,10.36,1.20,6.83,48.00,69.00,0.6944,0.8789,,,,,,,,,,,
+week_metrics,average,,3,90,0.0017,25.03,20.70,0.01,0.00,3.57,0.00,3.16,72.00,103.50,0.6389,0.8378,,,,,,,,,,,
+week_metrics,average,,4,135,0.0000,10.00,0.03,0.00,0.00,0.01,0.00,3.00,108.00,155.25,0.5833,0.7967,,,,,,,,,,,
+week_metrics,average,,5,205,0.0000,0.00,0.00,0.00,0.00,0.00,0.00,0.00,164.00,235.75,0.5278,0.7556,,,,,,,,,,,
+week_metrics,average,,6,305,0.0000,0.00,0.00,0.00,0.00,0.00,0.00,0.00,244.00,350.75,0.4722,0.7144,,,,,,,,,,,
+week_metrics,average,,7,455,0.0000,0.00,0.00,0.00,0.00,0.00,0.00,0.00,364.00,523.25,0.4167,0.6733,,,,,,,,,,,
+week_metrics,average,,8,685,0.0000,0.00,0.00,0.00,0.00,0.00,0.00,0.00,548.00,787.75,0.3611,0.6322,,,,,,,,,,,
+week_metrics,average,,9,1025,0.0000,0.00,0.00,0.00,0.00,0.00,0.00,0.00,820.00,1178.75,0.3056,0.5911,,,,,,,,,,,
+week_metrics,average,,10,1540,0.0000,0.00,0.00,0.00,0.00,0.00,0.00,0.00,1232.00,1771.00,0.2500,0.5500,,,,,,,,,,,
+doctrine_summary,expert,FLESH,,,,,,,,,,,,,,,600,115813,1767,65.54,38060,15360,
+week_reached,expert,FLESH,1,,,,,,,,,,,,,,,0
+week_reached,expert,FLESH,2,,,,,,,,,,,,,,,61
+week_reached,expert,FLESH,3,,,,,,,,,,,,,,,511
+week_reached,expert,FLESH,4,,,,,,,,,,,,,,,28
+week_reached,expert,FLESH,5,,,,,,,,,,,,,,,0
+week_reached,expert,FLESH,6,,,,,,,,,,,,,,,0
+week_reached,expert,FLESH,7,,,,,,,,,,,,,,,0
+week_reached,expert,FLESH,8,,,,,,,,,,,,,,,0
+week_reached,expert,FLESH,9,,,,,,,,,,,,,,,0
+week_reached,expert,FLESH,10,,,,,,,,,,,,,,,0
+relic_impact,expert,,,Cold Incense,,,,,,,,,,,,,4.00,77.58,3
+relic_impact,expert,,,Director's Cut,,,,,,,,,,,,,4.00,73.33,3
+relic_impact,expert,,,Ritual Knife,,,,,,,,,,,,,3.50,81.00,2
+relic_impact,expert,,,Red Thread,,,,,,,,,,,,,3.50,70.75,2
+relic_impact,expert,,,Black Contract,,,,,,,,,,,,,3.33,64.33,3
+relic_impact,expert,,,Ossuary Standards,,,,,,,,,,,,,3.27,67.73,11
+relic_impact,expert,,,Bone Idol,,,,,,,,,,,,,3.20,68.20,5
+relic_impact,expert,,,Bone Polisher,,,,,,,,,,,,,3.16,70.53,45
+relic_impact,expert,,,Prayer Beads,,,,,,,,,,,,,3.14,69.25,7
+relic_impact,expert,,,Quick Chant,,,,,,,,,,,,,3.14,68.69,7
+relic_impact,expert,,,Bloodright Almanac,,,,,,,,,,,,,3.11,71.86,38
+relic_impact,expert,,,Blood Market Stall,,,,,,,,,,,,,3.07,68.45,46
+relic_impact,expert,,,Blasphemous Geometry,,,,,,,,,,,,,3.00,79.89,3
+relic_impact,expert,,,Scarlet Planetarium,,,,,,,,,,,,,3.00,76.67,1
+relic_impact,expert,,,Wax Seal,,,,,,,,,,,,,3.00,75.50,2
+relic_impact,expert,,,Crimson Book,,,,,,,,,,,,,3.00,74.00,1
+relic_impact,expert,,,Choir Robes,,,,,,,,,,,,,3.00,73.44,3
+relic_impact,expert,,,Grave Ledger,,,,,,,,,,,,,3.00,72.22,3
+relic_impact,expert,,,Hollow Chant,,,,,,,,,,,,,3.00,69.67,1
+relic_impact,expert,,,Blood Abacus,,,,,,,,,,,,,3.00,69.00,3
+relic_impact,expert,,,Tithe Discount,,,,,,,,,,,,,3.00,67.33,6
+relic_impact,expert,,,Ossuary Standard,,,,,,,,,,,,,3.00,65.67,4
+relic_impact,expert,,,Balanced Offering,,,,,,,,,,,,,3.00,65.33,2
+relic_impact,expert,,,Sharpened Chalk,,,,,,,,,,,,,3.00,65.04,8
+relic_impact,expert,,,Salt Circle,,,,,,,,,,,,,3.00,65.03,33
+relic_impact,expert,,,Brass Tithe Bowl,,,,,,,,,,,,,3.00,64.47,44
+relic_impact,expert,,,Seal of Inheritance,,,,,,,,,,,,,3.00,64.17,2
+relic_impact,expert,,,Omen Deck,,,,,,,,,,,,,3.00,64.00,3
+relic_impact,expert,,,Hollow Abacus,,,,,,,,,,,,,3.00,63.50,2
+relic_impact,expert,,,Bone Saw,,,,,,,,,,,,,3.00,62.78,3
+relic_impact,expert,,,Debt Scripture,,,,,,,,,,,,,2.98,65.31,41
+relic_impact,expert,,,Selective Breeding Scroll,,,,,,,,,,,,,2.96,65.50,48
+relic_impact,expert,,,Calcify,,,,,,,,,,,,,2.95,64.90,55
+relic_impact,expert,,,Thin Blade,,,,,,,,,,,,,2.94,64.09,54
+relic_impact,expert,,,Votive Mirror,,,,,,,,,,,,,2.94,64.28,47
+relic_impact,expert,,,Ceremonial Cup,,,,,,,,,,,,,2.92,63.80,53
+relic_impact,expert,,,Crimson Interest,,,,,,,,,,,,,2.92,65.70,50
+relic_impact,expert,,,Triune Reliquary,,,,,,,,,,,,,2.91,66.97,35
+relic_impact,expert,,,Ritual Symmetry,,,,,,,,,,,,,2.91,64.65,43
+relic_impact,expert,,,Culling Knife,,,,,,,,,,,,,2.88,62.97,50
+relic_impact,expert,,,Clean Hands,,,,,,,,,,,,,2.87,64.04,46
+relic_impact,expert,,,Spare Chalice,,,,,,,,,,,,,2.86,63.53,44
+relic_impact,expert,,,Fertility Idol,,,,,,,,,,,,,2.84,64.52,50
+trait_impact,expert,,,Void Crown,,,,,,,,,,,,,4.00,70.88,4
+trait_impact,expert,,,Void Spark,,,,,,,,,,,,,4.00,69.96,7
+trait_impact,expert,,,First Cut,,,,,,,,,,,,,4.00,68.61,14
+trait_impact,expert,,,Triune Heir,,,,,,,,,,,,,4.00,66.00,1
+trait_impact,expert,,,Straight Rite,,,,,,,,,,,,,4.00,65.97,9
+trait_impact,expert,,,Last Rite,,,,,,,,,,,,,3.37,69.60,30
+trait_impact,expert,,,Resilient,,,,,,,,,,,,,3.33,70.89,3
+trait_impact,expert,,,Apostolic Womb,,,,,,,,,,,,,3.27,68.69,45
+trait_impact,expert,,,Twinborn,,,,,,,,,,,,,3.13,69.65,38
+trait_impact,expert,,,Brood Keeper,,,,,,,,,,,,,3.06,66.42,412
+trait_impact,expert,,,Marrow Worker,,,,,,,,,,,,,3.00,71.83,2
+trait_impact,expert,,,Lineage Tutor,,,,,,,,,,,,,2.97,65.72,556
+trait_impact,expert,,,High Chanter,,,,,,,,,,,,,2.97,65.67,566
+trait_impact,expert,,,Stalwart,,,,,,,,,,,,,2.96,65.57,575
+trait_impact,expert,,,Whispered,,,,,,,,,,,,,2.96,65.46,590
+trait_impact,expert,,,Devout,,,,,,,,,,,,,2.96,65.44,592
+trait_impact,expert,,,Blood Oathling,,,,,,,,,,,,,2.95,65.38,596
+trait_impact,expert,,,Even Votive,,,,,,,,,,,,,2.95,65.31,596
+trait_impact,expert,,,Low Chanter,,,,,,,,,,,,,2.95,65.37,594
+trait_impact,expert,,,Odd Votive,,,,,,,,,,,,,2.95,66.20,237

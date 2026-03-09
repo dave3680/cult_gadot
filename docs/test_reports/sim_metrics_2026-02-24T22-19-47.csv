@@ -1,0 +1,82 @@
+section,doctrine,week,relic,avg_week,avg_score,runs_with_relic,runs,total_devotion,total_weeks_played,avg_score_per_week,blood_gained,blood_spent,count
+doctrine_summary,FLESH,,,0.00,0.00,,2500,669067,8248,81.12,233799,116035,
+week_reached,FLESH,1,,,,,,,0,,,,,0
+week_reached,FLESH,2,,,,,,,0,,,,,476
+week_reached,FLESH,3,,,,,,,0,,,,,1305
+week_reached,FLESH,4,,,,,,,0,,,,,419
+week_reached,FLESH,5,,,,,,,0,,,,,166
+week_reached,FLESH,6,,,,,,,0,,,,,79
+week_reached,FLESH,7,,,,,,,0,,,,,44
+week_reached,FLESH,8,,,,,,,0,,,,,7
+week_reached,FLESH,9,,,,,,,0,,,,,3
+week_reached,FLESH,10,,,,,,,0,,,,,1
+doctrine_summary,RUIN,,,0.00,0.00,,2500,1401002,10639,131.69,634293,229045,
+week_reached,RUIN,1,,,,,,,0,,,,,0
+week_reached,RUIN,2,,,,,,,0,,,,,38
+week_reached,RUIN,3,,,,,,,0,,,,,662
+week_reached,RUIN,4,,,,,,,0,,,,,895
+week_reached,RUIN,5,,,,,,,0,,,,,547
+week_reached,RUIN,6,,,,,,,0,,,,,266
+week_reached,RUIN,7,,,,,,,0,,,,,74
+week_reached,RUIN,8,,,,,,,0,,,,,14
+week_reached,RUIN,9,,,,,,,0,,,,,4
+week_reached,RUIN,10,,,,,,,0,,,,,0
+doctrine_summary,SILENCE,,,0.00,0.00,,2500,3335319,12208,273.21,2313142,268537,
+week_reached,SILENCE,1,,,,,,,0,,,,,5
+week_reached,SILENCE,2,,,,,,,0,,,,,34
+week_reached,SILENCE,3,,,,,,,0,,,,,223
+week_reached,SILENCE,4,,,,,,,0,,,,,654
+week_reached,SILENCE,5,,,,,,,0,,,,,883
+week_reached,SILENCE,6,,,,,,,0,,,,,512
+week_reached,SILENCE,7,,,,,,,0,,,,,154
+week_reached,SILENCE,8,,,,,,,0,,,,,30
+week_reached,SILENCE,9,,,,,,,0,,,,,5
+week_reached,SILENCE,10,,,,,,,0,,,,,0
+relic_impact,,,Void Prism,5.66,294.31,525,,,,,,,
+relic_impact,,,Sacrificial Order,5.52,259.85,1182,,,,,,,
+relic_impact,,,Ectoplasm Jar,5.36,285.94,498,,,,,,,
+relic_impact,,,Black Candle,5.29,198.26,516,,,,,,,
+relic_impact,,,The Third Knife,5.28,221.01,514,,,,,,,
+relic_impact,,,Cold Incense,5.08,199.80,1296,,,,,,,
+relic_impact,,,Balanced Offering,4.94,187.83,517,,,,,,,
+relic_impact,,,Scarlet Planetarium,4.89,163.76,523,,,,,,,
+relic_impact,,,Omen Deck,4.89,167.40,543,,,,,,,
+relic_impact,,,Blasphemous Geometry,4.87,173.25,514,,,,,,,
+relic_impact,,,Director's Cut,4.84,159.96,526,,,,,,,
+relic_impact,,,Wax Seal,4.84,197.88,1237,,,,,,,
+relic_impact,,,Hollow Chant,4.84,255.45,1234,,,,,,,
+relic_impact,,,Seal of Inheritance,4.83,161.22,508,,,,,,,
+relic_impact,,,Ritual Knife,4.80,206.64,1255,,,,,,,
+relic_impact,,,Black Contract,4.80,160.16,455,,,,,,,
+relic_impact,,,Bone Idol,4.68,192.93,1331,,,,,,,
+relic_impact,,,Choir Robes,4.66,185.93,1291,,,,,,,
+relic_impact,,,Quick Chant,4.64,175.97,1230,,,,,,,
+relic_impact,,,Crimson Book,4.62,182.01,1244,,,,,,,
+relic_impact,,,Prayer Beads,4.60,178.07,1234,,,,,,,
+relic_impact,,,Hollow Abacus,4.58,232.40,1215,,,,,,,
+relic_impact,,,Ossuary Standards,4.54,159.85,1194,,,,,,,
+relic_impact,,,Red Thread,4.52,171.69,1298,,,,,,,
+relic_impact,,,Tithe Discount,4.51,171.90,1264,,,,,,,
+relic_impact,,,Ossuary Standard,4.49,148.71,1221,,,,,,,
+relic_impact,,,Grave Ledger,4.48,164.89,1353,,,,,,,
+relic_impact,,,Bone Saw,4.48,169.06,1231,,,,,,,
+relic_impact,,,Sharpened Chalk,4.47,159.03,1232,,,,,,,
+relic_impact,,,Blood Abacus,4.46,167.39,1312,,,,,,,
+relic_impact,,,Brass Tithe Bowl,4.45,160.43,1329,,,,,,,
+relic_impact,,,Salt Circle,4.45,166.82,1290,,,,,,,
+relic_impact,,,Culling Knife,4.45,162.05,1242,,,,,,,
+relic_impact,,,Spare Chalice,4.45,165.28,1315,,,,,,,
+relic_impact,,,Ceremonial Cup,4.44,160.85,1275,,,,,,,
+relic_impact,,,Thin Blade,4.42,159.98,1257,,,,,,,
+relic_impact,,,Bloodright Almanac,4.40,135.49,1194,,,,,,,
+relic_impact,,,Bone Polisher,4.38,148.07,1206,,,,,,,
+relic_impact,,,Triune Reliquary,4.37,148.68,1231,,,,,,,
+relic_impact,,,Calcify,4.36,136.51,1177,,,,,,,
+relic_impact,,,Votive Mirror,4.31,136.54,1218,,,,,,,
+relic_impact,,,Ritual Symmetry,4.30,129.87,1291,,,,,,,
+relic_impact,,,Crimson Interest,4.29,135.33,1284,,,,,,,
+relic_impact,,,Clean Hands,4.28,138.33,1191,,,,,,,
+relic_impact,,,Debt Scripture,4.26,130.71,1210,,,,,,,
+relic_impact,,,Fertility Idol,4.26,128.61,1275,,,,,,,
+relic_impact,,,Selective Breeding Scroll,4.25,131.83,1231,,,,,,,
+relic_impact,,,Blood Market Stall,4.25,128.76,1171,,,,,,,

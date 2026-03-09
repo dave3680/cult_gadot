@@ -1,0 +1,145 @@
+
+=== Cult of Accumulation: Exhaustive Test Runner ===
+Seed: 7263491
+Doctrine filter: FLESH
+
+=== BalanceSim (Random Plays, With Relics) ===
+
+Profile: expert
+
+Doctrine: FLESH
+Week 1 | PassRate: 100.0% | AvgRound: 37.57 | AvgWeek: 58.54 | AvgOverflow: 3.92 | AvgEarly: 1.77 | AvgEarned: 9.95 | AvgSpent: 7.76 | AvgPool: 17.05
+Week 2 | PassRate: 100.0% | AvgRound: 37.93 | AvgWeek: 63.15 | AvgOverflow: 3.92 | AvgEarly: 1.34 | AvgEarned: 10.96 | AvgSpent: 3.04 | AvgPool: 16.73
+Week 3 | PassRate: 100.0% | AvgRound: 36.39 | AvgWeek: 65.27 | AvgOverflow: 3.82 | AvgEarly: 0.83 | AvgEarned: 11.59 | AvgSpent: 9.63 | AvgPool: 15.38
+Week 4 | PassRate: 99.7% | AvgRound: 36.51 | AvgWeek: 66.69 | AvgOverflow: 3.88 | AvgEarly: 0.69 | AvgEarned: 12.92 | AvgSpent: 16.23 | AvgPool: 14.50
+Losses: 2 | AvgRelicsOnLoss: 2.00
+Week 5 | PassRate: 94.5% | AvgRound: 36.20 | AvgWeek: 65.22 | AvgOverflow: 3.65 | AvgEarly: 0.77 | AvgEarned: 13.61 | AvgSpent: 8.88 | AvgPool: 13.47
+Losses: 31 | AvgRelicsOnLoss: 1.52
+Week 6 | PassRate: 85.2% | AvgRound: 36.83 | AvgWeek: 61.50 | AvgOverflow: 3.23 | AvgEarly: 0.88 | AvgEarned: 12.53 | AvgSpent: 12.22 | AvgPool: 13.46
+Losses: 56 | AvgRelicsOnLoss: 2.20
+Week 7 | PassRate: 74.2% | AvgRound: 36.48 | AvgWeek: 55.50 | AvgOverflow: 2.86 | AvgEarly: 0.73 | AvgEarned: 11.65 | AvgSpent: 10.77 | AvgPool: 14.32
+Losses: 66 | AvgRelicsOnLoss: 3.06
+Week 8 | PassRate: 62.5% | AvgRound: 37.62 | AvgWeek: 48.90 | AvgOverflow: 2.38 | AvgEarly: 0.73 | AvgEarned: 9.74 | AvgSpent: 9.13 | AvgPool: 16.30
+Losses: 70 | AvgRelicsOnLoss: 3.47
+Week 9 | PassRate: 54.2% | AvgRound: 39.75 | AvgWeek: 42.07 | AvgOverflow: 2.09 | AvgEarly: 0.77 | AvgEarned: 8.40 | AvgSpent: 8.96 | AvgPool: 19.39
+Losses: 50 | AvgRelicsOnLoss: 3.98
+Week 10 | PassRate: 50.0% | AvgRound: 43.50 | AvgWeek: 39.36 | AvgOverflow: 1.95 | AvgEarly: 0.71 | AvgEarned: 7.71 | AvgSpent: 6.70 | AvgPool: 23.61
+Losses: 25 | AvgRelicsOnLoss: 4.96
+
+=== Relic Impact (Avg Furthest Week, Avg Score) ===
+1) Sacrificial Order | AvgWeek: 10.00 | AvgScore: 66.91 | RunsWithRelic: 10
+2) The Third Knife | AvgWeek: 9.93 | AvgScore: 66.00 | RunsWithRelic: 14
+3) Black Candle | AvgWeek: 9.91 | AvgScore: 65.68 | RunsWithRelic: 11
+4) Void Prism | AvgWeek: 9.89 | AvgScore: 65.12 | RunsWithRelic: 9
+5) Cold Incense | AvgWeek: 9.64 | AvgScore: 64.15 | RunsWithRelic: 64
+6) The Soul Lantern | AvgWeek: 9.63 | AvgScore: 66.23 | RunsWithRelic: 16
+7) Fertility Idol | AvgWeek: 9.53 | AvgScore: 67.39 | RunsWithRelic: 58
+8) Ectoplasm Jar | AvgWeek: 9.53 | AvgScore: 67.11 | RunsWithRelic: 19
+9) Ritual Knife | AvgWeek: 9.52 | AvgScore: 67.19 | RunsWithRelic: 60
+10) Ritual Symmetry | AvgWeek: 9.46 | AvgScore: 64.91 | RunsWithRelic: 56
+11) Balanced Offering | AvgWeek: 9.44 | AvgScore: 66.82 | RunsWithRelic: 59
+12) Ossuary Standards | AvgWeek: 9.37 | AvgScore: 65.21 | RunsWithRelic: 30
+13) Director's Cut | AvgWeek: 9.35 | AvgScore: 65.06 | RunsWithRelic: 79
+14) Hollow Chant | AvgWeek: 9.34 | AvgScore: 65.64 | RunsWithRelic: 62
+15) Wax Seal | AvgWeek: 9.32 | AvgScore: 66.25 | RunsWithRelic: 56
+16) Blood Market Stall | AvgWeek: 9.30 | AvgScore: 66.49 | RunsWithRelic: 53
+17) Choir Robes | AvgWeek: 9.30 | AvgScore: 67.22 | RunsWithRelic: 44
+18) Blasphemous Geometry | AvgWeek: 9.25 | AvgScore: 65.37 | RunsWithRelic: 51
+19) Bloodright Almanac | AvgWeek: 9.24 | AvgScore: 67.20 | RunsWithRelic: 71
+20) Bone Polisher | AvgWeek: 9.22 | AvgScore: 64.50 | RunsWithRelic: 50
+21) Prayer Beads | AvgWeek: 9.20 | AvgScore: 68.12 | RunsWithRelic: 45
+22) First Apostle | AvgWeek: 9.20 | AvgScore: 66.82 | RunsWithRelic: 10
+23) Seal of Inheritance | AvgWeek: 9.17 | AvgScore: 65.65 | RunsWithRelic: 64
+24) Quick Chant | AvgWeek: 9.11 | AvgScore: 65.79 | RunsWithRelic: 46
+25) Calcify | AvgWeek: 9.10 | AvgScore: 65.29 | RunsWithRelic: 61
+26) Bone Saw | AvgWeek: 9.08 | AvgScore: 64.66 | RunsWithRelic: 37
+27) Black Contract | AvgWeek: 9.08 | AvgScore: 64.53 | RunsWithRelic: 38
+28) Red Thread | AvgWeek: 9.08 | AvgScore: 65.33 | RunsWithRelic: 39
+29) Ossuary Standard | AvgWeek: 9.08 | AvgScore: 64.95 | RunsWithRelic: 39
+30) Scarlet Planetarium | AvgWeek: 9.06 | AvgScore: 65.25 | RunsWithRelic: 81
+31) Bone Idol | AvgWeek: 9.06 | AvgScore: 64.79 | RunsWithRelic: 33
+32) Blood Abacus | AvgWeek: 9.04 | AvgScore: 64.34 | RunsWithRelic: 45
+33) Sharpened Chalk | AvgWeek: 9.04 | AvgScore: 65.32 | RunsWithRelic: 26
+34) Thin Blade | AvgWeek: 9.02 | AvgScore: 65.13 | RunsWithRelic: 44
+35) Ceremonial Cup | AvgWeek: 9.00 | AvgScore: 64.33 | RunsWithRelic: 56
+36) Grave Ledger | AvgWeek: 8.97 | AvgScore: 65.18 | RunsWithRelic: 39
+37) Crimson Book | AvgWeek: 8.97 | AvgScore: 65.13 | RunsWithRelic: 39
+38) Brass Tithe Bowl | AvgWeek: 8.93 | AvgScore: 63.89 | RunsWithRelic: 55
+39) Salt Circle | AvgWeek: 8.93 | AvgScore: 65.63 | RunsWithRelic: 67
+40) Spare Chalice | AvgWeek: 8.92 | AvgScore: 64.22 | RunsWithRelic: 66
+41) Selective Breeding Scroll | AvgWeek: 8.92 | AvgScore: 65.17 | RunsWithRelic: 51
+42) Clean Hands | AvgWeek: 8.90 | AvgScore: 63.65 | RunsWithRelic: 52
+43) Omen Deck | AvgWeek: 8.89 | AvgScore: 64.15 | RunsWithRelic: 65
+44) Tithe Discount | AvgWeek: 8.89 | AvgScore: 65.34 | RunsWithRelic: 36
+45) Triune Reliquary | AvgWeek: 8.85 | AvgScore: 65.14 | RunsWithRelic: 61
+46) Culling Knife | AvgWeek: 8.83 | AvgScore: 63.65 | RunsWithRelic: 60
+47) Crimson Interest | AvgWeek: 8.82 | AvgScore: 64.84 | RunsWithRelic: 67
+48) Debt Scripture | AvgWeek: 8.82 | AvgScore: 64.23 | RunsWithRelic: 50
+49) Votive Mirror | AvgWeek: 8.73 | AvgScore: 63.49 | RunsWithRelic: 60
+50) Hollow Abacus | AvgWeek: 8.26 | AvgScore: 62.60 | RunsWithRelic: 23
+
+Profile: average
+
+Doctrine: FLESH
+Week 1 | PassRate: 84.0% | AvgRound: 26.34 | AvgWeek: 49.82 | AvgOverflow: 2.74 | AvgEarly: 0.43 | AvgEarned: 10.15 | AvgSpent: 6.94 | AvgPool: 15.25
+Losses: 96 | AvgRelicsOnLoss: 0.00
+Week 2 | PassRate: 82.8% | AvgRound: 29.52 | AvgWeek: 47.53 | AvgOverflow: 3.15 | AvgEarly: 0.28 | AvgEarned: 10.10 | AvgSpent: 3.12 | AvgPool: 14.68
+Losses: 7 | AvgRelicsOnLoss: 0.43
+Week 3 | PassRate: 82.0% | AvgRound: 32.37 | AvgWeek: 50.22 | AvgOverflow: 3.15 | AvgEarly: 0.42 | AvgEarned: 10.18 | AvgSpent: 7.91 | AvgPool: 12.64
+Losses: 5 | AvgRelicsOnLoss: 0.40
+Week 4 | PassRate: 78.8% | AvgRound: 33.81 | AvgWeek: 51.57 | AvgOverflow: 3.03 | AvgEarly: 0.46 | AvgEarned: 10.05 | AvgSpent: 13.34 | AvgPool: 11.03
+Losses: 19 | AvgRelicsOnLoss: 0.89
+Week 5 | PassRate: 67.2% | AvgRound: 32.70 | AvgWeek: 47.03 | AvgOverflow: 2.49 | AvgEarly: 0.55 | AvgEarned: 9.20 | AvgSpent: 5.42 | AvgPool: 9.64
+Losses: 70 | AvgRelicsOnLoss: 1.51
+Week 6 | PassRate: 53.3% | AvgRound: 33.00 | AvgWeek: 40.75 | AvgOverflow: 2.02 | AvgEarly: 0.43 | AvgEarned: 7.55 | AvgSpent: 7.35 | AvgPool: 9.28
+Losses: 83 | AvgRelicsOnLoss: 2.31
+Week 7 | PassRate: 39.7% | AvgRound: 32.18 | AvgWeek: 30.89 | AvgOverflow: 1.43 | AvgEarly: 0.43 | AvgEarned: 5.80 | AvgSpent: 4.56 | AvgPool: 9.56
+Losses: 82 | AvgRelicsOnLoss: 2.74
+Week 8 | PassRate: 30.2% | AvgRound: 34.85 | AvgWeek: 24.51 | AvgOverflow: 1.15 | AvgEarly: 0.36 | AvgEarned: 4.29 | AvgSpent: 3.75 | AvgPool: 10.81
+Losses: 57 | AvgRelicsOnLoss: 3.18
+Week 9 | PassRate: 22.8% | AvgRound: 36.84 | AvgWeek: 18.85 | AvgOverflow: 0.88 | AvgEarly: 0.37 | AvgEarned: 3.48 | AvgSpent: 3.17 | AvgPool: 12.67
+Losses: 44 | AvgRelicsOnLoss: 3.66
+Week 10 | PassRate: 19.7% | AvgRound: 41.41 | AvgWeek: 15.67 | AvgOverflow: 0.74 | AvgEarly: 0.31 | AvgEarned: 2.79 | AvgSpent: 2.65 | AvgPool: 15.56
+Losses: 19 | AvgRelicsOnLoss: 4.63
+
+=== Summary ===
+Tests: 0
+Passing: 0
+Failures: 25
+Warnings: 8
+Elapsed: 13619 ms
+FAIL: expert pass rate out of band week 1: 1.00 (target 0.90-0.99)
+FAIL: expert avg week devotion out of band week 1: 58.54 (target 39.90-56.70)
+FAIL: expert pass rate out of band week 2: 1.00 (target 0.87-0.97)
+FAIL: expert avg week devotion out of band week 2: 63.15 (target 40.85-58.05)
+FAIL: expert pass rate out of band week 3: 1.00 (target 0.83-0.96)
+FAIL: expert avg week devotion out of band week 3: 65.27 (target 42.75-60.75)
+FAIL: expert pass rate out of band week 4: 1.00 (target 0.80-0.94)
+FAIL: expert avg week devotion out of band week 4: 66.69 (target 43.70-62.10)
+FAIL: expert pass rate out of band week 5: 0.94 (target 0.77-0.93)
+FAIL: expert avg week devotion out of band week 5: 65.22 (target 44.65-63.45)
+FAIL: expert pass rate out of band week 8: 0.63 (target 0.67-0.88)
+FAIL: expert avg week devotion out of band week 8: 48.90 (target 49.40-70.20)
+FAIL: expert pass rate out of band week 9: 0.54 (target 0.63-0.87)
+FAIL: expert avg week devotion out of band week 9: 42.07 (target 50.35-71.55)
+FAIL: expert pass rate out of band week 10: 0.50 (target 0.60-0.85)
+FAIL: expert avg week devotion out of band week 10: 39.36 (target 52.25-74.25)
+FAIL: average avg week devotion out of band week 1: 49.82 (target 33.60-48.30)
+FAIL: average pass rate out of band week 7: 0.40 (target 0.42-0.67)
+FAIL: average avg week devotion out of band week 7: 30.89 (target 40.00-57.50)
+FAIL: average pass rate out of band week 8: 0.30 (target 0.36-0.63)
+FAIL: average avg week devotion out of band week 8: 24.51 (target 41.60-59.80)
+FAIL: average pass rate out of band week 9: 0.23 (target 0.31-0.59)
+FAIL: average avg week devotion out of band week 9: 18.85 (target 42.40-60.95)
+FAIL: average pass rate out of band week 10: 0.20 (target 0.25-0.55)
+FAIL: average avg week devotion out of band week 10: 15.67 (target 44.00-63.25)
+WARN: expert avg blood earned outside band week 10: 7.71 (target 8.00-22.00)
+WARN: average avg blood earned outside band week 1: 10.15 (target 3.00-10.00)
+WARN: average avg round devotion outside band week 3: 32.37 (target 18.00-31.50)
+WARN: average avg round devotion outside band week 4: 33.81 (target 18.40-32.20)
+WARN: average avg blood earned outside band week 8: 4.29 (target 4.56-14.67)
+WARN: average avg blood earned outside band week 9: 3.48 (target 4.78-15.33)
+WARN: average avg round devotion outside band week 10: 41.41 (target 22.00-38.50)
+WARN: average avg blood earned outside band week 10: 2.79 (target 5.00-16.00)
+
+Report file: res://docs/test_reports/exhaustive_report_2026-02-25T11-24-03.txt

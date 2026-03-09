@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://i8jip4k71uhh"
+
+[deps]
+
+files=["res://docs/test_reports/grid_sweep_results.base.translation", "res://docs/test_reports/grid_sweep_results.growth.translation", "res://docs/test_reports/grid_sweep_results.cap.translation", "res://docs/test_reports/grid_sweep_results.overflow.translation", "res://docs/test_reports/grid_sweep_results.early.translation", "res://docs/test_reports/grid_sweep_results.bloodBase.translation", "res://docs/test_reports/grid_sweep_results.failures.translation", "res://docs/test_reports/grid_sweep_results.warnings.translation"]
+
+source_file="res://docs/test_reports/grid_sweep_results.csv"
+dest_files=["res://docs/test_reports/grid_sweep_results.base.translation", "res://docs/test_reports/grid_sweep_results.growth.translation", "res://docs/test_reports/grid_sweep_results.cap.translation", "res://docs/test_reports/grid_sweep_results.overflow.translation", "res://docs/test_reports/grid_sweep_results.early.translation", "res://docs/test_reports/grid_sweep_results.bloodBase.translation", "res://docs/test_reports/grid_sweep_results.failures.translation", "res://docs/test_reports/grid_sweep_results.warnings.translation"]
+
+[params]
+
+compress=true
+delimiter=0

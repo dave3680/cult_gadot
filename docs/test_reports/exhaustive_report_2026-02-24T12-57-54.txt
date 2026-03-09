@@ -1,0 +1,12 @@
+
+=== Cult of Accumulation: Exhaustive Test Runner ===
+Seed: 1337
+
+=== Summary ===
+Failures: 2
+Warnings: 0
+Elapsed: 2239 ms
+FAIL: Scoring relic never affected devotion: Thin Blade
+FAIL: Scoring relic never affected devotion: Ritual Symmetry
+
+Report file: res://docs/test_reports/exhaustive_report_2026-02-24T12-57-54.txt

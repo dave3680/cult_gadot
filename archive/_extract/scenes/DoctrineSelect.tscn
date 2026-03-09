@@ -1,0 +1,91 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/DoctrineSelect.gd" id=1]
+
+[node name="DoctrineSelect" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource(1)
+
+[node name="Center" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(620, 360)
+
+[node name="VBox" type="VBoxContainer" parent="Center/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="Title" type="Label" parent="Center/Panel/VBox"]
+text = "Choose Doctrine"
+horizontal_alignment = 1
+
+[node name="Cards" type="HBoxContainer" parent="Center/Panel/VBox"]
+alignment = 1
+size_flags_horizontal = 3
+
+[node name="Flesh" type="PanelContainer" parent="Center/Panel/VBox/Cards"]
+custom_minimum_size = Vector2(180, 220)
+size_flags_horizontal = 3
+
+[node name="FleshVBox" type="VBoxContainer" parent="Center/Panel/VBox/Cards/Flesh"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="FleshTitle" type="Label" parent="Center/Panel/VBox/Cards/Flesh/FleshVBox"]
+text = "Path of Flesh"
+horizontal_alignment = 1
+
+[node name="FleshDesc" type="Label" parent="Center/Panel/VBox/Cards/Flesh/FleshVBox"]
+text = "Convert one follower to BLOOD each play.\nBonus if you sacrifice 3+ BLOOD; penalty if you sacrifice none."
+autowrap_mode = 3
+size_flags_vertical = 3
+
+[node name="FleshButton" type="Button" parent="Center/Panel/VBox/Cards/Flesh/FleshVBox"]
+text = "Choose Flesh"
+custom_minimum_size = Vector2(0, 44)
+
+[node name="Ruin" type="PanelContainer" parent="Center/Panel/VBox/Cards"]
+custom_minimum_size = Vector2(180, 220)
+size_flags_horizontal = 3
+
+[node name="RuinVBox" type="VBoxContainer" parent="Center/Panel/VBox/Cards/Ruin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="RuinTitle" type="Label" parent="Center/Panel/VBox/Cards/Ruin/RuinVBox"]
+text = "Path of Ruin"
+horizontal_alignment = 1
+
+[node name="RuinDesc" type="Label" parent="Center/Panel/VBox/Cards/Ruin/RuinVBox"]
+text = "Refine one follower (+1 tier) and exhaust it this play.\nBonus if your highest-tier sacrifice is BONE."
+autowrap_mode = 3
+size_flags_vertical = 3
+
+[node name="RuinButton" type="Button" parent="Center/Panel/VBox/Cards/Ruin/RuinVBox"]
+text = "Choose Ruin"
+custom_minimum_size = Vector2(0, 44)
+
+[node name="Silence" type="PanelContainer" parent="Center/Panel/VBox/Cards"]
+custom_minimum_size = Vector2(180, 220)
+size_flags_horizontal = 3
+
+[node name="SilenceVBox" type="VBoxContainer" parent="Center/Panel/VBox/Cards/Silence"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="SilenceTitle" type="Label" parent="Center/Panel/VBox/Cards/Silence/SilenceVBox"]
+text = "Path of Silence"
+horizontal_alignment = 1
+
+[node name="SilenceDesc" type="Label" parent="Center/Panel/VBox/Cards/Silence/SilenceVBox"]
+text = "Banish one follower and replace it.\nBonus multiplier if you sacrifice exactly one VOID."
+autowrap_mode = 3
+size_flags_vertical = 3
+
+[node name="SilenceButton" type="Button" parent="Center/Panel/VBox/Cards/Silence/SilenceVBox"]
+text = "Choose Silence"
+custom_minimum_size = Vector2(0, 44)

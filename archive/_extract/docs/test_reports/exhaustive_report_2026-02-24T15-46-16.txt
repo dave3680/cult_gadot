@@ -1,0 +1,50 @@
+
+=== Cult of Accumulation: Exhaustive Test Runner ===
+Seed: 7263491
+
+=== BalanceSim (Random Plays, With Relics) ===
+
+Doctrine: FLESH
+Week 1 | PassRate: 95.9% | AvgRound: 11.27 | AvgWeek: 22.53
+Losses: 103 | AvgRelicsOnLoss: 0.00
+Week 2 | PassRate: 41.6% | AvgRound: 16.10 | AvgWeek: 30.87
+Losses: 1358 | AvgRelicsOnLoss: 0.00
+Week 3 | PassRate: 0.7% | AvgRound: 19.42 | AvgWeek: 16.14
+Losses: 1022 | AvgRelicsOnLoss: 0.00
+Week 4 | PassRate: 0.0% | AvgRound: 24.41 | AvgWeek: 0.33
+Losses: 17 | AvgRelicsOnLoss: 0.18
+Week 5 | PassRate: 0.0% | AvgRound: 0.00 | AvgWeek: 0.00
+
+Doctrine: RUIN
+Week 1 | PassRate: 96.0% | AvgRound: 18.00 | AvgWeek: 36.01
+Losses: 101 | AvgRelicsOnLoss: 0.00
+Week 2 | PassRate: 67.4% | AvgRound: 21.46 | AvgWeek: 41.18
+Losses: 713 | AvgRelicsOnLoss: 0.00
+Week 3 | PassRate: 10.7% | AvgRound: 23.51 | AvgWeek: 31.71
+Losses: 1418 | AvgRelicsOnLoss: 0.00
+Week 4 | PassRate: 0.1% | AvgRound: 25.39 | AvgWeek: 5.44
+Losses: 265 | AvgRelicsOnLoss: 0.00
+Week 5 | PassRate: 0.0% | AvgRound: 19.67 | AvgWeek: 0.05
+Losses: 3 | AvgRelicsOnLoss: 0.00
+
+Doctrine: SILENCE
+Week 1 | PassRate: 87.8% | AvgRound: 22.43 | AvgWeek: 44.87
+Losses: 306 | AvgRelicsOnLoss: 0.00
+Week 2 | PassRate: 57.4% | AvgRound: 30.09 | AvgWeek: 52.81
+Losses: 760 | AvgRelicsOnLoss: 0.00
+Week 3 | PassRate: 20.6% | AvgRound: 32.45 | AvgWeek: 37.23
+Losses: 918 | AvgRelicsOnLoss: 0.00
+Week 4 | PassRate: 2.8% | AvgRound: 33.72 | AvgWeek: 13.92
+Losses: 446 | AvgRelicsOnLoss: 0.02
+Week 5 | PassRate: 0.0% | AvgRound: 24.58 | AvgWeek: 1.38
+Losses: 70 | AvgRelicsOnLoss: 0.13
+
+=== Summary ===
+Tests: 45082
+Passing: 45081
+Failures: 1
+Warnings: 0
+Elapsed: 178644 ms
+FAIL: Intentional failing test to verify runner reports failures
+
+Report file: res://docs/test_reports/exhaustive_report_2026-02-24T15-46-16.txt

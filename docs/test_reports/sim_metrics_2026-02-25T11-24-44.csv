@@ -1,0 +1,82 @@
+section,profile,doctrine,week,target,pass_rate,avg_round,avg_week,avg_overflow,avg_early,avg_blood_earned,avg_blood_spent,avg_pool,avg_week_target_min,avg_week_target_max,pass_rate_min,pass_rate_max,relic,avg_week_relic,avg_score_relic,runs_with_relic,runs,total_devotion,total_weeks_played,avg_score_per_week,blood_gained,blood_spent,count
+week_metrics,expert,,1,42,1.0000,37.78,59.12,3.94,1.74,9.94,7.86,17.05,39.90,56.70,0.9000,0.9900,,,,,,,,,,,
+week_metrics,expert,,2,45,1.0000,38.48,65.54,3.91,1.19,10.94,3.23,16.48,42.75,60.75,0.8667,0.9744,,,,,,,,,,,
+week_metrics,expert,,3,47,1.0000,36.90,67.10,3.92,0.73,11.62,8.80,14.87,44.65,63.45,0.8333,0.9589,,,,,,,,,,,
+week_metrics,expert,,4,50,0.9967,36.37,68.69,3.89,0.45,13.15,17.01,13.61,47.50,67.50,0.8000,0.9433,,,,,,,,,,,
+week_metrics,expert,,5,53,0.9117,35.62,67.32,3.49,0.41,13.50,8.63,12.25,50.35,71.55,0.7667,0.9278,,,,,,,,,,,
+week_metrics,expert,,6,56,0.7767,36.17,61.91,2.96,0.45,12.24,11.32,11.80,53.20,75.60,0.7333,0.9122,,,,,,,,,,,
+week_metrics,expert,,7,60,0.6433,37.93,55.06,2.42,0.41,10.55,8.22,12.23,57.00,81.00,0.7000,0.8967,,,,,,,,,,,
+week_metrics,expert,,8,63,0.4850,37.68,44.65,1.81,0.41,8.27,6.61,13.60,59.85,85.05,0.6667,0.8811,,,,,,,,,,,
+week_metrics,expert,,9,67,0.3783,41.99,36.46,1.40,0.41,6.33,6.23,17.09,63.65,90.45,0.6333,0.8656,,,,,,,,,,,
+week_metrics,expert,,10,71,0.3117,48.54,31.47,1.10,0.43,5.11,4.33,21.22,67.45,95.85,0.6000,0.8500,,,,,,,,,,,
+week_metrics,average,,1,42,0.8167,25.97,49.21,2.51,0.42,9.95,6.62,15.13,33.60,48.30,0.7500,0.9200,,,,,,,,,,,
+week_metrics,average,,2,45,0.7933,29.98,46.83,2.89,0.29,9.49,2.92,14.64,36.00,51.75,0.6944,0.8789,,,,,,,,,,,
+week_metrics,average,,3,47,0.7683,31.81,48.88,2.95,0.20,9.80,8.38,12.23,37.60,54.05,0.6389,0.8378,,,,,,,,,,,
+week_metrics,average,,4,50,0.7183,34.65,49.66,2.71,0.41,9.22,10.85,10.60,40.00,57.50,0.5833,0.7967,,,,,,,,,,,
+week_metrics,average,,5,53,0.5867,33.76,45.92,2.20,0.31,8.34,4.50,8.85,42.40,60.95,0.5278,0.7556,,,,,,,,,,,
+week_metrics,average,,6,56,0.4100,33.08,37.11,1.56,0.21,6.31,5.76,7.90,44.80,64.40,0.4722,0.7144,,,,,,,,,,,
+week_metrics,average,,7,60,0.2533,33.16,25.54,0.91,0.20,4.14,3.12,7.97,48.00,69.00,0.4167,0.6733,,,,,,,,,,,
+week_metrics,average,,8,63,0.1683,34.55,16.41,0.59,0.13,2.67,2.12,9.63,50.40,72.45,0.3611,0.6322,,,,,,,,,,,
+week_metrics,average,,9,67,0.1117,39.71,12.18,0.40,0.12,1.92,1.47,11.20,53.60,77.05,0.3056,0.5911,,,,,,,,,,,
+week_metrics,average,,10,71,0.0833,45.17,9.34,0.32,0.07,1.33,1.07,12.33,56.80,81.65,0.2500,0.5500,,,,,,,,,,,
+doctrine_summary,expert,FLESH,,,,,,,,,,,,,,,600,334391,4915,68.03,77034,49339,
+week_reached,expert,FLESH,1,,,,,,,,,,,,,,,0
+week_reached,expert,FLESH,2,,,,,,,,,,,,,,,0
+week_reached,expert,FLESH,3,,,,,,,,,,,,,,,0
+week_reached,expert,FLESH,4,,,,,,,,,,,,,,,2
+week_reached,expert,FLESH,5,,,,,,,,,,,,,,,51
+week_reached,expert,FLESH,6,,,,,,,,,,,,,,,81
+week_reached,expert,FLESH,7,,,,,,,,,,,,,,,80
+week_reached,expert,FLESH,8,,,,,,,,,,,,,,,95
+week_reached,expert,FLESH,9,,,,,,,,,,,,,,,64
+week_reached,expert,FLESH,10,,,,,,,,,,,,,,,227
+relic_impact,expert,,,Sacrificial Order,,,,,,,,,,,,,10.00,72.61,14
+relic_impact,expert,,,Void Prism,,,,,,,,,,,,,10.00,70.27,8
+relic_impact,expert,,,Cold Incense,,,,,,,,,,,,,9.74,70.95,50
+relic_impact,expert,,,The Third Knife,,,,,,,,,,,,,9.71,72.58,7
+relic_impact,expert,,,Black Candle,,,,,,,,,,,,,9.69,70.67,13
+relic_impact,expert,,,First Apostle,,,,,,,,,,,,,9.67,70.98,12
+relic_impact,expert,,,The Soul Lantern,,,,,,,,,,,,,9.50,71.13,10
+relic_impact,expert,,,Ritual Knife,,,,,,,,,,,,,9.22,71.28,51
+relic_impact,expert,,,Sharpened Chalk,,,,,,,,,,,,,9.10,69.57,40
+relic_impact,expert,,,Ectoplasm Jar,,,,,,,,,,,,,9.10,69.53,10
+relic_impact,expert,,,Bone Idol,,,,,,,,,,,,,9.05,70.77,37
+relic_impact,expert,,,Wax Seal,,,,,,,,,,,,,9.05,71.02,44
+relic_impact,expert,,,Culling Knife,,,,,,,,,,,,,8.96,67.98,52
+relic_impact,expert,,,Seal of Inheritance,,,,,,,,,,,,,8.94,68.05,47
+relic_impact,expert,,,Director's Cut,,,,,,,,,,,,,8.91,68.75,43
+relic_impact,expert,,,Omen Deck,,,,,,,,,,,,,8.90,68.72,67
+relic_impact,expert,,,Bone Polisher,,,,,,,,,,,,,8.84,70.50,49
+relic_impact,expert,,,Brass Tithe Bowl,,,,,,,,,,,,,8.83,69.25,64
+relic_impact,expert,,,Balanced Offering,,,,,,,,,,,,,8.82,68.85,57
+relic_impact,expert,,,Quick Chant,,,,,,,,,,,,,8.77,69.92,26
+relic_impact,expert,,,Ossuary Standards,,,,,,,,,,,,,8.77,68.74,39
+relic_impact,expert,,,Crimson Book,,,,,,,,,,,,,8.76,69.94,37
+relic_impact,expert,,,Scarlet Planetarium,,,,,,,,,,,,,8.75,68.45,57
+relic_impact,expert,,,Clean Hands,,,,,,,,,,,,,8.75,68.66,51
+relic_impact,expert,,,Thin Blade,,,,,,,,,,,,,8.73,67.71,49
+relic_impact,expert,,,Fertility Idol,,,,,,,,,,,,,8.73,67.73,45
+relic_impact,expert,,,Bloodright Almanac,,,,,,,,,,,,,8.70,69.60,54
+relic_impact,expert,,,Blasphemous Geometry,,,,,,,,,,,,,8.70,68.06,53
+relic_impact,expert,,,Red Thread,,,,,,,,,,,,,8.68,67.93,38
+relic_impact,expert,,,Blood Market Stall,,,,,,,,,,,,,8.68,67.76,53
+relic_impact,expert,,,Prayer Beads,,,,,,,,,,,,,8.68,68.96,34
+relic_impact,expert,,,Hollow Abacus,,,,,,,,,,,,,8.66,67.58,50
+relic_impact,expert,,,Crimson Interest,,,,,,,,,,,,,8.63,68.26,57
+relic_impact,expert,,,Votive Mirror,,,,,,,,,,,,,8.63,67.64,59
+relic_impact,expert,,,Ossuary Standard,,,,,,,,,,,,,8.63,67.13,32
+relic_impact,expert,,,Choir Robes,,,,,,,,,,,,,8.61,68.67,36
+relic_impact,expert,,,Blood Abacus,,,,,,,,,,,,,8.58,67.85,38
+relic_impact,expert,,,Grave Ledger,,,,,,,,,,,,,8.53,66.19,32
+relic_impact,expert,,,Hollow Chant,,,,,,,,,,,,,8.51,66.96,43
+relic_impact,expert,,,Ceremonial Cup,,,,,,,,,,,,,8.50,67.98,56
+relic_impact,expert,,,Triune Reliquary,,,,,,,,,,,,,8.50,67.17,52
+relic_impact,expert,,,Ritual Symmetry,,,,,,,,,,,,,8.40,67.25,47
+relic_impact,expert,,,Debt Scripture,,,,,,,,,,,,,8.40,66.36,43
+relic_impact,expert,,,Calcify,,,,,,,,,,,,,8.37,66.65,52
+relic_impact,expert,,,Selective Breeding Scroll,,,,,,,,,,,,,8.33,67.59,48
+relic_impact,expert,,,Salt Circle,,,,,,,,,,,,,8.28,67.14,64
+relic_impact,expert,,,Spare Chalice,,,,,,,,,,,,,8.28,66.41,50
+relic_impact,expert,,,Black Contract,,,,,,,,,,,,,8.28,68.13,36
+relic_impact,expert,,,Bone Saw,,,,,,,,,,,,,8.28,66.68,40
+relic_impact,expert,,,Tithe Discount,,,,,,,,,,,,,8.26,67.32,27

@@ -1,0 +1,36 @@
+
+=== Cult of Accumulation: Exhaustive Test Runner ===
+Seed: 1337
+
+=== BalanceSim (Random Plays, With Relics) ===
+
+Doctrine: FLESH
+Week 1 | PassRate: 95.6% | AvgRound: 11.06 | AvgWeek: 22.11
+Week 2 | PassRate: 41.8% | AvgRound: 15.41 | AvgWeek: 29.48
+Week 3 | PassRate: 0.0% | AvgRound: 18.42 | AvgWeek: 15.42
+Week 4 | PassRate: 0.0% | AvgRound: 43.50 | AvgWeek: 0.03
+Week 5 | PassRate: 0.0% | AvgRound: 0.00 | AvgWeek: 0.00
+
+Doctrine: RUIN
+Week 1 | PassRate: 95.0% | AvgRound: 16.51 | AvgWeek: 33.01
+Week 2 | PassRate: 73.3% | AvgRound: 20.79 | AvgWeek: 39.51
+Week 3 | PassRate: 6.7% | AvgRound: 22.59 | AvgWeek: 33.13
+Week 4 | PassRate: 0.0% | AvgRound: 23.72 | AvgWeek: 3.17
+Week 5 | PassRate: 0.0% | AvgRound: 0.00 | AvgWeek: 0.00
+
+Doctrine: SILENCE
+Week 1 | PassRate: 92.0% | AvgRound: 15.74 | AvgWeek: 31.49
+Week 2 | PassRate: 61.9% | AvgRound: 22.15 | AvgWeek: 40.74
+Week 3 | PassRate: 12.8% | AvgRound: 24.06 | AvgWeek: 29.79
+Week 4 | PassRate: 0.2% | AvgRound: 22.25 | AvgWeek: 5.70
+Week 5 | PassRate: 0.0% | AvgRound: 42.13 | AvgWeek: 0.13
+
+=== Summary ===
+Tests: 45082
+Passing: 45081
+Failures: 1
+Warnings: 0
+Elapsed: 180028 ms
+FAIL: Intentional failing test to verify runner reports failures
+
+Report file: res://docs/test_reports/exhaustive_report_2026-02-24T14-38-41.txt

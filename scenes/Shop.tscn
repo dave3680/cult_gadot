@@ -1,0 +1,350 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/Shop.gd" id=1]
+
+[node name="Shop" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource(1)
+
+[node name="RootVBox" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+
+[node name="TopBar" type="PanelContainer" parent="RootVBox"]
+custom_minimum_size = Vector2(0, 80)
+size_flags_horizontal = 3
+
+[node name="TopBarHBox" type="HBoxContainer" parent="RootVBox/TopBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+
+[node name="ShopLabel" type="Label" parent="RootVBox/TopBar/TopBarHBox"]
+text = "Shop"
+size_flags_horizontal = 3
+
+[node name="Tabs" type="HBoxContainer" parent="RootVBox/TopBar/TopBarHBox"]
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="ShopTab" type="Button" parent="RootVBox/TopBar/TopBarHBox/Tabs"]
+text = "Shop"
+toggle_mode = true
+button_pressed = true
+
+[node name="PoolTab" type="Button" parent="RootVBox/TopBar/TopBarHBox/Tabs"]
+text = "Pool"
+toggle_mode = true
+
+[node name="BloodLabel" type="Label" parent="RootVBox/TopBar/TopBarHBox"]
+text = "Blood: 0"
+size_flags_horizontal = 3
+horizontal_alignment = 2
+
+[node name="OfferArea" type="HBoxContainer" parent="RootVBox"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="RecruitPanel" type="PanelContainer" parent="RootVBox"]
+size_flags_horizontal = 3
+
+[node name="RecruitVBox" type="VBoxContainer" parent="RootVBox/RecruitPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+
+[node name="RecruitTitle" type="Label" parent="RootVBox/RecruitPanel/RecruitVBox"]
+text = "Recruit Followers (Cost: 1 Blood each)"
+
+[node name="RecruitMsg" type="Label" parent="RootVBox/RecruitPanel/RecruitVBox"]
+text = ""
+autowrap_mode = 3
+
+[node name="RecruitRow" type="HBoxContainer" parent="RootVBox/RecruitPanel/RecruitVBox"]
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Recruit1" type="PanelContainer" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow"]
+custom_minimum_size = Vector2(200, 140)
+size_flags_horizontal = 3
+
+[node name="Recruit1VBox" type="VBoxContainer" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Recruit1Stripe" type="ColorRect" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit1/Recruit1VBox"]
+custom_minimum_size = Vector2(0, 6)
+
+[node name="Recruit1Trait" type="Label" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit1/Recruit1VBox"]
+text = "Trait"
+
+[node name="Recruit1Tier" type="Label" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit1/Recruit1VBox"]
+text = "Tier"
+
+[node name="Recruit1Origin" type="Label" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit1/Recruit1VBox"]
+text = "Recruit"
+
+[node name="Recruit1Buy" type="Button" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit1/Recruit1VBox"]
+text = "Hire (1)"
+custom_minimum_size = Vector2(0, 40)
+
+[node name="Recruit2" type="PanelContainer" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow"]
+custom_minimum_size = Vector2(200, 140)
+size_flags_horizontal = 3
+
+[node name="Recruit2VBox" type="VBoxContainer" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Recruit2Stripe" type="ColorRect" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit2/Recruit2VBox"]
+custom_minimum_size = Vector2(0, 6)
+
+[node name="Recruit2Trait" type="Label" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit2/Recruit2VBox"]
+text = "Trait"
+
+[node name="Recruit2Tier" type="Label" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit2/Recruit2VBox"]
+text = "Tier"
+
+[node name="Recruit2Origin" type="Label" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit2/Recruit2VBox"]
+text = "Recruit"
+
+[node name="Recruit2Buy" type="Button" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit2/Recruit2VBox"]
+text = "Hire (1)"
+custom_minimum_size = Vector2(0, 40)
+
+[node name="Recruit3" type="PanelContainer" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow"]
+custom_minimum_size = Vector2(200, 140)
+size_flags_horizontal = 3
+
+[node name="Recruit3VBox" type="VBoxContainer" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Recruit3Stripe" type="ColorRect" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit3/Recruit3VBox"]
+custom_minimum_size = Vector2(0, 6)
+
+[node name="Recruit3Trait" type="Label" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit3/Recruit3VBox"]
+text = "Trait"
+
+[node name="Recruit3Tier" type="Label" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit3/Recruit3VBox"]
+text = "Tier"
+
+[node name="Recruit3Origin" type="Label" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit3/Recruit3VBox"]
+text = "Recruit"
+
+[node name="Recruit3Buy" type="Button" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit3/Recruit3VBox"]
+text = "Hire (1)"
+custom_minimum_size = Vector2(0, 40)
+
+[node name="Recruit4" type="PanelContainer" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow"]
+custom_minimum_size = Vector2(200, 140)
+size_flags_horizontal = 3
+
+[node name="Recruit4VBox" type="VBoxContainer" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Recruit4Stripe" type="ColorRect" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit4/Recruit4VBox"]
+custom_minimum_size = Vector2(0, 6)
+
+[node name="Recruit4Trait" type="Label" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit4/Recruit4VBox"]
+text = "Trait"
+
+[node name="Recruit4Tier" type="Label" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit4/Recruit4VBox"]
+text = "Tier"
+
+[node name="Recruit4Origin" type="Label" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit4/Recruit4VBox"]
+text = "Recruit"
+
+[node name="Recruit4Buy" type="Button" parent="RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit4/Recruit4VBox"]
+text = "Hire (1)"
+custom_minimum_size = Vector2(0, 40)
+
+[node name="Offer1" type="PanelContainer" parent="RootVBox/OfferArea"]
+custom_minimum_size = Vector2(220, 260)
+size_flags_horizontal = 3
+
+[node name="Offer1VBox" type="VBoxContainer" parent="RootVBox/OfferArea/Offer1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+
+[node name="Offer1Name" type="Label" parent="RootVBox/OfferArea/Offer1/Offer1VBox"]
+text = "Relic"
+
+[node name="Offer1Rarity" type="Label" parent="RootVBox/OfferArea/Offer1/Offer1VBox"]
+text = "Rarity"
+
+[node name="Offer1Category" type="Label" parent="RootVBox/OfferArea/Offer1/Offer1VBox"]
+text = "Category"
+
+[node name="Offer1Desc" type="Label" parent="RootVBox/OfferArea/Offer1/Offer1VBox"]
+text = "Description"
+autowrap_mode = 3
+size_flags_vertical = 3
+
+[node name="Offer1Cost" type="Label" parent="RootVBox/OfferArea/Offer1/Offer1VBox"]
+text = "Cost: 3 Blood"
+
+[node name="Offer1Buy" type="Button" parent="RootVBox/OfferArea/Offer1/Offer1VBox"]
+text = "Buy"
+custom_minimum_size = Vector2(0, 32)
+
+[node name="Offer2" type="PanelContainer" parent="RootVBox/OfferArea"]
+custom_minimum_size = Vector2(220, 260)
+size_flags_horizontal = 3
+
+[node name="Offer2VBox" type="VBoxContainer" parent="RootVBox/OfferArea/Offer2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+
+[node name="Offer2Name" type="Label" parent="RootVBox/OfferArea/Offer2/Offer2VBox"]
+text = "Relic"
+
+[node name="Offer2Rarity" type="Label" parent="RootVBox/OfferArea/Offer2/Offer2VBox"]
+text = "Rarity"
+
+[node name="Offer2Category" type="Label" parent="RootVBox/OfferArea/Offer2/Offer2VBox"]
+text = "Category"
+
+[node name="Offer2Desc" type="Label" parent="RootVBox/OfferArea/Offer2/Offer2VBox"]
+text = "Description"
+autowrap_mode = 3
+size_flags_vertical = 3
+
+[node name="Offer2Cost" type="Label" parent="RootVBox/OfferArea/Offer2/Offer2VBox"]
+text = "Cost: 3 Blood"
+
+[node name="Offer2Buy" type="Button" parent="RootVBox/OfferArea/Offer2/Offer2VBox"]
+text = "Buy"
+custom_minimum_size = Vector2(0, 32)
+
+[node name="Offer3" type="PanelContainer" parent="RootVBox/OfferArea"]
+custom_minimum_size = Vector2(220, 260)
+size_flags_horizontal = 3
+
+[node name="Offer3VBox" type="VBoxContainer" parent="RootVBox/OfferArea/Offer3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+
+[node name="Offer3Name" type="Label" parent="RootVBox/OfferArea/Offer3/Offer3VBox"]
+text = "Relic"
+
+[node name="Offer3Rarity" type="Label" parent="RootVBox/OfferArea/Offer3/Offer3VBox"]
+text = "Rarity"
+
+[node name="Offer3Category" type="Label" parent="RootVBox/OfferArea/Offer3/Offer3VBox"]
+text = "Category"
+
+[node name="Offer3Desc" type="Label" parent="RootVBox/OfferArea/Offer3/Offer3VBox"]
+text = "Description"
+autowrap_mode = 3
+size_flags_vertical = 3
+
+[node name="Offer3Cost" type="Label" parent="RootVBox/OfferArea/Offer3/Offer3VBox"]
+text = "Cost: 3 Blood"
+
+[node name="Offer3Buy" type="Button" parent="RootVBox/OfferArea/Offer3/Offer3VBox"]
+text = "Buy"
+custom_minimum_size = Vector2(0, 32)
+
+[node name="RelicControls" type="HBoxContainer" parent="RootVBox"]
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="RerollRelics" type="Button" parent="RootVBox/RelicControls"]
+text = "Reroll Relics (2)"
+custom_minimum_size = Vector2(180, 44)
+
+[node name="DirectorsCut" type="Button" parent="RootVBox/RelicControls"]
+text = "Director's Cut"
+custom_minimum_size = Vector2(180, 44)
+
+[node name="RitualPanel" type="PanelContainer" parent="RootVBox"]
+size_flags_horizontal = 3
+
+[node name="RitualVBox" type="VBoxContainer" parent="RootVBox/RitualPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+
+[node name="RitualTitle" type="Label" parent="RootVBox/RitualPanel/RitualVBox"]
+text = "Ritual Card (Cost: 2 Blood)"
+
+[node name="RitualDesc" type="Label" parent="RootVBox/RitualPanel/RitualVBox"]
+text = "None"
+autowrap_mode = 3
+
+[node name="RitualBuy" type="Button" parent="RootVBox/RitualPanel/RitualVBox"]
+text = "Buy Ritual"
+custom_minimum_size = Vector2(0, 40)
+
+[node name="PoolArea" type="PanelContainer" parent="RootVBox"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+visible = false
+
+[node name="PoolVBox" type="VBoxContainer" parent="RootVBox/PoolArea"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PoolSummary" type="Label" parent="RootVBox/PoolArea/PoolVBox"]
+text = "Pool Size: 0"
+autowrap_mode = 3
+
+[node name="PoolActions" type="HBoxContainer" parent="RootVBox/PoolArea/PoolVBox"]
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="CullSelected" type="Button" parent="RootVBox/PoolArea/PoolVBox/PoolActions"]
+text = "Cull Selected"
+custom_minimum_size = Vector2(140, 36)
+
+[node name="Favored1" type="Button" parent="RootVBox/PoolArea/PoolVBox/PoolActions"]
+text = "Favored A"
+custom_minimum_size = Vector2(120, 36)
+
+[node name="Favored2" type="Button" parent="RootVBox/PoolArea/PoolVBox/PoolActions"]
+text = "Favored B"
+custom_minimum_size = Vector2(120, 36)
+
+[node name="AscendSelected" type="Button" parent="RootVBox/PoolArea/PoolVBox/PoolActions"]
+text = "Ascend"
+custom_minimum_size = Vector2(100, 36)
+
+[node name="SetApostle" type="Button" parent="RootVBox/PoolArea/PoolVBox/PoolActions"]
+text = "Set Apostle"
+custom_minimum_size = Vector2(120, 36)
+
+[node name="RelicPack" type="Button" parent="RootVBox/PoolArea/PoolVBox/PoolActions"]
+text = "Relic Pack (0/10)"
+custom_minimum_size = Vector2(140, 36)
+
+[node name="PoolScroll" type="ScrollContainer" parent="RootVBox/PoolArea/PoolVBox"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PoolList" type="VBoxContainer" parent="RootVBox/PoolArea/PoolVBox/PoolScroll"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BottomArea" type="PanelContainer" parent="RootVBox"]
+custom_minimum_size = Vector2(0, 100)
+size_flags_horizontal = 3
+
+[node name="BottomHBox" type="HBoxContainer" parent="RootVBox/BottomArea"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="SkipButton" type="Button" parent="RootVBox/BottomArea/BottomHBox"]
+custom_minimum_size = Vector2(200, 60)
+text = "Next"

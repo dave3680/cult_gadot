@@ -1,0 +1,13 @@
+
+=== Cult of Accumulation: Exhaustive Test Runner ===
+Seed: 1337
+
+=== Summary ===
+Tests: 77
+Passing: 77
+Failures: 0
+Warnings: 0
+Elapsed: 2093 ms
+PASS
+
+Report file: res://docs/test_reports/exhaustive_report_2026-02-24T13-01-15.txt

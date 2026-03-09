@@ -1,0 +1,127 @@
+
+=== Cult of Accumulation: Exhaustive Test Runner ===
+Seed: 7263491
+
+=== BalanceSim (Random Plays, With Relics) ===
+
+Doctrine: FLESH
+Week 1 | PassRate: 100.0% | AvgRound: 18.18 | AvgWeek: 29.20
+Week 2 | PassRate: 81.0% | AvgRound: 28.25 | AvgWeek: 50.89
+Losses: 476 | AvgRelicsOnLoss: 1.53
+Week 3 | PassRate: 28.8% | AvgRound: 38.53 | AvgWeek: 58.68
+Losses: 1305 | AvgRelicsOnLoss: 3.03
+Week 4 | PassRate: 12.0% | AvgRound: 80.79 | AvgWeek: 42.49
+Losses: 419 | AvgRelicsOnLoss: 5.66
+Week 5 | PassRate: 5.4% | AvgRound: 158.01 | AvgWeek: 34.51
+Losses: 166 | AvgRelicsOnLoss: 9.26
+Week 6 | PassRate: 2.2% | AvgRound: 256.50 | AvgWeek: 25.34
+Losses: 79 | AvgRelicsOnLoss: 9.97
+Week 7 | PassRate: 0.4% | AvgRound: 368.34 | AvgWeek: 15.47
+Losses: 44 | AvgRelicsOnLoss: 10.00
+Week 8 | PassRate: 0.2% | AvgRound: 816.42 | AvgWeek: 6.20
+Losses: 7 | AvgRelicsOnLoss: 10.00
+Week 9 | PassRate: 0.0% | AvgRound: 1146.50 | AvgWeek: 3.67
+Losses: 3 | AvgRelicsOnLoss: 10.00
+Week 10 | PassRate: 0.0% | AvgRound: 1456.00 | AvgWeek: 1.16
+Losses: 1 | AvgRelicsOnLoss: 10.00
+
+Doctrine: RUIN
+Week 1 | PassRate: 100.0% | AvgRound: 37.25 | AvgWeek: 42.65
+Week 2 | PassRate: 98.5% | AvgRound: 54.62 | AvgWeek: 79.07
+Losses: 38 | AvgRelicsOnLoss: 3.29
+Week 3 | PassRate: 72.0% | AvgRound: 68.05 | AvgWeek: 111.42
+Losses: 662 | AvgRelicsOnLoss: 5.78
+Week 4 | PassRate: 36.2% | AvgRound: 103.61 | AvgWeek: 132.04
+Losses: 895 | AvgRelicsOnLoss: 8.57
+Week 5 | PassRate: 14.3% | AvgRound: 145.74 | AvgWeek: 96.89
+Losses: 547 | AvgRelicsOnLoss: 9.90
+Week 6 | PassRate: 3.7% | AvgRound: 225.28 | AvgWeek: 60.56
+Losses: 266 | AvgRelicsOnLoss: 10.00
+Week 7 | PassRate: 0.7% | AvgRound: 379.93 | AvgWeek: 26.90
+Losses: 74 | AvgRelicsOnLoss: 10.00
+Week 8 | PassRate: 0.2% | AvgRound: 571.67 | AvgWeek: 8.23
+Losses: 14 | AvgRelicsOnLoss: 10.00
+Week 9 | PassRate: 0.0% | AvgRound: 828.00 | AvgWeek: 2.65
+Losses: 4 | AvgRelicsOnLoss: 10.00
+Week 10 | PassRate: 0.0% | AvgRound: 0.00 | AvgWeek: 0.00
+
+Doctrine: SILENCE
+Week 1 | PassRate: 99.8% | AvgRound: 56.40 | AvgWeek: 63.28
+Losses: 5 | AvgRelicsOnLoss: 0.00
+Week 2 | PassRate: 98.4% | AvgRound: 140.84 | AvgWeek: 172.21
+Losses: 34 | AvgRelicsOnLoss: 4.32
+Week 3 | PassRate: 89.5% | AvgRound: 183.79 | AvgWeek: 249.44
+Losses: 223 | AvgRelicsOnLoss: 7.97
+Week 4 | PassRate: 63.4% | AvgRound: 251.65 | AvgWeek: 361.56
+Losses: 654 | AvgRelicsOnLoss: 9.69
+Week 5 | PassRate: 28.0% | AvgRound: 240.19 | AvgWeek: 270.45
+Losses: 883 | AvgRelicsOnLoss: 9.99
+Week 6 | PassRate: 7.6% | AvgRound: 278.56 | AvgWeek: 146.41
+Losses: 512 | AvgRelicsOnLoss: 10.00
+Week 7 | PassRate: 1.4% | AvgRound: 361.70 | AvgWeek: 52.37
+Losses: 154 | AvgRelicsOnLoss: 10.00
+Week 8 | PassRate: 0.2% | AvgRound: 612.97 | AvgWeek: 16.67
+Losses: 30 | AvgRelicsOnLoss: 10.00
+Week 9 | PassRate: 0.0% | AvgRound: 429.90 | AvgWeek: 1.72
+Losses: 5 | AvgRelicsOnLoss: 10.00
+Week 10 | PassRate: 0.0% | AvgRound: 0.00 | AvgWeek: 0.00
+
+=== Relic Impact (Avg Furthest Week, Avg Score) ===
+1) Void Prism | AvgWeek: 5.66 | AvgScore: 294.31 | RunsWithRelic: 525
+2) Sacrificial Order | AvgWeek: 5.52 | AvgScore: 259.85 | RunsWithRelic: 1182
+3) Ectoplasm Jar | AvgWeek: 5.36 | AvgScore: 285.94 | RunsWithRelic: 498
+4) Black Candle | AvgWeek: 5.29 | AvgScore: 198.26 | RunsWithRelic: 516
+5) The Third Knife | AvgWeek: 5.28 | AvgScore: 221.01 | RunsWithRelic: 514
+6) Cold Incense | AvgWeek: 5.08 | AvgScore: 199.80 | RunsWithRelic: 1296
+7) Balanced Offering | AvgWeek: 4.94 | AvgScore: 187.83 | RunsWithRelic: 517
+8) Scarlet Planetarium | AvgWeek: 4.89 | AvgScore: 163.76 | RunsWithRelic: 523
+9) Omen Deck | AvgWeek: 4.89 | AvgScore: 167.40 | RunsWithRelic: 543
+10) Blasphemous Geometry | AvgWeek: 4.87 | AvgScore: 173.25 | RunsWithRelic: 514
+11) Director's Cut | AvgWeek: 4.84 | AvgScore: 159.96 | RunsWithRelic: 526
+12) Wax Seal | AvgWeek: 4.84 | AvgScore: 197.88 | RunsWithRelic: 1237
+13) Hollow Chant | AvgWeek: 4.84 | AvgScore: 255.45 | RunsWithRelic: 1234
+14) Seal of Inheritance | AvgWeek: 4.83 | AvgScore: 161.22 | RunsWithRelic: 508
+15) Ritual Knife | AvgWeek: 4.80 | AvgScore: 206.64 | RunsWithRelic: 1255
+16) Black Contract | AvgWeek: 4.80 | AvgScore: 160.16 | RunsWithRelic: 455
+17) Bone Idol | AvgWeek: 4.68 | AvgScore: 192.93 | RunsWithRelic: 1331
+18) Choir Robes | AvgWeek: 4.66 | AvgScore: 185.93 | RunsWithRelic: 1291
+19) Quick Chant | AvgWeek: 4.64 | AvgScore: 175.97 | RunsWithRelic: 1230
+20) Crimson Book | AvgWeek: 4.62 | AvgScore: 182.01 | RunsWithRelic: 1244
+21) Prayer Beads | AvgWeek: 4.60 | AvgScore: 178.07 | RunsWithRelic: 1234
+22) Hollow Abacus | AvgWeek: 4.58 | AvgScore: 232.40 | RunsWithRelic: 1215
+23) Ossuary Standards | AvgWeek: 4.54 | AvgScore: 159.85 | RunsWithRelic: 1194
+24) Red Thread | AvgWeek: 4.52 | AvgScore: 171.69 | RunsWithRelic: 1298
+25) Tithe Discount | AvgWeek: 4.51 | AvgScore: 171.90 | RunsWithRelic: 1264
+26) Ossuary Standard | AvgWeek: 4.49 | AvgScore: 148.71 | RunsWithRelic: 1221
+27) Grave Ledger | AvgWeek: 4.48 | AvgScore: 164.89 | RunsWithRelic: 1353
+28) Bone Saw | AvgWeek: 4.48 | AvgScore: 169.06 | RunsWithRelic: 1231
+29) Sharpened Chalk | AvgWeek: 4.47 | AvgScore: 159.03 | RunsWithRelic: 1232
+30) Blood Abacus | AvgWeek: 4.46 | AvgScore: 167.39 | RunsWithRelic: 1312
+31) Brass Tithe Bowl | AvgWeek: 4.45 | AvgScore: 160.43 | RunsWithRelic: 1329
+32) Salt Circle | AvgWeek: 4.45 | AvgScore: 166.82 | RunsWithRelic: 1290
+33) Culling Knife | AvgWeek: 4.45 | AvgScore: 162.05 | RunsWithRelic: 1242
+34) Spare Chalice | AvgWeek: 4.45 | AvgScore: 165.28 | RunsWithRelic: 1315
+35) Ceremonial Cup | AvgWeek: 4.44 | AvgScore: 160.85 | RunsWithRelic: 1275
+36) Thin Blade | AvgWeek: 4.42 | AvgScore: 159.98 | RunsWithRelic: 1257
+37) Bloodright Almanac | AvgWeek: 4.40 | AvgScore: 135.49 | RunsWithRelic: 1194
+38) Bone Polisher | AvgWeek: 4.38 | AvgScore: 148.07 | RunsWithRelic: 1206
+39) Triune Reliquary | AvgWeek: 4.37 | AvgScore: 148.68 | RunsWithRelic: 1231
+40) Calcify | AvgWeek: 4.36 | AvgScore: 136.51 | RunsWithRelic: 1177
+41) Votive Mirror | AvgWeek: 4.31 | AvgScore: 136.54 | RunsWithRelic: 1218
+42) Ritual Symmetry | AvgWeek: 4.30 | AvgScore: 129.87 | RunsWithRelic: 1291
+43) Crimson Interest | AvgWeek: 4.29 | AvgScore: 135.33 | RunsWithRelic: 1284
+44) Clean Hands | AvgWeek: 4.28 | AvgScore: 138.33 | RunsWithRelic: 1191
+45) Debt Scripture | AvgWeek: 4.26 | AvgScore: 130.71 | RunsWithRelic: 1210
+46) Fertility Idol | AvgWeek: 4.26 | AvgScore: 128.61 | RunsWithRelic: 1275
+47) Selective Breeding Scroll | AvgWeek: 4.25 | AvgScore: 131.83 | RunsWithRelic: 1231
+48) Blood Market Stall | AvgWeek: 4.25 | AvgScore: 128.76 | RunsWithRelic: 1171
+
+=== Summary ===
+Tests: 0
+Passing: 0
+Failures: 0
+Warnings: 0
+Elapsed: 333733 ms
+PASS
+
+Report file: res://docs/test_reports/exhaustive_report_2026-02-24T22-19-47.txt

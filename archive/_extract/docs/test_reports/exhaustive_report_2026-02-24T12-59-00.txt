@@ -1,0 +1,11 @@
+
+=== Cult of Accumulation: Exhaustive Test Runner ===
+Seed: 1337
+
+=== Summary ===
+Failures: 1
+Warnings: 0
+Elapsed: 2090 ms
+FAIL: Twinborn should add +3 additive when tiers match (got 1 expected 3)
+
+Report file: res://docs/test_reports/exhaustive_report_2026-02-24T12-59-00.txt

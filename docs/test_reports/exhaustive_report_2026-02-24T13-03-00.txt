@@ -1,0 +1,32 @@
+
+=== Cult of Accumulation: Exhaustive Test Runner ===
+Seed: 1337
+
+=== Summary ===
+Tests: 45101
+Passing: 45081
+Failures: 20
+Warnings: 0
+Elapsed: 3892 ms
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+FAIL: Sacrificial Order should add devotion on 3 sacrifices
+
+Report file: res://docs/test_reports/exhaustive_report_2026-02-24T13-03-00.txt

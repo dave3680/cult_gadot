@@ -1,0 +1,15 @@
+
+=== Cult of Accumulation: Exhaustive Test Runner ===
+Seed: 7263491
+
+=== BalanceSim (Random Plays, With Relics) ===
+
+=== Summary ===
+Tests: 1
+Passing: 0
+Failures: 1
+Warnings: 0
+Elapsed: 3 ms
+FAIL: Intentional failing test to verify runner reports failures
+
+Report file: res://docs/test_reports/exhaustive_report_2026-02-24T16-14-19.txt
