@@ -188,7 +188,7 @@ const RELIC_DEFS := {
 	"Spare Chalice": {"rarity": "COMMON", "stacks": false, "category": "RELIC", "desc": "If you enter shop with 0 Blood, gain +2 Blood."},
 	"Choir Robes": {"rarity": "UNCOMMON", "stacks": true, "category": "RELIC", "desc": "If all 3 sacrifices have different tiers, +5 additive per copy."},
 	"Blood Market Stall": {"rarity": "COMMON", "stacks": false, "category": "RELIC", "desc": "Shop recruit offers become 4 instead of 3."},
-	"Ossuary Standards": {"rarity": "UNCOMMON", "stacks": true, "category": "RELIC", "desc": "Increase BONE additive factor by +1 per copy."},
+	"Ossuary Standards": {"rarity": "UNCOMMON", "stacks": true, "category": "RELIC", "desc": "+5 additive per BONE sacrificed per copy (flat, not tier-scaled)."},
 	"Hollow Abacus": {"rarity": "UNCOMMON", "stacks": true, "category": "RELIC", "desc": "If exactly 1 VOID is sacrificed, exponent +1 per copy."},
 	"Debt Scripture": {"rarity": "COMMON", "stacks": false, "category": "VOUCHER", "desc": "You may buy relics up to 2 Blood short; debt is repaid from gains."},
 	"Votive Mirror": {"rarity": "COMMON", "stacks": false, "category": "RELIC", "desc": "Once per shop, buy one recruit offer twice."},
@@ -1575,11 +1575,7 @@ func _hook_pre_add_ossuary_standards(ctx: Dictionary, copies: int) -> void:
 	var bone_count: int = int(ctx.get("bone_count", 0))
 	if bone_count <= 0:
 		return
-	var sacrificed_info: Array = ctx["sacrificed_info"]
-	var delta: int = 0
-	for info in sacrificed_info:
-		if str(info.get("trait", "")) == "BONE":
-			delta += int(info.get("tier", 0)) * copies
+	var delta: int = 5 * bone_count * copies
 	_hook_additive_delta(ctx, "Ossuary Standards (x%d): +%d" % [copies, delta], delta)
 
 func _hook_pre_add_calcify(ctx: Dictionary, copies: int) -> void:
@@ -1893,7 +1889,7 @@ func _score_selected_internal(selected_indices: Array, apply_currency: bool, wri
 			bone_count += 1
 			has_bone = true
 			base_contrib = tier * 2
-			var bone_term: int = effective_tier * (2 + bone_copies + ossuary_standards)
+			var bone_term: int = effective_tier * (2 + bone_copies) + 5 * ossuary_standards
 			bone_terms.append(str(bone_term))
 		elif trait_name == "SOUL":
 			base_contrib = 0
