@@ -697,9 +697,6 @@ func _proceed_after_confirm() -> void:
 	if gs.week_round == 2:
 		get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
 
-func _deferred_change_scene(path: String, passed: bool, target: int) -> void:
-	pass
-
 func _queue_scene_change(path: String, passed: bool, target: int) -> void:
 	if scene_change_queued:
 		return

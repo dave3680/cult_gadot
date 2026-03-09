@@ -495,41 +495,10 @@ func apply_overflow_blood_for_target(target: int) -> int:
 	add_blood(overflow_delta)
 	return overflow_delta
 
-func draw_new_hand() -> void:
-	current_hand.clear()
-	for i in range(6):
-		current_hand.append(_make_follower())
-
-func _make_follower() -> Dictionary:
-	var tier: int = _roll_tier_weighted()
-	var roll: float = _rng.randf()
-	var trait_name: String = "BLOOD"
-	if roll < 0.6:
-		trait_name = "BLOOD"
-	elif roll < 0.9:
-		trait_name = "BONE"
-	else:
-		trait_name = "VOID"
-		tier = 0
-	return {
-		"id": _next_id(),
-		"tier": tier,
-		"trait": trait_name,
-		"trait_id": "",
-		"trait_rarity": "",
-		"exhausted": false,
-		"origin_tag": "random",
-	}
-
 func _next_id() -> int:
 	var id: int = next_follower_id
 	next_follower_id += 1
 	return id
-
-func replace_sacrificed(indices: Array[int]) -> void:
-	for idx in indices:
-		if idx >= 0 and idx < current_hand.size():
-			current_hand[idx] = _make_follower()
 
 func start_week() -> void:
 	week_round = 1
@@ -1544,11 +1513,6 @@ func get_shop_cost(week: int, rarity: String = "COMMON") -> int:
 	if relic_inventory["Tithe Discount"] > 0:
 		discount = 1
 	return max(2, base_cost - discount)
-
-func get_shop_rarity_slots(week_cleared: int) -> Array[String]:
-	if week_cleared <= 2:
-		return ["COMMON", "COMMON", "UNCOMMON"]
-	return ["COMMON", "UNCOMMON", "RARE"]
 
 func roll_shop_rarity(week: int, rng: RandomNumberGenerator, rare_bonus: float = 0.0, legendary_bonus: float = 0.0, guarantee_rare: bool = false) -> String:
 	var rare_chance: float = min(SHOP_RARE_MAX, SHOP_RARE_BASE + (SHOP_RARE_PER_WEEK * float(week - 1)) + rare_bonus)
