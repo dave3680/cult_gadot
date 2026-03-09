@@ -3,7 +3,7 @@ extends Node
 const TEST_SEED := 7263491
 const RUNS_PER_DOCTRINE := 600
 const RUN_BALANCE_SIM := true
-const RUN_ONLY_SIM := true
+const RUN_ONLY_SIM := false
 const DOCTRINES := ["FLESH", "RUIN", "SILENCE"]
 const RUN_DOCTRINE := ""
 const BALANCE_PROFILES := ["expert", "average"]
