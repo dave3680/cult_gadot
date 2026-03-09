@@ -462,10 +462,6 @@ func get_run_config() -> Dictionary:
 	_ensure_run_config()
 	return run_config
 
-func get_overflow_weekly_cap() -> int:
-	var cfg := get_run_config()
-	return int(cfg.get("overflow_weekly_cap", 0))
-
 func get_overflow_devotion_per_blood() -> int:
 	var cfg := get_run_config()
 	if cfg.has("overflow_devotion_per_blood"):
@@ -489,9 +485,11 @@ func apply_overflow_blood_for_target(target: int) -> int:
 	var devotion_per_blood: int = get_overflow_devotion_per_blood()
 	var overflow_now: int = max(0, week_total_devotion - target)
 	var overflow_blood_now: int = int(floor(float(overflow_now) / float(devotion_per_blood)))
-	var cap: int = get_overflow_weekly_cap()
-	if cap > 0:
-		overflow_blood_now = min(overflow_blood_now, cap)
+	var cap_mult: float = float(get_run_config().get("overflow_cap_target_mult", 0.0))
+	if cap_mult > 0.0:
+		var cap: int = int(floor(float(target) * cap_mult))
+		if cap > 0:
+			overflow_blood_now = min(overflow_blood_now, cap)
 	var overflow_delta: int = overflow_blood_now - week_overflow_blood_granted
 	if overflow_delta <= 0:
 		return 0
