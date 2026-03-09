@@ -2338,13 +2338,16 @@ func _score_selected_internal(selected_indices: Array, apply_currency: bool, wri
 				pass
 
 	# Doctrine additive modifiers (after trait + additive relics, before multiplicative modifiers)
+	var target: int = get_week_target(current_week)
 	if selected_doctrine == "FLESH":
 		if blood_count >= 3:
-			doctrine_additive += 6
-			doctrine_lines.append("Path of Flesh: +6 (3+ BLOOD)")
+			var bonus: int = int(floor(float(target) * 0.08))
+			doctrine_additive += bonus
+			doctrine_lines.append("Path of Flesh: +%d (3+ BLOOD, 8%% of target %d)" % [bonus, target])
 		elif blood_count == 0:
-			doctrine_additive -= 6
-			doctrine_lines.append("Path of Flesh: -6 (no BLOOD)")
+			var penalty: int = int(floor(float(target) * 0.04))
+			doctrine_additive -= penalty
+			doctrine_lines.append("Path of Flesh: -%d (no BLOOD, 4%% of target %d)" % [penalty, target])
 		else:
 			doctrine_lines.append("Path of Flesh: +0")
 	elif selected_doctrine == "RUIN":
@@ -2357,8 +2360,9 @@ func _score_selected_internal(selected_indices: Array, apply_currency: bool, wri
 					highest_tier = t
 					highest_trait = info["trait"]
 			if highest_trait == "BONE":
-				doctrine_additive += 8
-				doctrine_lines.append("Path of Ruin: +8 (highest-tier was BONE)")
+				var bonus: int = int(floor(float(target) * 0.10)) + (highest_tier * 2)
+				doctrine_additive += bonus
+				doctrine_lines.append("Path of Ruin: +%d (10%% of target %d + tier %d×2)" % [bonus, target, highest_tier])
 			else:
 				doctrine_lines.append("Path of Ruin: +0")
 		else:
@@ -2418,7 +2422,6 @@ func _score_selected_internal(selected_indices: Array, apply_currency: bool, wri
 	var final_devotion: int = int(float(additive_total * multiplier) * multiplier_bonus_factor)
 	if trait_final_mult_factor > 1.0:
 		final_devotion = int(floor(float(final_devotion) * trait_final_mult_factor))
-	var target: int = get_week_target(current_week)
 	var cap_mult: float = float(get_run_config().get("round_devotion_cap_mult", 0.0))
 	if cap_mult > 0.0:
 		var round_cap: int = int(floor(float(target) * cap_mult))
