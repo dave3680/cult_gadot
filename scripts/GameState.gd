@@ -158,7 +158,7 @@ const RELIC_DEFS := {
 	"Ritual Knife": {"rarity": "RARE", "stacks": false, "category": "RELIC", "desc": "The first follower you choose each week counts as double tier."},
 	"Bone Idol": {"rarity": "UNCOMMON", "stacks": true, "category": "RELIC", "desc": "BONE followers are worth more."},
 	"Crimson Book": {"rarity": "UNCOMMON", "stacks": true, "category": "RELIC", "desc": "Each BLOOD sacrifice adds a small bonus."},
-	"Hollow Chant": {"rarity": "RARE", "stacks": true, "category": "RELIC", "desc": "VOID sacrifices boost your multiplier harder."},
+	"Hollow Chant": {"rarity": "RARE", "stacks": true, "category": "RELIC", "desc": "Each copy adds +1 to multiplier exponent (unconditional)."},
 	"Sacrificial Order": {"rarity": "LEGENDARY", "stacks": true, "category": "RELIC", "desc": "Exactly 3 sacrifices? Big devotion bonus."},
 	"Ceremonial Cup": {"rarity": "COMMON", "stacks": true, "category": "RELIC", "desc": "On a win, gain extra Blood before the shop."},
 	"Blood Abacus": {"rarity": "UNCOMMON", "stacks": true, "category": "RELIC", "desc": "BLOOD sacrifices give extra Blood currency (does not change devotion)."},
