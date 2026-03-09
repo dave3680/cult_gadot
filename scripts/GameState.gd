@@ -73,12 +73,14 @@ const STARTING_NESTS := 2
 const RUN_CONFIG_DEFAULT := {
 	"max_weeks": 10,
 	"target_base": 40,
-	"target_growth": 1.5,
+	"target_growth": 1.38,
 	"overflow_devotion_per_blood": 1,
 	"overflow_blood_per_devotion": 1,
-	"overflow_weekly_cap": 0,
+	"overflow_cap_target_mult": 0.5,
 	"early_win_bonus": 20,
-	"round_devotion_cap_mult": 1.25,
+	"round_devotion_cap_mult": 0.0,
+	"week_devotion_cap_mult": 2.0,
+	"week_target_overrides": {8: 400, 9: 620, 10: 1000},
 }
 const MAX_TIER := 10
 const SHOP_RARE_BASE := 0.15
@@ -1488,6 +1490,9 @@ func get_week_target(week: int) -> int:
 	if next_week_target_overrides.has(week):
 		return int(next_week_target_overrides[week])
 	var cfg := get_run_config()
+	var static_overrides: Dictionary = cfg.get("week_target_overrides", {})
+	if static_overrides.has(week):
+		return int(static_overrides[week])
 	var base_target: float = float(cfg.get("target_base", 18.0))
 	var growth: float = float(cfg.get("target_growth", 1.45))
 	var w: int = max(1, week)
