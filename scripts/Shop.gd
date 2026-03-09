@@ -198,7 +198,26 @@ func _render_offers(week_cleared: int) -> void:
 			buy_button.disabled = not gs.can_afford_relic(cost)
 
 func _offer_legendary_if_needed() -> void:
-	return
+	# Guarantee at least one legendary offer on week 6+ if none has appeared yet.
+	if gs.legendary_seen_in_shop:
+		return
+	if gs.current_week < 6:
+		return
+	# Check if a legendary is already in the current offers.
+	for offer_name in offers:
+		if offer_name != "" and gs.RELIC_DEFS[offer_name]["rarity"] == "LEGENDARY":
+			gs.legendary_seen_in_shop = true
+			return
+	# Force a legendary into a random slot, replacing the lowest-value offer.
+	var legendary_pick: String = _pick_from_rarity("LEGENDARY", offers)
+	if legendary_pick == "":
+		return
+	# Replace the first non-empty offer slot (slot 0).
+	for i in range(offers.size()):
+		if offers[i] != "":
+			offers[i] = legendary_pick
+			gs.legendary_seen_in_shop = true
+			return
 
 func _setup_ritual_offer() -> void:
 	ritual_panel.visible = true
@@ -350,6 +369,8 @@ func _roll_offers(count: int, week: int) -> Array:
 			pick = _pick_from_rarity(_fallback_rarity(rarity), chosen)
 		if pick != "":
 			chosen.append(pick)
+			if gs.RELIC_DEFS[pick]["rarity"] == "LEGENDARY":
+				gs.legendary_seen_in_shop = true
 	return chosen
 
 func _pick_from_rarity(rarity: String, exclude: Array) -> String:

@@ -322,6 +322,7 @@ var cold_incense_used_week: int = -1
 var contract_used_week: int = -1
 var contract_allow_four: bool = false
 var soul_lantern_used: bool = false
+var legendary_seen_in_shop: bool = false
 var apostle_id: int = -1
 var ritual_card_slot: String = ""
 var ritual_card_offer: String = ""
@@ -393,6 +394,7 @@ func reset_run() -> void:
 	contract_used_week = -1
 	contract_allow_four = false
 	soul_lantern_used = false
+	legendary_seen_in_shop = false
 	apostle_id = -1
 	ritual_card_slot = ""
 	ritual_card_offer = ""
