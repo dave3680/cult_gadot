@@ -581,11 +581,7 @@ func _on_confirm_pressed() -> void:
 	gs.week_total_devotion += int(result["final_devotion"])
 	# Per-week devotion cap (replaces per-round cap): max 2.0× weekly target across both rounds.
 	var overflow_target: int = gs.get_week_target(gs.current_week)
-	var week_cap_mult: float = float(gs.get_run_config().get("week_devotion_cap_mult", 0.0))
-	if week_cap_mult > 0.0:
-		var week_cap: int = int(floor(float(overflow_target) * week_cap_mult))
-		if week_cap > 0:
-			gs.week_total_devotion = min(gs.week_total_devotion, week_cap)
+	gs.apply_week_devotion_cap(overflow_target)
 	var overflow_grant: int = gs.apply_overflow_blood_for_target(overflow_target)
 	_play_score_popup(result)
 	if gs.relic_inventory["Clean Hands"] > 0 and gs.week_total_devotion >= int(result["target"]) and int(result["void_count"]) == 0:

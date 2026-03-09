@@ -479,6 +479,13 @@ func get_early_win_bonus() -> int:
 	var cfg := get_run_config()
 	return int(cfg.get("early_win_bonus", 0))
 
+func apply_week_devotion_cap(target: int) -> void:
+	var cap_mult: float = float(get_run_config().get("week_devotion_cap_mult", 0.0))
+	if cap_mult > 0.0:
+		var week_cap: int = int(floor(float(target) * cap_mult))
+		if week_cap > 0:
+			week_total_devotion = min(week_total_devotion, week_cap)
+
 func apply_overflow_blood_for_target(target: int) -> int:
 	if target <= 0:
 		return 0

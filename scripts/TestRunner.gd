@@ -412,6 +412,7 @@ func _run_balance_sim_profile(profile: String, max_weeks: int, target_values: Ar
 							run_traits_seen[tid] = true
 					gs.week_total_devotion += int(result.get("final_devotion", 0))
 					run_total_devotion += int(result.get("final_devotion", 0))
+					gs.apply_week_devotion_cap(target)
 
 					var overflow_grant: int = gs.apply_overflow_blood_for_target(target)
 					if overflow_grant > 0:
