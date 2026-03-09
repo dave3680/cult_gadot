@@ -203,7 +203,7 @@ const RELIC_DEFS := {
 	"Director's Cut": {"rarity": "RARE", "stacks": false, "category": "VOUCHER", "desc": "Once per week in shop, reroll next week target within +/-15%."},
 	"Scarlet Planetarium": {"rarity": "RARE", "stacks": false, "category": "CONSUMABLE", "desc": "Adds a Ritual Card slot; shop offers 1 Ritual Card."},
 	"Seal of Inheritance": {"rarity": "RARE", "stacks": false, "category": "RELIC", "desc": "If either parent has a trait, newborn inherits one parent trait (nest and wild)."},
-	"The Soul Lantern": {"rarity": "LEGENDARY", "stacks": false, "category": "RELIC", "desc": "Once per run, ascend a follower in the pool."},
+	"The Soul Lantern": {"rarity": "LEGENDARY", "stacks": false, "category": "RELIC", "desc": "Once per run: ascend a pool follower to VOID (+2 tier). Drains all blood to 0."},
 	"First Apostle": {"rarity": "LEGENDARY", "stacks": false, "category": "RELIC", "desc": "Choose a follower as Apostle; it shapes breeding outcomes."},
 }
 
