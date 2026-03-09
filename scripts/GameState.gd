@@ -367,7 +367,7 @@ func _shuffle_array(values: Array) -> void:
 func reset_run() -> void:
 	_ensure_run_config()
 	current_week = 1
-	blood_currency = 0
+	blood_currency = 5
 	week_round = 1
 	week_total_devotion = 0
 	week_overflow_blood_granted = 0
