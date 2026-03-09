@@ -31,7 +31,7 @@ const TRAIT_REGISTRY := {
 	"void_herald": {"name": "Void Herald", "rarity": "RARE", "type": "MULTIPLIER", "desc": "If exactly 1 VOID, multiplier base +2."},
 	"black_candlebearer": {"name": "Black Candlebearer", "rarity": "RARE", "type": "MULTIPLIER", "desc": "If 0 VOID, multiplier base at least 2."},
 	"martyrs_ledger": {"name": "Martyr's Ledger", "rarity": "RARE", "type": "ECONOMY", "desc": "When sacrificed, +3 Blood."},
-	"chosen_veil": {"name": "Veiled Bloodline", "rarity": "COMMON", "type": "BREEDING", "desc": "When sacrificed, +4 additive. If parent in nest, offspring rarity is pushed upward (at least RARE for mixed pairs)."},
+	"chosen_veil": {"name": "Veiled Bloodline", "rarity": "COMMON", "type": "HYBRID", "desc": "When sacrificed, +4 additive. If parent in nest, offspring rarity is pushed upward (at least RARE for mixed pairs)."},
 	"sanguine_conductor": {"name": "Sanguine Conductor", "rarity": "RARE", "type": "ADDITIVE", "desc": "If this is BLOOD and 2+ BLOOD are sacrificed, +16 additive."},
 	"ossuary_archon": {"name": "Ossuary Archon", "rarity": "RARE", "type": "ADDITIVE", "desc": "If this is BONE and 2+ BONE are sacrificed, +20 additive."},
 	"hush_matron": {"name": "Hush Matron", "rarity": "RARE", "type": "HYBRID", "desc": "If this is VOID and exactly 1 VOID is sacrificed, +12 additive and +2 Blood."},
