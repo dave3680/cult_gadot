@@ -5,6 +5,8 @@ const PIT_HIGHLIGHT_COLOR := Color(0.82, 0.42, 0.22, 0.95)
 const PIT_IDLE_BORDER_COLOR := Color(0.46, 0.2, 0.12, 0.85)
 const TARGET_PASS_COLOR := Color(0.38, 0.85, 0.45)
 const TARGET_DEFAULT_COLOR := Color(0.93, 0.86, 0.77)
+const LINEAGE_MULT_PER_POINT := 0.04
+const LINEAGE_MULT_CAP := 2.5
 
 @onready var week_label: Label = $RootVBox/BandTop/TopBandVBox/TopMainRow/WeekLabel
 @onready var target_value: Label = $RootVBox/BandTop/TopBandVBox/TopMainRow/TargetCenter/TargetValue
@@ -125,13 +127,84 @@ func _init_hand_cards() -> void:
 	for i in range(6):
 		var root: PanelContainer = follower_row.get_node("Card%d" % (i + 1)) as PanelContainer
 		_set_descendants_mouse_ignore(root)
+		var badge_nodes: Dictionary = _ensure_hand_card_badge_layout(root)
 		root.gui_input.connect(_on_hand_card_gui_input.bind(i))
 		hand_card_nodes.append({
 			"root": root,
 			"tier": root.get_node("CardMargin/CardVBox/TierLabel"),
 			"type": root.get_node("CardMargin/CardVBox/TypeLabel"),
 			"trait": root.get_node("CardMargin/CardVBox/TraitLabel"),
+			"lineage_badge": badge_nodes.get("lineage_badge", null),
+			"lineage_label": badge_nodes.get("lineage_label", null),
+			"trait_slots": badge_nodes.get("trait_slots", []),
 		})
+
+func _ensure_hand_card_badge_layout(root: PanelContainer) -> Dictionary:
+	var vbox: VBoxContainer = root.get_node("CardMargin/CardVBox") as VBoxContainer
+	var trait_label: Label = vbox.get_node_or_null("TraitLabel") as Label
+	if trait_label != null:
+		trait_label.visible = false
+	var lineage_row: HBoxContainer = vbox.get_node_or_null("LineageRow") as HBoxContainer
+	if lineage_row == null:
+		lineage_row = HBoxContainer.new()
+		lineage_row.name = "LineageRow"
+		lineage_row.alignment = BoxContainer.ALIGNMENT_CENTER
+		lineage_row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		lineage_row.custom_minimum_size = Vector2(0, 20)
+		vbox.add_child(lineage_row)
+		vbox.move_child(lineage_row, 2)
+	var lineage_badge: PanelContainer = lineage_row.get_node_or_null("LineageInlineBadge") as PanelContainer
+	if lineage_badge == null:
+		lineage_badge = PanelContainer.new()
+		lineage_badge.name = "LineageInlineBadge"
+		lineage_badge.custom_minimum_size = Vector2(28, 16)
+		lineage_badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var lineage_label: Label = Label.new()
+		lineage_label.name = "LineageInlineLabel"
+		lineage_label.anchor_right = 1.0
+		lineage_label.anchor_bottom = 1.0
+		lineage_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		lineage_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		lineage_label.add_theme_font_size_override("font_size", 10)
+		lineage_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		lineage_badge.add_child(lineage_label)
+		lineage_row.add_child(lineage_badge)
+	var trait_row: HBoxContainer = vbox.get_node_or_null("TraitBadgeRow") as HBoxContainer
+	if trait_row == null:
+		trait_row = HBoxContainer.new()
+		trait_row.name = "TraitBadgeRow"
+		trait_row.alignment = BoxContainer.ALIGNMENT_CENTER
+		trait_row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		trait_row.add_theme_constant_override("separation", 4)
+		vbox.add_child(trait_row)
+	var slots: Array = []
+	for i in range(4):
+		var slot: PanelContainer = trait_row.get_node_or_null("TraitSlot%d" % i) as PanelContainer
+		if slot == null:
+			slot = PanelContainer.new()
+			slot.name = "TraitSlot%d" % i
+			slot.custom_minimum_size = Vector2(24, 16)
+			slot.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			var slot_label: Label = Label.new()
+			slot_label.name = "TraitSlotLabel"
+			slot_label.anchor_right = 1.0
+			slot_label.anchor_bottom = 1.0
+			slot_label.offset_top = -1.0
+			slot_label.offset_bottom = -1.0
+			slot_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			slot_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+			slot_label.add_theme_font_size_override("font_size", 10)
+			slot_label.add_theme_constant_override("outline_size", 1)
+			slot_label.add_theme_color_override("font_outline_color", Color(0.0, 0.0, 0.0, 0.55))
+			slot_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			slot.add_child(slot_label)
+			trait_row.add_child(slot)
+		slots.append(slot)
+	return {
+		"lineage_badge": lineage_badge,
+		"lineage_label": lineage_badge.get_node("LineageInlineLabel") as Label,
+		"trait_slots": slots,
+	}
 
 func _set_descendants_mouse_ignore(root: Control) -> void:
 	for child in root.get_children():
@@ -275,7 +348,6 @@ func _update_hand_card_visual(i: int) -> void:
 
 	var follower: Dictionary = gs.current_hand[i]
 	var trait_name: String = str(follower.get("trait", ""))
-	var trait_id: String = str(follower.get("trait_id", ""))
 	var exhausted: bool = bool(follower.get("exhausted", false))
 	var committed: bool = pit_indices.has(i)
 	var selected: bool = selected_hand_index == i and not committed and not confirmed
@@ -283,17 +355,12 @@ func _update_hand_card_visual(i: int) -> void:
 
 	tier_label.text = "T%d" % int(follower.get("tier", 0))
 	type_label.text = trait_name
-	var trait_text: String = _get_trait_display(trait_id) + _follower_trait_badge(follower)
-	if exhausted and not committed:
-		trait_text += "  EXHAUSTED"
-	trait_label.text = trait_text
+	trait_label.visible = false
 
 	tier_label.add_theme_font_size_override("font_size", 34)
 	type_label.add_theme_font_size_override("font_size", 20)
-	trait_label.add_theme_font_size_override("font_size", 14)
 	tier_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	type_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	trait_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 
 	var bg: Color = _get_trait_color(trait_name)
 	if committed:
@@ -317,25 +384,102 @@ func _update_hand_card_visual(i: int) -> void:
 	root.add_theme_stylebox_override("panel", _make_card_style(bg, border, border_w))
 
 	var type_color: Color = _get_trait_font_color(trait_name)
-	var trait_color: Color = Color(0.12, 0.12, 0.12)
-	if trait_id != "":
-		var tinfo: Dictionary = _trait_info(trait_id)
-		var rarity: String = str(tinfo.get("rarity", ""))
-		if rarity == "RARE":
-			trait_color = Color(0.85, 0.7, 0.2)
-		elif rarity == "LEGENDARY":
-			trait_color = Color(0.95, 0.55, 0.2)
 	if committed:
 		type_color = type_color.lerp(Color(0.52, 0.52, 0.52), 0.55)
-		trait_color = trait_color.lerp(Color(0.6, 0.6, 0.6), 0.45)
 	type_label.add_theme_color_override("font_color", type_color)
-	trait_label.add_theme_color_override("font_color", trait_color)
+	_update_hand_trait_slots(node.get("trait_slots", []), follower, committed or exhausted or ghosting)
 
 	root.tooltip_text = "\n".join(_follower_trait_tooltip_lines(follower))
+	_update_lineage_badge(root, follower)
 	if confirmed or committed or exhausted:
 		root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	else:
 		root.mouse_filter = Control.MOUSE_FILTER_STOP
+
+func _update_hand_trait_slots(slot_nodes: Array, follower: Dictionary, dimmed: bool) -> void:
+	var trait_ids: Array[String] = _follower_all_trait_ids(follower)
+	for i in range(slot_nodes.size()):
+		var slot: PanelContainer = slot_nodes[i] as PanelContainer
+		if slot == null:
+			continue
+		var slot_label: Label = slot.get_node_or_null("TraitSlotLabel") as Label
+		var has_trait: bool = i < trait_ids.size()
+		var rarity: String = "COMMON"
+		if has_trait:
+			rarity = _trait_rarity_key(trait_ids[i])
+		var bg: Color = _trait_rarity_slot_color(rarity) if has_trait else Color(0.17, 0.17, 0.2, 0.5)
+		var border: Color = bg.lerp(Color(0.05, 0.05, 0.07), 0.4) if has_trait else Color(0.3, 0.3, 0.34, 0.4)
+		var text_color: Color = _trait_rarity_slot_text_color(rarity) if has_trait else Color(0.6, 0.6, 0.66)
+		if dimmed:
+			bg = bg.lerp(Color(0.2, 0.2, 0.2, bg.a), 0.5)
+			border = border.lerp(Color(0.28, 0.28, 0.28, border.a), 0.5)
+			text_color = text_color.lerp(Color(0.62, 0.62, 0.62), 0.45)
+		var sb: StyleBoxFlat = StyleBoxFlat.new()
+		sb.bg_color = bg
+		sb.border_color = border
+		sb.border_width_left = 1
+		sb.border_width_top = 1
+		sb.border_width_right = 1
+		sb.border_width_bottom = 1
+		sb.corner_radius_top_left = 6
+		sb.corner_radius_top_right = 6
+		sb.corner_radius_bottom_left = 6
+		sb.corner_radius_bottom_right = 6
+		sb.content_margin_left = 2
+		sb.content_margin_top = 1
+		sb.content_margin_right = 2
+		sb.content_margin_bottom = 1
+		slot.add_theme_stylebox_override("panel", sb)
+		if slot_label != null:
+			slot_label.offset_top = -1.0
+			slot_label.offset_bottom = -1.0
+			slot_label.text = _trait_rarity_slot_mark(rarity) if has_trait else ""
+			slot_label.add_theme_color_override("font_color", text_color)
+			slot_label.add_theme_font_size_override("font_size", 10)
+			slot_label.add_theme_constant_override("outline_size", 1)
+			slot_label.add_theme_color_override("font_outline_color", Color(0.0, 0.0, 0.0, 0.55))
+
+func _trait_rarity_key(trait_id: String) -> String:
+	if trait_id == "":
+		return "COMMON"
+	var info: Dictionary = _trait_info(trait_id)
+	var rarity: String = str(info.get("rarity", "COMMON")).to_upper()
+	match rarity:
+		"UNCOMMON", "RARE", "LEGENDARY":
+			return rarity
+		_:
+			return "COMMON"
+
+func _trait_rarity_slot_mark(rarity: String) -> String:
+	match rarity:
+		"UNCOMMON":
+			return "[U]"
+		"RARE":
+			return "[R]"
+		"LEGENDARY":
+			return "[L]"
+		_:
+			return "[C]"
+
+func _trait_rarity_slot_color(rarity: String) -> Color:
+	match rarity:
+		"UNCOMMON":
+			return Color(0.34, 0.62, 0.36)
+		"RARE":
+			return Color(0.41, 0.34, 0.68)
+		"LEGENDARY":
+			return Color(0.86, 0.67, 0.22)
+		_:
+			return Color(0.55, 0.56, 0.6)
+
+func _trait_rarity_slot_text_color(rarity: String) -> Color:
+	match rarity:
+		"RARE":
+			return Color(0.95, 0.93, 0.99)
+		"LEGENDARY":
+			return Color(0.2, 0.15, 0.06)
+		_:
+			return Color(0.08, 0.08, 0.1)
 
 func _refresh_pit_cards() -> void:
 	for child in pit_cards_row.get_children():
@@ -387,6 +531,7 @@ func _build_small_card(hand_index: int) -> PanelContainer:
 		bg = Color(bg.r, bg.g, bg.b, 0.2)
 	card.add_theme_stylebox_override("panel", _make_card_style(bg, Color(0.12, 0.12, 0.12, 0.95), 1))
 	card.tooltip_text = "\n".join(_follower_trait_tooltip_lines(follower))
+	_update_lineage_badge(card, follower)
 	_set_descendants_mouse_ignore(card)
 	return card
 
@@ -513,6 +658,7 @@ func _build_compact_drag_preview(hand_index: int) -> Control:
 
 	var bg: Color = _get_trait_color(str(follower.get("trait", ""))).lerp(Color(0.08, 0.08, 0.08), 0.18)
 	card.add_theme_stylebox_override("panel", _make_card_style(bg, Color(0.12, 0.12, 0.12, 0.95), 1))
+	_update_lineage_badge(card, follower)
 	return card
 
 func _update_drag_preview_position() -> void:
@@ -637,10 +783,16 @@ func _update_breakdown_preview() -> void:
 	target_value.add_theme_color_override("font_color", TARGET_PASS_COLOR if pass_target else TARGET_DEFAULT_COLOR)
 	var line_color: String = "#73df90" if pass_target else "#df7a7a"
 	var status: String = "PASS" if pass_target else "FAIL"
-	var body: String = "Base:      %d\nAdditive: +%d\nMultiplier: x%d\n----------------------\n[color=%s]Total:     %d  /  Target: %d  %s[/color]" % [
+	var lineage_preview: Dictionary = _pit_lineage_preview()
+	var lineage_score: int = int(lineage_preview.get("score", 0))
+	var lineage_line: String = ""
+	if lineage_score > 0:
+		lineage_line = "\nLineage:  x%.2f  (%dpts)" % [float(lineage_preview.get("mult", 1.0)), lineage_score]
+	var body: String = "Base:      %d\nAdditive: +%d\nMultiplier: x%d%s\n----------------------\n[color=%s]Total:     %d  /  Target: %d  %s[/color]" % [
 		int(numbers.get("base", 0)),
 		int(numbers.get("additive", 0)),
 		int(numbers.get("multiplier", 1)),
+		lineage_line,
 		line_color,
 		total_val,
 		remaining_target,
@@ -662,6 +814,18 @@ func _extract_preview_numbers(preview: Dictionary) -> Dictionary:
 		"multiplier": int(preview.get("multiplier", 1)),
 		"total": int(preview.get("final_devotion", 0)),
 	}
+
+func _pit_lineage_preview() -> Dictionary:
+	var score: int = 0
+	for idx in pit_indices:
+		if idx < 0 or idx >= gs.current_hand.size():
+			continue
+		score += _lineage_value(gs.current_hand[idx])
+	if score <= 0:
+		return {"score": 0, "mult": 1.0}
+	var mult: float = 1.0 + (float(score) * LINEAGE_MULT_PER_POINT)
+	mult = min(mult, LINEAGE_MULT_CAP)
+	return {"score": score, "mult": mult}
 
 func _update_doctrine_ui() -> void:
 	var name: String = str(gs.selected_doctrine)
@@ -1382,3 +1546,133 @@ func _follower_trait_tooltip_lines(follower: Dictionary) -> Array[String]:
 		var prefix: String = "Primary" if i == 0 else "Extra %d" % i
 		lines.append("- %s: %s" % [prefix, _get_trait_description_from_registry(tid)])
 	return lines
+
+func _lineage_value(follower: Dictionary) -> int:
+	return clamp(int(follower.get("lineage", 0)), 0, 10)
+
+func _lineage_badge_color(lineage: int) -> Color:
+	if lineage >= 10:
+		return Color(1.0, 0.95, 0.8)
+	if lineage >= 7:
+		return Color(0.9, 0.75, 0.1)
+	if lineage >= 4:
+		return Color(0.8, 0.6, 0.2)
+	return Color(0.3, 0.6, 0.6)
+
+func _lineage_badge_text_color(lineage: int) -> Color:
+	return Color(0.2, 0.16, 0.08) if lineage >= 4 else Color(0.9, 0.95, 0.95)
+
+func _lineage_pulse_stop(node: CanvasItem) -> void:
+	var pulse_tween: Tween = node.get_meta("_lineage_pulse_tween", null) as Tween
+	if pulse_tween != null and is_instance_valid(pulse_tween):
+		pulse_tween.kill()
+	node.set_meta("_lineage_pulse_tween", null)
+	node.modulate = Color(1, 1, 1, 1)
+
+func _lineage_pulse_start(node: CanvasItem) -> void:
+	_lineage_pulse_stop(node)
+	var pulse_tween: Tween = create_tween()
+	pulse_tween.set_loops()
+	pulse_tween.set_trans(Tween.TRANS_SINE)
+	pulse_tween.set_ease(Tween.EASE_IN_OUT)
+	pulse_tween.tween_property(node, "modulate:a", 0.9, 0.75)
+	pulse_tween.tween_property(node, "modulate:a", 1.0, 0.75)
+	node.set_meta("_lineage_pulse_tween", pulse_tween)
+
+func _update_lineage_badge(card_root: Control, follower: Dictionary) -> void:
+	if card_root == null:
+		return
+	var lineage: int = _lineage_value(follower)
+	var legacy_badge: Control = card_root.get_node_or_null("LineageBadge") as Control
+	if legacy_badge != null:
+		legacy_badge.queue_free()
+	var inline_badge: PanelContainer = card_root.get_node_or_null("CardMargin/CardVBox/LineageRow/LineageInlineBadge") as PanelContainer
+	if inline_badge != null:
+		var inline_label: Label = inline_badge.get_node_or_null("LineageInlineLabel") as Label
+		var inline_style: StyleBoxFlat = StyleBoxFlat.new()
+		inline_style.bg_color = _lineage_badge_color(max(1, lineage))
+		inline_style.corner_radius_top_left = 8
+		inline_style.corner_radius_top_right = 8
+		inline_style.corner_radius_bottom_left = 8
+		inline_style.corner_radius_bottom_right = 8
+		inline_style.content_margin_left = 4
+		inline_style.content_margin_right = 4
+		inline_style.content_margin_top = 1
+		inline_style.content_margin_bottom = 1
+		inline_badge.add_theme_stylebox_override("panel", inline_style)
+		var overlay_for_hand: Control = card_root.get_node_or_null("LineageOverlay") as Control
+		if overlay_for_hand != null:
+			var overlay_badge: PanelContainer = overlay_for_hand.get_node_or_null("LineageBadge") as PanelContainer
+			if overlay_badge != null:
+				_lineage_pulse_stop(overlay_badge)
+				overlay_badge.visible = false
+			overlay_for_hand.visible = false
+		if lineage <= 0:
+			_lineage_pulse_stop(inline_badge)
+			inline_badge.visible = false
+			return
+		if inline_label != null:
+			inline_label.text = "L%d" % lineage
+			inline_label.add_theme_color_override("font_color", _lineage_badge_text_color(lineage))
+			inline_label.add_theme_font_size_override("font_size", 10)
+		inline_badge.visible = true
+		if lineage >= 10:
+			_lineage_pulse_start(inline_badge)
+		else:
+			_lineage_pulse_stop(inline_badge)
+		return
+	var overlay: Control = card_root.get_node_or_null("LineageOverlay") as Control
+	if overlay == null:
+		overlay = Control.new()
+		overlay.name = "LineageOverlay"
+		overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		overlay.anchor_right = 1.0
+		overlay.anchor_bottom = 1.0
+		card_root.add_child(overlay)
+	var badge: PanelContainer = overlay.get_node_or_null("LineageBadge") as PanelContainer
+	if lineage <= 0:
+		if badge != null:
+			_lineage_pulse_stop(badge)
+			badge.visible = false
+		return
+	if badge == null:
+		badge = PanelContainer.new()
+		badge.name = "LineageBadge"
+		badge.anchor_left = 1.0
+		badge.anchor_top = 1.0
+		badge.anchor_right = 1.0
+		badge.anchor_bottom = 1.0
+		badge.offset_left = -34.0
+		badge.offset_top = -20.0
+		badge.offset_right = -6.0
+		badge.offset_bottom = -6.0
+		badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var label: Label = Label.new()
+		label.name = "LineageBadgeLabel"
+		label.anchor_right = 1.0
+		label.anchor_bottom = 1.0
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		label.add_theme_font_size_override("font_size", 10)
+		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		badge.add_child(label)
+		overlay.add_child(badge)
+	var sb: StyleBoxFlat = StyleBoxFlat.new()
+	sb.bg_color = _lineage_badge_color(lineage)
+	sb.corner_radius_top_left = 8
+	sb.corner_radius_top_right = 8
+	sb.corner_radius_bottom_left = 8
+	sb.corner_radius_bottom_right = 8
+	sb.content_margin_left = 4
+	sb.content_margin_right = 4
+	sb.content_margin_top = 2
+	sb.content_margin_bottom = 2
+	badge.add_theme_stylebox_override("panel", sb)
+	var badge_label: Label = badge.get_node("LineageBadgeLabel") as Label
+	badge_label.text = "L%d" % lineage
+	badge_label.add_theme_color_override("font_color", _lineage_badge_text_color(lineage))
+	badge.visible = true
+	if lineage >= 10:
+		_lineage_pulse_start(badge)
+	else:
+		_lineage_pulse_stop(badge)

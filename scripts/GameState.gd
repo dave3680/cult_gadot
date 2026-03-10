@@ -25,7 +25,7 @@ const TRAIT_REGISTRY := {
 	"ember_saint": {"name": "Ember Saint", "rarity": "COMMON", "type": "ADDITIVE", "desc": "If this is BLOOD and tier >= 4, +6 additive."},
 	"marrow_mason": {"name": "Marrow Mason", "rarity": "COMMON", "type": "ADDITIVE", "desc": "If this is BONE and tier >= 4, +8 additive."},
 	"blood_prophet": {"name": "Blood Prophet", "rarity": "RARE", "type": "MULTIPLIER", "desc": "If all 3 are BLOOD, exponent +1."},
-	"straight_rite": {"name": "Straight Rite", "rarity": "RARE", "type": "MULTIPLIER", "desc": "If sacrificed tiers are consecutive, exponent +2."},
+	"straight_rite": {"name": "Straight Rite", "rarity": "RARE", "type": "MULTIPLIER", "desc": "If sacrificed tiers are consecutive, multiplier base +2."},
 	"ossuary_king": {"name": "Ossuary King", "rarity": "RARE", "type": "ADDITIVE", "desc": "If 2+ BONE, +18 additive."},
 	"gravetide": {"name": "Gravetide", "rarity": "RARE", "type": "POOL", "desc": "When sacrificed, add a T1 BONE to pool."},
 	"void_herald": {"name": "Void Herald", "rarity": "RARE", "type": "MULTIPLIER", "desc": "If exactly 1 VOID, multiplier base +2."},
@@ -68,6 +68,8 @@ const BREEDING_RARE_CHANCE := 0.22
 const NEST_LEGENDARY_TO_RARE_CHANCE := 0.65
 const NEST_SINGLE_RARE_TO_RARE_CHANCE := 0.55
 const MULTIPLIER_TRAIT_CAP := 2
+const LINEAGE_MULT_PER_POINT := 0.04
+const LINEAGE_MULT_CAP := 2.5
 const POOL_CAP := 1000
 const STARTING_NESTS := 2
 const NEST_FOCUS_NONE := "NONE"
@@ -1611,6 +1613,52 @@ func _apply_nest_tier_bonuses(base_tier: int, flags: Dictionary, nest_focus: Str
 		tier = min(MAX_TIER, tier + 1)
 	return tier
 
+func _follower_lineage_value(follower: Dictionary) -> int:
+	return clamp(int(follower.get("lineage", 0)), 0, 10)
+
+func _inherited_lineage_value(parent_a: Dictionary, parent_b: Dictionary) -> int:
+	var lineage_a: int = _follower_lineage_value(parent_a)
+	var lineage_b: int = _follower_lineage_value(parent_b)
+	var inherited: int = max(lineage_a, lineage_b)
+	if inherited <= 0:
+		inherited = 1
+	return clamp(inherited, 0, 10)
+
+func _compute_wild_offspring_lineage(parent_a: Dictionary, parent_b: Dictionary) -> int:
+	return _inherited_lineage_value(parent_a, parent_b)
+
+func _compute_nest_lineage_components(parent_a: Dictionary, parent_b: Dictionary, _focus_mode: String, _offspring_trait_id: String) -> Dictionary:
+	var a_lineage: int = _follower_lineage_value(parent_a)
+	var b_lineage: int = _follower_lineage_value(parent_b)
+	var base: int = max(a_lineage, b_lineage)
+	var generation_bonus: int = 1 if base == 0 else 0
+	var focus_bonus: int = 0
+	var trait_bonus: int = 0
+	var total: int = clamp(base + generation_bonus + focus_bonus + trait_bonus, 0, 10)
+	return {
+		"base": base,
+		"generation_bonus": generation_bonus,
+		"focus_bonus": focus_bonus,
+		"trait_bonus": trait_bonus,
+		"total": total,
+	}
+
+func _compute_nest_offspring_lineage(parent_a: Dictionary, parent_b: Dictionary, focus_mode: String, offspring_trait_id: String) -> int:
+	var parts: Dictionary = _compute_nest_lineage_components(parent_a, parent_b, focus_mode, offspring_trait_id)
+	return int(parts.get("total", 0))
+
+func _compute_nest_lineage_preview(parent_a: Dictionary, parent_b: Dictionary, focus_mode: String) -> Dictionary:
+	var predicted_trait_id: String = ""
+	if _normalize_nest_focus(focus_mode) == NEST_FOCUS_RARITY:
+		var odds: Dictionary = _compute_nest_rarity_probabilities(parent_a, parent_b, focus_mode)
+		var rare_plus: float = float(odds.get("rare", 0.0)) + float(odds.get("legendary", 0.0))
+		if rare_plus >= 0.5:
+			# Synthetic rare marker for deterministic preview focus bonus.
+			predicted_trait_id = "straight_rite"
+	var parts: Dictionary = _compute_nest_lineage_components(parent_a, parent_b, focus_mode, predicted_trait_id)
+	parts["predicted_trait_id"] = predicted_trait_id
+	return parts
+
 func _estimate_nest_expected_tier(parent_a: Dictionary, parent_b: Dictionary, nest_focus: String) -> float:
 	var focus_mode: String = _normalize_nest_focus(nest_focus)
 	var parent_a_trait: String = str(parent_a.get("trait", ""))
@@ -1658,6 +1706,11 @@ func get_nest_preview(nest_index: int) -> Dictionary:
 		"combo_count": 0,
 		"combo_names": [],
 		"rarity_odds": {"common": 0.0, "rare": 0.0, "legendary": 0.0},
+		"lineage_base": 0,
+		"lineage_generation_bonus": 0,
+		"lineage_focus_bonus": 0,
+		"lineage_trait_bonus": 0,
+		"lineage_total": -1,
 	}
 	if nest_index < 0 or nest_index >= nests.size():
 		preview["blocked_reason"] = "Invalid nest."
@@ -1697,6 +1750,12 @@ func get_nest_preview(nest_index: int) -> Dictionary:
 	preview["combo_names"] = combo_names
 	preview["rarity_odds"] = _compute_nest_rarity_probabilities(parent_a, parent_b, focus_mode)
 	preview["expected_tier"] = _estimate_nest_expected_tier(parent_a, parent_b, focus_mode)
+	var lineage_parts: Dictionary = _compute_nest_lineage_preview(parent_a, parent_b, focus_mode)
+	preview["lineage_base"] = int(lineage_parts.get("base", 0))
+	preview["lineage_generation_bonus"] = int(lineage_parts.get("generation_bonus", 0))
+	preview["lineage_focus_bonus"] = int(lineage_parts.get("focus_bonus", 0))
+	preview["lineage_trait_bonus"] = int(lineage_parts.get("trait_bonus", 0))
+	preview["lineage_total"] = int(lineage_parts.get("total", 0))
 	preview["expected_newborns"] = 1.0
 	preview["can_breed"] = true
 	return preview
@@ -1721,6 +1780,7 @@ func _make_specific_follower(trait_name: String, tier: int, origin: String, trai
 		"trait_id": tid,
 		"trait_ids": [],
 		"trait_rarity": trarity,
+		"lineage": 0,
 		"exhausted": false,
 		"origin_tag": origin,
 	}
@@ -1744,6 +1804,7 @@ func make_random_follower(origin: String) -> Dictionary:
 		"trait_id": "",
 		"trait_ids": [],
 		"trait_rarity": "",
+		"lineage": 0,
 		"exhausted": false,
 		"origin_tag": origin,
 	}
@@ -2082,6 +2143,7 @@ func resolve_nest_breeding(week_cleared: int) -> Dictionary:
 			last_nest_results.append(result)
 			continue
 		var baby: Dictionary = _make_specific_follower(baby_trait, base_tier, "nest_bred", trait_id)
+		baby["lineage"] = _compute_nest_offspring_lineage(a, b, focus_mode, trait_id)
 		var extra_slot_count: int = _roll_offspring_trait_count(a, b) - 1
 		if extra_slot_count > 0:
 			baby["trait_ids"] = _roll_additional_trait_ids(a, b, str(baby.get("trait_id", "")), extra_slot_count)
@@ -2109,6 +2171,7 @@ func resolve_nest_breeding(week_cleared: int) -> Dictionary:
 				extra_trait_id = apostle_parent_tid
 			var extra_tier: int = min(MAX_TIER, base_tier + _consume_grave_compact_bonus())
 			var extra_baby: Dictionary = _make_specific_follower(baby_trait, extra_tier, "nest_bred", extra_trait_id)
+			extra_baby["lineage"] = _compute_nest_offspring_lineage(a, b, focus_mode, extra_trait_id)
 			var extra_slots: int = _roll_offspring_trait_count(a, b) - 1
 			if extra_slots > 0:
 				extra_baby["trait_ids"] = _roll_additional_trait_ids(a, b, str(extra_baby.get("trait_id", "")), extra_slots)
@@ -2248,6 +2311,7 @@ func resolve_wild_breeding(week_cleared: int) -> Dictionary:
 			trimmed += 1
 			continue
 		var baby: Dictionary = _make_specific_follower(baby_trait, base_tier, "wild_bred", trait_id)
+		baby["lineage"] = _compute_wild_offspring_lineage(a, b)
 		var extra_slot_count: int = _roll_offspring_trait_count(a, b) - 1
 		if extra_slot_count > 0:
 			baby["trait_ids"] = _roll_additional_trait_ids(a, b, str(baby.get("trait_id", "")), extra_slot_count)
@@ -3597,7 +3661,6 @@ func _score_selected_internal(selected_indices: Array, apply_currency: bool, wri
 	var rusted_disabled_this_play: String = ""
 	var minimal_double_base_bonus: int = 0
 	var should_ignore_round_cap: bool = false
-	const LINEAGE_MULT_PER_BRED: float = 0.15
 
 	if int(relic_inventory.get("The Rusted Tithe", 0)) > 0 and indices.size() > 0:
 		var rusted_candidates: Array[String] = []
@@ -3716,6 +3779,7 @@ func _score_selected_internal(selected_indices: Array, apply_currency: bool, wri
 			"trait_id": trait_id,
 			"trait_ids": trait_ids,
 			"origin_tag": str(follower.get("origin_tag", "")),
+			"lineage": _follower_lineage_value(follower),
 		})
 
 	if ritual_delta_total > 0:
@@ -3988,13 +4052,13 @@ func _score_selected_internal(selected_indices: Array, apply_currency: bool, wri
 			var template_id: String = str(combo_info.get("template", ""))
 			var combo_is_legendary: bool = str(combo_info.get("rarity", "RARE")) == "LEGENDARY"
 			match template_id:
-				"blood_straight_exalt":
-					if blood_count == 3:
+				"tier_straight_exalt":
+					if tier_straight:
 						trait_blood_bonus += 3 if combo_is_legendary else 2
 						if trait_multiplier_applied_count < multiplier_trait_cap:
 							trait_multiplier_applied_count += 1
-							trait_exponent_bonus += 2 if combo_is_legendary else 1
-							trait_multiplier_lines.append("#%d %s: multiplier exponent +%d, +%d Blood" % [
+							trait_base_bonus += 2 if combo_is_legendary else 1
+							trait_multiplier_lines.append("#%d %s: multiplier base +%d, +%d Blood" % [
 								fid,
 								fname,
 								2 if combo_is_legendary else 1,
@@ -4245,8 +4309,8 @@ func _score_selected_internal(selected_indices: Array, apply_currency: bool, wri
 				if tier_straight:
 					if trait_multiplier_applied_count < multiplier_trait_cap:
 						trait_multiplier_applied_count += 1
-						trait_exponent_bonus += 2
-						trait_multiplier_lines.append("#%d %s: multiplier exponent +2" % [fid, fname])
+						trait_base_bonus += 2
+						trait_multiplier_lines.append("#%d %s: multiplier base +2" % [fid, fname])
 					else:
 						trait_multiplier_skipped.append("#%d %s: (no effect: multiplier trait cap)" % [fid, fname])
 			"void_herald":
@@ -4486,15 +4550,20 @@ func _score_selected_internal(selected_indices: Array, apply_currency: bool, wri
 		void_resonance_factor += 0.25 * float(void_count - 1)
 		relic_multiplier_lines.append("Void Resonance: final devotion x%.2f" % void_resonance_factor)
 	var final_devotion: int = int(float(additive_total * multiplier) * multiplier_bonus_factor * void_resonance_factor)
-	var bred_count: int = 0
+	var lineage_values: Array[int] = []
+	var lineage_score: int = 0
 	for info in sacrificed_info:
-		var origin_tag: String = str(info.get("origin_tag", ""))
-		if origin_tag == "nest_bred" or origin_tag == "wild_bred":
-			bred_count += 1
-	if bred_count > 0:
-		var lineage_mult: float = 1.0 + (LINEAGE_MULT_PER_BRED * float(bred_count))
+		var lineage_value: int = clamp(int(info.get("lineage", 0)), 0, 10)
+		lineage_values.append(lineage_value)
+		lineage_score += lineage_value
+	if lineage_score > 0:
+		var lineage_mult: float = 1.0 + (float(lineage_score) * LINEAGE_MULT_PER_POINT)
+		lineage_mult = min(lineage_mult, LINEAGE_MULT_CAP)
 		final_devotion = int(floor(float(final_devotion) * lineage_mult))
-		relic_multiplier_lines.append("Lineage x%.2f (%d bred)" % [lineage_mult, bred_count])
+		var lineage_terms: Array[String] = []
+		for lineage_value in lineage_values:
+			lineage_terms.append("L%d" % lineage_value)
+		relic_multiplier_lines.append("Lineage x%.2f (%s = %dpts)" % [lineage_mult, " + ".join(lineage_terms), lineage_score])
 	if count_absolute_copies > 0 and indices.size() == 1 and highest_tier_sac >= 10:
 		final_devotion = int(floor(float(final_devotion) * 2.0))
 		relic_multiplier_lines.append("The Count Absolute: final devotion x2")

@@ -265,6 +265,7 @@ func _create_compact_card(follower: Dictionary, width: int, include_origin: bool
 	if include_origin:
 		row.add_child(origin_label)
 	_set_descendants_mouse_ignore(card)
+	_update_lineage_badge(card, follower)
 
 	return card
 
@@ -363,6 +364,7 @@ func _create_offspring_card(follower: Dictionary) -> Control:
 	badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	badge_panel.add_child(badge)
 	card_root.add_child(badge_panel)
+	_update_lineage_badge(card_root, follower)
 	_set_descendants_mouse_ignore(card_root)
 
 	return card_root
@@ -664,6 +666,88 @@ func _follower_type_for_card(follower: Dictionary) -> String:
 			if int(follower.get("tier", -1)) == 0:
 				return "VOID"
 			return ""
+
+func _lineage_value(follower: Dictionary) -> int:
+	return clamp(int(follower.get("lineage", 0)), 0, 10)
+
+func _lineage_badge_color(lineage: int) -> Color:
+	if lineage >= 10:
+		return Color(1.0, 0.95, 0.8)
+	if lineage >= 7:
+		return Color(0.9, 0.75, 0.1)
+	if lineage >= 4:
+		return Color(0.8, 0.6, 0.2)
+	return Color(0.3, 0.6, 0.6)
+
+func _lineage_badge_text_color(lineage: int) -> Color:
+	return Color(0.2, 0.16, 0.08) if lineage >= 4 else Color(0.9, 0.95, 0.95)
+
+func _lineage_pulse_stop(node: CanvasItem) -> void:
+	var pulse_tween: Tween = node.get_meta("_lineage_pulse_tween", null) as Tween
+	if pulse_tween != null and is_instance_valid(pulse_tween):
+		pulse_tween.kill()
+	node.set_meta("_lineage_pulse_tween", null)
+	node.modulate = Color(1, 1, 1, 1)
+
+func _lineage_pulse_start(node: CanvasItem) -> void:
+	_lineage_pulse_stop(node)
+	var pulse_tween: Tween = create_tween()
+	pulse_tween.set_loops()
+	pulse_tween.set_trans(Tween.TRANS_SINE)
+	pulse_tween.set_ease(Tween.EASE_IN_OUT)
+	pulse_tween.tween_property(node, "modulate:a", 0.9, 0.75)
+	pulse_tween.tween_property(node, "modulate:a", 1.0, 0.75)
+	node.set_meta("_lineage_pulse_tween", pulse_tween)
+
+func _update_lineage_badge(card_root: Control, follower: Dictionary) -> void:
+	var lineage: int = _lineage_value(follower)
+	var badge: PanelContainer = card_root.get_node_or_null("LineageBadge") as PanelContainer
+	if lineage <= 0:
+		if badge != null:
+			_lineage_pulse_stop(badge)
+			badge.visible = false
+		return
+	if badge == null:
+		badge = PanelContainer.new()
+		badge.name = "LineageBadge"
+		badge.anchor_left = 1.0
+		badge.anchor_top = 1.0
+		badge.anchor_right = 1.0
+		badge.anchor_bottom = 1.0
+		badge.offset_left = -44.0
+		badge.offset_top = -24.0
+		badge.offset_right = -8.0
+		badge.offset_bottom = -8.0
+		badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var label: Label = Label.new()
+		label.name = "LineageBadgeLabel"
+		label.anchor_right = 1.0
+		label.anchor_bottom = 1.0
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		label.add_theme_font_size_override("font_size", 11)
+		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		badge.add_child(label)
+		card_root.add_child(badge)
+	var sb: StyleBoxFlat = StyleBoxFlat.new()
+	sb.bg_color = _lineage_badge_color(lineage)
+	sb.corner_radius_top_left = 8
+	sb.corner_radius_top_right = 8
+	sb.corner_radius_bottom_left = 8
+	sb.corner_radius_bottom_right = 8
+	sb.content_margin_left = 4
+	sb.content_margin_right = 4
+	sb.content_margin_top = 2
+	sb.content_margin_bottom = 2
+	badge.add_theme_stylebox_override("panel", sb)
+	var label_node: Label = badge.get_node("LineageBadgeLabel") as Label
+	label_node.text = "L%d" % lineage
+	label_node.add_theme_color_override("font_color", _lineage_badge_text_color(lineage))
+	badge.visible = true
+	if lineage >= 10:
+		_lineage_pulse_start(badge)
+	else:
+		_lineage_pulse_stop(badge)
 
 func _trait_label_color(trait_name: String) -> Color:
 	match trait_name:

@@ -2160,7 +2160,7 @@ func test_trait_effects() -> void:
 
 	hand[0]["trait_id"] = "straight_rite"
 	var r4 = _score(gs, [0, 1, 2])
-	_assert_true(_has_line(str(r4.get("breakdown", "")), "multiplier exponent +2"), "Straight Rite should report exponent bonus")
+	_assert_true(_has_line(str(r4.get("breakdown", "")), "multiplier base +2"), "Straight Rite should report base bonus")
 
 	# Void Herald: multiplier base +2 if exactly 1 VOID
 	hand = [
@@ -2214,12 +2214,15 @@ func test_lineage_multiplier() -> void:
 		gs._make_specific_follower("BONE", 4, "wild_bred"),
 		gs._make_specific_follower("BLOOD", 2, "test"),
 	]
+	hand[0]["lineage"] = 2
+	hand[1]["lineage"] = 3
+	hand[2]["lineage"] = 4
 	_set_hand(gs, hand)
 	var with_lineage: Dictionary = _score(gs, [0, 1, 2])
 	var with_lineage_final: int = int(with_lineage.get("final_devotion", 0))
 	var with_lineage_breakdown: String = str(with_lineage.get("breakdown", ""))
-	_assert_true(_has_line(with_lineage_breakdown, "Lineage x1.30 (2 bred)"), "Lineage should report x1.30 when two bred followers are sacrificed")
-	_assert_eq(with_lineage_final, int(floor(float(base_final) * 1.3)), "Lineage multiplier should apply at x1.30 for two bred followers")
+	_assert_true(_has_line(with_lineage_breakdown, "Lineage x1.36 (L2 + L3 + L4 = 9pts)"), "Lineage should report score details for sacrificed lineage values")
+	_assert_eq(with_lineage_final, int(floor(float(base_final) * 1.36)), "Lineage multiplier should apply from lineage score")
 
 func test_breeding_rules() -> void:
 	# Fertility Idol increases chance for non-VOID couples

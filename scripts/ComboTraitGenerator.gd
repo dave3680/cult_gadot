@@ -1,7 +1,7 @@
 extends RefCounted
 
 const COMBO_SEEDS: Array[Dictionary] = [
-	{"id":"combo_001","name":"Red Catechism","rarity":"RARE","parents":["blood_prophet","straight_rite"],"template":"blood_straight_exalt","trigger":"All 3 sacrifices are BLOOD."},
+	{"id":"combo_001","name":"Red Catechism","rarity":"RARE","parents":["blood_prophet","straight_rite"],"template":"tier_straight_exalt","trigger":"Sacrificed tiers form a straight."},
 	{"id":"combo_002","name":"Sanguine Thesis","rarity":"RARE","parents":["blood_prophet","sanguine_conductor"],"template":"blood_economy_forge","trigger":"2+ BLOOD are sacrificed."},
 	{"id":"combo_003","name":"Martyr's Communion","rarity":"RARE","parents":["blood_prophet","martyrs_ledger"],"template":"blood_economy_forge","trigger":"2+ BLOOD are sacrificed."},
 	{"id":"combo_004","name":"Severed Sequence","rarity":"RARE","parents":["straight_rite","paired_sigil"],"template":"pair_execution","trigger":"Any two sacrifices share tier."},
@@ -23,16 +23,16 @@ const COMBO_SEEDS: Array[Dictionary] = [
 	{"id":"combo_020","name":"Ledger of Graves","rarity":"RARE","parents":["martyrs_ledger","gravetide"],"template":"grave_engine","trigger":"This follower is sacrificed."},
 	{"id":"combo_021","name":"Archon's Writ","rarity":"RARE","parents":["ossuary_archon","votive_executor"],"template":"bone_citadel","trigger":"2+ BONE and 0 VOID are sacrificed."},
 	{"id":"combo_022","name":"Conductor's Writ","rarity":"RARE","parents":["sanguine_conductor","martyrs_ledger"],"template":"blood_economy_forge","trigger":"2+ BLOOD are sacrificed."},
-	{"id":"combo_023","name":"Rite Ledger","rarity":"RARE","parents":["straight_rite","martyrs_ledger"],"template":"blood_straight_exalt","trigger":"All 3 sacrifices are BLOOD."},
-	{"id":"combo_024","name":"Prophet's Veil","rarity":"RARE","parents":["blood_prophet","chosen_veil"],"template":"blood_straight_exalt","trigger":"All 3 sacrifices are BLOOD."},
+	{"id":"combo_023","name":"Rite Ledger","rarity":"RARE","parents":["straight_rite","martyrs_ledger"],"template":"tier_straight_exalt","trigger":"Sacrificed tiers form a straight."},
+	{"id":"combo_024","name":"Prophet's Veil","rarity":"RARE","parents":["blood_prophet","chosen_veil"],"template":"tier_straight_exalt","trigger":"Sacrificed tiers form a straight."},
 	{"id":"combo_025","name":"Kingmaker Nursery","rarity":"RARE","parents":["ossuary_king","brood_keeper"],"template":"nest_dynasty","trigger":"This follower is a nest parent."},
 	{"id":"combo_026","name":"Void Pedagogy","rarity":"RARE","parents":["void_herald","lineage_tutor"],"template":"nest_dynasty","trigger":"This follower is a nest parent."},
 	{"id":"combo_027","name":"Executor's Candle","rarity":"RARE","parents":["black_candlebearer","votive_executor"],"template":"bone_citadel","trigger":"2+ BONE and 0 VOID are sacrificed."},
 	{"id":"combo_028","name":"Hushed Veil","rarity":"RARE","parents":["chosen_veil","hush_matron"],"template":"void_edge","trigger":"Exactly 1 VOID is sacrificed."},
 	{"id":"combo_029","name":"Bonefall Charter","rarity":"RARE","parents":["gravetide","ossuary_archon"],"template":"grave_engine","trigger":"This follower is sacrificed."},
 	{"id":"combo_030","name":"Crimson Aperture","rarity":"RARE","parents":["sanguine_conductor","void_herald"],"template":"void_edge","trigger":"Exactly 1 VOID is sacrificed."},
-	{"id":"combo_031","name":"Ascendant Prophet","rarity":"LEGENDARY","parents":["crimson_ascendant","blood_prophet"],"template":"blood_straight_exalt","trigger":"All 3 sacrifices are BLOOD."},
-	{"id":"combo_032","name":"Ascendant Rite","rarity":"LEGENDARY","parents":["crimson_ascendant","straight_rite"],"template":"blood_straight_exalt","trigger":"All 3 sacrifices are BLOOD."},
+	{"id":"combo_031","name":"Ascendant Prophet","rarity":"LEGENDARY","parents":["crimson_ascendant","blood_prophet"],"template":"tier_straight_exalt","trigger":"Sacrificed tiers form a straight."},
+	{"id":"combo_032","name":"Ascendant Rite","rarity":"LEGENDARY","parents":["crimson_ascendant","straight_rite"],"template":"tier_straight_exalt","trigger":"Sacrificed tiers form a straight."},
 	{"id":"combo_033","name":"Ascendant Conductor","rarity":"LEGENDARY","parents":["crimson_ascendant","sanguine_conductor"],"template":"blood_economy_forge","trigger":"2+ BLOOD are sacrificed."},
 	{"id":"combo_034","name":"Oracle King","rarity":"LEGENDARY","parents":["ossuary_oracle","ossuary_king"],"template":"bone_citadel","trigger":"2+ BONE and 0 VOID are sacrificed."},
 	{"id":"combo_035","name":"Oracle Archon","rarity":"LEGENDARY","parents":["ossuary_oracle","ossuary_archon"],"template":"bone_citadel","trigger":"2+ BONE and 0 VOID are sacrificed."},
@@ -86,8 +86,8 @@ static func _build_combo(seed: Dictionary, trait_registry: Dictionary) -> Dictio
 static func _template_effect(template_id: String, rarity: String) -> String:
 	var is_legendary: bool = rarity == "LEGENDARY"
 	match template_id:
-		"blood_straight_exalt":
-			return "Multiplier exponent +%d and +%d Blood." % [2 if is_legendary else 1, 3 if is_legendary else 2]
+		"tier_straight_exalt":
+			return "Multiplier base +%d and +%d Blood." % [2 if is_legendary else 1, 3 if is_legendary else 2]
 		"blood_economy_forge":
 			return "+%d additive and +%d Blood." % [18 if is_legendary else 12, 3 if is_legendary else 2]
 		"bone_citadel":

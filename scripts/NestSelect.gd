@@ -38,6 +38,11 @@ var nest_slots: Array[Dictionary] = []
 var dragging_follower_id: int = -1
 var details_nest_index: int = -1
 var status_line: String = ""
+var predicted_lineage_row: HBoxContainer
+var predicted_lineage_title: Label
+var predicted_lineage_badge: PanelContainer
+var predicted_lineage_badge_label: Label
+var predicted_lineage_detail: Label
 
 func _ready() -> void:
 	continue_button.pressed.connect(_on_continue_pressed)
@@ -53,6 +58,7 @@ func _ready() -> void:
 	family_button.pressed.connect(_on_focus_button_pressed.bind(NEST_FOCUS_FAMILY))
 
 	_apply_theme()
+	_ensure_predicted_lineage_nodes()
 	_build_nest_panels()
 	_refresh_all()
 
@@ -348,6 +354,7 @@ func _refresh_pool() -> void:
 			"type_label_color": Color(0.74, 0.74, 0.78),
 			"trait_color": Color(0.9, 0.9, 0.93),
 			"bg_tint": _trait_color(trait_name).lerp(Color(0.12, 0.12, 0.14, 1.0), 0.82),
+			"lineage": _lineage_value(f),
 		})
 		row.tooltip_text = _follower_trait_tooltip_text(f)
 		row.drag_started.connect(_on_row_drag_started)
@@ -450,10 +457,13 @@ func _set_slot_follower(slot_info: Dictionary, prefix: String, follower_id: int)
 		return
 	var trait_name: String = str(follower.get("trait", ""))
 	var trait_id: String = str(follower.get("trait_id", ""))
+	var lineage: int = _lineage_value(follower)
 	tier_label.text = "T%d" % int(follower.get("tier", 0))
 	type_label.text = trait_name
 	type_label.add_theme_color_override("font_color", _trait_color(trait_name).lerp(Color(1, 1, 1), 0.2))
 	badge_label.text = _rarity_badge(_trait_rarity(trait_id)) + _follower_trait_badge(follower)
+	if lineage > 0:
+		badge_label.text += "  L%d" % lineage
 	badge_label.add_theme_color_override("font_color", _rarity_color(_trait_rarity(trait_id)))
 	hint_label.visible = false
 
@@ -582,6 +592,7 @@ func _refresh_details_modal() -> void:
 	_update_focus_option_state(focus_mode)
 	no_focus_label.visible = focus_mode == NEST_FOCUS_NONE
 	prediction_label.text = _prediction_text(preview)
+	_update_predicted_lineage_row(preview, a_id, b_id)
 
 func _render_detail_parent_card(panel: PanelContainer, follower: Dictionary, parent_label: String) -> void:
 	for child in panel.get_children():
@@ -669,6 +680,7 @@ func _render_detail_parent_card(panel: PanelContainer, follower: Dictionary, par
 	v.add_child(origin)
 
 	panel.tooltip_text = _follower_trait_tooltip_text(follower)
+	_update_lineage_badge(panel, follower)
 
 func _update_focus_option_state(current_mode: String) -> void:
 	var projected_rarity: int = int(gs.get_nest_focus_total_cost_with(details_nest_index, NEST_FOCUS_RARITY))
@@ -869,6 +881,170 @@ func _follower_tooltip_for_id(follower_id: int) -> String:
 	if follower.is_empty():
 		return "Missing follower #%d" % follower_id
 	return _follower_trait_tooltip_text(follower)
+
+func _lineage_value(follower: Dictionary) -> int:
+	return clamp(int(follower.get("lineage", 0)), 0, 10)
+
+func _lineage_badge_color(lineage: int) -> Color:
+	if lineage >= 10:
+		return Color(1.0, 0.95, 0.8)
+	if lineage >= 7:
+		return Color(0.9, 0.75, 0.1)
+	if lineage >= 4:
+		return Color(0.8, 0.6, 0.2)
+	return Color(0.3, 0.6, 0.6)
+
+func _lineage_badge_text_color(lineage: int) -> Color:
+	return Color(0.2, 0.16, 0.08) if lineage >= 4 else Color(0.9, 0.95, 0.95)
+
+func _lineage_pulse_stop(node: CanvasItem) -> void:
+	var pulse_tween: Tween = node.get_meta("_lineage_pulse_tween", null) as Tween
+	if pulse_tween != null and is_instance_valid(pulse_tween):
+		pulse_tween.kill()
+	node.set_meta("_lineage_pulse_tween", null)
+	node.modulate = Color(1, 1, 1, 1)
+
+func _lineage_pulse_start(node: CanvasItem) -> void:
+	_lineage_pulse_stop(node)
+	var pulse_tween: Tween = create_tween()
+	pulse_tween.set_loops()
+	pulse_tween.set_trans(Tween.TRANS_SINE)
+	pulse_tween.set_ease(Tween.EASE_IN_OUT)
+	pulse_tween.tween_property(node, "modulate:a", 0.9, 0.75)
+	pulse_tween.tween_property(node, "modulate:a", 1.0, 0.75)
+	node.set_meta("_lineage_pulse_tween", pulse_tween)
+
+func _update_lineage_badge(card_root: Control, follower: Dictionary) -> void:
+	var lineage: int = _lineage_value(follower)
+	var badge: PanelContainer = card_root.get_node_or_null("LineageBadge") as PanelContainer
+	if lineage <= 0:
+		if badge != null:
+			_lineage_pulse_stop(badge)
+			badge.visible = false
+		return
+	if badge == null:
+		badge = PanelContainer.new()
+		badge.name = "LineageBadge"
+		badge.anchor_left = 1.0
+		badge.anchor_top = 1.0
+		badge.anchor_right = 1.0
+		badge.anchor_bottom = 1.0
+		badge.offset_left = -44.0
+		badge.offset_top = -24.0
+		badge.offset_right = -8.0
+		badge.offset_bottom = -8.0
+		badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var label: Label = Label.new()
+		label.name = "LineageBadgeLabel"
+		label.anchor_right = 1.0
+		label.anchor_bottom = 1.0
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		label.add_theme_font_size_override("font_size", 11)
+		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		badge.add_child(label)
+		card_root.add_child(badge)
+	var sb: StyleBoxFlat = StyleBoxFlat.new()
+	sb.bg_color = _lineage_badge_color(lineage)
+	sb.corner_radius_top_left = 8
+	sb.corner_radius_top_right = 8
+	sb.corner_radius_bottom_left = 8
+	sb.corner_radius_bottom_right = 8
+	sb.content_margin_left = 4
+	sb.content_margin_right = 4
+	sb.content_margin_top = 2
+	sb.content_margin_bottom = 2
+	badge.add_theme_stylebox_override("panel", sb)
+	var badge_label: Label = badge.get_node("LineageBadgeLabel") as Label
+	badge_label.text = "L%d" % lineage
+	badge_label.add_theme_color_override("font_color", _lineage_badge_text_color(lineage))
+	badge.visible = true
+	if lineage >= 10:
+		_lineage_pulse_start(badge)
+	else:
+		_lineage_pulse_stop(badge)
+
+func _ensure_predicted_lineage_nodes() -> void:
+	if predicted_lineage_row != null and is_instance_valid(predicted_lineage_row):
+		return
+	var details_vbox: VBoxContainer = $DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox
+	predicted_lineage_row = HBoxContainer.new()
+	predicted_lineage_row.name = "PredictedLineageRow"
+	predicted_lineage_row.add_theme_constant_override("separation", 8)
+	predicted_lineage_title = Label.new()
+	predicted_lineage_title.text = "Predicted Lineage:"
+	predicted_lineage_title.add_theme_font_size_override("font_size", 13)
+	predicted_lineage_title.add_theme_color_override("font_color", Color(0.74, 0.74, 0.78))
+	predicted_lineage_row.add_child(predicted_lineage_title)
+	predicted_lineage_badge = PanelContainer.new()
+	predicted_lineage_badge.custom_minimum_size = Vector2(34, 20)
+	predicted_lineage_badge.visible = false
+	predicted_lineage_badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	predicted_lineage_badge_label = Label.new()
+	predicted_lineage_badge_label.anchor_right = 1.0
+	predicted_lineage_badge_label.anchor_bottom = 1.0
+	predicted_lineage_badge_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	predicted_lineage_badge_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	predicted_lineage_badge_label.add_theme_font_size_override("font_size", 11)
+	predicted_lineage_badge_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	predicted_lineage_badge.add_child(predicted_lineage_badge_label)
+	predicted_lineage_row.add_child(predicted_lineage_badge)
+	predicted_lineage_detail = Label.new()
+	predicted_lineage_detail.name = "PredictedLineageDetail"
+	predicted_lineage_detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	predicted_lineage_detail.add_theme_font_size_override("font_size", 12)
+	predicted_lineage_detail.add_theme_color_override("font_color", Color(0.62, 0.62, 0.66))
+	var prediction_index: int = prediction_label.get_index()
+	details_vbox.add_child(predicted_lineage_row)
+	details_vbox.move_child(predicted_lineage_row, prediction_index + 1)
+	details_vbox.add_child(predicted_lineage_detail)
+	details_vbox.move_child(predicted_lineage_detail, prediction_index + 2)
+
+func _update_predicted_lineage_row(preview: Dictionary, a_id: int, b_id: int) -> void:
+	if predicted_lineage_row == null:
+		return
+	if a_id < 0 or b_id < 0:
+		predicted_lineage_title.text = "Predicted Lineage: -"
+		predicted_lineage_badge.visible = false
+		predicted_lineage_detail.text = ""
+		return
+	var total: int = int(preview.get("lineage_total", -1))
+	if total < 0:
+		predicted_lineage_title.text = "Predicted Lineage: -"
+		predicted_lineage_badge.visible = false
+		predicted_lineage_detail.text = ""
+		return
+	predicted_lineage_title.text = "Predicted Lineage:"
+	var badge_sb: StyleBoxFlat = StyleBoxFlat.new()
+	badge_sb.bg_color = _lineage_badge_color(total)
+	badge_sb.corner_radius_top_left = 8
+	badge_sb.corner_radius_top_right = 8
+	badge_sb.corner_radius_bottom_left = 8
+	badge_sb.corner_radius_bottom_right = 8
+	badge_sb.content_margin_left = 4
+	badge_sb.content_margin_right = 4
+	badge_sb.content_margin_top = 2
+	badge_sb.content_margin_bottom = 2
+	predicted_lineage_badge.add_theme_stylebox_override("panel", badge_sb)
+	predicted_lineage_badge_label.text = "L%d" % total
+	predicted_lineage_badge_label.add_theme_color_override("font_color", _lineage_badge_text_color(total))
+	predicted_lineage_badge.visible = true
+	if total >= 10:
+		_lineage_pulse_start(predicted_lineage_badge)
+	else:
+		_lineage_pulse_stop(predicted_lineage_badge)
+	var base: int = int(preview.get("lineage_base", 0))
+	var gen_bonus: int = int(preview.get("lineage_generation_bonus", 0))
+	var focus_bonus: int = int(preview.get("lineage_focus_bonus", 0))
+	var trait_bonus: int = int(preview.get("lineage_trait_bonus", 0))
+	if gen_bonus == 0 and focus_bonus == 0 and trait_bonus == 0:
+		predicted_lineage_detail.text = "Base L%d (no bonuses)" % base
+		return
+	var breakdown: String = "Base L%d + Gen +%d + Focus +%d" % [base, gen_bonus, focus_bonus]
+	if trait_bonus > 0:
+		breakdown += " + Trait +%d" % trait_bonus
+	breakdown += " = L%d" % total
+	predicted_lineage_detail.text = breakdown
 
 func _get_trait_description(trait_name: String) -> String:
 	match trait_name:

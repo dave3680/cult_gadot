@@ -12,6 +12,8 @@ var _type_label: Label
 var _trait_label: Label
 var _rarity_label: Label
 var _multi_label: Label
+var _lineage_badge: PanelContainer
+var _lineage_label: Label
 var _origin_label: Label
 var _favored_label: Label
 var _is_dragging: bool = false
@@ -42,6 +44,7 @@ func configure(data: Dictionary) -> void:
 	_trait_label.add_theme_color_override("font_color", follower_payload.get("trait_color", Color(0.9, 0.9, 0.92)))
 	_origin_label.add_theme_color_override("font_color", Color(0.58, 0.58, 0.62))
 	_favored_label.add_theme_color_override("font_color", Color(0.95, 0.75, 0.3))
+	_set_lineage_badge(int(follower_payload.get("lineage", 0)))
 	_apply_style(false, false)
 
 func _build_layout() -> void:
@@ -103,6 +106,20 @@ func _build_layout() -> void:
 	_multi_label.add_theme_color_override("font_color", Color(0.85, 0.85, 0.9))
 	_multi_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	row.add_child(_multi_label)
+
+	_lineage_badge = PanelContainer.new()
+	_lineage_badge.custom_minimum_size = Vector2(34, 20)
+	_lineage_badge.visible = false
+	_lineage_badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_lineage_label = Label.new()
+	_lineage_label.anchor_right = 1.0
+	_lineage_label.anchor_bottom = 1.0
+	_lineage_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_lineage_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_lineage_label.add_theme_font_size_override("font_size", 11)
+	_lineage_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_lineage_badge.add_child(_lineage_label)
+	row.add_child(_lineage_badge)
 
 	_origin_label = Label.new()
 	_origin_label.add_theme_font_size_override("font_size", 12)
@@ -209,5 +226,68 @@ func _build_drag_preview() -> Control:
 		str(follower_payload.get("rarity_text", "")),
 		str(follower_payload.get("multi_text", "")),
 	]
+	var lineage: int = int(follower_payload.get("lineage", 0))
+	if lineage > 0:
+		label.text += "  L%d" % lineage
 	m.add_child(label)
 	return card
+
+func _lineage_color(lineage: int) -> Color:
+	if lineage >= 10:
+		return Color(1.0, 0.95, 0.8)
+	if lineage >= 7:
+		return Color(0.9, 0.75, 0.1)
+	if lineage >= 4:
+		return Color(0.8, 0.6, 0.2)
+	return Color(0.3, 0.6, 0.6)
+
+func _lineage_text_color(lineage: int) -> Color:
+	return Color(0.2, 0.16, 0.08) if lineage >= 4 else Color(0.9, 0.95, 0.95)
+
+func _lineage_pulse_stop() -> void:
+	if _lineage_badge == null:
+		return
+	var pulse_tween: Tween = _lineage_badge.get_meta("_lineage_pulse_tween", null) as Tween
+	if pulse_tween != null and is_instance_valid(pulse_tween):
+		pulse_tween.kill()
+	_lineage_badge.set_meta("_lineage_pulse_tween", null)
+	_lineage_badge.modulate = Color(1, 1, 1, 1)
+
+func _lineage_pulse_start() -> void:
+	_lineage_pulse_stop()
+	if _lineage_badge == null:
+		return
+	var pulse_tween: Tween = create_tween()
+	pulse_tween.set_loops()
+	pulse_tween.set_trans(Tween.TRANS_SINE)
+	pulse_tween.set_ease(Tween.EASE_IN_OUT)
+	pulse_tween.tween_property(_lineage_badge, "modulate:a", 0.9, 0.75)
+	pulse_tween.tween_property(_lineage_badge, "modulate:a", 1.0, 0.75)
+	_lineage_badge.set_meta("_lineage_pulse_tween", pulse_tween)
+
+func _set_lineage_badge(lineage: int) -> void:
+	lineage = clamp(lineage, 0, 10)
+	if _lineage_badge == null:
+		return
+	if lineage <= 0:
+		_lineage_pulse_stop()
+		_lineage_badge.visible = false
+		return
+	var sb: StyleBoxFlat = StyleBoxFlat.new()
+	sb.bg_color = _lineage_color(lineage)
+	sb.corner_radius_top_left = 8
+	sb.corner_radius_top_right = 8
+	sb.corner_radius_bottom_left = 8
+	sb.corner_radius_bottom_right = 8
+	sb.content_margin_left = 4
+	sb.content_margin_right = 4
+	sb.content_margin_top = 2
+	sb.content_margin_bottom = 2
+	_lineage_badge.add_theme_stylebox_override("panel", sb)
+	_lineage_label.text = "L%d" % lineage
+	_lineage_label.add_theme_color_override("font_color", _lineage_text_color(lineage))
+	_lineage_badge.visible = true
+	if lineage >= 10:
+		_lineage_pulse_start()
+	else:
+		_lineage_pulse_stop()

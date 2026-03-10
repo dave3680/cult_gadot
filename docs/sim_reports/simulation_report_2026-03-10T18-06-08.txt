@@ -1,0 +1,110 @@
+
+=== Cult of Accumulation: Full Simulation Runner ===
+Seed base: 910246
+
+--- Doctrine: FLESH ---
+Week 1 | Target 40 | R1 22 | R2 48 | Total 70 | CapFired no | PASS
+  Scoring (last round): Add 24 | Base 2 | Exp 1 | Lineage x1.00 | RefinedVoid 0 | Final 48
+  Relics end week: Bone Idol x1
+  Pool: total 20 | BLOOD 11 BONE 7 VOID 2 SOUL 0 | avg tier 4.85 | avg lineage 0.40
+  Offspring: BONE T5 L1 wild_bred [fervent]; BONE T5 L1 wild_bred [marrow_mason]; BLOOD T5 L1 nest_bred [resilient]; BLOOD T6 L1 nest_bred [pair_hunter]; BLOOD T2 L1 wild_bred [ossuary_overseer]; BONE T5 L1 wild_bred [rite_channeler]; BONE T5 L1 wild_bred [pair_hunter]; BLOOD T4 L1 wild_bred []
+  Blood end week: 4
+Week 2 | Target 55 | R1 23 | R2 109 | Total 110 | CapFired yes | PASS
+  Scoring (last round): Add 28 | Base 3 | Exp 1 | Lineage x1.04 | RefinedVoid 0 | Final 109
+  Relics end week: Bone Idol x1, The Concordat x1
+  Pool: total 30 | BLOOD 15 BONE 14 VOID 1 SOUL 0 | avg tier 6.50 | avg lineage 0.67
+  Offspring: BONE T4 L1 wild_bred [brood_sovereign]; BLOOD T6 L1 wild_bred []; VOID T0 L1 wild_bred [void_spark]; BONE T4 L1 wild_bred [brood_sovereign]; BONE T5 L1 wild_bred [ossuary_archon]; BONE T6 L1 wild_bred [bone_tithe]; BLOOD T10 L1 nest_bred [resilient]; BLOOD T7 L1 nest_bred [pair_hunter]; BONE T7 L1 wild_bred [fervent]; BONE T8 L1 wild_bred [brood_keeper]; BLOOD T5 L1 wild_bred [brood_sovereign]; BONE T7 L1 wild_bred [marrow_mason]; BLOOD T8 L1 wild_bred [pair_hunter]; BLOOD T5 L1 wild_bred [triune_heir]
+  Blood end week: 22
+Week 3 | Target 75 | R1 97 | R2 83 | Total 150 | CapFired yes | PASS
+  Scoring (last round): Add 80 | Base 1 | Exp 1 | Lineage x1.04 | RefinedVoid 0 | Final 83
+  Relics end week: Bone Idol x1, The Concordat x1
+  Pool: total 37 | BLOOD 21 BONE 16 VOID 0 SOUL 0 | avg tier 7.54 | avg lineage 0.78
+  Offspring: BONE T7 L1 wild_bred [crimson_ascendant]; BONE T7 L1 wild_bred [sanguine_conductor,resilient]; BLOOD T5 L1 wild_bred [void_entrant]; BONE T7 L1 wild_bred [abyss_rite]; BONE T7 L1 wild_bred []; BLOOD T10 L1 nest_bred [apostolic_womb]; BLOOD T9 L1 nest_bred [twinborn]; BLOOD T7 L1 wild_bred []; BONE T8 L1 wild_bred []; BLOOD T7 L1 wild_bred [pair_hunter]; BLOOD T8 L1 wild_bred [marrow_mason]
+  Blood end week: 52
+Week 4 | Target 105 | R1 46 | R2 47 | Total 93 | CapFired no | FAIL
+  Scoring (last round): Add 44 | Base 1 | Exp 1 | Lineage x1.08 | RefinedVoid 0 | Final 47
+  Relics end week: Bone Idol x1, The Concordat x1
+  Pool: total 41 | BLOOD 20 BONE 21 VOID 0 SOUL 0 | avg tier 7.46 | avg lineage 0.85
+  Offspring: BLOOD T9 L1 wild_bred [apex_rite]; BLOOD T7 L1 wild_bred [pair_hunter]; BONE T7 L1 wild_bred [martyrs_ledger]; BONE T9 L1 wild_bred [marrow_mason]; BONE T8 L1 wild_bred [ember_saint]; BONE T7 L1 wild_bred [twinborn]; BONE T7 L1 wild_bred [twinborn]; BLOOD T6 L1 wild_bred [blood_oathling]; BLOOD T6 L1 wild_bred [abyss_rite]; BLOOD T5 L1 wild_bred [ossuary_overseer]
+  Blood end week: 66
+[FLESH] — Cleared 3/10 weeks — LOSS week 4 — Final pool: 41 followers avg lineage L0.85
+
+--- Doctrine: RUIN ---
+Week 1 | Target 40 | R1 78 | R2 55 | Total 80 | CapFired yes | PASS
+  Scoring (last round): Add 55 | Base 1 | Exp 1 | Lineage x1.00 | RefinedVoid 0 | Final 55
+  Relics end week: The Foursome x1
+  Pool: total 16 | BLOOD 8 BONE 6 VOID 2 SOUL 0 | avg tier 5.00 | avg lineage 0.25
+  Offspring: BLOOD T2 L1 wild_bred [marrow_mason]; BONE T6 L1 nest_bred [triune_acolyte]; BONE T6 L1 nest_bred [brood_keeper]; BLOOD T4 L1 wild_bred []
+  Blood end week: 2
+Week 2 | Target 55 | R1 34 | R2 101 | Total 110 | CapFired yes | PASS
+  Scoring (last round): Add 47 | Base 2 | Exp 1 | Lineage x1.08 | RefinedVoid 0 | Final 101
+  Relics end week: The Foursome x1
+  Pool: total 20 | BLOOD 14 BONE 6 VOID 0 SOUL 0 | avg tier 6.65 | avg lineage 0.50
+  Offspring: BLOOD T5 L1 wild_bred []; BLOOD T6 L1 wild_bred [void_spark]; BONE T7 L1 nest_bred [triune_acolyte,whispered]; BONE T7 L1 nest_bred [void_entrant]; BLOOD T7 L1 wild_bred [stalwart]; BLOOD T7 L1 wild_bred [brood_keeper]; BLOOD T6 L1 wild_bred [low_chanter]; BLOOD T6 L1 wild_bred [ossuary_archon]
+  Blood end week: 24
+Week 3 | Target 75 | R1 58 | R2 21 | Total 79 | CapFired no | PASS
+  Scoring (last round): Add 19 | Base 1 | Exp 1 | Lineage x1.12 | RefinedVoid 0 | Final 21
+  Relics end week: Crimson Book x1, The Copper Tithe x1, The Foursome x1
+  Pool: total 25 | BLOOD 17 BONE 7 VOID 1 SOUL 0 | avg tier 7.40 | avg lineage 0.56
+  Offspring: BLOOD T8 L1 wild_bred [bone_tithe]; BLOOD T6 L1 wild_bred []; BLOOD T7 L1 wild_bred [resilient]; BONE T8 L1 nest_bred [whispered,triune_acolyte]; BONE T9 L1 nest_bred [void_entrant]; BLOOD T6 L1 wild_bred [bone_tithe]; BLOOD T9 L1 wild_bred [void_entrant]; BLOOD T8 L1 wild_bred []
+  Blood end week: 1
+Week 4 | Target 105 | R1 118 | R2 53 | Total 171 | CapFired no | PASS
+  Scoring (last round): Add 51 | Base 1 | Exp 1 | Lineage x1.04 | RefinedVoid 0 | Final 53
+  Relics end week: Crimson Book x1, The Copper Tithe x1, The Foursome x1
+  Pool: total 29 | BLOOD 21 BONE 8 VOID 0 SOUL 0 | avg tier 8.55 | avg lineage 0.66
+  Offspring: BLOOD T6 L1 wild_bred []; BLOOD T6 L1 wild_bred [twinborn]; BONE T8 L1 nest_bred [triune_acolyte,whispered]; BONE T9 L1 nest_bred [void_entrant]; BLOOD T9 L1 wild_bred [brood_sovereign]; BONE T8 L1 wild_bred [triune_acolyte]; BLOOD T10 L1 wild_bred [chosen_veil]; BLOOD T8 L1 wild_bred [stalwart]
+  Blood end week: 51
+Week 5 | Target 145 | R1 41 | R2 54 | Total 95 | CapFired no | FAIL
+  Scoring (last round): Add 49 | Base 1 | Exp 1 | Lineage x1.12 | RefinedVoid 0 | Final 54
+  Relics end week: Crimson Book x1, The Copper Tithe x1, The Foursome x1
+  Pool: total 28 | BLOOD 22 BONE 6 VOID 0 SOUL 0 | avg tier 8.43 | avg lineage 0.64
+  Offspring: BLOOD T8 L1 wild_bred [blood_oathling,stalwart]; BLOOD T9 L1 wild_bred [chosen_veil]; BLOOD T7 L1 wild_bred [resilient]; BLOOD T9 L1 wild_bred [devout]; BLOOD T9 L1 wild_bred [hush_executor]
+  Blood end week: 61
+[RUIN] — Cleared 4/10 weeks — LOSS week 5 — Final pool: 28 followers avg lineage L0.64
+
+--- Doctrine: SILENCE ---
+Week 1 | Target 40 | R1 100 | R2 352 | Total 80 | CapFired yes | PASS
+  Scoring (last round): Add 22 | Base 4 | Exp 2 | Lineage x1.00 | RefinedVoid 0 | Final 352
+  Relics end week: (none)
+  Pool: total 19 | BLOOD 9 BONE 7 VOID 3 SOUL 0 | avg tier 5.37 | avg lineage 0.37
+  Offspring: BLOOD T5 L1 wild_bred [apex_rite]; VOID T0 L1 nest_bred [rite_channeler]; BLOOD T8 L1 nest_bred [chosen_veil]; BLOOD T7 L1 wild_bred [ossuary_king]; BONE T6 L1 wild_bred [apex_rite]; BONE T5 L1 wild_bred [votive_executor]; BONE T6 L1 wild_bred [brood_keeper]
+  Blood end week: 20
+Week 2 | Target 55 | R1 134 | R2 38 | Total 110 | CapFired yes | PASS
+  Scoring (last round): Add 37 | Base 1 | Exp 1 | Lineage x1.04 | RefinedVoid 0 | Final 38
+  Relics end week: Covenant of Three x1
+  Pool: total 24 | BLOOD 12 BONE 9 VOID 3 SOUL 0 | avg tier 6.46 | avg lineage 0.50
+  Offspring: BONE T6 L1 wild_bred [high_chanter]; BLOOD T5 L1 wild_bred [chosen_veil]; BLOOD T7 L1 wild_bred [bone_tithe]; VOID T0 L1 nest_bred [rite_channeler]; BLOOD T9 L1 nest_bred [hush_matron]; BONE T7 L1 wild_bred [stalwart]; BLOOD T7 L1 wild_bred [high_chanter]; BLOOD T7 L1 wild_bred [brood_keeper]; BONE T9 L1 wild_bred [whispered]
+  Blood end week: 20
+Week 3 | Target 75 | R1 53 | R2 43 | Total 96 | CapFired no | PASS
+  Scoring (last round): Add 40 | Base 1 | Exp 1 | Lineage x1.08 | RefinedVoid 0 | Final 43
+  Relics end week: Covenant of Three x1
+  Pool: total 24 | BLOOD 15 BONE 5 VOID 4 SOUL 0 | avg tier 6.92 | avg lineage 0.58
+  Offspring: BLOOD T7 L1 wild_bred [apostolic_womb]; VOID T0 L1 nest_bred [rite_channeler]; BLOOD T10 L1 nest_bred [chosen_veil]; BLOOD T8 L1 wild_bred [hush_matron]
+  Blood end week: 34
+Week 4 | Target 105 | R1 232 | R2 388 | Total 210 | CapFired yes | PASS
+  Scoring (last round): Add 40 | Base 3 | Exp 2 | Lineage x1.08 | RefinedVoid 0 | Final 388
+  Relics end week: Covenant of Three x1, Hollow Abacus x1
+  Pool: total 30 | BLOOD 20 BONE 7 VOID 3 SOUL 0 | avg tier 8.07 | avg lineage 0.63
+  Offspring: BLOOD T8 L1 wild_bred [paired_sigil,hush_matron]; BONE T9 L1 wild_bred []; BLOOD T8 L1 wild_bred [resilient]; BLOOD T10 L1 wild_bred [ossuary_oracle,chosen_veil]; VOID T0 L1 nest_bred [rite_channeler]; BONE T10 L1 nest_bred [hush_matron]; BLOOD T8 L1 wild_bred [whispered]; BLOOD T10 L1 wild_bred []; BONE T8 L1 wild_bred [straight_rite]; BONE T8 L1 wild_bred []
+  Blood end week: 64
+Week 5 | Target 145 | R1 131 | R2 60 | Total 191 | CapFired no | PASS
+  Scoring (last round): Add 54 | Base 1 | Exp 1 | Lineage x1.12 | RefinedVoid 0 | Final 60
+  Relics end week: Covenant of Three x1, Crimson Book x1, Hollow Abacus x1
+  Pool: total 38 | BLOOD 26 BONE 8 VOID 4 SOUL 0 | avg tier 8.61 | avg lineage 0.66
+  Offspring: BONE T9 L1 wild_bred [votive_executor]; BLOOD T10 L1 wild_bred [ossuary_king]; BLOOD T9 L1 wild_bred [fervent]; BLOOD T9 L1 wild_bred [apex_rite]; VOID T0 L1 nest_bred [rite_channeler,marrow_mason]; BLOOD T10 L1 nest_bred [resilient]; BLOOD T10 L1 wild_bred [chosen_veil]; BLOOD T9 L1 wild_bred [chosen_veil]; BONE T9 L1 wild_bred [brood_sovereign]; BLOOD T10 L1 wild_bred [fervent,hush_matron]; BLOOD T10 L1 wild_bred [ossuary_king]; BLOOD T10 L1 wild_bred [high_chanter]
+  Blood end week: 85
+Week 6 | Target 200 | R1 63 | R2 50 | Total 113 | CapFired no | FAIL
+  Scoring (last round): Add 45 | Base 1 | Exp 1 | Lineage x1.12 | RefinedVoid 0 | Final 50
+  Relics end week: Covenant of Three x1, Crimson Book x1, Hollow Abacus x1
+  Pool: total 38 | BLOOD 26 BONE 8 VOID 4 SOUL 0 | avg tier 8.55 | avg lineage 0.68
+  Offspring: BLOOD T10 L1 wild_bred [ember_saint]; BLOOD T10 L1 wild_bred [whispered]; BLOOD T10 L1 wild_bred [brood_keeper]; BLOOD T10 L1 wild_bred [combo_025,brood_keeper]; BLOOD T8 L1 wild_bred [ossuary_laborer]; BONE T9 L1 wild_bred [chosen_veil]
+  Blood end week: 97
+[SILENCE] — Cleared 5/10 weeks — LOSS week 6 — Final pool: 38 followers avg lineage L0.68
+
+=== Simulation Assertions ===
+SIMULATION FAIL
+FAIL: RUIN purchased relic never fired: The Foursome
+FAIL: SILENCE purchased relic never fired: Hollow Abacus
+Elapsed: 369 ms
+
+Elapsed: 369 ms
