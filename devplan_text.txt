@@ -1,0 +1,445 @@
+CULT OF ACCUMULATION
+Development Plan & Rebalance Roadmap
+Version 1.0 — March 2026
+Executive Summary
+Cult of Accumulation has strong bones. The doctrine system is distinctive, the breeding loop creates genuine attachment to individual followers, and the combo trait web gives depth that rewards experimentation. The problem is not concept — it's execution and balance.
+Three issues are killing the fun right now:
+The scoring formula scales so poorly across 10 weeks that the game effectively has two modes: trivially easy (weeks 1-4) and mathematically impossible (weeks 7-10) unless the player landed a specific multiplier chain.
+The relic pool is thin and incoherent. Most relics are additive bumps that become irrelevant by week 5. There is no moment where a relic transforms how the game feels.
+The breeding system is the game's most interesting mechanic, but it is too slow, too passive, and too disconnected from scoring to feel like the engine it should be.
+This document is a prioritised plan to fix all three, add a relic pool of 100 new cards, and turn Cult of Accumulation into something that earns one-more-run addiction.
+Part 1: What to Cut
+Before building anything new, remove the dead weight. These systems actively harm the game or confuse future development.
+Dead Code — Delete Immediately
+Item
+Action
+draw_new_hand()
+Delete. draw_hand_from_pool() is canonical. This creates confusion.
+get_shop_rarity_slots()
+Delete. Never called. Replaced by roll_shop_rarity(). Leaving it suggests it should be used.
+_offer_legendary_if_needed() stub
+Implement properly (see Part 2) or delete. An empty function with a meaningful name is a trap.
+_deferred_change_scene stub
+Delete if not actively used. Dead stubs rot codebases.
+RUN_ONLY_SIM = true in TestRunner
+Set to false. You are skipping all mechanical tests. Fix this before any balance work.
+Mechanics to Rework (Not Delete)
+Mechanic
+Problem & Direction
+Soul Lantern blood drain
+Undocumented. Fix the description or remove the drain. A hidden -all-blood cost on a once-per-run relic is not interesting design — it is a trap.
+VOID tier always 0
+VOID followers are structurally broken. Starting pool assigns tiers 1-2 to VOID followers and silently discards them. Refined VOID (the ×1.5 per refined bonus) is functionally unreachable without Soul Lantern. VOID needs a route to meaningful tier (see Part 2).
+Bone Idol + Ossuary Standards
+Identical formulas. One of them should do something different. Merge into one relic or differentiate.
+Hollow Chant description
+Either rewrite the description ('each copy adds +1 to multiplier exponent') or change the mechanic to gate on VOID count as the flavour implies. Pick one.
+MULTIPLIER_TRAIT_CAP = 1
+This cap silently wastes legendary traits. If a player has both blood_prophet and crimson_ascendant in a play, one of them is invisible. Either raise the cap to 2, or communicate the cap clearly in UI so players can build around it rather than being confused by it.
+Doctrine scaling
+FLESH -6/+6 additive and RUIN +8 additive both become trivially small by week 5 vs targets of 300+. These need to scale (see Part 2).
+NOTE on chosen_veil
+Its type is listed as BREEDING but it delivers +4 additive when sacrificed, making it a HYBRID. This only matters cosmetically today, but fix it now before type-filtering is ever added.
+Part 2: Core Rebalance
+The central problem is that 1.5x exponential growth per week creates a gap that additive relics cannot bridge. The entire late game depends on finding a multiplier chain. Everything below is designed to make more builds viable across all 10 weeks.
+2.1 Target Curve — Recalibrate for Two Viable Paths
+The current curve hits 1540 by week 10. That is not the problem. The problem is the jump between week 4 (135) and week 7 (455) — a 3.4x increase where the player has had at most 3 shops to prepare. Smooth this out.
+Proposed new targets (growth rate 1.38 instead of 1.5, with a steeper week 8-10 to preserve late tension):
+Week
+Current
+Proposed
+1
+40
+40
+2
+60
+55
+3
+90
+75
+4
+135
+105
+5
+205
+145
+6
+305
+200
+7
+455
+275
+8
+685
+400
+9
+1025
+620
+10
+1540
+1000
+This reduces the week 7 wall from 455 to 275 while keeping week 10 at a round 1000 — a meaningful challenge that still requires a real build to hit. The early game stays accessible; the late game stays hard.
+2.2 Doctrine Scaling — Make Each Doctrine Matter at Week 8
+FLESH and RUIN use fixed additive values that become noise by mid-game. Replace them with percentage-based scaling tied to the weekly target.
+Doctrine
+New Scaling Formula
+FLESH (3+ BLOOD)
+Bonus = floor(weekly_target × 0.08). At week 6 target 200, this gives +16. At week 10 target 1000, it gives +80. Replaces flat +6.
+FLESH (0 BLOOD)
+Penalty = floor(weekly_target × 0.04). Keeps the sting proportional.
+RUIN (top BONE condition)
+Bonus = floor(weekly_target × 0.10) + (highest_bone_tier × 2). Additive scaled to target, with tier multiplied for meaningful late-game reward.
+SILENCE (exactly 1 VOID)
+Keep exponent +1. Silence scales naturally because the multiplier system is multiplicative. No change needed.
+Why not multiply instead of scale additively?
+FLESH and RUIN are additive doctrines. Making them multiplicative would require restructuring the hook order and likely break the scoring flow. Percentage-of-target keeps them additive while preserving relevance throughout the run.
+2.3 VOID Follower Tier — Open the Refined VOID Path
+Currently, VOID followers are always tier 0, making refined_void_count (the ×1.5 bonus per refined VOID) nearly unreachable. The entire SILENCE doctrine endgame is locked behind a single Soul Lantern use. Fix this by opening two new routes to refined VOID:
+Wild breeding between two VOID followers (currently 30% chance) should produce offspring at tier 1 instead of tier 0. A VOID-VOID pair producing another tier-0 VOID is pointless.
+Nest breeding with two VOID parents should produce a tier 1-2 VOID baby (using the standard ±1 variance around a floor(0+0/2)=0 base, but with a minimum floor of 1).
+Add 2-3 relics in the new pool that allow VOID followers to gain tier from scoring (e.g. 'each time a VOID follower is sacrificed, it gains +1 tier, max 5'). This creates a VOID investment arc.
+The Soul Lantern can remain the fastest route to high-tier VOID, but it should no longer be the only route.
+2.4 Blood Economy — Cap Overflow, Raise Floor
+Two problems: overflow blood has no cap (a huge combo can generate a bank-breaking windfall in one play), and early game blood is so tight that buying any relic in week 1-2 feels punishing.
+Change
+Detail
+Set overflow_weekly_cap
+Cap overflow blood at floor(weekly_target × 0.5). Week 1 cap: 20. Week 10 cap: 500. Prevents snowball while still rewarding clean plays.
+Starting blood
+Give the player 5 blood at run start. Week 1 shop becomes accessible for all doctrines without requiring a lucky early win.
+Early win bonus
+Keep the +20 blood early-win bonus. It's meaningful and good.
+Recruit cost
+Keep at 1 blood each. Recruits are already appropriately priced.
+2.5 The Round Cap — Change to Per-Week
+Currently the 1.25x round cap applies per individual round, not per week. As documented in the open questions: a player could theoretically score 2.5x the weekly target across two rounds. This is not exploitable in practice today, but it will be once relics are stronger. Change the cap to track total weekly devotion across both rounds and cap at floor(target × 2.0). This gives players who narrowly fail round 1 a real chance in round 2 without allowing unlimited catch-up.
+Part 3: New Systems
+3.1 Legendary Guarantee — Implement _offer_legendary_if_needed()
+This stub exists for a reason. Implement it: if the player reaches week 6 without having seen a single legendary relic offered (not necessarily bought), guarantee one legendary in the shop that week. This is standard roguelite design — it prevents runs that feel impossible through bad luck alone.
+Implementation: track legendary_seen_in_shop: bool in GameState. Set it true whenever a legendary appears in any shop slot. Call _offer_legendary_if_needed() on shop generation for weeks 6+. If !legendary_seen_in_shop, force one slot to roll legendary.
+3.2 Meta-Progression — The Codex
+Currently there is no meta-progression. Each run starts completely fresh. This is true to the roguelite genre, but it means there is no reason to play a second run after winning once. Balatro keeps players coming back through unlocks and joker discovery. Cult of Accumulation needs the same hook.
+Proposed: The Codex. A persistent (across-runs) record of followers, relics, and combo traits the player has discovered. Each new discovery adds a flavour entry. No gameplay bonuses — discovery only. This is enough to motivate completionists and give returning players a sense of progress. The Codex also reveals relic descriptions for items the player has purchased at least once, removing the information asymmetry that currently punishes new players.
+3.3 Nest Expansion — Unlock a Third Nest
+Two nests is fine for weeks 1-5. By week 7, a breeding-focused player has a pool full of interesting followers and nowhere to put them. Add a third nest slot, either as a purchasable shop item (cost: 25 blood) or as a week 5 milestone reward. This makes breeding a meaningful late-game investment axis rather than something that plateaus early.
+3.4 Ritual Cards Without Scarlet Planetarium
+Ritual cards are gated behind the Scarlet Planetarium relic, which is a RARE shop item that may never appear. A player can finish a run without ever knowing ritual cards exist. Consider offering one ritual card as a free choice at week 3, teaching the mechanic before gating the ongoing system behind a relic. The Planetarium relic then becomes 'access this system permanently' rather than 'access this system at all.'
+Part 4: 100 New Relic Cards
+These relics are designed to: (a) create new build archetypes not supported by the current 50, (b) scale meaningfully into late game, and (c) generate the 'wait, I can do what?' moments that make Balatro addictive. They are grouped by archetype.
+Design principle
+Every relic here should change how the player thinks about follower selection — not just add +N to a number. The best relics in Balatro reframe what counts as a good hand. Aim for the same.
+Archetype A: Tier Scaling (12 relics)
+These reward investing in high-tier followers and create a meaningful reason to care about the weekly tier boost.
+Relic / Rarity
+Effect
+Iron Reliquary (C)
+If the highest-tier sacrifice is tier 8+: +20 additive.
+Ivory Throne (C)
+Each sacrifice above tier 7: +5 additive per tier above 7.
+Ascendant Mark (U)
+If all 3 sacrifices are the same type and all tier 6+: +25 additive.
+Whetted Bone (U)
+BONE sacrifices: their additive contribution counts as tier+2 instead of tier×2.
+The Summit (U)
+If your highest-tier sacrifice is higher than last round's: +15 additive.
+Bloodline Register (U)
+Stacks. When a pool follower reaches tier 10, gain +1 blood per registered tier-10.
+The Peaked Rite (R)
+If average tier of all 3 sacrifices exceeds 7: multiply additive_total by 1.5.
+Apex Covenant (R)
+Stacks. Your highest-tier follower in hand (including non-sacrificed) adds half their tier as additive.
+The Gilded Offering (R)
+Sacrifice a tier-10 follower: they return to pool after resolve (not consumed).
+Dynasty Seal (R)
+Offspring of two tier-8+ parents spawn at tier 6 instead of the average formula.
+Crown of Tiers (L)
+Once per week: promote any pool follower's tier by +3 (max 10). Costs 5 blood.
+The Last Rung (L)
+Tier-10 followers count as contributing +5 extra to the multiplier base.
+Archetype B: VOID Investment (12 relics)
+Builds a real VOID endgame path by giving VOID followers routes to gain tier and rewarding deep VOID commitment.
+Relic / Rarity
+Effect
+Void Cradle (C)
+Each VOID sacrifice: that follower gains +1 tier after resolve (does not break tier-0 rule; minimum stays 0, but grows from there).
+The Hollow Register (C)
+Stacks. After each week with exactly 1 VOID in any sacrifice, gain +1 stack. Each stack adds +1 to multiplier exponent permanently.
+Void Pilgrim (C)
+Wild VOID-VOID breeding always produces a tier-1 offspring (overrides tier-0 floor).
+The Empty Pyre (U)
+If you sacrifice a VOID follower and they have tier > 0: add their tier to the multiplier base instead of the usual +1.
+Refinery of Silence (U)
+Stacks. Refined VOID bonus increases from ×1.5 per refined VOID to ×(1.5 + 0.2 × copies) per refined VOID.
+Obsidian Conduit (U)
+When a VOID follower is sacrificed, they transmit their tier as additive bonus to every other VOID in your pool (+tier per pool VOID).
+The Absent Crown (R)
+Exactly 2 VOID in sacrifice: treat both as refined VOID for the bonus calculation, regardless of their tier.
+Void Recursion (R)
+Once per week: when a VOID follower is sacrificed, spawn a copy of them (same tier) in pool.
+Null Covenant (R)
+If your multiplier base reaches 5 or higher this play: gain blood equal to the base value.
+The Final Silence (R)
+If exactly 1 VOID and that VOID is tier 5+: exponent +2 instead of +1. SILENCE doctrine becomes +2 exponent.
+Annihilation Compact (L)
+Once per run: designate one VOID follower as Null Sovereign. While in pool, all VOID followers gain +1 to their effective tier for scoring.
+The Deepest Void (L)
+Stacks. Each copy adds: VOID sacrifices contribute their tier directly to the multiplier base as well as the standard +1.
+Archetype C: BONE Fortress (10 relics)
+BONE is currently a strong but boring linear archetype. These relics add conditionality and late-game scaling.
+Relic / Rarity
+Effect
+Marrow Charter (C)
+If 3 BONE sacrificed: +1 blood per BONE tier (total tiers, not count).
+The Ossuary Engine (C)
+Stacks. Each week cleared with 2+ BONE in sacrifice, gain +2 permanent additive for BONE plays.
+Bone Standard (U)
+Stacks. If 2+ BONE: the highest-tier BONE's contribution is doubled.
+The White Wall (U)
+If 3 BONE and 0 VOID: multiplier base treated as 2 (same as Black Candle/Cold Incense, but BONE-specific).
+Gravewright (U)
+When BONE follower is sacrificed, 25% chance to spawn a T2 BONE in pool.
+Crypt Standard (R)
+If exactly 2 BONE and 0 VOID: apply the standard Sacrificial Order doubling to additive_total (i.e., ×2).
+The Calcified Gate (R)
+Stacks. BONE followers in your pool (not sacrificed) add floor(their tier / 3) as additive per copy. Rewards hoarding BONE.
+Bone Chorus (R)
+If all BONE sacrifices share the same tier: +30 additive and +3 blood.
+The Skeleton Archive (L)
+Stacks. Persistent: each run where you cleared week 5+ with BONE doctrine (or majority BONE pool), unlock +1 additive to this relic permanently (tracked in Codex).
+Ossuary Absolute (L)
+If 3 BONE and all are tier 7+: devotion for this play cannot be reduced by the round cap.
+Archetype D: BLOOD Tempo (10 relics)
+BLOOD is currently the most flexible type and the default starting doctrine. These relics reward tight BLOOD-only builds with explosive tempo plays.
+Relic / Rarity
+Effect
+The Red Tithe (C)
+If 3 BLOOD and total tier sum ≥ 18: +15 additive.
+Crimson Ledger (C)
+Stacks. Each round you sacrifice 3 BLOOD, gain 1 stack. Each stack adds +1 additive to all future BLOOD plays.
+The Sanguine Chord (U)
+If all BLOOD and consecutive tiers (straight): exponent +1. Stacks with Hollow Chant.
+Bloodfire Compact (U)
+If exactly 3 BLOOD and any of them has a MULTIPLIER trait: that trait is not subject to the MULTIPLIER_TRAIT_CAP this round.
+The Running Red (U)
+Stacks. After each cleared round with 3 BLOOD, pool gains a random T3 BLOOD follower.
+Crimson Pact (R)
+Once per week: sacrifice one extra BLOOD from pool (not hand) — contributes its tier as additive and adds +1 blood.
+The Arterial Rite (R)
+If 3 BLOOD and no trait triggers this round: +40 additive. (Rewards 'plain' BLOOD plays.)
+Bloodline Theorem (R)
+Stacks. Blood followers that return to pool after resilient trait or Gilded Offering: gain +1 tier on return.
+The Sanguine Engine (L)
+Your highest-tier BLOOD follower in pool (including non-sacrificed) always adds floor(their tier / 2) as additive to BLOOD plays.
+Crimson Absolute (L)
+If all sacrifices are BLOOD and total tier sum ≥ 24: multiply final devotion by 1.5.
+Archetype E: Triune / Mixed Type (8 relics)
+The triune (BLOOD+BONE+VOID) archetype is already supported but fragile — it requires holding all three types in a 3-card hand. These relics make the archetype more robust and rewarding.
+Relic / Rarity
+Effect
+The Concordat (C)
+If BLOOD+BONE+VOID present: each sacrifice contributes +3 additive on top of their base.
+Trine Offering (C)
+Stacks. After a triune play, the next shop offers one additional recruit at no cost.
+Threefold Brand (U)
+Stacks. If you have completed a triune play this run, all future triune plays gain +copies × 5 additive.
+The Sacred Triangle (U)
+If triune play: each type's highest-tier representative doubles their base tier contribution.
+Covenant of Three (U)
+Stacks. If triune and the total tier sum ≥ 15: +12 additive per copy and +2 blood.
+The Unbroken Rite (R)
+If you achieve a triune play in both rounds of the same week: next shop offers a guaranteed RARE or better.
+The Trinity Engine (R)
+Your triune final multipliers (triune_champion ×1.25, triune_heir ×1.35) are not subject to MULTIPLIER_TRAIT_CAP — they always apply if present.
+The Absolute Trinity (L)
+If triune and all three types have matching tiers: final devotion ×2. (Requires same tier on BLOOD, BONE, and VOID sacrifice.)
+Archetype F: Pool Manipulation (10 relics)
+These relics turn pool management into a first-class game system rather than a passive background process.
+Relic / Rarity
+Effect
+The Pruning Hook (C)
+Once per shop: cull a follower and immediately spawn a random T3 follower of the culled type.
+Grave Compact (C)
+Stacks. Each follower culled adds +0.5 to the next bred offspring's base tier (rounded down).
+The Awakening Bell (U)
+Once per week: remove the exhausted flag from all followers before round 2. (They can be re-used in round 2.)
+The Deep Pool (U)
+Stacks. Pool cap +6 per copy. (Replaces Salt Circle's function, or stacks with it.) Increases nest slots to 3 at 2+ copies.
+Warden of the Fold (U)
+Stacks. Each round, after scoring, the lowest-tier non-SOUL follower in your pool gains +1 tier.
+The Rotary (R)
+Once per shop: swap the trait of any two pool followers. (Neither gains nor loses rarity — only the trait_id transfers.)
+The Inheritance Forge (R)
+Stacks. When a follower is bred in a nest, copies of this relic add +1 guaranteed breeding attempt to each nest that week.
+Soul Tithe (R)
+SOUL followers are no longer dead weight: each SOUL in your pool contributes +1 blood at end of each round.
+The Purifying Flame (L)
+Once per run: wipe all traits from 5 chosen pool followers. Each wiped follower gains +3 tier and a random RARE trait.
+The Great Cull (L)
+Once per run: reduce pool to exactly 8 followers of your choice. All remaining followers gain +2 tier.
+Archetype G: Economy & Blood Compounding (10 relics)
+Blood economy relics that create meaningful decisions and compounding returns without trivialising the game.
+Relic / Rarity
+Effect
+The Copper Tithe (C)
+Stacks. On each cleared round (not week — each round): +copies blood.
+Debt Ledger (C)
+Converts: if you enter a shop with ≥15 blood, convert 10 blood into +2 additive permanently for this run.
+The Red Market (U)
+Once per shop: sell any relic back for half its original cost (rounded up). Enables strategic divestment.
+Crimson Compound (U)
+Stacks. Crimson Interest rate improves: floor(blood / (5 - copies)) instead of floor(blood / 5).
+The Iron Tithe (U)
+Stacks. At the start of each week: gain blood equal to copies × current_week. (Scales with run progress.)
+The Debt Engine (R)
+Debt Scripture extension: buy relics up to 6 blood in debt. At shop exit, unpaid debt is converted to -additive next round (not permanent).
+Usurer's Mark (R)
+Stacks. Interest compounds: Crimson Interest fires twice per shop exit per copy owned beyond the first.
+The Sanguine Bank (R)
+Blood carried into the final week (10) adds to final score (cosmetic) and unlocks a Codex entry. Incentivises efficient play.
+The Tithe Accelerator (L)
+Stacks. Every relic you purchase this run retroactively gains +1 copy of Crimson Interest's effect. (Owning 5 relics means each blood gain generates small passive income.)
+The Compound Covenant (L)
+Once per run: double all currently held blood. Cannot be bought until week 5+.
+Archetype H: Sacrifice Count Builds (10 relics)
+Currently Black Contract is the only path to 4-sacrifice plays. These relics make sacrifice count a real build axis.
+Relic / Rarity
+Effect
+Single Rite (C)
+If exactly 1 sacrifice: +10 additive and +2 blood. (Pairs with Thin Blade — makes the 1-sacrifice build viable.)
+The Pared Offering (C)
+Stacks. After a 1-sacrifice play, pool gains a random T2 follower of the sacrificed type.
+The Dyad Mark (U)
+If exactly 2 sacrifices: +18 additive. (Fills the gap between Thin Blade at 1 and Ritual Symmetry at 2/4.)
+The Triad Compact (U)
+Stacks. Each round you sacrifice exactly 3: gain +copies permanent additive (persists for whole run).
+The Foursome (U)
+Stacks. If 4 sacrifices (requires Black Contract): +10 × copies additive on top of Black Contract's existing benefit.
+Minimalist Doctrine (R)
+1-sacrifice plays: that follower contributes as if their tier were doubled for base calculation.
+Mass Offering (R)
+4-sacrifice plays: after scoring, all 4 sacrificed followers return to pool (Gilded Offering-style).
+The Expanding Rite (R)
+Stacks. Each run where you completed a 4-sacrifice play: unlock +2 additive to all future sacrifice plays (Codex-tracked).
+The Count Absolute (L)
+If exactly 1 sacrifice and that sacrifice is tier 10: final devotion ×2. Ultra-niche, ultra-high ceiling.
+The Expanding Contract (L)
+Once per week: sacrifice 5 followers. Fifth follower does not return to pool but adds their full tier × 3 as additive.
+Archetype I: Breeding Amplifiers (10 relics)
+These relics make breeding feel like the engine-building centrepiece it should be.
+Relic / Rarity
+Effect
+The Brood Compact (C)
+Stacks. Wild breeding base chance for non-VOID pairs: +5% per copy (in addition to Fertility Idol).
+Nursery Ledger (C)
+Stacks. Each bred offspring that survives to be sacrificed in a future round generates +1 blood when sacrificed.
+The Generation Mark (U)
+Stacks. Nest offspring gain +copies to their starting tier (before variance) if both parents are tier 5+.
+The Breeding Engine (U)
+Once per week: trigger a second wild breeding phase after the normal one. (Doubles the chance of offspring from wild pairs.)
+Lineage Harvest (U)
+When a bred follower (nest_bred or wild_bred) is sacrificed: +5 additive and return to pool after resolve.
+The Primogeniture (R)
+Stacks. The first nest offspring produced each run inherits both parents' traits (instead of one). Combo trait chance doubled for this offspring.
+The Bloodline Compact (R)
+Stacks. After each week where breeding produces a LEGENDARY-trait offspring: gain +3 blood and that offspring starts at +1 tier.
+The Dynasty Forge (R)
+Once per run: choose two pool followers. They permanently form a fixed breeding pair — they will always breed together in wild breeding (like favored, but permanent).
+The Womb of Ages (L)
+Once per run: one nest produces two offspring instead of one this week. Both inherit traits independently.
+The Eternal Line (L)
+Stacks. Bred offspring in your pool do not count toward the pool cap. (Lets the breeding engine grow without forcing culls.)
+Archetype J: High-Risk / Cursed (8 relics)
+Balatro gets its most memorable moments from jokers that are powerful but dangerous. These relics follow the same pattern.
+Relic / Rarity
+Effect
+The Bleeding Edge (U)
+Stacks. +15 × copies additive per play, but each play you do not meet the round target, lose 3 blood.
+The Rusted Tithe (U)
+Your relics still trigger but: on play, one random COMMON relic is temporarily disabled for this round. High risk for high counts.
+The Cursed Offering (U)
+Stacks. +20 additive per copy, but a random pool follower's tier drops by 1 after each play this relic fires.
+The Hollow Pact (R)
+Stacks. Multiplier exponent +copies, but pool cap is halved (rounded up) while this relic is owned.
+The Red Covenant (R)
+Once per week: double this week's target. If you clear it anyway, gain +30 blood and a free RARE relic offer next shop.
+The Last Sacrifice (R)
+If your pool has fewer than 5 non-SOUL followers: all scoring values ×2. Rewards (or punishes) extreme culling.
+The Hungry Altar (L)
+After each play, sacrifice one random non-nested pool follower permanently. In return, all scoring this round is ×2.
+The Damnation Seal (L)
+If you reach week 10: double the final week target. If cleared, unlock a permanent Codex trophy. If not, you lose. No other effect.
+Archetype K: Utility / Meta (10 relics)
+Quality-of-life relics and mechanics that change how the game is played without fitting a single archetype.
+Relic / Rarity
+Effect
+The Second Sight (C)
+Once per run: see next week's devotion target before entering the current shop.
+The Waiting Bell (C)
+If you skip buying anything in the shop (relics, recruits, and ritual card all unpurchased): +10 blood.
+The Faithful Scribe (U)
+Stacks. Each time you reroll the shop, the new offers have +copies rarity tier minimum (COMMON becomes UNCOMMON, etc.).
+The Votive Ledger (U)
+Once per shop: re-examine one previously purchased relic from this run — it fires its 'on-win' effect immediately.
+The Drawn Curtain (U)
+Stacks. Each round you use the Doctrine Action: +5 × copies additive this round.
+The Witness (R)
+Stacks. Reveals the trait of every follower in your hand before you select sacrifices. (Removes the hidden-information disadvantage for trait-condition relics.)
+Director's Addendum (R)
+Director's Cut now rerolls ±25% instead of ±15%, and can be used twice per shop.
+The Omen Ledger (R)
+Stacks. Omen Deck rarity override now covers LEGENDARY at copies × 3% chance (in addition to RARE).
+The Palimpsest (L)
+Once per run: wipe your entire relic inventory and redraw 3 relics at the rarity distribution of your current week. Escape hatch for bad builds.
+The Archive Key (L)
+Unlocks the Codex mid-run: you can browse all undiscovered relic descriptions. Information only — no gameplay effect.
+Part 5: Development Roadmap
+Tasks ordered by impact-to-effort ratio. Do not start Phase 2 until Phase 1 is complete and tested.
+Phase 1 — Stabilise (1-2 weeks)
+Get the game working correctly before changing anything. These are fixes, not features.
+Set RUN_ONLY_SIM = false in TestRunner.gd. Run the full test suite. Fix every failure before touching balance numbers.
+Delete dead code: draw_new_hand(), get_shop_rarity_slots(), _deferred_change_scene stub.
+Fix Soul Lantern description to document the blood drain. Decide: is this intentional? If yes, show the cost clearly. If no, remove it.
+Fix Hollow Chant description to match actual mechanic ('each copy adds +1 to multiplier exponent').
+Fix chosen_veil type from BREEDING to HYBRID.
+Differentiate Bone Idol and Ossuary Standards — make one of them do something different (e.g. Ossuary Standards: instead of per-tier, give +5 additive per BONE count threshold).
+Implement _offer_legendary_if_needed() — week 6 guaranteed legendary if none seen.
+Phase 2 — Core Rebalance (1-2 weeks)
+Change the numbers that govern the run arc.
+Apply new target curve (target_base = 40, growth = 1.38, manual overrides for weeks 8-10).
+Give player 5 starting blood (add to init_starting_pool or run start).
+Set overflow_weekly_cap = floor(weekly_target × 0.5).
+Apply doctrine scaling formula (percentage-of-target for FLESH and RUIN).
+Change round cap from per-round to per-week tracking (max 2.0× weekly target across both rounds).
+VOID tier fix: wild VOID-VOID offspring spawn at tier 1; nest VOID-VOID offspring min tier 1.
+Raise MULTIPLIER_TRAIT_CAP to 2, or add UI indicator showing which trait was skipped.
+Run simulation (3600 games) and verify pass rates match BALANCE_TARGETS. Adjust if needed.
+Phase 3 — Relic Pool Expansion (2-3 weeks)
+Implement the 100 new relics from Part 4. Suggested implementation order:
+Archetype J (High-Risk) first — these are the most mechanical complexity and need the most testing.
+Archetype B (VOID Investment) — fixes the broken VOID path.
+Archetype I (Breeding Amplifiers) — makes the core engine-building mechanic feel powerful.
+Archetypes A, C, D (Tier / BONE / BLOOD) — expands existing archetypes.
+Archetypes E, F, G, H (Triune, Pool, Economy, Count) — fills gaps.
+Archetype K (Utility) — polish pass.
+Re-run simulation after each archetype addition. Ensure no relic combination breaks week 10 pass rate above 85%.
+Phase 4 — The Codex & Meta-Progression (1 week)
+Add persistent Codex data structure (JSON file, per-device).
+Log discoveries: every new relic seen in shop, every new follower trait encountered, every combo trait bred.
+Build simple Codex UI (read-only during run, fully browsable from main menu).
+Add unlock descriptions for all 150 relics (50 original + 100 new) revealed on first purchase.
+Phase 5 — Polish & Feel (ongoing)
+Tutorial week: week 1 should walk the player through one complete sacrifice play before letting them go free.
+Third nest slot: offer as shop purchasable item for 25 blood from week 4+.
+Ritual card introduction: offer a free one-time ritual card choice at week 3 to teach the mechanic.
+Sound and VFX pass on high-value multiplier plays — the moment a ×8 exponent fires should feel different.
+Codex trophies for high-risk relic clears.
+Appendix: Why These Changes Make It Addictive
+Balatro is addictive for three reasons: every run feels different, high moments feel earned rather than lucky, and there is always one more thing to discover. Here is how each phase addresses those three requirements:
+Every Run Feels Different
+Currently, doctrines give the illusion of choice but collapse into similar scoring pipelines by week 5. The new relic archetypes create genuinely divergent build paths: a VOID Investment run with Void Recursion and Annihilation Compact feels nothing like a Sacrifice Count run with The Count Absolute and Mass Offering. The 100 new relics, added to the existing 50, mean a player can run 20+ runs without seeing the same build twice.
+High Moments Feel Earned
+The current game's high moments depend on luck (did a legendary appear?) more than skill (did I build toward something?). The rebalanced target curve means a player who understands the doctrine system and invests in the right archetype from week 2 will reliably make it to week 8. The challenge comes from weeks 8-10, where the target curve steepens again — but the player is now powerful enough to have a shot. Beating week 10 should feel like a consequence of smart play, not a coin flip on whether Hollow Chant appeared.
+Always One More Thing to Discover
+The Codex addresses this directly. Players who have won once have a reason to return: discover all 150 relics, breed all 50 combo traits, unlock all trophies. Discovery-as-progression is the oldest and most reliable retention mechanic in games. The High-Risk relics (Archetype J) also create stories — the player who cleared week 10 with The Hungry Altar is going to tell someone about it.
+Final note on testing
+The balance simulation in TestRunner is your most valuable tool and it is currently disabled. Turning it back on and keeping it green should be a hard rule throughout development — every change to a number in GameState.gd should be validated against the simulation before it ships.

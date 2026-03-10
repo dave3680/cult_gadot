@@ -17,7 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Panel" type="PanelContainer" parent="Center"]
-custom_minimum_size = Vector2(420, 240)
+custom_minimum_size = Vector2(460, 320)
 layout_mode = 2
 
 [node name="VBox" type="VBoxContainer" parent="Center/Panel"]
@@ -38,6 +38,11 @@ text = "Start Run"
 custom_minimum_size = Vector2(220, 50)
 layout_mode = 2
 text = "Settings"
+
+[node name="CodexButton" type="Button" parent="Center/Panel/VBox"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+text = "Codex"
 
 [node name="SettingsPopup" type="PopupPanel" parent="."]
 size = Vector2i(320, 220)

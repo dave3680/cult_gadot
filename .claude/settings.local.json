@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \":*)",
+      "Bash(where godot.exe)",
+      "Bash(where godot4.exe)",
+      "Read(//c/Program Files/**)",
+      "Bash(echo \"PATH=$PATH\")",
+      "Bash(powershell.exe -Command \"Get-Command godot* | Select-Object Source\")",
+      "Bash(powershell.exe -Command \"[System.Environment]::GetEnvironmentVariable\\(''PATH'', ''Machine''\\)\")",
+      "Bash(\"/c/Users/david/Desktop/misc/Godot net/Godot_v4.4-stable_mono_win64/Godot_v4.4-stable_mono_win64_console.exe\" --headless --path \"C:/Users/david/Documents/cult\" --scene \"res://scenes/TestRunner.tscn\")",
+      "Bash(cmd.exe /c \"\"\"C:\\\\Users\\\\david\\\\Desktop\\\\misc\\\\Godot net\\\\Godot_v4.4-stable_mono_win64\\\\Godot_v4.4-stable_mono_win64_console.exe\"\" --headless --path \"\"C:\\\\Users\\\\david\\\\Documents\\\\cult\"\" --scene \"\"res://scenes/TestRunner.tscn\"\" > \"\"C:\\\\Users\\\\david\\\\Documents\\\\cult\\\\test_output.txt\"\" 2>&1\")",
+      "Bash(echo \"Exit: $?\")",
+      "Bash(powershell.exe -Command \"& ''C:\\\\Users\\\\david\\\\Desktop\\\\misc\\\\Godot net\\\\Godot_v4.4-stable_mono_win64\\\\Godot_v4.4-stable_mono_win64_console.exe'' --headless --path ''C:\\\\Users\\\\david\\\\Documents\\\\cult'' --scene ''res://scenes/TestRunner.tscn'' 2>&1 | Out-File -Encoding utf8 ''C:\\\\Users\\\\david\\\\Documents\\\\cult\\\\test_output.txt''; Write-Host ''Done''\")",
+      "Bash(powershell.exe -Command \"& ''C:\\\\Users\\\\david\\\\Desktop\\\\misc\\\\Godot net\\\\Godot_v4.4-stable_mono_win64\\\\Godot.exe'' --headless --path ''C:\\\\Users\\\\david\\\\Documents\\\\cult'' --scene ''res://scenes/TestRunner.tscn'' 2>&1 | Out-File -Encoding utf8 ''C:\\\\Users\\\\david\\\\Documents\\\\cult\\\\test_output.txt''; Write-Host ''Tests complete''\")",
+      "Bash(python3 -c \":*)",
+      "Bash(python3.exe -c \":*)",
+      "Bash(/c/Users/david/AppData/Local/Programs/Python/Python314/python -c \":*)",
+      "Bash(wc -l \"C:\\\\Users\\\\david\\\\Documents\\\\cult\\\\scripts\"/*.gd)",
+      "Bash(ls -lh *.gd)"
+    ]
+  }
+}

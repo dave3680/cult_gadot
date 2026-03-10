@@ -1,33 +1,131 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/Breeding.gd" id=1]
+[ext_resource type="Script" path="res://scripts/Breeding.gd" id="1"]
 
 [node name="Breeding" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource(1)
+script = ExtResource("1")
 
-[node name="Center" type="CenterContainer" parent="."]
+[node name="RootVBox" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_vertical = 3
+theme_override_constants/separation = 8
 
-[node name="Panel" type="PanelContainer" parent="Center"]
-custom_minimum_size = Vector2(540, 360)
+[node name="TopBar" type="PanelContainer" parent="RootVBox"]
+custom_minimum_size = Vector2(0, 92)
+size_flags_horizontal = 3
 
-[node name="VBox" type="VBoxContainer" parent="Center/Panel"]
+[node name="TopBarVBox" type="VBoxContainer" parent="RootVBox/TopBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-alignment = 1
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -8.0
 
-[node name="Title" type="Label" parent="Center/Panel/VBox"]
-text = "Breeding Results"
-horizontal_alignment = 1
+[node name="TopMainRow" type="HBoxContainer" parent="RootVBox/TopBar/TopBarVBox"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
 
-[node name="Summary" type="Label" parent="Center/Panel/VBox"]
-text = ""
-autowrap_mode = 3
+[node name="ReportLabel" type="Label" parent="RootVBox/TopBar/TopBarVBox/TopMainRow"]
+text = "Breeding Report"
+size_flags_horizontal = 3
+
+[node name="CenterSpacer" type="Control" parent="RootVBox/TopBar/TopBarVBox/TopMainRow"]
+size_flags_horizontal = 3
+
+[node name="RightControls" type="HBoxContainer" parent="RootVBox/TopBar/TopBarVBox/TopMainRow"]
+size_flags_horizontal = 3
+alignment = 2
+theme_override_constants/separation = 18
+
+[node name="BloodWrap" type="HBoxContainer" parent="RootVBox/TopBar/TopBarVBox/TopMainRow/RightControls"]
+alignment = 2
+theme_override_constants/separation = 6
+
+[node name="BloodIcon" type="ColorRect" parent="RootVBox/TopBar/TopBarVBox/TopMainRow/RightControls/BloodWrap"]
+custom_minimum_size = Vector2(14, 14)
+color = Color(0.65, 0.1, 0.12, 1)
+
+[node name="BloodLabel" type="Label" parent="RootVBox/TopBar/TopBarVBox/TopMainRow/RightControls/BloodWrap"]
+text = "0"
+
+[node name="MenuButton" type="Button" parent="RootVBox/TopBar/TopBarVBox/TopMainRow/RightControls"]
+custom_minimum_size = Vector2(92, 34)
+text = "Menu"
+
+[node name="ContentArea" type="PanelContainer" parent="RootVBox"]
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ContinueButton" type="Button" parent="Center/Panel/VBox"]
+[node name="ContentScroll" type="ScrollContainer" parent="RootVBox/ContentArea"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = -12.0
+offset_bottom = -10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ContentVBox" type="VBoxContainer" parent="RootVBox/ContentArea/ContentScroll"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 14
+
+[node name="NestSections" type="VBoxContainer" parent="RootVBox/ContentArea/ContentScroll/ContentVBox"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+
+[node name="WildSection" type="PanelContainer" parent="RootVBox/ContentArea/ContentScroll/ContentVBox"]
+size_flags_horizontal = 3
+visible = false
+
+[node name="WildVBox" type="VBoxContainer" parent="RootVBox/ContentArea/ContentScroll/ContentVBox/WildSection"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = -10.0
+offset_bottom = -8.0
+theme_override_constants/separation = 8
+
+[node name="WildHeader" type="Label" parent="RootVBox/ContentArea/ContentScroll/ContentVBox/WildSection/WildVBox"]
+text = "Wild Breeding"
+
+[node name="WildDivider" type="HSeparator" parent="RootVBox/ContentArea/ContentScroll/ContentVBox/WildSection/WildVBox"]
+
+[node name="WildSubtitle" type="Label" parent="RootVBox/ContentArea/ContentScroll/ContentVBox/WildSection/WildVBox"]
+text = "Wild newborns this week"
+visible = false
+
+[node name="WildCards" type="GridContainer" parent="RootVBox/ContentArea/ContentScroll/ContentVBox/WildSection/WildVBox"]
+columns = 4
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+size_flags_horizontal = 3
+
+[node name="WildEmptyLabel" type="Label" parent="RootVBox/ContentArea/ContentScroll/ContentVBox/WildSection/WildVBox"]
+text = "No wild breeding this week."
+autowrap_mode = 2
+
+[node name="SummaryLine" type="Label" parent="RootVBox/ContentArea/ContentScroll/ContentVBox"]
+text = ""
+visible = false
+autowrap_mode = 2
+
+[node name="BottomBar" type="PanelContainer" parent="RootVBox"]
+custom_minimum_size = Vector2(0, 88)
+size_flags_horizontal = 3
+
+[node name="BottomHBox" type="HBoxContainer" parent="RootVBox/BottomBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="ContinueButton" type="Button" parent="RootVBox/BottomBar/BottomHBox"]
 text = "Continue"
-custom_minimum_size = Vector2(220, 60)
+custom_minimum_size = Vector2(360, 56)

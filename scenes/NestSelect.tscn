@@ -1,73 +1,259 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://scripts/NestSelect.gd" id=1]
+[ext_resource type="Script" path="res://scripts/NestSelect.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/RelicDrawer.tscn" id="2"]
 
 [node name="NestSelect" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource(1)
+script = ExtResource("1")
 
 [node name="RootVBox" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_vertical = 3
+theme_override_constants/separation = 8
 
-[node name="Title" type="Label" parent="RootVBox"]
+[node name="TopBar" type="PanelContainer" parent="RootVBox"]
+custom_minimum_size = Vector2(0, 104)
+size_flags_horizontal = 3
+
+[node name="TopBarVBox" type="VBoxContainer" parent="RootVBox/TopBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -8.0
+theme_override_constants/separation = 6
+
+[node name="TopMainRow" type="HBoxContainer" parent="RootVBox/TopBar/TopBarVBox"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="LeftSpacer" type="Control" parent="RootVBox/TopBar/TopBarVBox/TopMainRow"]
+size_flags_horizontal = 3
+
+[node name="ScreenTitle" type="Label" parent="RootVBox/TopBar/TopBarVBox/TopMainRow"]
 text = "Nest Selection"
+size_flags_horizontal = 3
 horizontal_alignment = 1
 
-[node name="TopInfo" type="Label" parent="RootVBox"]
-text = ""
-autowrap_mode = 3
+[node name="RightControls" type="HBoxContainer" parent="RootVBox/TopBar/TopBarVBox/TopMainRow"]
+size_flags_horizontal = 3
+alignment = 2
+theme_override_constants/separation = 18
+
+[node name="BloodWrap" type="HBoxContainer" parent="RootVBox/TopBar/TopBarVBox/TopMainRow/RightControls"]
+alignment = 2
+theme_override_constants/separation = 6
+
+[node name="BloodIcon" type="ColorRect" parent="RootVBox/TopBar/TopBarVBox/TopMainRow/RightControls/BloodWrap"]
+custom_minimum_size = Vector2(14, 14)
+color = Color(0.65, 0.1, 0.12, 1)
+
+[node name="BloodLabel" type="Label" parent="RootVBox/TopBar/TopBarVBox/TopMainRow/RightControls/BloodWrap"]
+text = "0"
+
+[node name="MenuButton" type="Button" parent="RootVBox/TopBar/TopBarVBox/TopMainRow/RightControls"]
+custom_minimum_size = Vector2(92, 34)
+text = "Menu"
+
+[node name="InfoRow" type="HBoxContainer" parent="RootVBox/TopBar/TopBarVBox"]
+size_flags_horizontal = 3
+
+[node name="PoolSummary" type="Label" parent="RootVBox/TopBar/TopBarVBox/InfoRow"]
+text = "Pool: 0 | Blood: 0 | Bone: 0 | Void: 0 | Soul: 0"
+size_flags_horizontal = 3
 
 [node name="MainHBox" type="HBoxContainer" parent="RootVBox"]
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 12
 
-[node name="PoolPanel" type="PanelContainer" parent="RootVBox/MainHBox"]
+[node name="PoolColumn" type="PanelContainer" parent="RootVBox/MainHBox"]
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 55.0
 
-[node name="PoolVBox" type="VBoxContainer" parent="RootVBox/MainHBox/PoolPanel"]
+[node name="PoolVBox" type="VBoxContainer" parent="RootVBox/MainHBox/PoolColumn"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = -12.0
+offset_bottom = -10.0
+theme_override_constants/separation = 8
+
+[node name="FollowersLabel" type="Label" parent="RootVBox/MainHBox/PoolColumn/PoolVBox"]
+text = "FOLLOWERS"
+
+[node name="PoolScroll" type="ScrollContainer" parent="RootVBox/MainHBox/PoolColumn/PoolVBox"]
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PoolTitle" type="Label" parent="RootVBox/MainHBox/PoolPanel/PoolVBox"]
-text = "Followers (drag to nests)"
-
-[node name="PoolScroll" type="ScrollContainer" parent="RootVBox/MainHBox/PoolPanel/PoolVBox"]
+[node name="PoolList" type="VBoxContainer" parent="RootVBox/MainHBox/PoolColumn/PoolVBox/PoolScroll"]
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 6
 
-[node name="PoolList" type="VBoxContainer" parent="RootVBox/MainHBox/PoolPanel/PoolVBox/PoolScroll"]
+[node name="NestColumn" type="PanelContainer" parent="RootVBox/MainHBox"]
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 45.0
 
-[node name="NestPanel" type="PanelContainer" parent="RootVBox/MainHBox"]
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="NestVBox" type="VBoxContainer" parent="RootVBox/MainHBox/NestPanel"]
+[node name="NestVBox" type="VBoxContainer" parent="RootVBox/MainHBox/NestColumn"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = -12.0
+offset_bottom = -10.0
+theme_override_constants/separation = 8
+
+[node name="NestsLabel" type="Label" parent="RootVBox/MainHBox/NestColumn/NestVBox"]
+text = "NESTS"
+
+[node name="NestList" type="VBoxContainer" parent="RootVBox/MainHBox/NestColumn/NestVBox"]
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="NestTitle" type="Label" parent="RootVBox/MainHBox/NestPanel/NestVBox"]
-text = "Nests"
-
-[node name="NestList" type="VBoxContainer" parent="RootVBox/MainHBox/NestPanel/NestVBox"]
-size_flags_horizontal = 3
-size_flags_vertical = 3
+theme_override_constants/separation = 12
 
 [node name="BottomBar" type="PanelContainer" parent="RootVBox"]
-custom_minimum_size = Vector2(0, 90)
+custom_minimum_size = Vector2(0, 88)
 size_flags_horizontal = 3
 
-[node name="ContinueButton" type="Button" parent="RootVBox/BottomBar"]
+[node name="BottomHBox" type="HBoxContainer" parent="RootVBox/BottomBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "Continue To Battle"
-custom_minimum_size = Vector2(240, 56)
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="ContinueButton" type="Button" parent="RootVBox/BottomBar/BottomHBox"]
+text = "Continue to Battle"
+custom_minimum_size = Vector2(560, 56)
+
+[node name="DetailsOverlay" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+
+[node name="Dimmer" type="ColorRect" parent="DetailsOverlay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+color = Color(0, 0, 0, 0.66)
+
+[node name="DetailsCenter" type="CenterContainer" parent="DetailsOverlay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DetailsPanel" type="PanelContainer" parent="DetailsOverlay/DetailsCenter"]
+custom_minimum_size = Vector2(900, 640)
+
+[node name="DetailsVBox" type="VBoxContainer" parent="DetailsOverlay/DetailsCenter/DetailsPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 12.0
+offset_right = -14.0
+offset_bottom = -12.0
+theme_override_constants/separation = 10
+
+[node name="DetailsHeader" type="HBoxContainer" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox"]
+size_flags_horizontal = 3
+
+[node name="DetailsTitle" type="Label" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox/DetailsHeader"]
+text = "Nest 1 - Details"
+size_flags_horizontal = 3
+
+[node name="CloseX" type="Button" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox/DetailsHeader"]
+text = "X"
+custom_minimum_size = Vector2(40, 34)
+
+[node name="ParentsTitle" type="Label" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox"]
+text = "Parents"
+
+[node name="ParentsRow" type="HBoxContainer" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="ParentACard" type="PanelContainer" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox/ParentsRow"]
+custom_minimum_size = Vector2(390, 200)
+
+[node name="ParentBCard" type="PanelContainer" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox/ParentsRow"]
+custom_minimum_size = Vector2(390, 200)
+
+[node name="FocusTitle" type="Label" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox"]
+text = "Breeding Focus"
+
+[node name="NoFocusLabel" type="Label" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox"]
+text = "No focus set"
+
+[node name="FocusOptions" type="VBoxContainer" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="OptionRarity" type="PanelContainer" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox/FocusOptions"]
+[node name="OptionRarityVBox" type="VBoxContainer" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox/FocusOptions/OptionRarity"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = -8.0
+offset_bottom = -6.0
+theme_override_constants/separation = 2
+[node name="RarityButton" type="Button" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox/FocusOptions/OptionRarity/OptionRarityVBox"]
+text = "Rarity"
+[node name="RarityDesc" type="Label" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox/FocusOptions/OptionRarity/OptionRarityVBox"]
+text = "Favour higher trait rarity in offspring."
+autowrap_mode = 2
+
+[node name="OptionTier" type="PanelContainer" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox/FocusOptions"]
+[node name="OptionTierVBox" type="VBoxContainer" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox/FocusOptions/OptionTier"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = -8.0
+offset_bottom = -6.0
+theme_override_constants/separation = 2
+[node name="TierButton" type="Button" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox/FocusOptions/OptionTier/OptionTierVBox"]
+text = "Tier"
+[node name="TierDesc" type="Label" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox/FocusOptions/OptionTier/OptionTierVBox"]
+text = "Favour higher tier in offspring."
+autowrap_mode = 2
+
+[node name="OptionFamily" type="PanelContainer" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox/FocusOptions"]
+[node name="OptionFamilyVBox" type="VBoxContainer" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox/FocusOptions/OptionFamily"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = -8.0
+offset_bottom = -6.0
+theme_override_constants/separation = 2
+[node name="FamilyButton" type="Button" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox/FocusOptions/OptionFamily/OptionFamilyVBox"]
+text = "Family"
+[node name="FamilyDesc" type="Label" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox/FocusOptions/OptionFamily/OptionFamilyVBox"]
+text = "Favour trait inheritance from parents."
+autowrap_mode = 2
+
+[node name="PredictionTitle" type="Label" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox"]
+text = "Predicted Offspring"
+
+[node name="PredictionLabel" type="Label" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox"]
+text = "Outcome depends on parent traits and focus."
+autowrap_mode = 2
+
+[node name="BottomSpacer" type="Control" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox"]
+size_flags_vertical = 3
+
+[node name="DoneButton" type="Button" parent="DetailsOverlay/DetailsCenter/DetailsPanel/DetailsVBox"]
+text = "Done"
+custom_minimum_size = Vector2(220, 44)
+size_flags_horizontal = 4
+
+[node name="RelicDrawer" parent="." instance=ExtResource("2")]

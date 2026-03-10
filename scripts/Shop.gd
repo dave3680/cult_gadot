@@ -1,20 +1,27 @@
 extends Control
 
-@onready var blood_label: Label = $RootVBox/TopBar/TopBarHBox/BloodLabel
+@onready var shop_label: Label = $RootVBox/TopBar/TopBarVBox/TopMainRow/ShopLabel
+@onready var top_center_label: Label = $RootVBox/TopBar/TopBarVBox/TopMainRow/TopCenterLabel
+@onready var blood_label: Label = $RootVBox/TopBar/TopBarVBox/TopMainRow/RightControls/BloodWrap/BloodLabel
+@onready var menu_button: Button = $RootVBox/TopBar/TopBarVBox/TopMainRow/RightControls/MenuButton
 @onready var skip_button: Button = $RootVBox/BottomArea/BottomHBox/SkipButton
-@onready var shop_tab: Button = $RootVBox/TopBar/TopBarHBox/Tabs/ShopTab
-@onready var pool_tab: Button = $RootVBox/TopBar/TopBarHBox/Tabs/PoolTab
+@onready var shop_tab: Button = $RootVBox/TopBar/TopBarVBox/TopTabsRow/Tabs/ShopTab
+@onready var pool_tab: Button = $RootVBox/TopBar/TopBarVBox/TopTabsRow/Tabs/PoolTab
 @onready var offer_area: Control = $RootVBox/OfferArea
+@onready var offer_row: HBoxContainer = $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow
 @onready var reroll_button: Button = $RootVBox/RelicControls/RerollRelics
 @onready var directors_cut: Button = $RootVBox/RelicControls/DirectorsCut
 @onready var ritual_panel: Control = $RootVBox/RitualPanel
+@onready var ritual_title: Label = $RootVBox/RitualPanel/RitualVBox/RitualTitle
 @onready var ritual_desc: Label = $RootVBox/RitualPanel/RitualVBox/RitualDesc
 @onready var ritual_buy: Button = $RootVBox/RitualPanel/RitualVBox/RitualBuy
 @onready var recruit_panel: Control = $RootVBox/RecruitPanel
-@onready var recruit_msg: Label = $RootVBox/RecruitPanel/RecruitVBox/RecruitMsg
+@onready var recruit_title: Label = $RootVBox/RecruitPanel/RecruitVBox/RecruitHeader/RecruitTitle
+@onready var recruit_msg: Label = $RootVBox/RecruitPanel/RecruitVBox/RecruitHeader/RecruitMsg
 @onready var pool_area: Control = $RootVBox/PoolArea
 @onready var pool_summary: Label = $RootVBox/PoolArea/PoolVBox/PoolSummary
 @onready var pool_list: VBoxContainer = $RootVBox/PoolArea/PoolVBox/PoolScroll/PoolList
+@onready var pool_actions: HBoxContainer = $RootVBox/PoolArea/PoolVBox/PoolActions
 @onready var pool_cull: Button = $RootVBox/PoolArea/PoolVBox/PoolActions/CullSelected
 @onready var pool_fav_a: Button = $RootVBox/PoolArea/PoolVBox/PoolActions/Favored1
 @onready var pool_fav_b: Button = $RootVBox/PoolArea/PoolVBox/PoolActions/Favored2
@@ -30,48 +37,83 @@ var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var selected_pool_id: int = -1
 var pack_select_mode: bool = false
 var pack_selected_ids: Array[int] = []
+var rotary_select_mode: bool = false
+var rotary_selected_ids: Array[int] = []
+var pool_rotary: Button
 var pack_panel: PanelContainer
 var pack_label: Label
 var pack_buttons: Array[Button] = []
 var pack_offers: Array[String] = []
+var offer_hover_tweens: Dictionary = {}
 
 func _ready() -> void:
 	_rng.randomize()
 	offer_nodes = [
 		{
-			"name": $RootVBox/OfferArea/Offer1/Offer1VBox/Offer1Name,
-			"rarity": $RootVBox/OfferArea/Offer1/Offer1VBox/Offer1Rarity,
-			"category": $RootVBox/OfferArea/Offer1/Offer1VBox/Offer1Category,
-			"desc": $RootVBox/OfferArea/Offer1/Offer1VBox/Offer1Desc,
-			"cost": $RootVBox/OfferArea/Offer1/Offer1VBox/Offer1Cost,
-			"buy": $RootVBox/OfferArea/Offer1/Offer1VBox/Offer1Buy,
+			"card": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer1,
+			"banner": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer1/Offer1VBox/Offer1Banner,
+			"name": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer1/Offer1VBox/Offer1Name,
+			"rarity": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer1/Offer1VBox/Offer1Banner/Offer1Rarity,
+			"category": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer1/Offer1VBox/Offer1Category,
+			"desc": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer1/Offer1VBox/Offer1Desc,
+			"cost": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer1/Offer1VBox/Offer1Cost,
+			"buy": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer1/Offer1VBox/Offer1Buy,
 		},
 		{
-			"name": $RootVBox/OfferArea/Offer2/Offer2VBox/Offer2Name,
-			"rarity": $RootVBox/OfferArea/Offer2/Offer2VBox/Offer2Rarity,
-			"category": $RootVBox/OfferArea/Offer2/Offer2VBox/Offer2Category,
-			"desc": $RootVBox/OfferArea/Offer2/Offer2VBox/Offer2Desc,
-			"cost": $RootVBox/OfferArea/Offer2/Offer2VBox/Offer2Cost,
-			"buy": $RootVBox/OfferArea/Offer2/Offer2VBox/Offer2Buy,
+			"card": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer2,
+			"banner": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer2/Offer2VBox/Offer2Banner,
+			"name": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer2/Offer2VBox/Offer2Name,
+			"rarity": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer2/Offer2VBox/Offer2Banner/Offer2Rarity,
+			"category": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer2/Offer2VBox/Offer2Category,
+			"desc": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer2/Offer2VBox/Offer2Desc,
+			"cost": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer2/Offer2VBox/Offer2Cost,
+			"buy": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer2/Offer2VBox/Offer2Buy,
 		},
 		{
-			"name": $RootVBox/OfferArea/Offer3/Offer3VBox/Offer3Name,
-			"rarity": $RootVBox/OfferArea/Offer3/Offer3VBox/Offer3Rarity,
-			"category": $RootVBox/OfferArea/Offer3/Offer3VBox/Offer3Category,
-			"desc": $RootVBox/OfferArea/Offer3/Offer3VBox/Offer3Desc,
-			"cost": $RootVBox/OfferArea/Offer3/Offer3VBox/Offer3Cost,
-			"buy": $RootVBox/OfferArea/Offer3/Offer3VBox/Offer3Buy,
+			"card": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer3,
+			"banner": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer3/Offer3VBox/Offer3Banner,
+			"name": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer3/Offer3VBox/Offer3Name,
+			"rarity": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer3/Offer3VBox/Offer3Banner/Offer3Rarity,
+			"category": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer3/Offer3VBox/Offer3Category,
+			"desc": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer3/Offer3VBox/Offer3Desc,
+			"cost": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer3/Offer3VBox/Offer3Cost,
+			"buy": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer3/Offer3VBox/Offer3Buy,
+		},
+		{
+			"card": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer4,
+			"banner": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer4/Offer4VBox/Offer4Banner,
+			"name": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer4/Offer4VBox/Offer4Name,
+			"rarity": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer4/Offer4VBox/Offer4Banner/Offer4Rarity,
+			"category": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer4/Offer4VBox/Offer4Category,
+			"desc": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer4/Offer4VBox/Offer4Desc,
+			"cost": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer4/Offer4VBox/Offer4Cost,
+			"buy": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer4/Offer4VBox/Offer4Buy,
+		},
+		{
+			"card": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer5,
+			"banner": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer5/Offer5VBox/Offer5Banner,
+			"name": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer5/Offer5VBox/Offer5Name,
+			"rarity": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer5/Offer5VBox/Offer5Banner/Offer5Rarity,
+			"category": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer5/Offer5VBox/Offer5Category,
+			"desc": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer5/Offer5VBox/Offer5Desc,
+			"cost": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer5/Offer5VBox/Offer5Cost,
+			"buy": $RootVBox/OfferArea/OfferMargin/OfferCenter/OfferRow/Offer5/Offer5VBox/Offer5Buy,
 		},
 	]
 	for i in range(offer_nodes.size()):
 		var relic_buy: Button = offer_nodes[i]["buy"]
 		relic_buy.pressed.connect(_on_buy_pressed.bind(i))
+		var card: PanelContainer = offer_nodes[i]["card"]
+		card.mouse_entered.connect(_on_offer_hover.bind(i, true))
+		card.mouse_exited.connect(_on_offer_hover.bind(i, false))
 	recruit_nodes = [
 		{
 			"trait": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit1/Recruit1VBox/Recruit1Trait,
 			"stripe": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit1/Recruit1VBox/Recruit1Stripe,
 			"tier": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit1/Recruit1VBox/Recruit1Tier,
 			"origin": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit1/Recruit1VBox/Recruit1Origin,
+			"cost": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit1/Recruit1VBox/Recruit1Cost,
+			"card": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit1,
 			"buy": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit1/Recruit1VBox/Recruit1Buy,
 		},
 		{
@@ -79,6 +121,8 @@ func _ready() -> void:
 			"stripe": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit2/Recruit2VBox/Recruit2Stripe,
 			"tier": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit2/Recruit2VBox/Recruit2Tier,
 			"origin": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit2/Recruit2VBox/Recruit2Origin,
+			"cost": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit2/Recruit2VBox/Recruit2Cost,
+			"card": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit2,
 			"buy": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit2/Recruit2VBox/Recruit2Buy,
 		},
 		{
@@ -86,6 +130,8 @@ func _ready() -> void:
 			"stripe": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit3/Recruit3VBox/Recruit3Stripe,
 			"tier": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit3/Recruit3VBox/Recruit3Tier,
 			"origin": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit3/Recruit3VBox/Recruit3Origin,
+			"cost": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit3/Recruit3VBox/Recruit3Cost,
+			"card": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit3,
 			"buy": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit3/Recruit3VBox/Recruit3Buy,
 		},
 		{
@@ -93,6 +139,8 @@ func _ready() -> void:
 			"stripe": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit4/Recruit4VBox/Recruit4Stripe,
 			"tier": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit4/Recruit4VBox/Recruit4Tier,
 			"origin": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit4/Recruit4VBox/Recruit4Origin,
+			"cost": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit4/Recruit4VBox/Recruit4Cost,
+			"card": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit4,
 			"buy": $RootVBox/RecruitPanel/RecruitVBox/RecruitRow/Recruit4/Recruit4VBox/Recruit4Buy,
 		},
 	]
@@ -101,6 +149,7 @@ func _ready() -> void:
 		buy_button.pressed.connect(_on_buy_recruit.bind(i))
 
 	skip_button.pressed.connect(_on_skip_pressed)
+	menu_button.pressed.connect(_on_menu_pressed)
 	shop_tab.pressed.connect(_on_shop_tab)
 	pool_tab.pressed.connect(_on_pool_tab)
 	reroll_button.pressed.connect(_on_reroll_pressed)
@@ -112,29 +161,48 @@ func _ready() -> void:
 	pool_ascend.pressed.connect(_on_pool_ascend)
 	pool_apostle.pressed.connect(_on_pool_apostle)
 	pool_pack.pressed.connect(_on_pool_pack_pressed)
+	_build_rotary_button()
 	_build_pack_panel()
+	gs.start_shop_visit()
 	gs.shop_rerolls_used = 0
 	gs.shop_cull_used = false
+	gs.shop_copy_used = false
 	if gs.free_reroll_next_shop:
 		gs.shop_free_reroll_available = true
 		gs.free_reroll_next_shop = false
 	gs.ritual_card_offer = ""
 	if gs.relic_inventory["Spare Chalice"] > 0 and gs.blood_currency == 0:
 		gs.add_blood(2)
+	_apply_ui_theme()
 	_setup_offers()
 	gs.generate_shop_recruits()
 	_setup_recruits()
 	_show_shop_view()
 
 func _setup_offers() -> void:
-	blood_label.text = "Blood: %d" % gs.blood_currency
+	_update_top_bar()
 
 	var week_cleared: int = gs.current_week
-	offers = _roll_offers(3, week_cleared)
+	offers = _roll_offers(3, week_cleared, gs.guaranteed_rare_next_shop)
+	gs.guaranteed_rare_next_shop = false
 	_offer_legendary_if_needed()
+	_record_codex_offer_discoveries()
 	_render_offers(week_cleared)
+	_update_reroll_button()
 	_setup_ritual_offer()
 	_update_directors_cut()
+
+func _record_codex_offer_discoveries() -> void:
+	_record_codex_relic_discoveries(offers)
+
+func _record_codex_pack_discoveries() -> void:
+	_record_codex_relic_discoveries(pack_offers)
+
+func _record_codex_relic_discoveries(relic_names: Array) -> void:
+	for offer_name in relic_names:
+		if str(offer_name) == "":
+			continue
+		gs.codex_mark_relic_seen(str(offer_name))
 
 func _on_buy_pressed(index: int) -> void:
 	if index < 0 or index >= offers.size():
@@ -148,23 +216,27 @@ func _on_buy_pressed(index: int) -> void:
 		return
 	gs.spend_blood_for_relic(cost)
 	gs.add_relic(offer_name)
-	offers[index] = ""
-	blood_label.text = "Blood: %d" % gs.blood_currency
+	if offer_name == "The Palimpsest":
+		offers = _roll_offers(3, gs.current_week, false)
+		_record_codex_offer_discoveries()
+	else:
+		offers[index] = ""
+	_update_top_bar()
 	_render_offers(gs.current_week)
 	_update_reroll_button()
 
 func _rarity_color(rarity: String) -> Color:
 	match rarity:
 		"COMMON":
-			return Color(0.9, 0.9, 0.9)
+			return Color(0.56, 0.6, 0.68)
 		"UNCOMMON":
-			return Color(0.3, 0.8, 0.4)
+			return Color(0.4, 0.62, 0.46)
 		"RARE":
-			return Color(0.4, 0.4, 0.9)
+			return Color(0.45, 0.44, 0.72)
 		"LEGENDARY":
-			return Color(0.9, 0.7, 0.2)
+			return Color(0.72, 0.58, 0.32)
 		_:
-			return Color(0.9, 0.9, 0.9)
+			return Color(0.56, 0.6, 0.68)
 
 func _update_reroll_button() -> void:
 	var reroll_cost: int = 5
@@ -174,28 +246,219 @@ func _update_reroll_button() -> void:
 	reroll_button.disabled = gs.blood_currency < reroll_cost or gs.shop_rerolls_used >= 1
 
 func _render_offers(week_cleared: int) -> void:
+	var visible_count: int = min(offers.size(), offer_nodes.size())
 	for i in range(offer_nodes.size()):
-		var offer_name: String = offers[i]
 		var node: Dictionary = offer_nodes[i]
+		var card: PanelContainer = node["card"]
 		var buy_button: Button = node["buy"]
+		(node["rarity"] as Label).add_theme_font_size_override("font_size", 12)
+		(node["category"] as Label).add_theme_font_size_override("font_size", 11)
+		(node["category"] as Label).add_theme_color_override("font_color", Color(0.7, 0.7, 0.74))
+		(node["name"] as Label).add_theme_font_size_override("font_size", 24)
+		(node["name"] as Label).add_theme_color_override("font_color", Color(0.93, 0.93, 0.96))
+		(node["desc"] as Label).add_theme_font_size_override("font_size", 14)
+		(node["cost"] as Label).add_theme_font_size_override("font_size", 16)
+		(node["cost"] as Label).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		if i >= offers.size():
+			card.visible = false
+			continue
+		card.visible = true
+		card.position.y = 0.0
+		var offer_name: String = offers[i]
 		if offer_name == "":
 			node["name"].text = "-"
-			node["rarity"].text = ""
+			node["rarity"].text = "SOLD OUT"
 			node["category"].text = ""
-			node["desc"].text = "Sold out"
+			node["desc"].text = "This slot is sold out."
 			node["cost"].text = ""
+			node["cost"].remove_theme_color_override("font_color")
 			buy_button.disabled = true
+			buy_button.text = "Owned"
+			_apply_offer_card_style(card, "COMMON", true, false)
 		else:
+			var relic_def: Dictionary = gs.RELIC_DEFS[offer_name]
+			var rarity: String = str(relic_def.get("rarity", "COMMON"))
+			var category: String = str(relic_def.get("category", "RELIC"))
+			var stackable: bool = bool(relic_def.get("stacks", false))
+			var already_owned: bool = int(gs.relic_inventory.get(offer_name, 0)) > 0
+			var owned_non_stackable: bool = already_owned and not stackable
 			node["name"].text = offer_name
-			var rarity: String = gs.RELIC_DEFS[offer_name]["rarity"]
 			var cost: int = gs.get_shop_cost(week_cleared, rarity)
-			node["rarity"].text = "Rarity: %s" % rarity
-			node["rarity"].add_theme_color_override("font_color", _rarity_color(rarity))
-			var category: String = gs.RELIC_DEFS[offer_name]["category"]
-			node["category"].text = "Category: %s" % category
-			node["desc"].text = gs.RELIC_DEFS[offer_name]["desc"]
-			node["cost"].text = "Cost: %d Blood" % cost
-			buy_button.disabled = not gs.can_afford_relic(cost)
+			node["rarity"].text = rarity
+			node["rarity"].add_theme_color_override("font_color", Color(0.95, 0.95, 0.98))
+			node["category"].text = category
+			node["desc"].text = str(relic_def.get("desc", ""))
+			node["cost"].text = "%d Blood" % cost
+			var can_afford: bool = gs.can_afford_relic(cost)
+			node["cost"].add_theme_color_override("font_color", Color(0.9, 0.38, 0.38) if (not can_afford and not owned_non_stackable) else Color(0.9, 0.9, 0.9))
+			buy_button.disabled = owned_non_stackable or not can_afford
+			buy_button.text = "Owned" if owned_non_stackable else "Buy"
+			_apply_offer_card_style(card, rarity, owned_non_stackable, false)
+	_layout_offer_cards(visible_count)
+
+func _layout_offer_cards(visible_count: int) -> void:
+	var widths := {
+		1: 420.0,
+		2: 320.0,
+		3: 270.0,
+		4: 230.0,
+		5: 200.0,
+	}
+	var card_w: float = widths.get(clampi(visible_count, 1, 5), 240.0)
+	for node in offer_nodes:
+		var card: PanelContainer = node["card"]
+		if not card.visible:
+			continue
+		card.custom_minimum_size = Vector2(card_w, 340)
+		card.size = card.custom_minimum_size
+
+func _update_top_bar() -> void:
+	shop_label.text = "Shop"
+	top_center_label.text = "Week %d/%d" % [gs.current_week, gs.get_max_weeks()]
+	blood_label.text = str(gs.blood_currency)
+
+func _on_menu_pressed() -> void:
+	var overlay: Node = get_node_or_null("/root/GlobalMenuOverlay")
+	if overlay != null:
+		if overlay.has_method("open_menu"):
+			overlay.call("open_menu")
+			return
+		if overlay.has_method("_on_menu_pressed"):
+			overlay.call("_on_menu_pressed")
+
+func _apply_ui_theme() -> void:
+	_set_panel_style($RootVBox/TopBar, Color(0.12, 0.11, 0.14, 0.94), Color(0.22, 0.2, 0.24, 0.9), 1, 8)
+	_set_panel_style($RootVBox/RecruitPanel, Color(0.13, 0.12, 0.16, 0.95), Color(0.24, 0.22, 0.27, 0.9), 1, 10)
+	_set_panel_style($RootVBox/RitualPanel, Color(0.13, 0.12, 0.16, 0.95), Color(0.24, 0.22, 0.27, 0.9), 1, 10)
+	_set_panel_style($RootVBox/BottomArea, Color(0.11, 0.1, 0.13, 0.96), Color(0.22, 0.2, 0.24, 0.9), 1, 8)
+	$RootVBox/TopBar/TopBarVBox/TopMainRow/RightControls/BloodWrap/BloodIcon.color = Color(0.65, 0.1, 0.12, 1.0)
+	shop_label.add_theme_font_size_override("font_size", 30)
+	top_center_label.add_theme_font_size_override("font_size", 16)
+	top_center_label.add_theme_color_override("font_color", Color(0.72, 0.72, 0.77))
+	blood_label.add_theme_font_size_override("font_size", 24)
+	shop_tab.custom_minimum_size = Vector2(120, 34)
+	pool_tab.custom_minimum_size = Vector2(120, 34)
+	recruit_title.add_theme_font_size_override("font_size", 20)
+	recruit_msg.add_theme_color_override("font_color", Color(0.9, 0.55, 0.55))
+	skip_button.custom_minimum_size = Vector2(520, 56)
+	reroll_button.add_theme_font_size_override("font_size", 14)
+	var reroll_style: StyleBoxFlat = StyleBoxFlat.new()
+	reroll_style.bg_color = Color(0.0, 0.0, 0.0, 0.0)
+	reroll_style.border_color = Color(0.8, 0.8, 0.85, 0.95)
+	reroll_style.border_width_left = 2
+	reroll_style.border_width_right = 2
+	reroll_style.border_width_top = 2
+	reroll_style.border_width_bottom = 2
+	reroll_style.corner_radius_top_left = 8
+	reroll_style.corner_radius_top_right = 8
+	reroll_style.corner_radius_bottom_left = 8
+	reroll_style.corner_radius_bottom_right = 8
+	reroll_button.add_theme_stylebox_override("normal", reroll_style)
+	reroll_button.add_theme_stylebox_override("hover", reroll_style)
+	reroll_button.add_theme_stylebox_override("pressed", reroll_style)
+	reroll_button.add_theme_stylebox_override("disabled", reroll_style)
+
+func _set_panel_style(panel: PanelContainer, bg: Color, border: Color, border_width: int, radius: int) -> void:
+	var sb: StyleBoxFlat = StyleBoxFlat.new()
+	sb.bg_color = bg
+	sb.border_color = border
+	sb.border_width_left = border_width
+	sb.border_width_right = border_width
+	sb.border_width_top = border_width
+	sb.border_width_bottom = border_width
+	sb.corner_radius_top_left = radius
+	sb.corner_radius_top_right = radius
+	sb.corner_radius_bottom_left = radius
+	sb.corner_radius_bottom_right = radius
+	panel.add_theme_stylebox_override("panel", sb)
+
+func _apply_offer_card_style(card: PanelContainer, rarity: String, desaturated: bool, hovered: bool) -> void:
+	var bg: Color = Color(0.16, 0.15, 0.19, 0.98)
+	var border: Color = Color(0.28, 0.27, 0.33, 0.9)
+	if desaturated:
+		bg = Color(0.14, 0.14, 0.15, 0.95)
+		border = Color(0.34, 0.34, 0.34, 0.9)
+	var sb: StyleBoxFlat = StyleBoxFlat.new()
+	sb.bg_color = bg
+	sb.border_color = border
+	sb.border_width_left = 1
+	sb.border_width_right = 1
+	sb.border_width_top = 1
+	sb.border_width_bottom = 1
+	sb.corner_radius_top_left = 10
+	sb.corner_radius_top_right = 10
+	sb.corner_radius_bottom_left = 10
+	sb.corner_radius_bottom_right = 10
+	sb.shadow_color = Color(0.0, 0.0, 0.0, 0.45)
+	sb.shadow_size = 9 if hovered else 5
+	card.add_theme_stylebox_override("panel", sb)
+	card.modulate = Color(0.72, 0.72, 0.72, 1.0) if desaturated else Color(1, 1, 1, 1)
+	var rarity_banner: PanelContainer = offer_nodes[_offer_card_index(card)]["banner"]
+	var rb: StyleBoxFlat = StyleBoxFlat.new()
+	rb.bg_color = _rarity_color(rarity)
+	if desaturated:
+		rb.bg_color = rb.bg_color.lerp(Color(0.3, 0.3, 0.3), 0.65)
+	rb.corner_radius_top_left = 6
+	rb.corner_radius_top_right = 6
+	rb.corner_radius_bottom_left = 4
+	rb.corner_radius_bottom_right = 4
+	rarity_banner.add_theme_stylebox_override("panel", rb)
+
+func _offer_card_index(card: PanelContainer) -> int:
+	for i in range(offer_nodes.size()):
+		if offer_nodes[i]["card"] == card:
+			return i
+	return 0
+
+func _on_offer_hover(index: int, entering: bool) -> void:
+	if index < 0 or index >= offer_nodes.size():
+		return
+	var node: Dictionary = offer_nodes[index]
+	var card: PanelContainer = node["card"]
+	if not card.visible:
+		return
+	if offer_hover_tweens.has(index):
+		var existing: Tween = offer_hover_tweens[index]
+		if existing != null and is_instance_valid(existing):
+			existing.kill()
+	var t: Tween = create_tween()
+	offer_hover_tweens[index] = t
+	t.set_trans(Tween.TRANS_SINE)
+	t.set_ease(Tween.EASE_OUT)
+	var y_target: float = -5.0 if entering else 0.0
+	t.tween_property(card, "position:y", y_target, 0.1)
+	var rarity_text: String = str((node["rarity"] as Label).text)
+	_apply_offer_card_style(card, rarity_text, (node["buy"] as Button).text == "Owned", entering)
+
+func _apply_recruit_card_style(card: PanelContainer) -> void:
+	var sb: StyleBoxFlat = StyleBoxFlat.new()
+	sb.bg_color = Color(0.17, 0.16, 0.19, 0.98)
+	sb.border_color = Color(0.3, 0.29, 0.34, 0.9)
+	sb.border_width_left = 1
+	sb.border_width_right = 1
+	sb.border_width_top = 1
+	sb.border_width_bottom = 1
+	sb.corner_radius_top_left = 10
+	sb.corner_radius_top_right = 10
+	sb.corner_radius_bottom_left = 10
+	sb.corner_radius_bottom_right = 10
+	sb.shadow_color = Color(0.0, 0.0, 0.0, 0.42)
+	sb.shadow_size = 4
+	card.add_theme_stylebox_override("panel", sb)
+
+func _apply_ritual_style(locked: bool) -> void:
+	var sb: StyleBoxFlat = StyleBoxFlat.new()
+	sb.bg_color = Color(0.15, 0.15, 0.16, 0.96) if locked else Color(0.15, 0.12, 0.17, 0.96)
+	sb.border_color = Color(0.35, 0.35, 0.37, 0.9) if locked else Color(0.36, 0.28, 0.4, 0.9)
+	sb.border_width_left = 1
+	sb.border_width_right = 1
+	sb.border_width_top = 1
+	sb.border_width_bottom = 1
+	sb.corner_radius_top_left = 10
+	sb.corner_radius_top_right = 10
+	sb.corner_radius_bottom_left = 10
+	sb.corner_radius_bottom_right = 10
+	(ritual_panel as PanelContainer).add_theme_stylebox_override("panel", sb)
 
 func _offer_legendary_if_needed() -> void:
 	# Guarantee at least one legendary offer on week 6+ if none has appeared yet.
@@ -222,9 +485,13 @@ func _offer_legendary_if_needed() -> void:
 func _setup_ritual_offer() -> void:
 	ritual_panel.visible = true
 	if gs.relic_inventory["Scarlet Planetarium"] <= 0:
-		ritual_desc.text = "Locked: Requires Scarlet Planetarium."
+		ritual_title.text = "Ritual Card [LOCKED]"
+		ritual_desc.text = "Requires Scarlet Planetarium to unlock ritual offers."
+		ritual_buy.text = "Locked"
 		ritual_buy.disabled = true
+		_apply_ritual_style(true)
 		return
+	ritual_title.text = "Ritual Card (Cost: 2 Blood)"
 	if gs.ritual_card_offer == "":
 		gs.ritual_card_offer = gs.RITUAL_CARDS[_rng.randi_range(0, gs.RITUAL_CARDS.size() - 1)]
 	var desc: String = gs.ritual_card_offer
@@ -237,8 +504,10 @@ func _setup_ritual_offer() -> void:
 			desc = "Rebirth: return 1 sacrificed follower."
 	ritual_desc.text = desc
 	ritual_buy.disabled = gs.blood_currency < 2 or gs.ritual_card_slot != ""
+	ritual_buy.text = "Buy Ritual"
 	if gs.ritual_card_slot != "":
 		ritual_desc.text += "\nHeld: %s" % gs.ritual_card_slot
+	_apply_ritual_style(false)
 
 func _on_reroll_pressed() -> void:
 	if gs.shop_rerolls_used >= 1:
@@ -254,7 +523,7 @@ func _on_reroll_pressed() -> void:
 		gs.shop_free_reroll_available = false
 	gs.shop_rerolls_used += 1
 	_setup_offers()
-	blood_label.text = "Blood: %d" % gs.blood_currency
+	_update_top_bar()
 
 func _on_buy_ritual() -> void:
 	if gs.ritual_card_offer == "" or gs.ritual_card_slot != "":
@@ -264,8 +533,9 @@ func _on_buy_ritual() -> void:
 	gs.blood_currency -= 2
 	gs.ritual_card_slot = gs.ritual_card_offer
 	gs.ritual_card_offer = ""
+	gs.shop_any_purchase_this_visit = true
 	_setup_ritual_offer()
-	blood_label.text = "Blood: %d" % gs.blood_currency
+	_update_top_bar()
 
 func _update_directors_cut() -> void:
 	if gs.relic_inventory["Director's Cut"] <= 0:
@@ -277,9 +547,10 @@ func _update_directors_cut() -> void:
 		directors_cut.visible = false
 		return
 	var base_target: int = gs.get_week_target(next_week)
-	var used: bool = gs.next_week_target_overrides.has(next_week)
+	var max_uses: int = gs.get_directors_cut_max_uses()
+	var used: bool = gs.director_uses_this_shop >= max_uses
 	directors_cut.disabled = used
-	directors_cut.text = "Director's Cut: Next %d" % base_target
+	directors_cut.text = "Director's Cut: Next %d (%d/%d)" % [base_target, gs.director_uses_this_shop, max_uses]
 
 func _on_directors_cut() -> void:
 	if gs.relic_inventory["Director's Cut"] <= 0:
@@ -287,39 +558,65 @@ func _on_directors_cut() -> void:
 	var next_week: int = gs.current_week + 1
 	if next_week > gs.get_max_weeks():
 		return
-	if gs.next_week_target_overrides.has(next_week):
+	if gs.director_uses_this_shop >= gs.get_directors_cut_max_uses():
 		return
 	var base_target: int = gs.get_week_target(next_week)
-	var min_target: int = int(ceil(float(base_target) * 0.85))
-	var max_target: int = int(floor(float(base_target) * 1.15))
+	var pct: float = gs.get_directors_cut_range_pct()
+	var min_target: int = int(ceil(float(base_target) * (1.0 - pct)))
+	var max_target: int = int(floor(float(base_target) * (1.0 + pct)))
 	var rerolled: int = _rng.randi_range(min_target, max_target)
 	rerolled = int(round(float(rerolled) / 5.0)) * 5
 	rerolled = max(5, rerolled)
 	gs.next_week_target_overrides[next_week] = rerolled
+	gs.director_uses_this_shop += 1
 	_update_directors_cut()
 
 func _setup_recruits() -> void:
 	recruit_msg.text = ""
+	recruit_title.text = "Recruits"
 	for i in range(recruit_nodes.size()):
 		var node: Dictionary = recruit_nodes[i]
 		if i >= gs.shop_recruit_offers.size():
-			node["trait"].get_parent().get_parent().visible = false
+			(node["card"] as Control).visible = false
 			continue
-		node["trait"].get_parent().get_parent().visible = true
+		var card: PanelContainer = node["card"]
+		card.visible = true
 		var f: Dictionary = gs.shop_recruit_offers[i]
-		node["trait"].text = "Trait: %s" % f["trait"]
-		node["stripe"].color = _trait_color(f["trait"])
-		node["tier"].text = "Tier: %d" % int(f["tier"])
-		node["origin"].text = "Recruit"
+		var trait_name: String = str(f.get("trait", ""))
+		var trait_id: String = str(f.get("trait_id", ""))
+		(node["stripe"] as ColorRect).color = _trait_color(trait_name)
+		var tier_label: Label = node["tier"]
+		tier_label.text = "T%d" % int(f["tier"])
+		tier_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		tier_label.add_theme_font_size_override("font_size", 28)
+		var type_label: Label = node["origin"]
+		type_label.text = trait_name
+		type_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		type_label.add_theme_font_size_override("font_size", 14)
+		type_label.add_theme_color_override("font_color", _trait_color(trait_name).lerp(Color(1, 1, 1), 0.2))
+		var trait_line: String = "No Trait"
+		if trait_id != "":
+			trait_line = _trait_display(trait_id)
+		trait_line += _follower_trait_badge(f)
+		var trait_label: Label = node["trait"]
+		trait_label.text = trait_line
+		trait_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		trait_label.add_theme_font_size_override("font_size", 12)
+		trait_label.add_theme_color_override("font_color", Color(0.62, 0.62, 0.66) if trait_id == "" else Color(0.86, 0.86, 0.9))
 		var buy_button: Button = node["buy"]
+		var is_free: bool = i < gs.shop_recruit_free.size() and bool(gs.shop_recruit_free[i])
 		var can_copy: bool = gs.shop_recruit_purchased[i] and gs.relic_inventory["Votive Mirror"] > 0 and not gs.shop_copy_used
-		buy_button.disabled = (gs.blood_currency < 1) or (gs.shop_recruit_purchased[i] and not can_copy) or gs.pool.size() >= gs.get_pool_cap()
+		buy_button.disabled = ((not is_free) and gs.blood_currency < 1) or (gs.shop_recruit_purchased[i] and not can_copy) or gs.is_pool_at_capacity()
+		(node["cost"] as Label).text = "%d Blood" % (0 if is_free else 1)
+		(node["cost"] as Label).add_theme_color_override("font_color", Color(0.9, 0.38, 0.38) if (not is_free and gs.blood_currency < 1) else Color(0.9, 0.9, 0.9))
+		(node["cost"] as Label).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		if gs.shop_recruit_purchased[i] and not can_copy:
 			buy_button.text = "Hired"
 		elif can_copy:
-			buy_button.text = "Buy Copy (1)"
+			buy_button.text = "Buy Copy (%d)" % (0 if is_free else 1)
 		else:
-			buy_button.text = "Hire (1)"
+			buy_button.text = "Hire (%d)" % (0 if is_free else 1)
+		_apply_recruit_card_style(card)
 
 func _on_buy_recruit(index: int) -> void:
 	var result: Dictionary = gs.buy_shop_recruit(index)
@@ -329,7 +626,7 @@ func _on_buy_recruit(index: int) -> void:
 		elif result["reason"] == "blood":
 			recruit_msg.text = "Not enough Blood."
 		return
-	blood_label.text = "Blood: %d" % gs.blood_currency
+	_update_top_bar()
 	_setup_ritual_offer()
 	_update_reroll_button()
 	_setup_recruits()
@@ -341,11 +638,23 @@ func _on_skip_pressed() -> void:
 
 func _finish_shop() -> void:
 	var before: int = gs.blood_currency
-	var interest_copies: int = gs.relic_inventory["Crimson Interest"]
+	var interest_copies: int = int(gs.relic_inventory.get("Crimson Interest", 0)) + int(gs.tithe_accelerator_interest_bonus)
+	var crimson_compound_copies: int = int(gs.relic_inventory.get("Crimson Compound", 0))
+	var usurer_copies: int = int(gs.relic_inventory.get("Usurer's Mark", 0))
 	var interest_gain: int = 0
 	if interest_copies > 0:
-		interest_gain = int(floor(float(gs.blood_currency) / 5.0)) * interest_copies
-		gs.add_blood(interest_gain)
+		var divisor: int = max(1, 5 - crimson_compound_copies)
+		var fires: int = 1 + max(0, usurer_copies - 1)
+		for i in range(fires):
+			var gain_i: int = int(floor(float(gs.blood_currency) / float(divisor))) * interest_copies
+			if gain_i <= 0:
+				continue
+			gs.add_blood(gain_i)
+			interest_gain += gain_i
+	if gs.relic_inventory.get("The Waiting Bell", 0) > 0 and not gs.shop_any_purchase_this_visit:
+		gs.add_blood(10)
+		interest_gain += 10
+	gs.finalize_shop_visit()
 	var after: int = gs.blood_currency
 	gs.log_message("SHOP END | Week %d | Blood %d->%d (+%d interest) | Relics: %s | Offers: %s" % [
 		gs.current_week,
@@ -360,10 +669,13 @@ func _finish_shop() -> void:
 	gs.start_week()
 	get_tree().change_scene_to_file("res://scenes/NestSelect.tscn")
 
-func _roll_offers(count: int, week: int) -> Array:
+func _roll_offers(count: int, week: int, guarantee_rare_shop: bool = false) -> Array:
 	var chosen: Array = []
 	for i in range(count):
-		var rarity: String = gs.roll_shop_rarity(week, _rng)
+		var guarantee_slot: bool = guarantee_rare_shop and i == 0
+		var rarity: String = gs.roll_shop_rarity(week, _rng, 0.0, 0.0, guarantee_slot)
+		if gs.shop_rerolls_used > 0 and gs.relic_inventory.get("The Faithful Scribe", 0) > 0:
+			rarity = _raise_rarity_floor(rarity, int(gs.relic_inventory.get("The Faithful Scribe", 0)))
 		var pick: String = _pick_from_rarity(rarity, chosen)
 		if pick == "":
 			pick = _pick_from_rarity(_fallback_rarity(rarity), chosen)
@@ -372,6 +684,14 @@ func _roll_offers(count: int, week: int) -> Array:
 			if gs.RELIC_DEFS[pick]["rarity"] == "LEGENDARY":
 				gs.legendary_seen_in_shop = true
 	return chosen
+
+func _raise_rarity_floor(rarity: String, steps: int) -> String:
+	var order: Array[String] = ["COMMON", "UNCOMMON", "RARE", "LEGENDARY"]
+	var idx: int = order.find(rarity)
+	if idx < 0:
+		idx = 0
+	idx = min(order.size() - 1, idx + max(0, steps))
+	return order[idx]
 
 func _pick_from_rarity(rarity: String, exclude: Array) -> String:
 	var pool: Array = []
@@ -409,6 +729,7 @@ func _show_shop_view() -> void:
 	pool_area.visible = false
 	if pack_panel:
 		pack_panel.visible = false
+	_update_top_bar()
 	_update_directors_cut()
 	_setup_recruits()
 
@@ -422,14 +743,26 @@ func _show_pool_view() -> void:
 	if pack_panel:
 		pack_panel.visible = false
 	_set_pack_mode(false)
+	_update_top_bar()
 	_refresh_pool_list()
+
+func _build_rotary_button() -> void:
+	pool_rotary = Button.new()
+	pool_rotary.name = "RotarySwap"
+	pool_rotary.text = "Rotary Swap"
+	pool_rotary.custom_minimum_size = Vector2(140, 36)
+	pool_rotary.pressed.connect(_on_pool_rotary_pressed)
+	pool_actions.add_child(pool_rotary)
+	pool_actions.move_child(pool_rotary, pool_pack.get_index())
 
 func _refresh_pool_list() -> void:
 	for child in pool_list.get_children():
 		child.queue_free()
 	var summary: Dictionary = gs.pool_summary_counts()
-	pool_summary.text = "Pool Size: %d | Blood: %d  Bone: %d  Void: %d  Soul: %d | Avg Tier: %.1f" % [
+	pool_summary.text = "Pool Size: %d (Cap Load %d/%d) | Blood: %d  Bone: %d  Void: %d  Soul: %d | Avg Tier: %.1f" % [
 		summary["total"],
+		gs.get_pool_load_for_cap(),
+		gs.get_pool_cap(),
 		summary["blood"],
 		summary["bone"],
 		summary["void"],
@@ -450,13 +783,15 @@ func _refresh_pool_list() -> void:
 		row.text = "%s  T%d  %s  (%s #%d)" % [
 			f["trait"],
 			int(f["tier"]),
-			_trait_display(str(f.get("trait_id", ""))),
+			_trait_display(str(f.get("trait_id", ""))) + _follower_trait_badge(f),
 			f["origin_tag"],
 			fid,
 		]
 		row.text += favored_mark
 		if pack_select_mode:
 			row.button_pressed = pack_selected_ids.has(fid)
+		elif rotary_select_mode:
+			row.button_pressed = rotary_selected_ids.has(fid)
 		else:
 			row.button_pressed = (fid == selected_pool_id)
 		var trait_rarity: String = str(gs._trait_rarity(str(f.get("trait_id", ""))))
@@ -464,6 +799,7 @@ func _refresh_pool_list() -> void:
 			row.add_theme_color_override("font_color", Color(0.85, 0.7, 0.2))
 		elif trait_rarity == "LEGENDARY":
 			row.add_theme_color_override("font_color", Color(0.95, 0.55, 0.2))
+		row.tooltip_text = _follower_trait_tooltip_text(f)
 		row.pressed.connect(_on_pool_row_pressed.bind(fid))
 		pool_list.add_child(row)
 
@@ -494,16 +830,72 @@ func _trait_display(trait_id: String) -> String:
 		mark = "[L]"
 	return "%s %s" % [mark, name]
 
+func _follower_all_trait_ids(follower: Dictionary) -> Array[String]:
+	var out: Array[String] = []
+	var primary: String = str(follower.get("trait_id", ""))
+	if primary != "":
+		out.append(primary)
+	for extra in follower.get("trait_ids", []):
+		var tid: String = str(extra)
+		if tid != "" and not out.has(tid):
+			out.append(tid)
+	return out
+
+func _follower_trait_badge(follower: Dictionary) -> String:
+	var count: int = _follower_all_trait_ids(follower).size()
+	if count <= 1:
+		return ""
+	return " x%d" % count
+
+func _trait_base_description(trait_name: String) -> String:
+	match trait_name:
+		"BLOOD":
+			return "BLOOD: Adds tier to additive devotion. Counts for Blood-based bonuses."
+		"BONE":
+			return "BONE: Adds double tier to additive devotion. Counts for Bone-based bonuses."
+		"VOID":
+			return "VOID: Adds to multiplier base. Some effects scale with VOID count."
+		"SOUL":
+			return "SOUL: Exhausted follower. No devotion, no bonuses."
+		_:
+			return "Unknown trait."
+
+func _trait_description_from_registry(trait_id: String) -> String:
+	if trait_id == "":
+		return "Trait: None."
+	var info: Dictionary = _trait_info(trait_id)
+	if info.is_empty():
+		return "Trait: " + trait_id
+	var name: String = str(info.get("name", trait_id))
+	var desc: String = str(info.get("desc", ""))
+	return "%s: %s" % [name, desc]
+
+func _follower_trait_tooltip_text(follower: Dictionary) -> String:
+	var lines: Array[String] = []
+	lines.append(_trait_base_description(str(follower.get("trait", ""))))
+	var all_traits: Array[String] = _follower_all_trait_ids(follower)
+	if all_traits.is_empty():
+		return "\n".join(lines)
+	if all_traits.size() == 1:
+		lines.append(_trait_description_from_registry(all_traits[0]))
+		return "\n".join(lines)
+	lines.append("Traits (%d total):" % all_traits.size())
+	for i in range(all_traits.size()):
+		var tid: String = all_traits[i]
+		var prefix: String = "Primary" if i == 0 else "Extra %d" % i
+		lines.append("- %s: %s" % [prefix, _trait_description_from_registry(tid)])
+	return "\n".join(lines)
+
 func _trait_color(trait_name: String) -> Color:
 	match trait_name:
 		"BLOOD":
-			return Color(0.75, 0.2, 0.2)
+			return Color(0.52, 0.12, 0.12)
 		"BONE":
-			return Color(0.85, 0.85, 0.85)
+			return Color(0.79, 0.79, 0.75)
 		"VOID":
-			return Color(0.25, 0.2, 0.35)
+			return Color(0.24, 0.14, 0.34)
 		"SOUL":
-			return Color(0.55, 0.55, 0.55)
+			return Color(0.78, 0.67, 0.42)
 		_:
 			return Color(0.5, 0.5, 0.5)
 
@@ -515,6 +907,18 @@ func _on_pool_row_pressed(follower_id: int) -> void:
 			if pack_selected_ids.size() >= 10:
 				return
 			pack_selected_ids.append(follower_id)
+	elif rotary_select_mode:
+		if rotary_selected_ids.has(follower_id):
+			rotary_selected_ids.erase(follower_id)
+		else:
+			if rotary_selected_ids.size() >= 2:
+				return
+			rotary_selected_ids.append(follower_id)
+		if rotary_selected_ids.size() == 2:
+			if gs.use_rotary_swap(rotary_selected_ids[0], rotary_selected_ids[1]):
+				rotary_select_mode = false
+				rotary_selected_ids.clear()
+				selected_pool_id = -1
 	else:
 		if selected_pool_id == follower_id:
 			selected_pool_id = -1
@@ -522,28 +926,71 @@ func _on_pool_row_pressed(follower_id: int) -> void:
 			selected_pool_id = follower_id
 	_refresh_pool_list()
 
+func _pool_trait_swap_candidate_count() -> int:
+	return gs.pool.size()
+
 func _update_pool_actions() -> void:
-	var cull_ok: bool = gs.relic_inventory["Culling Knife"] > 0 and not gs.shop_cull_used and selected_pool_id >= 0
+	var rotary_block: bool = rotary_select_mode
+	var culling_knife_ok: bool = gs.relic_inventory.get("Culling Knife", 0) > 0 and not gs.shop_cull_used
+	var pruning_hook_ok: bool = gs.relic_inventory.get("The Pruning Hook", 0) > 0 and not gs.pruning_hook_used_shop
+	var cull_ok: bool = (culling_knife_ok or pruning_hook_ok) and selected_pool_id >= 0
 	if gs.apostle_id == selected_pool_id:
 		cull_ok = false
-	pool_cull.disabled = pack_select_mode or not cull_ok
+	pool_cull.disabled = pack_select_mode or rotary_block or not cull_ok
 	var can_set_favored: bool = gs.relic_inventory["Selective Breeding Scroll"] > 0 and selected_pool_id >= 0
-	pool_fav_a.disabled = pack_select_mode or not can_set_favored
-	pool_fav_b.disabled = pack_select_mode or not can_set_favored
-	pool_ascend.disabled = pack_select_mode or not (gs.relic_inventory["The Soul Lantern"] > 0 and not gs.soul_lantern_used and selected_pool_id >= 0)
-	pool_apostle.disabled = pack_select_mode or not (gs.relic_inventory["First Apostle"] > 0 and gs.apostle_id == -1 and selected_pool_id >= 0)
+	pool_fav_a.disabled = pack_select_mode or rotary_block or not can_set_favored
+	pool_fav_b.disabled = pack_select_mode or rotary_block or not can_set_favored
+	pool_ascend.disabled = pack_select_mode or rotary_block or not (gs.relic_inventory["The Soul Lantern"] > 0 and not gs.soul_lantern_used and selected_pool_id >= 0)
+	pool_apostle.disabled = pack_select_mode or rotary_block or not (gs.relic_inventory["First Apostle"] > 0 and gs.apostle_id == -1 and selected_pool_id >= 0)
+	var rotary_relic_owned: bool = int(gs.relic_inventory.get("The Rotary", 0)) > 0
+	var rotary_candidates_ok: bool = _pool_trait_swap_candidate_count() >= 2
+	if rotary_select_mode:
+		pool_rotary.text = "Cancel Rotary (%d/2)" % rotary_selected_ids.size()
+		pool_rotary.disabled = false
+	elif not rotary_relic_owned:
+		pool_rotary.text = "Rotary Swap"
+		pool_rotary.disabled = true
+	elif gs.rotary_used_shop:
+		pool_rotary.text = "Rotary Used"
+		pool_rotary.disabled = true
+	elif not rotary_candidates_ok:
+		pool_rotary.text = "Rotary Swap"
+		pool_rotary.disabled = true
+	else:
+		pool_rotary.text = "Rotary Swap"
+		pool_rotary.disabled = pack_select_mode
 	if pack_select_mode:
 		pool_pack.text = "Relic Pack (%d/10)" % pack_selected_ids.size()
 		pool_pack.disabled = pack_selected_ids.size() != 10
 	else:
 		pool_pack.text = "Relic Pack (0/10)"
-		pool_pack.disabled = gs.pool.size() < 10
+		pool_pack.disabled = rotary_block or gs.pool.size() < 10
+
+func _on_pool_rotary_pressed() -> void:
+	if pack_select_mode:
+		return
+	if rotary_select_mode:
+		rotary_select_mode = false
+		rotary_selected_ids.clear()
+		_refresh_pool_list()
+		return
+	if int(gs.relic_inventory.get("The Rotary", 0)) <= 0:
+		return
+	if gs.rotary_used_shop:
+		return
+	if _pool_trait_swap_candidate_count() < 2:
+		return
+	selected_pool_id = -1
+	rotary_select_mode = true
+	rotary_selected_ids.clear()
+	_refresh_pool_list()
 
 func _on_pool_cull() -> void:
 	if selected_pool_id < 0:
 		return
 	if gs.cull_follower_by_id(selected_pool_id):
-		gs.shop_cull_used = true
+		if gs.relic_inventory.get("Culling Knife", 0) > 0 and not gs.shop_cull_used:
+			gs.shop_cull_used = true
 		selected_pool_id = -1
 		_refresh_pool_list()
 
@@ -568,7 +1015,7 @@ func _on_pool_ascend() -> void:
 		return
 	if gs.ascend_follower_by_id(selected_pool_id):
 		selected_pool_id = -1
-		blood_label.text = "Blood: %d" % gs.blood_currency
+		_update_top_bar()
 		_refresh_pool_list()
 
 func _on_pool_apostle() -> void:
@@ -626,6 +1073,8 @@ func _build_pack_panel() -> void:
 func _set_pack_mode(enabled: bool) -> void:
 	pack_select_mode = enabled
 	pack_selected_ids.clear()
+	rotary_select_mode = false
+	rotary_selected_ids.clear()
 	selected_pool_id = -1
 	_update_pool_actions()
 
@@ -680,6 +1129,7 @@ func _generate_pack_offers(selected: Array[Dictionary]) -> void:
 		if fallback == "":
 			break
 		pack_offers.append(fallback)
+	_record_codex_pack_discoveries()
 
 func _show_pack_panel() -> void:
 	var hbox := pack_buttons[0].get_parent().get_parent()

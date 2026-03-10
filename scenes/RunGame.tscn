@@ -1,191 +1,492 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://scripts/RunGame.gd" id=1]
+[ext_resource type="Script" path="res://scripts/RunGame.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/RelicDrawer.tscn" id="2"]
 
 [node name="RunGame" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource(1)
+script = ExtResource("1")
 
 [node name="RootVBox" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_vertical = 3
 
-[node name="TopBar" type="PanelContainer" parent="RootVBox"]
-custom_minimum_size = Vector2(0, 80)
-size_flags_horizontal = 3
-
-[node name="TopBarHBox" type="HBoxContainer" parent="RootVBox/TopBar"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="WeekBox" type="HBoxContainer" parent="RootVBox/TopBar/TopBarHBox"]
-size_flags_horizontal = 3
-
-[node name="WeekLabel" type="Label" parent="RootVBox/TopBar/TopBarHBox/WeekBox"]
-text = "Week 1/10"
-size_flags_horizontal = 3
-
-[node name="TargetBox" type="HBoxContainer" parent="RootVBox/TopBar/TopBarHBox"]
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="TargetLabel" type="Label" parent="RootVBox/TopBar/TopBarHBox/TargetBox"]
-text = "Target: 0"
-size_flags_horizontal = 3
-horizontal_alignment = 1
-
-[node name="BloodBox" type="HBoxContainer" parent="RootVBox/TopBar/TopBarHBox"]
-size_flags_horizontal = 3
-alignment = 2
-
-[node name="BloodLabel" type="Label" parent="RootVBox/TopBar/TopBarHBox/BloodBox"]
-text = "Blood: 0"
-size_flags_horizontal = 3
-horizontal_alignment = 2
-
-[node name="MiddleArea" type="VBoxContainer" parent="RootVBox"]
+[node name="BandTop" type="PanelContainer" parent="RootVBox"]
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
 
-[node name="DoctrinePanel" type="PanelContainer" parent="RootVBox/MiddleArea"]
-size_flags_horizontal = 3
-
-[node name="DoctrineHBox" type="HBoxContainer" parent="RootVBox/MiddleArea/DoctrinePanel"]
+[node name="TopBandVBox" type="VBoxContainer" parent="RootVBox/BandTop"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -6.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="TopMainRow" type="HBoxContainer" parent="RootVBox/BandTop/TopBandVBox"]
+size_flags_horizontal = 3
+alignment = 1
+theme_override_constants/separation = 20
+
+[node name="WeekLabel" type="Label" parent="RootVBox/BandTop/TopBandVBox/TopMainRow"]
+text = "Week 1/10 (Round 1/2)"
 size_flags_horizontal = 3
 
-[node name="DoctrineLabel" type="Label" parent="RootVBox/MiddleArea/DoctrinePanel/DoctrineHBox"]
+[node name="TargetCenter" type="VBoxContainer" parent="RootVBox/BandTop/TopBandVBox/TopMainRow"]
+size_flags_horizontal = 3
+alignment = 1
+theme_override_constants/separation = 0
+
+[node name="TargetTag" type="Label" parent="RootVBox/BandTop/TopBandVBox/TopMainRow/TargetCenter"]
+text = "TARGET"
+horizontal_alignment = 1
+
+[node name="TargetValue" type="Label" parent="RootVBox/BandTop/TopBandVBox/TopMainRow/TargetCenter"]
+text = "0"
+horizontal_alignment = 1
+
+[node name="RightControls" type="HBoxContainer" parent="RootVBox/BandTop/TopBandVBox/TopMainRow"]
+size_flags_horizontal = 3
+alignment = 2
+theme_override_constants/separation = 20
+
+[node name="BloodWrap" type="HBoxContainer" parent="RootVBox/BandTop/TopBandVBox/TopMainRow/RightControls"]
+alignment = 2
+theme_override_constants/separation = 6
+
+[node name="BloodIcon" type="ColorRect" parent="RootVBox/BandTop/TopBandVBox/TopMainRow/RightControls/BloodWrap"]
+custom_minimum_size = Vector2(14, 14)
+color = Color(0.65, 0.1, 0.12, 1)
+
+[node name="BloodLabel" type="Label" parent="RootVBox/BandTop/TopBandVBox/TopMainRow/RightControls/BloodWrap"]
+text = "5"
+
+[node name="MenuButton" type="Button" parent="RootVBox/BandTop/TopBandVBox/TopMainRow/RightControls"]
+custom_minimum_size = Vector2(94, 34)
+text = "Menu"
+
+[node name="TopSecondaryRow" type="HBoxContainer" parent="RootVBox/BandTop/TopBandVBox"]
+size_flags_horizontal = 3
+
+[node name="DoctrineTopLabel" type="Label" parent="RootVBox/BandTop/TopBandVBox/TopSecondaryRow"]
 text = "Doctrine: -"
 size_flags_horizontal = 3
 
-[node name="DoctrineAction" type="Button" parent="RootVBox/MiddleArea/DoctrinePanel/DoctrineHBox"]
-text = "Doctrine Action"
-custom_minimum_size = Vector2(180, 40)
-
-[node name="PoolButton" type="Button" parent="RootVBox/MiddleArea/DoctrinePanel/DoctrineHBox"]
-text = "Pool"
-custom_minimum_size = Vector2(100, 40)
-
-[node name="DoctrineHint" type="Label" parent="RootVBox/MiddleArea/DoctrinePanel/DoctrineHBox"]
-text = "Select exactly 1 card"
+[node name="BandFollower" type="PanelContainer" parent="RootVBox"]
 size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 30.0
 
-[node name="HandPanel" type="PanelContainer" parent="RootVBox/MiddleArea"]
-size_flags_horizontal = 3
-
-[node name="HandVBox" type="VBoxContainer" parent="RootVBox/MiddleArea/HandPanel"]
+[node name="FollowerMargin" type="MarginContainer" parent="RootVBox/BandFollower"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-size_flags_horizontal = 3
+offset_left = 18.0
+offset_top = 12.0
+offset_right = -18.0
+offset_bottom = -12.0
 
-[node name="HandLabel" type="Label" parent="RootVBox/MiddleArea/HandPanel/HandVBox"]
-text = "Hand"
-
-[node name="HandBox" type="HBoxContainer" parent="RootVBox/MiddleArea/HandPanel/HandVBox"]
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Card1" type="Button" parent="RootVBox/MiddleArea/HandPanel/HandVBox/HandBox"]
-custom_minimum_size = Vector2(120, 140)
-toggle_mode = true
-focus_mode = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "T1\nBLOOD"
-
-[node name="Card2" type="Button" parent="RootVBox/MiddleArea/HandPanel/HandVBox/HandBox"]
-custom_minimum_size = Vector2(120, 140)
-toggle_mode = true
-focus_mode = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "T1\nBONE"
-
-[node name="Card3" type="Button" parent="RootVBox/MiddleArea/HandPanel/HandVBox/HandBox"]
-custom_minimum_size = Vector2(120, 140)
-toggle_mode = true
-focus_mode = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "T1\nVOID"
-
-[node name="Card4" type="Button" parent="RootVBox/MiddleArea/HandPanel/HandVBox/HandBox"]
-custom_minimum_size = Vector2(120, 140)
-toggle_mode = true
-focus_mode = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "T1\nBLOOD"
-
-[node name="Card5" type="Button" parent="RootVBox/MiddleArea/HandPanel/HandVBox/HandBox"]
-custom_minimum_size = Vector2(120, 140)
-toggle_mode = true
-focus_mode = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "T1\nBONE"
-
-[node name="Card6" type="Button" parent="RootVBox/MiddleArea/HandPanel/HandVBox/HandBox"]
-custom_minimum_size = Vector2(120, 140)
-toggle_mode = true
-focus_mode = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "T1\nVOID"
-
-[node name="BreakdownPanel" type="PanelContainer" parent="RootVBox/MiddleArea"]
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="BreakdownVBox" type="VBoxContainer" parent="RootVBox/MiddleArea/BreakdownPanel"]
+[node name="FollowerCenter" type="CenterContainer" parent="RootVBox/BandFollower/FollowerMargin"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="BreakdownLabel" type="Label" parent="RootVBox/MiddleArea/BreakdownPanel/BreakdownVBox"]
-text = "Breakdown"
-
-[node name="BreakdownScroll" type="ScrollContainer" parent="RootVBox/MiddleArea/BreakdownPanel/BreakdownVBox"]
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="BreakdownText" type="Label" parent="RootVBox/MiddleArea/BreakdownPanel/BreakdownVBox/BreakdownScroll"]
-text = ""
-size_flags_horizontal = 3
-size_flags_vertical = 3
-autowrap_mode = 3
-
-[node name="BottomBar" type="PanelContainer" parent="RootVBox"]
-custom_minimum_size = Vector2(0, 100)
-size_flags_horizontal = 3
-
-[node name="BottomHBox" type="HBoxContainer" parent="RootVBox/BottomBar"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 3
+[node name="FollowerRow" type="HBoxContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter"]
 alignment = 1
+theme_override_constants/separation = 16
 
-[node name="ConfirmButton" type="Button" parent="RootVBox/BottomBar/BottomHBox"]
-custom_minimum_size = Vector2(200, 60)
+[node name="Card1" type="PanelContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow"]
+custom_minimum_size = Vector2(152, 176)
+mouse_filter = 1
+
+[node name="CardMargin" type="MarginContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+
+[node name="CardVBox" type="VBoxContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card1/CardMargin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="TierLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card1/CardMargin/CardVBox"]
+text = "T1"
+horizontal_alignment = 1
+
+[node name="TypeLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card1/CardMargin/CardVBox"]
+text = "BLOOD"
+horizontal_alignment = 1
+
+[node name="TraitSpacer" type="Control" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card1/CardMargin/CardVBox"]
+size_flags_vertical = 3
+
+[node name="TraitLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card1/CardMargin/CardVBox"]
+text = "Trait [C]"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Card2" type="PanelContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow"]
+custom_minimum_size = Vector2(152, 176)
+mouse_filter = 1
+
+[node name="CardMargin" type="MarginContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+
+[node name="CardVBox" type="VBoxContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card2/CardMargin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="TierLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card2/CardMargin/CardVBox"]
+text = "T1"
+horizontal_alignment = 1
+
+[node name="TypeLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card2/CardMargin/CardVBox"]
+text = "BONE"
+horizontal_alignment = 1
+
+[node name="TraitSpacer" type="Control" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card2/CardMargin/CardVBox"]
+size_flags_vertical = 3
+
+[node name="TraitLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card2/CardMargin/CardVBox"]
+text = "Trait [C]"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Card3" type="PanelContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow"]
+custom_minimum_size = Vector2(152, 176)
+mouse_filter = 1
+
+[node name="CardMargin" type="MarginContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+
+[node name="CardVBox" type="VBoxContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card3/CardMargin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="TierLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card3/CardMargin/CardVBox"]
+text = "T1"
+horizontal_alignment = 1
+
+[node name="TypeLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card3/CardMargin/CardVBox"]
+text = "VOID"
+horizontal_alignment = 1
+
+[node name="TraitSpacer" type="Control" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card3/CardMargin/CardVBox"]
+size_flags_vertical = 3
+
+[node name="TraitLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card3/CardMargin/CardVBox"]
+text = "Trait [C]"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Card4" type="PanelContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow"]
+custom_minimum_size = Vector2(152, 176)
+mouse_filter = 1
+
+[node name="CardMargin" type="MarginContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+
+[node name="CardVBox" type="VBoxContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card4/CardMargin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="TierLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card4/CardMargin/CardVBox"]
+text = "T1"
+horizontal_alignment = 1
+
+[node name="TypeLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card4/CardMargin/CardVBox"]
+text = "BLOOD"
+horizontal_alignment = 1
+
+[node name="TraitSpacer" type="Control" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card4/CardMargin/CardVBox"]
+size_flags_vertical = 3
+
+[node name="TraitLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card4/CardMargin/CardVBox"]
+text = "Trait [C]"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Card5" type="PanelContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow"]
+custom_minimum_size = Vector2(152, 176)
+mouse_filter = 1
+
+[node name="CardMargin" type="MarginContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+
+[node name="CardVBox" type="VBoxContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card5/CardMargin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="TierLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card5/CardMargin/CardVBox"]
+text = "T1"
+horizontal_alignment = 1
+
+[node name="TypeLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card5/CardMargin/CardVBox"]
+text = "BONE"
+horizontal_alignment = 1
+
+[node name="TraitSpacer" type="Control" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card5/CardMargin/CardVBox"]
+size_flags_vertical = 3
+
+[node name="TraitLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card5/CardMargin/CardVBox"]
+text = "Trait [C]"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Card6" type="PanelContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow"]
+custom_minimum_size = Vector2(152, 176)
+mouse_filter = 1
+
+[node name="CardMargin" type="MarginContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+
+[node name="CardVBox" type="VBoxContainer" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card6/CardMargin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="TierLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card6/CardMargin/CardVBox"]
+text = "T1"
+horizontal_alignment = 1
+
+[node name="TypeLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card6/CardMargin/CardVBox"]
+text = "VOID"
+horizontal_alignment = 1
+
+[node name="TraitSpacer" type="Control" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card6/CardMargin/CardVBox"]
+size_flags_vertical = 3
+
+[node name="TraitLabel" type="Label" parent="RootVBox/BandFollower/FollowerMargin/FollowerCenter/FollowerRow/Card6/CardMargin/CardVBox"]
+text = "Trait [C]"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BandPit" type="PanelContainer" parent="RootVBox"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 30.0
+
+[node name="PitMargin" type="MarginContainer" parent="RootVBox/BandPit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = -16.0
+offset_bottom = -12.0
+
+[node name="PitVBox" type="VBoxContainer" parent="RootVBox/BandPit/PitMargin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="PitTopRow" type="HBoxContainer" parent="RootVBox/BandPit/PitMargin/PitVBox"]
+size_flags_horizontal = 3
+
+[node name="PitLabel" type="Label" parent="RootVBox/BandPit/PitMargin/PitVBox/PitTopRow"]
+text = "ALTAR"
+size_flags_horizontal = 3
+
+[node name="PitSpacer" type="Control" parent="RootVBox/BandPit/PitMargin/PitVBox/PitTopRow"]
+size_flags_horizontal = 3
+
+[node name="ContractToggle" type="Button" parent="RootVBox/BandPit/PitMargin/PitVBox/PitTopRow"]
+custom_minimum_size = Vector2(170, 34)
+text = "Contract"
+
+[node name="PitCounter" type="Label" parent="RootVBox/BandPit/PitMargin/PitVBox/PitTopRow"]
+text = "0 / 3"
+horizontal_alignment = 2
+
+[node name="PitDropArea" type="PanelContainer" parent="RootVBox/BandPit/PitMargin/PitVBox"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="PitDropMargin" type="MarginContainer" parent="RootVBox/BandPit/PitMargin/PitVBox/PitDropArea"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="PitDropVBox" type="VBoxContainer" parent="RootVBox/BandPit/PitMargin/PitVBox/PitDropArea/PitDropMargin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="PitCardsCenter" type="CenterContainer" parent="RootVBox/BandPit/PitMargin/PitVBox/PitDropArea/PitDropMargin/PitDropVBox"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PitCardsRow" type="HBoxContainer" parent="RootVBox/BandPit/PitMargin/PitVBox/PitDropArea/PitDropMargin/PitDropVBox/PitCardsCenter"]
+alignment = 1
+theme_override_constants/separation = 12
+
+[node name="PitActionCenter" type="CenterContainer" parent="RootVBox/BandPit/PitMargin/PitVBox/PitDropArea/PitDropMargin/PitDropVBox"]
+size_flags_horizontal = 3
+
+[node name="ConfirmButton" type="Button" parent="RootVBox/BandPit/PitMargin/PitVBox/PitDropArea/PitDropMargin/PitDropVBox/PitActionCenter"]
+custom_minimum_size = Vector2(240, 48)
 text = "Confirm Sacrifice"
 
-[node name="ClearButton" type="Button" parent="RootVBox/BottomBar/BottomHBox"]
-custom_minimum_size = Vector2(200, 60)
+[node name="ClearButton" type="Button" parent="RootVBox/BandPit/PitMargin/PitVBox/PitDropArea/PitDropMargin/PitDropVBox"]
+visible = false
 text = "Clear Selection"
 
-[node name="ContractToggle" type="Button" parent="RootVBox/BottomBar/BottomHBox"]
-custom_minimum_size = Vector2(200, 60)
-text = "Contract: 4 (0/1)"
+[node name="BandContext" type="PanelContainer" parent="RootVBox"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 32.0
 
-[node name="RitualUse" type="Button" parent="RootVBox/BottomBar/BottomHBox"]
-custom_minimum_size = Vector2(200, 60)
-text = "Use Ritual"
+[node name="ContextMargin" type="MarginContainer" parent="RootVBox/BandContext"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = -16.0
+offset_bottom = -12.0
+
+[node name="ContextRoot" type="Control" parent="RootVBox/BandContext/ContextMargin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PreviewPanel" type="HBoxContainer" parent="RootVBox/BandContext/ContextMargin/ContextRoot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 14
+
+[node name="PreviewLeft" type="VBoxContainer" parent="RootVBox/BandContext/ContextMargin/ContextRoot/PreviewPanel"]
+custom_minimum_size = Vector2(280, 0)
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="DoctrineAction" type="Button" parent="RootVBox/BandContext/ContextMargin/ContextRoot/PreviewPanel/PreviewLeft"]
+custom_minimum_size = Vector2(260, 84)
+text = "Doctrine"
+
+[node name="DoctrineHint" type="Label" parent="RootVBox/BandContext/ContextMargin/ContextRoot/PreviewPanel/PreviewLeft"]
+text = "Select exactly 1 follower"
+autowrap_mode = 3
+
+[node name="RitualUse" type="Button" parent="RootVBox/BandContext/ContextMargin/ContextRoot/PreviewPanel/PreviewLeft"]
+custom_minimum_size = Vector2(180, 34)
+text = "Rituals"
+
+[node name="PreviewRightPanel" type="PanelContainer" parent="RootVBox/BandContext/ContextMargin/ContextRoot/PreviewPanel"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PreviewRightVBox" type="VBoxContainer" parent="RootVBox/BandContext/ContextMargin/ContextRoot/PreviewPanel/PreviewRightPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="PreviewHeader" type="Label" parent="RootVBox/BandContext/ContextMargin/ContextRoot/PreviewPanel/PreviewRightPanel/PreviewRightVBox"]
+text = "PREVIEW"
+
+[node name="PreviewText" type="RichTextLabel" parent="RootVBox/BandContext/ContextMargin/ContextRoot/PreviewPanel/PreviewRightPanel/PreviewRightVBox"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = ""
+autowrap_mode = 2
+
+[node name="BreakdownPanel" type="Control" parent="RootVBox/BandContext/ContextMargin/ContextRoot"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BreakdownVBox" type="VBoxContainer" parent="RootVBox/BandContext/ContextMargin/ContextRoot/BreakdownPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="BreakdownTitle" type="Label" parent="RootVBox/BandContext/ContextMargin/ContextRoot/BreakdownPanel/BreakdownVBox"]
+text = "SACRIFICE RESULT"
+
+[node name="BreakdownScroll" type="ScrollContainer" parent="RootVBox/BandContext/ContextMargin/ContextRoot/BreakdownPanel/BreakdownVBox"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BreakdownLines" type="VBoxContainer" parent="RootVBox/BandContext/ContextMargin/ContextRoot/BreakdownPanel/BreakdownVBox/BreakdownScroll"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="BreakdownBottom" type="HBoxContainer" parent="RootVBox/BandContext/ContextMargin/ContextRoot/BreakdownPanel/BreakdownVBox"]
+size_flags_horizontal = 3
+
+[node name="PoolButton" type="Button" parent="RootVBox/BandContext/ContextMargin/ContextRoot/BreakdownPanel/BreakdownVBox/BreakdownBottom"]
+custom_minimum_size = Vector2(150, 38)
+text = "View Pool"
+
+[node name="BottomSpacer" type="Control" parent="RootVBox/BandContext/ContextMargin/ContextRoot/BreakdownPanel/BreakdownVBox/BreakdownBottom"]
+size_flags_horizontal = 3
+
+[node name="ContinueButton" type="Button" parent="RootVBox/BandContext/ContextMargin/ContextRoot/BreakdownPanel/BreakdownVBox/BreakdownBottom"]
+custom_minimum_size = Vector2(170, 38)
+text = "Continue"
 
 [node name="PoolOverlay" type="PanelContainer" parent="."]
 visible = false
@@ -226,3 +527,5 @@ size_flags_vertical = 3
 [node name="PoolClose" type="Button" parent="PoolOverlay/PoolCenter/PoolPanel/PoolVBox"]
 text = "Close"
 custom_minimum_size = Vector2(120, 40)
+
+[node name="RelicDrawer" parent="RootVBox/BandTop/TopBandVBox/TopMainRow/RightControls" instance=ExtResource("2")]

@@ -1,0 +1,850 @@
+
+=== Cult of Accumulation: Exhaustive Test Runner ===
+Seed: 7263491
+
+=== BalanceSim (Random Plays, With Relics) ===
+
+Profile: expert
+
+Doctrine: FLESH
+Week 1 | PassRate: 100.0% | AvgRound: 49.30 | AvgWeek: 61.79 | AvgOverflow: 14.81 | AvgEarly: 13.67 | AvgEarned: 33.16 | AvgSpent: 36.03 | AvgPool: 17.66
+PowerFeel | TraitTrig: 96.8% | TraitAdd/Round: 10.58 | TraitBlood/Round: 0.87 | NestUse: 100.0% | NestBorn: 2.03 | WildBorn: 2.28 | NewbornTier: 6.14 | Rarity C/R/L/N: 0.60/0.27/0.05/0.09
+BreedingEV | ExpNestTier: 6.96 | ActNestTier: 6.97 | DeltaTier: +0.01 | ExpNestRare: 0.36 | ActNestRare: 0.38 | DeltaRare: +0.02
+AvgRelicsEndWeek: 1.78
+AvgShopEntryBlood: 38.12
+Wins: 600 | AvgRelicsOnWin: 1.78
+Week 2 | PassRate: 99.0% | AvgRound: 53.41 | AvgWeek: 80.76 | AvgOverflow: 19.31 | AvgEarly: 7.87 | AvgEarned: 34.16 | AvgSpent: 30.61 | AvgPool: 18.84
+PowerFeel | TraitTrig: 94.4% | TraitAdd/Round: 9.31 | TraitBlood/Round: 0.95 | NestUse: 100.0% | NestBorn: 2.02 | WildBorn: 2.57 | NewbornTier: 7.22 | Rarity C/R/L/N: 0.57/0.28/0.05/0.10
+BreedingEV | ExpNestTier: 8.19 | ActNestTier: 8.20 | DeltaTier: +0.00 | ExpNestRare: 0.41 | ActNestRare: 0.41 | DeltaRare: +0.00
+AvgRelicsEndWeek: 3.29
+AvgShopEntryBlood: 36.43
+Wins: 594 | AvgRelicsOnWin: 3.30
+Losses: 6 | AvgRelicsOnLoss: 1.83
+Week 3 | PassRate: 81.2% | AvgRound: 53.83 | AvgWeek: 94.63 | AvgOverflow: 17.64 | AvgEarly: 3.20 | AvgEarned: 30.44 | AvgSpent: 25.89 | AvgPool: 18.97
+PowerFeel | TraitTrig: 90.8% | TraitAdd/Round: 8.63 | TraitBlood/Round: 0.90 | NestUse: 100.0% | NestBorn: 1.67 | WildBorn: 2.44 | NewbornTier: 8.08 | Rarity C/R/L/N: 0.55/0.29/0.04/0.11
+BreedingEV | ExpNestTier: 9.24 | ActNestTier: 9.18 | DeltaTier: -0.06 | ExpNestRare: 0.47 | ActNestRare: 0.47 | DeltaRare: +0.00
+AvgRelicsEndWeek: 4.61
+AvgShopEntryBlood: 40.22
+Wins: 487 | AvgRelicsOnWin: 4.97
+Losses: 107 | AvgRelicsOnLoss: 2.94
+Week 4 | PassRate: 46.3% | AvgRound: 66.62 | AvgWeek: 94.90 | AvgOverflow: 12.90 | AvgEarly: 1.63 | AvgEarned: 23.59 | AvgSpent: 18.16 | AvgPool: 19.32
+PowerFeel | TraitTrig: 89.1% | TraitAdd/Round: 8.18 | TraitBlood/Round: 0.91 | NestUse: 100.0% | NestBorn: 0.95 | WildBorn: 1.70 | NewbornTier: 8.71 | Rarity C/R/L/N: 0.51/0.31/0.06/0.12
+BreedingEV | ExpNestTier: 9.87 | ActNestTier: 9.85 | DeltaTier: -0.02 | ExpNestRare: 0.55 | ActNestRare: 0.55 | DeltaRare: -0.01
+AvgRelicsEndWeek: 6.08
+AvgShopEntryBlood: 49.67
+Wins: 278 | AvgRelicsOnWin: 7.31
+Losses: 209 | AvgRelicsOnLoss: 4.45
+Week 5 | PassRate: 23.5% | AvgRound: 87.76 | AvgWeek: 71.89 | AvgOverflow: 8.93 | AvgEarly: 1.10 | AvgEarned: 15.56 | AvgSpent: 10.41 | AvgPool: 22.88
+PowerFeel | TraitTrig: 86.8% | TraitAdd/Round: 7.28 | TraitBlood/Round: 0.91 | NestUse: 100.0% | NestBorn: 0.50 | WildBorn: 1.23 | NewbornTier: 8.92 | Rarity C/R/L/N: 0.45/0.35/0.07/0.14
+BreedingEV | ExpNestTier: 9.90 | ActNestTier: 9.83 | DeltaTier: -0.07 | ExpNestRare: 0.71 | ActNestRare: 0.71 | DeltaRare: -0.00
+AvgRelicsEndWeek: 8.40
+AvgShopEntryBlood: 64.08
+Wins: 141 | AvgRelicsOnWin: 10.12
+Losses: 137 | AvgRelicsOnLoss: 6.64
+Week 6 | PassRate: 12.2% | AvgRound: 115.70 | AvgWeek: 49.21 | AvgOverflow: 5.78 | AvgEarly: 0.70 | AvgEarned: 9.36 | AvgSpent: 6.26 | AvgPool: 29.94
+PowerFeel | TraitTrig: 88.1% | TraitAdd/Round: 8.44 | TraitBlood/Round: 0.80 | NestUse: 100.0% | NestBorn: 0.26 | WildBorn: 0.91 | NewbornTier: 8.93 | Rarity C/R/L/N: 0.45/0.31/0.08/0.15
+BreedingEV | ExpNestTier: 9.88 | ActNestTier: 9.74 | DeltaTier: -0.14 | ExpNestRare: 0.69 | ActNestRare: 0.68 | DeltaRare: -0.02
+AvgRelicsEndWeek: 11.23
+AvgShopEntryBlood: 89.03
+Wins: 73 | AvgRelicsOnWin: 12.86
+Losses: 68 | AvgRelicsOnLoss: 9.49
+Week 7 | PassRate: 6.7% | AvgRound: 195.34 | AvgWeek: 38.10 | AvgOverflow: 5.78 | AvgEarly: 0.50 | AvgEarned: 7.91 | AvgSpent: 4.03 | AvgPool: 41.92
+PowerFeel | TraitTrig: 84.7% | TraitAdd/Round: 9.38 | TraitBlood/Round: 0.78 | NestUse: 100.0% | NestBorn: 0.15 | WildBorn: 0.83 | NewbornTier: 9.02 | Rarity C/R/L/N: 0.45/0.30/0.08/0.17
+BreedingEV | ExpNestTier: 9.90 | ActNestTier: 9.85 | DeltaTier: -0.05 | ExpNestRare: 0.63 | ActNestRare: 0.64 | DeltaRare: +0.01
+AvgRelicsEndWeek: 14.41
+AvgShopEntryBlood: 154.47
+Wins: 40 | AvgRelicsOnWin: 16.38
+Losses: 33 | AvgRelicsOnLoss: 12.03
+Week 8 | PassRate: 4.8% | AvgRound: 346.34 | AvgWeek: 31.60 | AvgOverflow: 4.84 | AvgEarly: 0.50 | AvgEarned: 6.42 | AvgSpent: 2.97 | AvgPool: 67.13
+PowerFeel | TraitTrig: 87.7% | TraitAdd/Round: 9.72 | TraitBlood/Round: 0.58 | NestUse: 100.0% | NestBorn: 0.11 | WildBorn: 0.90 | NewbornTier: 9.31 | Rarity C/R/L/N: 0.45/0.28/0.11/0.16
+BreedingEV | ExpNestTier: 9.91 | ActNestTier: 9.87 | DeltaTier: -0.04 | ExpNestRare: 0.54 | ActNestRare: 0.50 | DeltaRare: -0.04
+AvgRelicsEndWeek: 18.52
+AvgShopEntryBlood: 235.21
+Wins: 29 | AvgRelicsOnWin: 19.55
+Losses: 11 | AvgRelicsOnLoss: 15.82
+Week 9 | PassRate: 3.7% | AvgRound: 490.69 | AvgWeek: 38.53 | AvgOverflow: 6.75 | AvgEarly: 0.23 | AvgEarned: 8.21 | AvgSpent: 2.41 | AvgPool: 95.83
+PowerFeel | TraitTrig: 86.3% | TraitAdd/Round: 8.14 | TraitBlood/Round: 0.57 | NestUse: 100.0% | NestBorn: 0.09 | WildBorn: 0.90 | NewbornTier: 9.42 | Rarity C/R/L/N: 0.45/0.27/0.13/0.16
+BreedingEV | ExpNestTier: 9.91 | ActNestTier: 9.96 | DeltaTier: +0.05 | ExpNestRare: 0.37 | ActNestRare: 0.33 | DeltaRare: -0.04
+AvgRelicsEndWeek: 21.79
+AvgShopEntryBlood: 395.27
+Wins: 22 | AvgRelicsOnWin: 22.59
+Losses: 7 | AvgRelicsOnLoss: 19.29
+Week 10 | PassRate: 2.2% | AvgRound: 693.10 | AvgWeek: 43.11 | AvgOverflow: 6.67 | AvgEarly: 0.17 | AvgEarned: 8.38 | AvgSpent: 1.40 | AvgPool: 124.27
+PowerFeel | TraitTrig: 87.2% | TraitAdd/Round: 9.31 | TraitBlood/Round: 0.77 | NestUse: 100.0% | NestBorn: 0.05 | WildBorn: 0.71 | NewbornTier: 9.51 | Rarity C/R/L/N: 0.46/0.32/0.09/0.13
+BreedingEV | ExpNestTier: 9.91 | ActNestTier: 10.00 | DeltaTier: +0.09 | ExpNestRare: 0.38 | ActNestRare: 0.31 | DeltaRare: -0.06
+AvgRelicsEndWeek: 24.36
+AvgShopEntryBlood: 667.77
+Wins: 13 | AvgRelicsOnWin: 25.69
+Losses: 9 | AvgRelicsOnLoss: 22.44
+Run-End Relics By End Week:
+- End Week 2: Runs 6 | AvgRelicsAtEnd 1.83
+- End Week 3: Runs 107 | AvgRelicsAtEnd 2.94
+- End Week 4: Runs 209 | AvgRelicsAtEnd 4.45
+- End Week 5: Runs 137 | AvgRelicsAtEnd 6.64
+- End Week 6: Runs 68 | AvgRelicsAtEnd 9.49
+- End Week 7: Runs 33 | AvgRelicsAtEnd 12.03
+- End Week 8: Runs 11 | AvgRelicsAtEnd 15.82
+- End Week 9: Runs 7 | AvgRelicsAtEnd 19.29
+- End Week 10: Runs 22 | AvgRelicsAtEnd 24.36
+
+Doctrine: RUIN
+Week 1 | PassRate: 100.0% | AvgRound: 82.23 | AvgWeek: 70.88 | AvgOverflow: 17.70 | AvgEarly: 19.37 | AvgEarned: 39.04 | AvgSpent: 41.81 | AvgPool: 18.45
+PowerFeel | TraitTrig: 93.4% | TraitAdd/Round: 9.39 | TraitBlood/Round: 0.93 | NestUse: 100.0% | NestBorn: 2.01 | WildBorn: 2.34 | NewbornTier: 6.23 | Rarity C/R/L/N: 0.62/0.24/0.04/0.09
+BreedingEV | ExpNestTier: 7.10 | ActNestTier: 7.11 | DeltaTier: +0.01 | ExpNestRare: 0.35 | ActNestRare: 0.33 | DeltaRare: -0.02
+AvgRelicsEndWeek: 2.04
+AvgShopEntryBlood: 44.01
+Wins: 600 | AvgRelicsOnWin: 2.04
+Week 2 | PassRate: 100.0% | AvgRound: 88.57 | AvgWeek: 88.75 | AvgOverflow: 20.97 | AvgEarly: 17.40 | AvgEarned: 41.23 | AvgSpent: 37.12 | AvgPool: 21.66
+PowerFeel | TraitTrig: 92.9% | TraitAdd/Round: 9.08 | TraitBlood/Round: 0.98 | NestUse: 100.0% | NestBorn: 2.03 | WildBorn: 3.08 | NewbornTier: 7.24 | Rarity C/R/L/N: 0.57/0.29/0.04/0.10
+BreedingEV | ExpNestTier: 8.37 | ActNestTier: 8.34 | DeltaTier: -0.03 | ExpNestRare: 0.42 | ActNestRare: 0.42 | DeltaRare: +0.00
+AvgRelicsEndWeek: 3.91
+AvgShopEntryBlood: 43.39
+Wins: 600 | AvgRelicsOnWin: 3.91
+Week 3 | PassRate: 99.2% | AvgRound: 87.36 | AvgWeek: 117.53 | AvgOverflow: 28.47 | AvgEarly: 10.37 | AvgEarned: 44.60 | AvgSpent: 40.97 | AvgPool: 24.72
+PowerFeel | TraitTrig: 90.8% | TraitAdd/Round: 8.47 | TraitBlood/Round: 0.94 | NestUse: 100.0% | NestBorn: 2.03 | WildBorn: 3.83 | NewbornTier: 8.12 | Rarity C/R/L/N: 0.53/0.29/0.05/0.13
+BreedingEV | ExpNestTier: 9.40 | ActNestTier: 9.34 | DeltaTier: -0.07 | ExpNestRare: 0.49 | ActNestRare: 0.50 | DeltaRare: +0.01
+AvgRelicsEndWeek: 5.99
+AvgShopEntryBlood: 50.97
+Wins: 595 | AvgRelicsOnWin: 6.00
+Losses: 5 | AvgRelicsOnLoss: 3.80
+Week 4 | PassRate: 88.5% | AvgRound: 99.61 | AvgWeek: 150.35 | AvgOverflow: 34.37 | AvgEarly: 6.10 | AvgEarned: 48.80 | AvgSpent: 41.62 | AvgPool: 27.33
+PowerFeel | TraitTrig: 89.6% | TraitAdd/Round: 8.27 | TraitBlood/Round: 0.90 | NestUse: 100.0% | NestBorn: 1.85 | WildBorn: 4.12 | NewbornTier: 8.68 | Rarity C/R/L/N: 0.49/0.31/0.06/0.13
+BreedingEV | ExpNestTier: 9.91 | ActNestTier: 9.76 | DeltaTier: -0.15 | ExpNestRare: 0.61 | ActNestRare: 0.59 | DeltaRare: -0.01
+AvgRelicsEndWeek: 8.12
+AvgShopEntryBlood: 63.06
+Wins: 531 | AvgRelicsOnWin: 8.42
+Losses: 64 | AvgRelicsOnLoss: 5.69
+Week 5 | PassRate: 64.2% | AvgRound: 114.14 | AvgWeek: 160.98 | AvgOverflow: 29.26 | AvgEarly: 4.03 | AvgEarned: 42.27 | AvgSpent: 31.14 | AvgPool: 30.41
+PowerFeel | TraitTrig: 89.1% | TraitAdd/Round: 8.38 | TraitBlood/Round: 0.92 | NestUse: 100.0% | NestBorn: 1.38 | WildBorn: 3.70 | NewbornTier: 8.93 | Rarity C/R/L/N: 0.45/0.35/0.08/0.13
+BreedingEV | ExpNestTier: 9.91 | ActNestTier: 9.72 | DeltaTier: -0.19 | ExpNestRare: 0.72 | ActNestRare: 0.72 | DeltaRare: -0.00
+AvgRelicsEndWeek: 10.16
+AvgShopEntryBlood: 77.82
+Wins: 385 | AvgRelicsOnWin: 10.97
+Losses: 146 | AvgRelicsOnLoss: 8.01
+Week 6 | PassRate: 39.5% | AvgRound: 146.89 | AvgWeek: 147.61 | AvgOverflow: 23.80 | AvgEarly: 2.67 | AvgEarned: 34.33 | AvgSpent: 21.14 | AvgPool: 36.57
+PowerFeel | TraitTrig: 87.0% | TraitAdd/Round: 8.67 | TraitBlood/Round: 0.86 | NestUse: 100.0% | NestBorn: 0.85 | WildBorn: 3.23 | NewbornTier: 9.06 | Rarity C/R/L/N: 0.45/0.31/0.11/0.14
+BreedingEV | ExpNestTier: 9.91 | ActNestTier: 9.68 | DeltaTier: -0.23 | ExpNestRare: 0.67 | ActNestRare: 0.69 | DeltaRare: +0.02
+AvgRelicsEndWeek: 12.54
+AvgShopEntryBlood: 109.91
+Wins: 237 | AvgRelicsOnWin: 13.79
+Losses: 148 | AvgRelicsOnLoss: 10.53
+Week 7 | PassRate: 24.8% | AvgRound: 243.44 | AvgWeek: 129.92 | AvgOverflow: 22.88 | AvgEarly: 1.67 | AvgEarned: 30.68 | AvgSpent: 14.71 | AvgPool: 48.05
+PowerFeel | TraitTrig: 89.6% | TraitAdd/Round: 9.72 | TraitBlood/Round: 1.03 | NestUse: 100.0% | NestBorn: 0.54 | WildBorn: 2.76 | NewbornTier: 9.10 | Rarity C/R/L/N: 0.46/0.29/0.11/0.15
+BreedingEV | ExpNestTier: 9.92 | ActNestTier: 9.61 | DeltaTier: -0.31 | ExpNestRare: 0.56 | ActNestRare: 0.56 | DeltaRare: -0.01
+AvgRelicsEndWeek: 15.54
+AvgShopEntryBlood: 178.59
+Wins: 149 | AvgRelicsOnWin: 17.19
+Losses: 88 | AvgRelicsOnLoss: 12.75
+Week 8 | PassRate: 15.5% | AvgRound: 445.74 | AvgWeek: 124.10 | AvgOverflow: 22.65 | AvgEarly: 1.23 | AvgEarned: 30.09 | AvgSpent: 9.16 | AvgPool: 62.63
+PowerFeel | TraitTrig: 86.2% | TraitAdd/Round: 8.79 | TraitBlood/Round: 1.07 | NestUse: 100.0% | NestBorn: 0.34 | WildBorn: 2.18 | NewbornTier: 9.06 | Rarity C/R/L/N: 0.44/0.27/0.12/0.17
+BreedingEV | ExpNestTier: 9.92 | ActNestTier: 9.50 | DeltaTier: -0.41 | ExpNestRare: 0.47 | ActNestRare: 0.45 | DeltaRare: -0.01
+AvgRelicsEndWeek: 18.84
+AvgShopEntryBlood: 312.35
+Wins: 93 | AvgRelicsOnWin: 20.37
+Losses: 56 | AvgRelicsOnLoss: 16.30
+Week 9 | PassRate: 8.2% | AvgRound: 2058.57 | AvgWeek: 107.50 | AvgOverflow: 17.13 | AvgEarly: 0.83 | AvgEarned: 22.42 | AvgSpent: 4.82 | AvgPool: 78.18
+PowerFeel | TraitTrig: 87.0% | TraitAdd/Round: 8.07 | TraitBlood/Round: 1.14 | NestUse: 100.0% | NestBorn: 0.18 | WildBorn: 1.51 | NewbornTier: 9.00 | Rarity C/R/L/N: 0.46/0.28/0.12/0.14
+BreedingEV | ExpNestTier: 9.92 | ActNestTier: 9.43 | DeltaTier: -0.49 | ExpNestRare: 0.36 | ActNestRare: 0.35 | DeltaRare: -0.01
+AvgRelicsEndWeek: 21.94
+AvgShopEntryBlood: 538.88
+Wins: 49 | AvgRelicsOnWin: 23.94
+Losses: 44 | AvgRelicsOnLoss: 19.70
+Week 10 | PassRate: 6.8% | AvgRound: 2060.11 | AvgWeek: 112.07 | AvgOverflow: 20.82 | AvgEarly: 0.63 | AvgEarned: 26.06 | AvgSpent: 4.23 | AvgPool: 108.84
+PowerFeel | TraitTrig: 93.7% | TraitAdd/Round: 12.14 | TraitBlood/Round: 0.82 | NestUse: 100.0% | NestBorn: 0.15 | WildBorn: 1.66 | NewbornTier: 9.29 | Rarity C/R/L/N: 0.48/0.24/0.13/0.16
+BreedingEV | ExpNestTier: 9.92 | ActNestTier: 9.68 | DeltaTier: -0.24 | ExpNestRare: 0.28 | ActNestRare: 0.26 | DeltaRare: -0.02
+AvgRelicsEndWeek: 26.43
+AvgShopEntryBlood: 849.68
+Wins: 41 | AvgRelicsOnWin: 27.05
+Losses: 8 | AvgRelicsOnLoss: 23.25
+Run-End Relics By End Week:
+- End Week 3: Runs 5 | AvgRelicsAtEnd 3.80
+- End Week 4: Runs 64 | AvgRelicsAtEnd 5.69
+- End Week 5: Runs 146 | AvgRelicsAtEnd 8.01
+- End Week 6: Runs 148 | AvgRelicsAtEnd 10.53
+- End Week 7: Runs 88 | AvgRelicsAtEnd 12.75
+- End Week 8: Runs 56 | AvgRelicsAtEnd 16.30
+- End Week 9: Runs 44 | AvgRelicsAtEnd 19.70
+- End Week 10: Runs 49 | AvgRelicsAtEnd 26.43
+
+Doctrine: SILENCE
+Week 1 | PassRate: 100.0% | AvgRound: 119.15 | AvgWeek: 76.68 | AvgOverflow: 19.19 | AvgEarly: 18.17 | AvgEarned: 40.60 | AvgSpent: 42.56 | AvgPool: 17.98
+PowerFeel | TraitTrig: 96.2% | TraitAdd/Round: 9.49 | TraitBlood/Round: 0.90 | NestUse: 100.0% | NestBorn: 2.01 | WildBorn: 1.90 | NewbornTier: 5.81 | Rarity C/R/L/N: 0.60/0.29/0.04/0.08
+BreedingEV | ExpNestTier: 6.82 | ActNestTier: 6.88 | DeltaTier: +0.06 | ExpNestRare: 0.37 | ActNestRare: 0.37 | DeltaRare: +0.00
+AvgRelicsEndWeek: 2.10
+AvgShopEntryBlood: 45.57
+Wins: 600 | AvgRelicsOnWin: 2.10
+Week 2 | PassRate: 99.8% | AvgRound: 147.32 | AvgWeek: 100.24 | AvgOverflow: 25.08 | AvgEarly: 17.63 | AvgEarned: 46.62 | AvgSpent: 42.84 | AvgPool: 20.83
+PowerFeel | TraitTrig: 95.2% | TraitAdd/Round: 7.73 | TraitBlood/Round: 1.04 | NestUse: 100.0% | NestBorn: 2.02 | WildBorn: 2.72 | NewbornTier: 6.84 | Rarity C/R/L/N: 0.56/0.29/0.05/0.11
+BreedingEV | ExpNestTier: 8.14 | ActNestTier: 8.17 | DeltaTier: +0.02 | ExpNestRare: 0.41 | ActNestRare: 0.42 | DeltaRare: +0.01
+AvgRelicsEndWeek: 4.36
+AvgShopEntryBlood: 49.65
+Wins: 599 | AvgRelicsOnWin: 4.37
+Losses: 1 | AvgRelicsOnLoss: 1.00
+Week 3 | PassRate: 98.2% | AvgRound: 160.13 | AvgWeek: 130.55 | AvgOverflow: 31.87 | AvgEarly: 14.00 | AvgEarned: 51.60 | AvgSpent: 46.04 | AvgPool: 24.04
+PowerFeel | TraitTrig: 92.4% | TraitAdd/Round: 8.24 | TraitBlood/Round: 0.97 | NestUse: 100.0% | NestBorn: 2.02 | WildBorn: 3.43 | NewbornTier: 7.70 | Rarity C/R/L/N: 0.56/0.29/0.04/0.12
+BreedingEV | ExpNestTier: 9.24 | ActNestTier: 9.16 | DeltaTier: -0.07 | ExpNestRare: 0.46 | ActNestRare: 0.45 | DeltaRare: -0.01
+AvgRelicsEndWeek: 6.77
+AvgShopEntryBlood: 58.92
+Wins: 589 | AvgRelicsOnWin: 6.82
+Losses: 10 | AvgRelicsOnLoss: 4.30
+Week 4 | PassRate: 83.7% | AvgRound: 170.52 | AvgWeek: 157.34 | AvgOverflow: 34.68 | AvgEarly: 8.23 | AvgEarned: 51.34 | AvgSpent: 41.73 | AvgPool: 26.48
+PowerFeel | TraitTrig: 89.6% | TraitAdd/Round: 7.74 | TraitBlood/Round: 0.90 | NestUse: 100.0% | NestBorn: 1.74 | WildBorn: 3.71 | NewbornTier: 8.35 | Rarity C/R/L/N: 0.52/0.30/0.05/0.12
+BreedingEV | ExpNestTier: 9.87 | ActNestTier: 9.71 | DeltaTier: -0.16 | ExpNestRare: 0.54 | ActNestRare: 0.55 | DeltaRare: +0.01
+AvgRelicsEndWeek: 8.94
+AvgShopEntryBlood: 70.51
+Wins: 502 | AvgRelicsOnWin: 9.35
+Losses: 87 | AvgRelicsOnLoss: 6.61
+Week 5 | PassRate: 52.5% | AvgRound: 213.11 | AvgWeek: 155.52 | AvgOverflow: 28.36 | AvgEarly: 4.60 | AvgEarned: 42.47 | AvgSpent: 28.02 | AvgPool: 29.05
+PowerFeel | TraitTrig: 89.5% | TraitAdd/Round: 8.03 | TraitBlood/Round: 0.91 | NestUse: 100.0% | NestBorn: 1.11 | WildBorn: 3.14 | NewbornTier: 8.61 | Rarity C/R/L/N: 0.48/0.31/0.07/0.14
+BreedingEV | ExpNestTier: 9.90 | ActNestTier: 9.68 | DeltaTier: -0.22 | ExpNestRare: 0.69 | ActNestRare: 0.66 | DeltaRare: -0.02
+AvgRelicsEndWeek: 11.03
+AvgShopEntryBlood: 93.88
+Wins: 315 | AvgRelicsOnWin: 12.21
+Losses: 187 | AvgRelicsOnLoss: 9.04
+Week 6 | PassRate: 29.8% | AvgRound: 2677.03 | AvgWeek: 124.20 | AvgOverflow: 20.49 | AvgEarly: 2.40 | AvgEarned: 29.68 | AvgSpent: 16.45 | AvgPool: 35.17
+PowerFeel | TraitTrig: 88.4% | TraitAdd/Round: 7.90 | TraitBlood/Round: 0.85 | NestUse: 100.0% | NestBorn: 0.63 | WildBorn: 2.19 | NewbornTier: 8.68 | Rarity C/R/L/N: 0.46/0.31/0.08/0.15
+BreedingEV | ExpNestTier: 9.91 | ActNestTier: 9.65 | DeltaTier: -0.26 | ExpNestRare: 0.68 | ActNestRare: 0.72 | DeltaRare: +0.03
+AvgRelicsEndWeek: 13.78
+AvgShopEntryBlood: 130.18
+Wins: 179 | AvgRelicsOnWin: 15.16
+Losses: 136 | AvgRelicsOnLoss: 11.97
+Week 7 | PassRate: 15.3% | AvgRound: 20318.39 | AvgWeek: 94.57 | AvgOverflow: 15.39 | AvgEarly: 1.33 | AvgEarned: 21.06 | AvgSpent: 9.39 | AvgPool: 44.11
+PowerFeel | TraitTrig: 84.9% | TraitAdd/Round: 7.73 | TraitBlood/Round: 0.94 | NestUse: 100.0% | NestBorn: 0.34 | WildBorn: 1.52 | NewbornTier: 8.78 | Rarity C/R/L/N: 0.47/0.29/0.11/0.14
+BreedingEV | ExpNestTier: 9.91 | ActNestTier: 9.61 | DeltaTier: -0.30 | ExpNestRare: 0.62 | ActNestRare: 0.64 | DeltaRare: +0.02
+AvgRelicsEndWeek: 16.58
+AvgShopEntryBlood: 202.74
+Wins: 92 | AvgRelicsOnWin: 18.18
+Losses: 87 | AvgRelicsOnLoss: 14.87
+Week 8 | PassRate: 8.3% | AvgRound: 292282.24 | AvgWeek: 72.98 | AvgOverflow: 12.86 | AvgEarly: 0.83 | AvgEarned: 16.31 | AvgSpent: 5.49 | AvgPool: 57.72
+PowerFeel | TraitTrig: 84.3% | TraitAdd/Round: 8.45 | TraitBlood/Round: 0.94 | NestUse: 100.0% | NestBorn: 0.19 | WildBorn: 1.17 | NewbornTier: 9.04 | Rarity C/R/L/N: 0.47/0.26/0.13/0.15
+BreedingEV | ExpNestTier: 9.91 | ActNestTier: 9.78 | DeltaTier: -0.13 | ExpNestRare: 0.48 | ActNestRare: 0.48 | DeltaRare: +0.00
+AvgRelicsEndWeek: 19.80
+AvgShopEntryBlood: 322.60
+Wins: 50 | AvgRelicsOnWin: 21.56
+Losses: 42 | AvgRelicsOnLoss: 17.71
+Week 9 | PassRate: 4.8% | AvgRound: 2930.83 | AvgWeek: 63.35 | AvgOverflow: 12.02 | AvgEarly: 0.47 | AvgEarned: 14.63 | AvgSpent: 2.81 | AvgPool: 78.96
+PowerFeel | TraitTrig: 86.0% | TraitAdd/Round: 8.05 | TraitBlood/Round: 0.91 | NestUse: 100.0% | NestBorn: 0.13 | WildBorn: 0.98 | NewbornTier: 8.79 | Rarity C/R/L/N: 0.45/0.26/0.16/0.13
+BreedingEV | ExpNestTier: 9.91 | ActNestTier: 9.53 | DeltaTier: -0.38 | ExpNestRare: 0.21 | ActNestRare: 0.23 | DeltaRare: +0.02
+AvgRelicsEndWeek: 23.30
+AvgShopEntryBlood: 550.38
+Wins: 29 | AvgRelicsOnWin: 24.55
+Losses: 21 | AvgRelicsOnLoss: 21.57
+Week 10 | PassRate: 3.3% | AvgRound: 4703.61 | AvgWeek: 61.19 | AvgOverflow: 12.14 | AvgEarly: 0.47 | AvgEarned: 14.62 | AvgSpent: 2.30 | AvgPool: 116.28
+PowerFeel | TraitTrig: 93.2% | TraitAdd/Round: 8.73 | TraitBlood/Round: 1.59 | NestUse: 100.0% | NestBorn: 0.09 | WildBorn: 1.16 | NewbornTier: 8.71 | Rarity C/R/L/N: 0.49/0.25/0.13/0.14
+BreedingEV | ExpNestTier: 9.91 | ActNestTier: 9.04 | DeltaTier: -0.87 | ExpNestRare: 0.06 | ActNestRare: 0.06 | DeltaRare: -0.00
+AvgRelicsEndWeek: 26.62
+AvgShopEntryBlood: 933.65
+Wins: 20 | AvgRelicsOnWin: 27.45
+Losses: 9 | AvgRelicsOnLoss: 24.78
+Run-End Relics By End Week:
+- End Week 2: Runs 1 | AvgRelicsAtEnd 1.00
+- End Week 3: Runs 10 | AvgRelicsAtEnd 4.30
+- End Week 4: Runs 87 | AvgRelicsAtEnd 6.61
+- End Week 5: Runs 187 | AvgRelicsAtEnd 9.04
+- End Week 6: Runs 136 | AvgRelicsAtEnd 11.97
+- End Week 7: Runs 87 | AvgRelicsAtEnd 14.87
+- End Week 8: Runs 42 | AvgRelicsAtEnd 17.71
+- End Week 9: Runs 21 | AvgRelicsAtEnd 21.57
+- End Week 10: Runs 29 | AvgRelicsAtEnd 26.62
+
+Breeding Contribution | WithNesting Pass: 5.6% (1800 runs) | WithoutNesting Pass: 0.0% (0 runs) | Delta: +5.6%
+Breeding Contribution | AvgEndWeek With: 5.70 | Without: 0.00 | Delta: +5.70
+
+=== Relic Impact (Avg Furthest Week, Avg Score) ===
+1) The Last Rung | AvgWeek: 9.21 | AvgScore: 3482.20 | Delta: -62.34 | PickRate: 73.1% | RunsWithRelic: 19
+2) The Hungry Altar | AvgWeek: 8.97 | AvgScore: 451.17 | Delta: -3093.38 | PickRate: 75.5% | RunsWithRelic: 40
+3) Sacrificial Order | AvgWeek: 8.88 | AvgScore: 780.26 | Delta: -2764.28 | PickRate: 71.7% | RunsWithRelic: 33
+4) Void Prism | AvgWeek: 8.76 | AvgScore: 479.55 | Delta: -3064.99 | PickRate: 73.9% | RunsWithRelic: 17
+5) Black Candle | AvgWeek: 8.69 | AvgScore: 740.47 | Delta: -2804.07 | PickRate: 76.3% | RunsWithRelic: 29
+6) The Compound Covenant | AvgWeek: 8.31 | AvgScore: 267.41 | Delta: -3277.13 | PickRate: 92.9% | RunsWithRelic: 13
+7) The Third Knife | AvgWeek: 8.28 | AvgScore: 356.59 | Delta: -3187.95 | PickRate: 64.1% | RunsWithRelic: 25
+8) Cold Incense | AvgWeek: 8.07 | AvgScore: 361.93 | Delta: -3182.62 | PickRate: 69.6% | RunsWithRelic: 87
+9) The Deepest Void | AvgWeek: 7.83 | AvgScore: 234143.12 | Delta: +230598.58 | PickRate: 64.9% | RunsWithRelic: 24
+10) Crimson Absolute | AvgWeek: 7.76 | AvgScore: 352.91 | Delta: -3191.63 | PickRate: 67.3% | RunsWithRelic: 33
+11) Ivory Throne | AvgWeek: 7.63 | AvgScore: 27946.40 | Delta: +24401.85 | PickRate: 59.8% | RunsWithRelic: 204
+12) The Peaked Rite | AvgWeek: 7.60 | AvgScore: 537.41 | Delta: -3007.14 | PickRate: 72.6% | RunsWithRelic: 98
+13) The Calcified Gate | AvgWeek: 7.45 | AvgScore: 81425.20 | Delta: +77880.66 | PickRate: 70.5% | RunsWithRelic: 74
+14) Ritual Knife | AvgWeek: 7.40 | AvgScore: 668.12 | Delta: -2876.42 | PickRate: 77.7% | RunsWithRelic: 87
+15) The Damnation Seal | AvgWeek: 7.39 | AvgScore: 353.80 | Delta: -3190.75 | PickRate: 57.5% | RunsWithRelic: 23
+16) The Cursed Offering | AvgWeek: 7.36 | AvgScore: 291.17 | Delta: -3253.37 | PickRate: 63.3% | RunsWithRelic: 105
+17) The Tithe Accelerator | AvgWeek: 7.33 | AvgScore: 362.40 | Delta: -3182.14 | PickRate: 69.2% | RunsWithRelic: 27
+18) Wax Seal | AvgWeek: 7.31 | AvgScore: 64131.44 | Delta: +60586.90 | PickRate: 65.2% | RunsWithRelic: 88
+19) Lineage Harvest | AvgWeek: 7.30 | AvgScore: 288.60 | Delta: -3255.94 | PickRate: 59.5% | RunsWithRelic: 97
+20) Ascendant Mark | AvgWeek: 7.29 | AvgScore: 287.33 | Delta: -3257.21 | PickRate: 55.8% | RunsWithRelic: 92
+21) Ectoplasm Jar | AvgWeek: 7.29 | AvgScore: 493.69 | Delta: -3050.86 | PickRate: 65.1% | RunsWithRelic: 28
+22) Iron Reliquary | AvgWeek: 7.28 | AvgScore: 27182.08 | Delta: +23637.54 | PickRate: 59.2% | RunsWithRelic: 210
+23) The Skeleton Archive | AvgWeek: 7.25 | AvgScore: 479.76 | Delta: -3064.79 | PickRate: 64.5% | RunsWithRelic: 20
+24) Annihilation Compact | AvgWeek: 7.22 | AvgScore: 401.98 | Delta: -3142.56 | PickRate: 80.0% | RunsWithRelic: 32
+25) The Arterial Rite | AvgWeek: 7.21 | AvgScore: 4625.75 | Delta: +1081.21 | PickRate: 72.2% | RunsWithRelic: 91
+26) The Bleeding Edge | AvgWeek: 7.14 | AvgScore: 526.44 | Delta: -3018.10 | PickRate: 63.4% | RunsWithRelic: 102
+27) Void Cradle | AvgWeek: 7.12 | AvgScore: 26346.43 | Delta: +22801.89 | PickRate: 59.5% | RunsWithRelic: 231
+28) Crypt Standard | AvgWeek: 7.08 | AvgScore: 280.36 | Delta: -3264.18 | PickRate: 70.3% | RunsWithRelic: 104
+29) The Absolute Trinity | AvgWeek: 7.07 | AvgScore: 309.88 | Delta: -3234.66 | PickRate: 62.8% | RunsWithRelic: 27
+30) Omen Deck | AvgWeek: 7.06 | AvgScore: 606.10 | Delta: -2938.44 | PickRate: 66.4% | RunsWithRelic: 81
+31) Seal of Inheritance | AvgWeek: 7.06 | AvgScore: 302.63 | Delta: -3241.92 | PickRate: 68.6% | RunsWithRelic: 83
+32) Hollow Chant | AvgWeek: 7.01 | AvgScore: 369.92 | Delta: -3174.62 | PickRate: 65.5% | RunsWithRelic: 74
+33) The Witness | AvgWeek: 7.01 | AvgScore: 5178.45 | Delta: +1633.91 | PickRate: 69.0% | RunsWithRelic: 80
+34) Apex Covenant | AvgWeek: 7.01 | AvgScore: 556.54 | Delta: -2988.00 | PickRate: 66.2% | RunsWithRelic: 86
+35) The Trinity Engine | AvgWeek: 7.01 | AvgScore: 322.05 | Delta: -3222.49 | PickRate: 65.6% | RunsWithRelic: 86
+36) The Sanguine Engine | AvgWeek: 7.00 | AvgScore: 532.55 | Delta: -3011.99 | PickRate: 72.1% | RunsWithRelic: 31
+37) The Inheritance Forge | AvgWeek: 7.00 | AvgScore: 498.59 | Delta: -3045.95 | PickRate: 70.1% | RunsWithRelic: 89
+38) The Count Absolute | AvgWeek: 7.00 | AvgScore: 236.34 | Delta: -3308.21 | PickRate: 76.9% | RunsWithRelic: 30
+39) The Red Covenant | AvgWeek: 6.97 | AvgScore: 318.21 | Delta: -3226.33 | PickRate: 74.6% | RunsWithRelic: 100
+40) Ossuary Standard | AvgWeek: 6.97 | AvgScore: 368.46 | Delta: -3176.08 | PickRate: 63.5% | RunsWithRelic: 99
+41) First Apostle | AvgWeek: 6.96 | AvgScore: 235.38 | Delta: -3309.16 | PickRate: 81.8% | RunsWithRelic: 27
+42) The Archive Key | AvgWeek: 6.91 | AvgScore: 241.36 | Delta: -3303.18 | PickRate: 77.8% | RunsWithRelic: 35
+43) The Expanding Contract | AvgWeek: 6.87 | AvgScore: 578.94 | Delta: -2965.60 | PickRate: 52.3% | RunsWithRelic: 23
+44) The Red Tithe | AvgWeek: 6.86 | AvgScore: 310.83 | Delta: -3233.71 | PickRate: 61.5% | RunsWithRelic: 220
+45) The Sanguine Bank | AvgWeek: 6.84 | AvgScore: 4760.48 | Delta: +1215.94 | PickRate: 71.5% | RunsWithRelic: 88
+46) Crown of Tiers | AvgWeek: 6.83 | AvgScore: 1339.42 | Delta: -2205.12 | PickRate: 74.4% | RunsWithRelic: 29
+47) The Great Cull | AvgWeek: 6.82 | AvgScore: 11939.07 | Delta: +8394.52 | PickRate: 77.3% | RunsWithRelic: 34
+48) Usurer's Mark | AvgWeek: 6.82 | AvgScore: 265.89 | Delta: -3278.65 | PickRate: 68.1% | RunsWithRelic: 77
+49) Culling Knife | AvgWeek: 6.82 | AvgScore: 302.62 | Delta: -3241.92 | PickRate: 58.2% | RunsWithRelic: 192
+50) Ossuary Absolute | AvgWeek: 6.81 | AvgScore: 505.38 | Delta: -3039.17 | PickRate: 71.1% | RunsWithRelic: 32
+51) The Bloodline Compact | AvgWeek: 6.81 | AvgScore: 325.92 | Delta: -3218.63 | PickRate: 68.9% | RunsWithRelic: 93
+52) The Hollow Pact | AvgWeek: 6.81 | AvgScore: 335.99 | Delta: -3208.55 | PickRate: 74.2% | RunsWithRelic: 98
+53) Black Contract | AvgWeek: 6.79 | AvgScore: 361.52 | Delta: -3183.02 | PickRate: 58.2% | RunsWithRelic: 99
+54) Bone Polisher | AvgWeek: 6.79 | AvgScore: 362.01 | Delta: -3182.53 | PickRate: 63.1% | RunsWithRelic: 238
+55) The Rotary | AvgWeek: 6.75 | AvgScore: 298.85 | Delta: -3245.69 | PickRate: 71.8% | RunsWithRelic: 89
+56) The Deep Pool | AvgWeek: 6.75 | AvgScore: 251.46 | Delta: -3293.08 | PickRate: 58.2% | RunsWithRelic: 96
+57) The Summit | AvgWeek: 6.74 | AvgScore: 547.43 | Delta: -2997.11 | PickRate: 58.6% | RunsWithRelic: 99
+58) Bloodright Almanac | AvgWeek: 6.74 | AvgScore: 314.42 | Delta: -3230.12 | PickRate: 57.3% | RunsWithRelic: 209
+59) The White Wall | AvgWeek: 6.73 | AvgScore: 54773.82 | Delta: +51229.28 | PickRate: 55.1% | RunsWithRelic: 103
+60) Balanced Offering | AvgWeek: 6.73 | AvgScore: 3869.09 | Delta: +324.55 | PickRate: 70.5% | RunsWithRelic: 110
+61) Void Pilgrim | AvgWeek: 6.72 | AvgScore: 308.19 | Delta: -3236.35 | PickRate: 58.3% | RunsWithRelic: 218
+62) Calcify | AvgWeek: 6.71 | AvgScore: 2166.02 | Delta: -1378.52 | PickRate: 62.6% | RunsWithRelic: 219
+63) The Generation Mark | AvgWeek: 6.69 | AvgScore: 54695.72 | Delta: +51151.18 | PickRate: 64.8% | RunsWithRelic: 103
+64) Selective Breeding Scroll | AvgWeek: 6.69 | AvgScore: 23889.49 | Delta: +20344.95 | PickRate: 65.7% | RunsWithRelic: 238
+65) Director's Cut | AvgWeek: 6.69 | AvgScore: 293.22 | Delta: -3251.32 | PickRate: 70.5% | RunsWithRelic: 93
+66) Ossuary Standards | AvgWeek: 6.68 | AvgScore: 490.98 | Delta: -3053.56 | PickRate: 60.5% | RunsWithRelic: 115
+67) The Expanding Rite | AvgWeek: 6.67 | AvgScore: 221.62 | Delta: -3322.92 | PickRate: 66.9% | RunsWithRelic: 91
+68) Scarlet Planetarium | AvgWeek: 6.66 | AvgScore: 274.88 | Delta: -3269.66 | PickRate: 66.2% | RunsWithRelic: 86
+69) Ritual Symmetry | AvgWeek: 6.66 | AvgScore: 310.78 | Delta: -3233.76 | PickRate: 61.5% | RunsWithRelic: 236
+70) Blood Market Stall | AvgWeek: 6.66 | AvgScore: 436.66 | Delta: -3107.88 | PickRate: 63.1% | RunsWithRelic: 233
+71) The Red Market | AvgWeek: 6.65 | AvgScore: 71639.26 | Delta: +68094.72 | PickRate: 53.8% | RunsWithRelic: 84
+72) Debt Scripture | AvgWeek: 6.65 | AvgScore: 284.31 | Delta: -3260.23 | PickRate: 61.2% | RunsWithRelic: 210
+73) Sharpened Chalk | AvgWeek: 6.65 | AvgScore: 528.18 | Delta: -3016.36 | PickRate: 60.4% | RunsWithRelic: 96
+74) Mass Offering | AvgWeek: 6.64 | AvgScore: 266.95 | Delta: -3277.59 | PickRate: 74.8% | RunsWithRelic: 86
+75) Minimalist Doctrine | AvgWeek: 6.63 | AvgScore: 264.47 | Delta: -3280.07 | PickRate: 73.2% | RunsWithRelic: 90
+76) Prayer Beads | AvgWeek: 6.63 | AvgScore: 309.18 | Delta: -3235.36 | PickRate: 58.2% | RunsWithRelic: 103
+77) The Soul Lantern | AvgWeek: 6.63 | AvgScore: 258.07 | Delta: -3286.47 | PickRate: 71.1% | RunsWithRelic: 27
+78) Crimson Pact | AvgWeek: 6.63 | AvgScore: 208.08 | Delta: -3336.46 | PickRate: 69.9% | RunsWithRelic: 102
+79) Bone Idol | AvgWeek: 6.63 | AvgScore: 4327.06 | Delta: +782.52 | PickRate: 56.5% | RunsWithRelic: 96
+80) Void Recursion | AvgWeek: 6.62 | AvgScore: 4955.08 | Delta: +1410.54 | PickRate: 63.2% | RunsWithRelic: 84
+81) The Omen Ledger | AvgWeek: 6.62 | AvgScore: 581.24 | Delta: -2963.30 | PickRate: 69.5% | RunsWithRelic: 91
+82) The Absent Crown | AvgWeek: 6.61 | AvgScore: 292.44 | Delta: -3252.11 | PickRate: 61.1% | RunsWithRelic: 80
+83) Blood Abacus | AvgWeek: 6.59 | AvgScore: 265.56 | Delta: -3278.98 | PickRate: 56.1% | RunsWithRelic: 106
+84) The Unbroken Rite | AvgWeek: 6.59 | AvgScore: 4505.83 | Delta: +961.29 | PickRate: 70.0% | RunsWithRelic: 91
+85) The Second Sight | AvgWeek: 6.59 | AvgScore: 353.70 | Delta: -3190.84 | PickRate: 60.6% | RunsWithRelic: 223
+86) Soul Tithe | AvgWeek: 6.59 | AvgScore: 292.89 | Delta: -3251.65 | PickRate: 61.0% | RunsWithRelic: 83
+87) Refinery of Silence | AvgWeek: 6.59 | AvgScore: 61244.27 | Delta: +57699.72 | PickRate: 55.1% | RunsWithRelic: 92
+88) The Breeding Engine | AvgWeek: 6.58 | AvgScore: 475.61 | Delta: -3068.93 | PickRate: 61.6% | RunsWithRelic: 106
+89) The Purifying Flame | AvgWeek: 6.58 | AvgScore: 196.77 | Delta: -3347.77 | PickRate: 74.3% | RunsWithRelic: 26
+90) Salt Circle | AvgWeek: 6.58 | AvgScore: 311.41 | Delta: -3233.13 | PickRate: 61.2% | RunsWithRelic: 210
+91) The Final Silence | AvgWeek: 6.58 | AvgScore: 267.36 | Delta: -3277.18 | PickRate: 72.3% | RunsWithRelic: 99
+92) Obsidian Conduit | AvgWeek: 6.57 | AvgScore: 535.30 | Delta: -3009.25 | PickRate: 63.1% | RunsWithRelic: 106
+93) The Pruning Hook | AvgWeek: 6.56 | AvgScore: 255.40 | Delta: -3289.14 | PickRate: 60.7% | RunsWithRelic: 222
+94) The Running Red | AvgWeek: 6.56 | AvgScore: 251.09 | Delta: -3293.45 | PickRate: 56.9% | RunsWithRelic: 95
+95) The Pared Offering | AvgWeek: 6.55 | AvgScore: 328.25 | Delta: -3216.29 | PickRate: 59.3% | RunsWithRelic: 227
+96) Votive Mirror | AvgWeek: 6.55 | AvgScore: 2041.68 | Delta: -1502.86 | PickRate: 57.5% | RunsWithRelic: 218
+97) The Concordat | AvgWeek: 6.55 | AvgScore: 24660.77 | Delta: +21116.23 | PickRate: 61.3% | RunsWithRelic: 230
+98) Director's Addendum | AvgWeek: 6.54 | AvgScore: 306.15 | Delta: -3238.39 | PickRate: 73.2% | RunsWithRelic: 90
+99) The Last Sacrifice | AvgWeek: 6.54 | AvgScore: 270.69 | Delta: -3273.85 | PickRate: 63.8% | RunsWithRelic: 83
+100) The Gilded Offering | AvgWeek: 6.54 | AvgScore: 249.17 | Delta: -3295.37 | PickRate: 68.5% | RunsWithRelic: 98
+101) Dynasty Seal | AvgWeek: 6.54 | AvgScore: 450.03 | Delta: -3094.51 | PickRate: 71.3% | RunsWithRelic: 97
+102) Triune Reliquary | AvgWeek: 6.53 | AvgScore: 345.69 | Delta: -3198.85 | PickRate: 62.7% | RunsWithRelic: 225
+103) Ceremonial Cup | AvgWeek: 6.52 | AvgScore: 337.61 | Delta: -3206.93 | PickRate: 66.6% | RunsWithRelic: 233
+104) The Rusted Tithe | AvgWeek: 6.52 | AvgScore: 259.24 | Delta: -3285.30 | PickRate: 71.5% | RunsWithRelic: 113
+105) Thin Blade | AvgWeek: 6.52 | AvgScore: 233.84 | Delta: -3310.70 | PickRate: 66.0% | RunsWithRelic: 246
+106) Quick Chant | AvgWeek: 6.51 | AvgScore: 296.90 | Delta: -3247.64 | PickRate: 53.3% | RunsWithRelic: 96
+107) The Triad Compact | AvgWeek: 6.51 | AvgScore: 60246.70 | Delta: +56702.16 | PickRate: 61.0% | RunsWithRelic: 100
+108) Hollow Abacus | AvgWeek: 6.50 | AvgScore: 247.47 | Delta: -3297.07 | PickRate: 65.8% | RunsWithRelic: 100
+109) Bone Saw | AvgWeek: 6.49 | AvgScore: 361.89 | Delta: -3182.65 | PickRate: 60.3% | RunsWithRelic: 108
+110) Whetted Bone | AvgWeek: 6.49 | AvgScore: 288.26 | Delta: -3256.28 | PickRate: 56.3% | RunsWithRelic: 90
+111) Marrow Charter | AvgWeek: 6.49 | AvgScore: 381.37 | Delta: -3163.17 | PickRate: 59.8% | RunsWithRelic: 232
+112) The Waiting Bell | AvgWeek: 6.48 | AvgScore: 1832.76 | Delta: -1711.79 | PickRate: 63.0% | RunsWithRelic: 250
+113) The Dynasty Forge | AvgWeek: 6.46 | AvgScore: 56841.46 | Delta: +53296.92 | PickRate: 71.6% | RunsWithRelic: 106
+114) Crimson Interest | AvgWeek: 6.46 | AvgScore: 220.83 | Delta: -3323.71 | PickRate: 60.8% | RunsWithRelic: 225
+115) Fertility Idol | AvgWeek: 6.46 | AvgScore: 2095.13 | Delta: -1449.42 | PickRate: 60.1% | RunsWithRelic: 221
+116) The Awakening Bell | AvgWeek: 6.46 | AvgScore: 214.80 | Delta: -3329.74 | PickRate: 58.4% | RunsWithRelic: 101
+117) Crimson Ledger | AvgWeek: 6.45 | AvgScore: 26817.04 | Delta: +23272.50 | PickRate: 56.6% | RunsWithRelic: 211
+118) The Brood Compact | AvgWeek: 6.45 | AvgScore: 253.03 | Delta: -3291.51 | PickRate: 59.8% | RunsWithRelic: 214
+119) The Debt Engine | AvgWeek: 6.45 | AvgScore: 4897.62 | Delta: +1353.07 | PickRate: 66.9% | RunsWithRelic: 83
+120) Spare Chalice | AvgWeek: 6.44 | AvgScore: 2190.75 | Delta: -1353.79 | PickRate: 61.7% | RunsWithRelic: 219
+121) Debt Ledger | AvgWeek: 6.43 | AvgScore: 2089.47 | Delta: -1455.07 | PickRate: 63.4% | RunsWithRelic: 223
+122) Nursery Ledger | AvgWeek: 6.43 | AvgScore: 26467.90 | Delta: +22923.36 | PickRate: 62.0% | RunsWithRelic: 214
+123) The Foursome | AvgWeek: 6.43 | AvgScore: 243.12 | Delta: -3301.42 | PickRate: 57.6% | RunsWithRelic: 99
+124) The Ossuary Engine | AvgWeek: 6.43 | AvgScore: 278.97 | Delta: -3265.57 | PickRate: 61.8% | RunsWithRelic: 217
+125) The Palimpsest | AvgWeek: 6.43 | AvgScore: 183.53 | Delta: -3361.01 | PickRate: 73.7% | RunsWithRelic: 28
+126) Trine Offering | AvgWeek: 6.42 | AvgScore: 356.05 | Delta: -3188.50 | PickRate: 64.0% | RunsWithRelic: 233
+127) The Womb of Ages | AvgWeek: 6.42 | AvgScore: 291.36 | Delta: -3253.18 | PickRate: 72.0% | RunsWithRelic: 36
+128) Bone Chorus | AvgWeek: 6.41 | AvgScore: 5095.74 | Delta: +1551.19 | PickRate: 67.2% | RunsWithRelic: 80
+129) Threefold Brand | AvgWeek: 6.41 | AvgScore: 248.06 | Delta: -3296.48 | PickRate: 56.4% | RunsWithRelic: 115
+130) The Eternal Line | AvgWeek: 6.41 | AvgScore: 226.05 | Delta: -3318.50 | PickRate: 61.4% | RunsWithRelic: 27
+131) Crimson Compound | AvgWeek: 6.41 | AvgScore: 223.20 | Delta: -3321.34 | PickRate: 58.1% | RunsWithRelic: 86
+132) The Dyad Mark | AvgWeek: 6.39 | AvgScore: 4337.06 | Delta: +792.52 | PickRate: 59.1% | RunsWithRelic: 97
+133) The Hollow Register | AvgWeek: 6.39 | AvgScore: 28592.66 | Delta: +25048.12 | PickRate: 60.1% | RunsWithRelic: 212
+134) Clean Hands | AvgWeek: 6.39 | AvgScore: 26920.73 | Delta: +23376.19 | PickRate: 61.6% | RunsWithRelic: 225
+135) Blasphemous Geometry | AvgWeek: 6.39 | AvgScore: 320.55 | Delta: -3223.99 | PickRate: 70.8% | RunsWithRelic: 75
+136) Single Rite | AvgWeek: 6.38 | AvgScore: 256.58 | Delta: -3287.96 | PickRate: 65.0% | RunsWithRelic: 234
+137) Red Thread | AvgWeek: 6.38 | AvgScore: 64042.36 | Delta: +60497.82 | PickRate: 58.3% | RunsWithRelic: 88
+138) Bone Standard | AvgWeek: 6.37 | AvgScore: 295.17 | Delta: -3249.37 | PickRate: 60.1% | RunsWithRelic: 104
+139) Grave Compact | AvgWeek: 6.36 | AvgScore: 247.79 | Delta: -3296.75 | PickRate: 55.7% | RunsWithRelic: 195
+140) Tithe Discount | AvgWeek: 6.36 | AvgScore: 319.14 | Delta: -3225.40 | PickRate: 55.0% | RunsWithRelic: 94
+141) The Primogeniture | AvgWeek: 6.36 | AvgScore: 288.49 | Delta: -3256.05 | PickRate: 69.5% | RunsWithRelic: 89
+142) Choir Robes | AvgWeek: 6.36 | AvgScore: 329.83 | Delta: -3214.72 | PickRate: 61.3% | RunsWithRelic: 92
+143) The Empty Pyre | AvgWeek: 6.35 | AvgScore: 330.34 | Delta: -3214.20 | PickRate: 57.6% | RunsWithRelic: 99
+144) Warden of the Fold | AvgWeek: 6.35 | AvgScore: 4527.35 | Delta: +982.80 | PickRate: 61.9% | RunsWithRelic: 91
+145) The Sacred Triangle | AvgWeek: 6.35 | AvgScore: 49550.90 | Delta: +46006.36 | PickRate: 64.8% | RunsWithRelic: 114
+146) The Copper Tithe | AvgWeek: 6.34 | AvgScore: 25211.27 | Delta: +21666.73 | PickRate: 60.5% | RunsWithRelic: 225
+147) The Drawn Curtain | AvgWeek: 6.33 | AvgScore: 194.90 | Delta: -3349.64 | PickRate: 60.5% | RunsWithRelic: 92
+148) Brass Tithe Bowl | AvgWeek: 6.31 | AvgScore: 225.52 | Delta: -3319.02 | PickRate: 61.1% | RunsWithRelic: 212
+149) Gravewright | AvgWeek: 6.29 | AvgScore: 476.12 | Delta: -3068.42 | PickRate: 53.2% | RunsWithRelic: 82
+150) Grave Ledger | AvgWeek: 6.28 | AvgScore: 207.55 | Delta: -3336.99 | PickRate: 61.4% | RunsWithRelic: 116
+151) Covenant of Three | AvgWeek: 6.28 | AvgScore: 250.65 | Delta: -3293.90 | PickRate: 58.9% | RunsWithRelic: 103
+152) Bloodfire Compact | AvgWeek: 6.28 | AvgScore: 50736.54 | Delta: +47192.00 | PickRate: 63.1% | RunsWithRelic: 111
+153) The Iron Tithe | AvgWeek: 6.28 | AvgScore: 206.79 | Delta: -3337.75 | PickRate: 58.0% | RunsWithRelic: 94
+154) The Faithful Scribe | AvgWeek: 6.25 | AvgScore: 233.63 | Delta: -3310.91 | PickRate: 57.5% | RunsWithRelic: 107
+155) Bloodline Register | AvgWeek: 6.24 | AvgScore: 256.18 | Delta: -3288.36 | PickRate: 60.5% | RunsWithRelic: 98
+156) Crimson Book | AvgWeek: 6.24 | AvgScore: 4348.17 | Delta: +803.63 | PickRate: 58.0% | RunsWithRelic: 94
+157) Null Covenant | AvgWeek: 6.23 | AvgScore: 214.90 | Delta: -3329.64 | PickRate: 63.4% | RunsWithRelic: 83
+158) The Votive Ledger | AvgWeek: 6.20 | AvgScore: 260.21 | Delta: -3284.33 | PickRate: 58.8% | RunsWithRelic: 104
+159) Bloodline Theorem | AvgWeek: 6.16 | AvgScore: 321.36 | Delta: -3223.18 | PickRate: 71.4% | RunsWithRelic: 70
+160) The Sanguine Chord | AvgWeek: 6.15 | AvgScore: 447.47 | Delta: -3097.07 | PickRate: 64.9% | RunsWithRelic: 100
+
+=== Trait Impact (Avg Furthest Week, Avg Score) ===
+1) combo_047 | AvgWeek: 10.00 | AvgScore: 404.10 | Delta: -3140.44 | SeenInRuns: 0.1% | RunsWithTrait: 1
+2) combo_036 | AvgWeek: 9.50 | AvgScore: 425.74 | Delta: -3118.80 | SeenInRuns: 0.1% | RunsWithTrait: 2
+3) combo_005 | AvgWeek: 9.00 | AvgScore: 338.99 | Delta: -3205.55 | SeenInRuns: 0.1% | RunsWithTrait: 2
+4) combo_045 | AvgWeek: 8.50 | AvgScore: 2293.83 | Delta: -1250.71 | SeenInRuns: 0.1% | RunsWithTrait: 2
+5) combo_046 | AvgWeek: 8.50 | AvgScore: 324.26 | Delta: -3220.28 | SeenInRuns: 0.1% | RunsWithTrait: 2
+6) combo_007 | AvgWeek: 8.00 | AvgScore: 657.23 | Delta: -2887.31 | SeenInRuns: 0.1% | RunsWithTrait: 2
+7) combo_023 | AvgWeek: 7.67 | AvgScore: 186.25 | Delta: -3358.29 | SeenInRuns: 0.2% | RunsWithTrait: 3
+8) combo_049 | AvgWeek: 7.50 | AvgScore: 299.45 | Delta: -3245.09 | SeenInRuns: 0.1% | RunsWithTrait: 2
+9) combo_008 | AvgWeek: 7.50 | AvgScore: 199.78 | Delta: -3344.76 | SeenInRuns: 0.1% | RunsWithTrait: 2
+10) combo_029 | AvgWeek: 7.40 | AvgScore: 247.41 | Delta: -3297.13 | SeenInRuns: 0.3% | RunsWithTrait: 5
+11) combo_043 | AvgWeek: 7.00 | AvgScore: 293.86 | Delta: -3250.68 | SeenInRuns: 0.1% | RunsWithTrait: 1
+12) combo_012 | AvgWeek: 7.00 | AvgScore: 177.87 | Delta: -3366.67 | SeenInRuns: 0.2% | RunsWithTrait: 4
+13) combo_017 | AvgWeek: 7.00 | AvgScore: 152.09 | Delta: -3392.45 | SeenInRuns: 0.2% | RunsWithTrait: 4
+14) combo_004 | AvgWeek: 7.00 | AvgScore: 144.29 | Delta: -3400.26 | SeenInRuns: 0.1% | RunsWithTrait: 1
+15) combo_041 | AvgWeek: 6.67 | AvgScore: 324.65 | Delta: -3219.89 | SeenInRuns: 0.2% | RunsWithTrait: 3
+16) combo_011 | AvgWeek: 6.56 | AvgScore: 266.63 | Delta: -3277.91 | SeenInRuns: 0.5% | RunsWithTrait: 9
+17) combo_001 | AvgWeek: 6.50 | AvgScore: 162.69 | Delta: -3381.85 | SeenInRuns: 0.1% | RunsWithTrait: 2
+18) combo_021 | AvgWeek: 6.50 | AvgScore: 149.85 | Delta: -3394.69 | SeenInRuns: 0.1% | RunsWithTrait: 2
+19) combo_026 | AvgWeek: 6.50 | AvgScore: 145.48 | Delta: -3399.07 | SeenInRuns: 0.1% | RunsWithTrait: 2
+20) combo_018 | AvgWeek: 6.50 | AvgScore: 144.41 | Delta: -3400.13 | SeenInRuns: 0.1% | RunsWithTrait: 2
+21) Ossuary Oracle | AvgWeek: 6.44 | AvgScore: 299.23 | Delta: -3245.31 | SeenInRuns: 7.4% | RunsWithTrait: 134
+22) Black Candlebearer | AvgWeek: 6.43 | AvgScore: 12634.26 | Delta: +9089.72 | SeenInRuns: 25.2% | RunsWithTrait: 454
+23) Void Crown | AvgWeek: 6.42 | AvgScore: 277.64 | Delta: -3266.90 | SeenInRuns: 8.8% | RunsWithTrait: 158
+24) Apostolic Womb | AvgWeek: 6.35 | AvgScore: 1878.37 | Delta: -1666.17 | SeenInRuns: 13.2% | RunsWithTrait: 237
+25) Crimson Ascendant | AvgWeek: 6.34 | AvgScore: 391.61 | Delta: -3152.93 | SeenInRuns: 9.2% | RunsWithTrait: 165
+26) combo_030 | AvgWeek: 6.33 | AvgScore: 221.51 | Delta: -3323.03 | SeenInRuns: 0.2% | RunsWithTrait: 3
+27) Triune Heir | AvgWeek: 6.23 | AvgScore: 288.96 | Delta: -3255.58 | SeenInRuns: 7.7% | RunsWithTrait: 138
+28) Ossuary King | AvgWeek: 6.22 | AvgScore: 265.80 | Delta: -3278.74 | SeenInRuns: 19.6% | RunsWithTrait: 353
+29) Ossuary Titan | AvgWeek: 6.22 | AvgScore: 232.45 | Delta: -3312.10 | SeenInRuns: 7.8% | RunsWithTrait: 141
+30) Void Herald | AvgWeek: 6.20 | AvgScore: 15330.65 | Delta: +11786.11 | SeenInRuns: 22.1% | RunsWithTrait: 397
+31) Ossuary Archon | AvgWeek: 6.15 | AvgScore: 278.71 | Delta: -3265.84 | SeenInRuns: 17.7% | RunsWithTrait: 319
+32) Straight Rite | AvgWeek: 6.13 | AvgScore: 260.33 | Delta: -3284.21 | SeenInRuns: 17.6% | RunsWithTrait: 316
+33) Blood Prophet | AvgWeek: 6.11 | AvgScore: 18254.38 | Delta: +14709.84 | SeenInRuns: 17.3% | RunsWithTrait: 311
+34) Sanguine Overseer | AvgWeek: 6.11 | AvgScore: 209.28 | Delta: -3335.26 | SeenInRuns: 22.0% | RunsWithTrait: 396
+35) Paired Sigil | AvgWeek: 6.10 | AvgScore: 235.96 | Delta: -3308.58 | SeenInRuns: 22.3% | RunsWithTrait: 401
+36) Brood Sovereign | AvgWeek: 6.06 | AvgScore: 216.74 | Delta: -3327.81 | SeenInRuns: 22.3% | RunsWithTrait: 401
+37) Grave Banker | AvgWeek: 6.06 | AvgScore: 281.99 | Delta: -3262.55 | SeenInRuns: 19.0% | RunsWithTrait: 342
+38) Ossuary Overseer | AvgWeek: 6.06 | AvgScore: 234.10 | Delta: -3310.44 | SeenInRuns: 18.2% | RunsWithTrait: 328
+39) Crimson Revelation | AvgWeek: 6.05 | AvgScore: 2535.60 | Delta: -1008.94 | SeenInRuns: 9.2% | RunsWithTrait: 166
+40) Sanguine Conductor | AvgWeek: 6.03 | AvgScore: 209.22 | Delta: -3335.32 | SeenInRuns: 23.4% | RunsWithTrait: 422
+41) Gravetide | AvgWeek: 6.02 | AvgScore: 202.33 | Delta: -3342.21 | SeenInRuns: 18.1% | RunsWithTrait: 326
+42) combo_034 | AvgWeek: 6.00 | AvgScore: 155.50 | Delta: -3389.04 | SeenInRuns: 0.1% | RunsWithTrait: 1
+43) combo_010 | AvgWeek: 6.00 | AvgScore: 154.92 | Delta: -3389.63 | SeenInRuns: 0.1% | RunsWithTrait: 2
+44) combo_027 | AvgWeek: 6.00 | AvgScore: 146.26 | Delta: -3398.28 | SeenInRuns: 0.1% | RunsWithTrait: 2
+45) combo_028 | AvgWeek: 6.00 | AvgScore: 143.14 | Delta: -3401.40 | SeenInRuns: 0.2% | RunsWithTrait: 3
+46) combo_009 | AvgWeek: 6.00 | AvgScore: 138.39 | Delta: -3406.15 | SeenInRuns: 0.2% | RunsWithTrait: 3
+47) combo_015 | AvgWeek: 6.00 | AvgScore: 127.88 | Delta: -3416.67 | SeenInRuns: 0.1% | RunsWithTrait: 2
+48) combo_006 | AvgWeek: 6.00 | AvgScore: 126.79 | Delta: -3417.76 | SeenInRuns: 0.1% | RunsWithTrait: 2
+49) Zealot Ledger | AvgWeek: 5.99 | AvgScore: 217.63 | Delta: -3326.91 | SeenInRuns: 42.6% | RunsWithTrait: 766
+50) Stalwart | AvgWeek: 5.99 | AvgScore: 8000.69 | Delta: +4456.15 | SeenInRuns: 40.1% | RunsWithTrait: 722
+51) Resilient | AvgWeek: 5.99 | AvgScore: 8344.96 | Delta: +4800.41 | SeenInRuns: 38.6% | RunsWithTrait: 694
+52) Twinborn | AvgWeek: 5.99 | AvgScore: 724.92 | Delta: -2819.62 | SeenInRuns: 42.4% | RunsWithTrait: 764
+53) Martyr's Ledger | AvgWeek: 5.99 | AvgScore: 16481.58 | Delta: +12937.04 | SeenInRuns: 19.3% | RunsWithTrait: 347
+54) Ossuary Laborer | AvgWeek: 5.98 | AvgScore: 8918.73 | Delta: +5374.18 | SeenInRuns: 38.3% | RunsWithTrait: 690
+55) Triune Champion | AvgWeek: 5.98 | AvgScore: 200.05 | Delta: -3344.49 | SeenInRuns: 19.3% | RunsWithTrait: 348
+56) Votive Executor | AvgWeek: 5.98 | AvgScore: 1451.93 | Delta: -2092.61 | SeenInRuns: 17.7% | RunsWithTrait: 318
+57) Rite Channeler | AvgWeek: 5.98 | AvgScore: 666.59 | Delta: -2877.95 | SeenInRuns: 48.0% | RunsWithTrait: 864
+58) Hush Matron | AvgWeek: 5.98 | AvgScore: 209.36 | Delta: -3335.19 | SeenInRuns: 20.1% | RunsWithTrait: 362
+59) Pair Hunter | AvgWeek: 5.97 | AvgScore: 7398.15 | Delta: +3853.61 | SeenInRuns: 46.4% | RunsWithTrait: 835
+60) Hush Executor | AvgWeek: 5.96 | AvgScore: 1401.00 | Delta: -2143.54 | SeenInRuns: 18.3% | RunsWithTrait: 330
+61) Low Chanter | AvgWeek: 5.96 | AvgScore: 7060.60 | Delta: +3516.06 | SeenInRuns: 45.8% | RunsWithTrait: 824
+62) High Chanter | AvgWeek: 5.94 | AvgScore: 745.93 | Delta: -2798.61 | SeenInRuns: 43.1% | RunsWithTrait: 776
+63) Apex Rite | AvgWeek: 5.94 | AvgScore: 751.00 | Delta: -2793.54 | SeenInRuns: 43.2% | RunsWithTrait: 777
+64) Bloodbrand | AvgWeek: 5.93 | AvgScore: 7710.71 | Delta: +4166.17 | SeenInRuns: 44.4% | RunsWithTrait: 799
+65) Lineage Tutor | AvgWeek: 5.93 | AvgScore: 653.88 | Delta: -2890.67 | SeenInRuns: 49.3% | RunsWithTrait: 888
+66) Marrow Mason | AvgWeek: 5.92 | AvgScore: 772.58 | Delta: -2771.96 | SeenInRuns: 40.8% | RunsWithTrait: 734
+67) Veiled Bloodline | AvgWeek: 5.91 | AvgScore: 6599.09 | Delta: +3054.54 | SeenInRuns: 48.9% | RunsWithTrait: 881
+68) Brood Keeper | AvgWeek: 5.90 | AvgScore: 239.60 | Delta: -3304.94 | SeenInRuns: 48.7% | RunsWithTrait: 876
+69) Ember Saint | AvgWeek: 5.90 | AvgScore: 212.93 | Delta: -3331.62 | SeenInRuns: 48.1% | RunsWithTrait: 866
+70) Abyss Rite | AvgWeek: 5.90 | AvgScore: 229.92 | Delta: -3314.62 | SeenInRuns: 47.6% | RunsWithTrait: 857
+71) Void Entrant | AvgWeek: 5.90 | AvgScore: 8895.81 | Delta: +5351.27 | SeenInRuns: 36.1% | RunsWithTrait: 650
+72) Fervent | AvgWeek: 5.88 | AvgScore: 7617.52 | Delta: +4072.97 | SeenInRuns: 42.1% | RunsWithTrait: 757
+73) Triune Acolyte | AvgWeek: 5.88 | AvgScore: 7745.21 | Delta: +4200.67 | SeenInRuns: 44.2% | RunsWithTrait: 796
+74) Whispered | AvgWeek: 5.87 | AvgScore: 7969.47 | Delta: +4424.93 | SeenInRuns: 43.2% | RunsWithTrait: 778
+75) Devout | AvgWeek: 5.86 | AvgScore: 707.30 | Delta: -2837.24 | SeenInRuns: 44.6% | RunsWithTrait: 803
+76) Bone Tithe | AvgWeek: 5.86 | AvgScore: 8058.07 | Delta: +4513.53 | SeenInRuns: 39.7% | RunsWithTrait: 715
+77) Void Spark | AvgWeek: 5.86 | AvgScore: 7858.12 | Delta: +4313.58 | SeenInRuns: 40.9% | RunsWithTrait: 736
+78) Blood Oathling | AvgWeek: 5.84 | AvgScore: 192.28 | Delta: -3352.26 | SeenInRuns: 45.0% | RunsWithTrait: 810
+79) combo_025 | AvgWeek: 5.50 | AvgScore: 139.68 | Delta: -3404.86 | SeenInRuns: 0.1% | RunsWithTrait: 2
+80) combo_020 | AvgWeek: 5.50 | AvgScore: 139.15 | Delta: -3405.39 | SeenInRuns: 0.1% | RunsWithTrait: 2
+81) combo_014 | AvgWeek: 5.50 | AvgScore: 128.90 | Delta: -3415.64 | SeenInRuns: 0.2% | RunsWithTrait: 4
+82) combo_002 | AvgWeek: 5.00 | AvgScore: 105.05 | Delta: -3439.49 | SeenInRuns: 0.2% | RunsWithTrait: 3
+83) combo_024 | AvgWeek: 5.00 | AvgScore: 89.40 | Delta: -3455.14 | SeenInRuns: 0.1% | RunsWithTrait: 1
+84) combo_019 | AvgWeek: 3.00 | AvgScore: 104.00 | Delta: -3440.54 | SeenInRuns: 0.1% | RunsWithTrait: 1
+
+Profile: average
+
+Doctrine: FLESH
+Week 1 | PassRate: 98.8% | AvgRound: 32.10 | AvgWeek: 56.92 | AvgOverflow: 13.59 | AvgEarly: 3.90 | AvgEarned: 25.71 | AvgSpent: 26.94 | AvgPool: 14.79
+PowerFeel | TraitTrig: 86.5% | TraitAdd/Round: 5.80 | TraitBlood/Round: 0.87 | NestUse: 38.3% | NestBorn: 0.77 | WildBorn: 2.17 | NewbornTier: 5.97 | Rarity C/R/L/N: 0.61/0.22/0.04/0.13
+BreedingEV | ExpNestTier: 7.33 | ActNestTier: 7.32 | DeltaTier: -0.01 | ExpNestRare: 0.34 | ActNestRare: 0.34 | DeltaRare: +0.00
+AvgRelicsEndWeek: 1.37
+AvgShopEntryBlood: 30.86
+Wins: 593 | AvgRelicsOnWin: 1.39
+Losses: 7 | AvgRelicsOnLoss: 0.00
+Week 2 | PassRate: 83.0% | AvgRound: 36.49 | AvgWeek: 67.63 | AvgOverflow: 12.04 | AvgEarly: 2.23 | AvgEarned: 22.94 | AvgSpent: 17.48 | AvgPool: 12.80
+PowerFeel | TraitTrig: 81.4% | TraitAdd/Round: 5.48 | TraitBlood/Round: 0.81 | NestUse: 37.2% | NestBorn: 0.63 | WildBorn: 1.63 | NewbornTier: 7.00 | Rarity C/R/L/N: 0.62/0.21/0.04/0.13
+BreedingEV | ExpNestTier: 8.41 | ActNestTier: 8.43 | DeltaTier: +0.02 | ExpNestRare: 0.36 | ActNestRare: 0.33 | DeltaRare: -0.03
+AvgRelicsEndWeek: 2.31
+AvgShopEntryBlood: 29.29
+Wins: 498 | AvgRelicsOnWin: 2.50
+Losses: 95 | AvgRelicsOnLoss: 1.32
+Week 3 | PassRate: 42.0% | AvgRound: 40.39 | AvgWeek: 64.89 | AvgOverflow: 7.29 | AvgEarly: 0.93 | AvgEarned: 15.84 | AvgSpent: 11.38 | AvgPool: 10.09
+PowerFeel | TraitTrig: 79.4% | TraitAdd/Round: 5.32 | TraitBlood/Round: 0.76 | NestUse: 36.5% | NestBorn: 0.31 | WildBorn: 0.78 | NewbornTier: 7.74 | Rarity C/R/L/N: 0.60/0.25/0.03/0.12
+BreedingEV | ExpNestTier: 9.20 | ActNestTier: 9.10 | DeltaTier: -0.10 | ExpNestRare: 0.38 | ActNestRare: 0.40 | DeltaRare: +0.02
+AvgRelicsEndWeek: 3.17
+AvgShopEntryBlood: 36.17
+Wins: 252 | AvgRelicsOnWin: 3.94
+Losses: 246 | AvgRelicsOnLoss: 2.38
+Week 4 | PassRate: 12.5% | AvgRound: 47.49 | AvgWeek: 38.29 | AvgOverflow: 2.80 | AvgEarly: 0.47 | AvgEarned: 7.07 | AvgSpent: 3.69 | AvgPool: 8.68
+PowerFeel | TraitTrig: 76.3% | TraitAdd/Round: 5.49 | TraitBlood/Round: 0.69 | NestUse: 38.7% | NestBorn: 0.11 | WildBorn: 0.25 | NewbornTier: 8.40 | Rarity C/R/L/N: 0.64/0.18/0.06/0.12
+BreedingEV | ExpNestTier: 9.72 | ActNestTier: 9.76 | DeltaTier: +0.04 | ExpNestRare: 0.41 | ActNestRare: 0.30 | DeltaRare: -0.11
+AvgRelicsEndWeek: 4.36
+AvgShopEntryBlood: 42.21
+Wins: 75 | AvgRelicsOnWin: 6.07
+Losses: 177 | AvgRelicsOnLoss: 3.64
+Week 5 | PassRate: 5.0% | AvgRound: 69.17 | AvgWeek: 16.49 | AvgOverflow: 1.77 | AvgEarly: 0.23 | AvgEarned: 3.12 | AvgSpent: 2.16 | AvgPool: 9.71
+PowerFeel | TraitTrig: 68.5% | TraitAdd/Round: 3.98 | TraitBlood/Round: 0.62 | NestUse: 33.3% | NestBorn: 0.04 | WildBorn: 0.11 | NewbornTier: 8.59 | Rarity C/R/L/N: 0.47/0.20/0.13/0.21
+BreedingEV | ExpNestTier: 9.77 | ActNestTier: 9.61 | DeltaTier: -0.16 | ExpNestRare: 0.46 | ActNestRare: 0.43 | DeltaRare: -0.02
+AvgRelicsEndWeek: 6.97
+AvgShopEntryBlood: 58.97
+Wins: 30 | AvgRelicsOnWin: 8.93
+Losses: 45 | AvgRelicsOnLoss: 5.67
+Week 6 | PassRate: 3.0% | AvgRound: 111.02 | AvgWeek: 10.72 | AvgOverflow: 1.45 | AvgEarly: 0.03 | AvgEarned: 2.09 | AvgSpent: 1.27 | AvgPool: 10.10
+PowerFeel | TraitTrig: 71.2% | TraitAdd/Round: 5.66 | TraitBlood/Round: 0.71 | NestUse: 27.8% | NestBorn: 0.02 | WildBorn: 0.05 | NewbornTier: 8.17 | Rarity C/R/L/N: 0.51/0.27/0.10/0.12
+BreedingEV | ExpNestTier: 9.72 | ActNestTier: 9.80 | DeltaTier: +0.08 | ExpNestRare: 0.47 | ActNestRare: 0.60 | DeltaRare: +0.13
+AvgRelicsEndWeek: 10.13
+AvgShopEntryBlood: 76.06
+Wins: 18 | AvgRelicsOnWin: 11.56
+Losses: 12 | AvgRelicsOnLoss: 8.00
+Week 7 | PassRate: 0.5% | AvgRound: 93.03 | AvgWeek: 5.43 | AvgOverflow: 0.20 | AvgEarly: 0.03 | AvgEarned: 0.52 | AvgSpent: 0.32 | AvgPool: 9.33
+PowerFeel | TraitTrig: 62.9% | TraitAdd/Round: 4.63 | TraitBlood/Round: 0.89 | NestUse: 33.3% | NestBorn: 0.00 | WildBorn: 0.01 | NewbornTier: 9.67 | Rarity C/R/L/N: 0.33/0.67/0.00/0.00
+BreedingEV | ExpNestTier: 9.90 | ActNestTier: 10.00 | DeltaTier: +0.10 | ExpNestRare: 0.33 | ActNestRare: 0.50 | DeltaRare: +0.17
+AvgRelicsEndWeek: 12.06
+AvgShopEntryBlood: 96.33
+Wins: 3 | AvgRelicsOnWin: 15.67
+Losses: 15 | AvgRelicsOnLoss: 11.33
+Week 8 | PassRate: 0.3% | AvgRound: 214.33 | AvgWeek: 2.14 | AvgOverflow: 0.20 | AvgEarly: 0.00 | AvgEarned: 0.27 | AvgSpent: 0.24 | AvgPool: 11.33
+PowerFeel | TraitTrig: 100.0% | TraitAdd/Round: 8.00 | TraitBlood/Round: 1.17 | NestUse: 50.0% | NestBorn: 0.00 | WildBorn: 0.00 | NewbornTier: 9.33 | Rarity C/R/L/N: 1.00/0.00/0.00/0.00
+BreedingEV | ExpNestTier: 9.90 | ActNestTier: 9.50 | DeltaTier: -0.40 | ExpNestRare: 0.28 | ActNestRare: 0.00 | DeltaRare: -0.28
+AvgRelicsEndWeek: 17.33
+AvgShopEntryBlood: 105.50
+Wins: 2 | AvgRelicsOnWin: 16.50
+Losses: 1 | AvgRelicsOnLoss: 19.00
+Week 9 | PassRate: 0.0% | AvgRound: 230.00 | AvgWeek: 1.53 | AvgOverflow: 0.00 | AvgEarly: 0.00 | AvgEarned: 0.04 | AvgSpent: 0.00 | AvgPool: 5.50
+PowerFeel | TraitTrig: 100.0% | TraitAdd/Round: 3.00 | TraitBlood/Round: 1.50 | NestUse: 0.0% | NestBorn: 0.00 | WildBorn: 0.00 | NewbornTier: 0.00 | Rarity C/R/L/N: 0.00/0.00/0.00/0.00
+BreedingEV | ExpNestTier: 0.00 | ActNestTier: 0.00 | DeltaTier: +0.00 | ExpNestRare: 0.00 | ActNestRare: 0.00 | DeltaRare: +0.00
+AvgRelicsEndWeek: 16.50
+AvgShopEntryBlood: 0.00
+Losses: 2 | AvgRelicsOnLoss: 16.50
+Week 10 | PassRate: 0.0% | AvgRound: 0.00 | AvgWeek: 0.00 | AvgOverflow: 0.00 | AvgEarly: 0.00 | AvgEarned: 0.00 | AvgSpent: 0.00 | AvgPool: 0.00
+PowerFeel | TraitTrig: 0.0% | TraitAdd/Round: 0.00 | TraitBlood/Round: 0.00 | NestUse: 0.0% | NestBorn: 0.00 | WildBorn: 0.00 | NewbornTier: 0.00 | Rarity C/R/L/N: 0.00/0.00/0.00/0.00
+BreedingEV | ExpNestTier: 0.00 | ActNestTier: 0.00 | DeltaTier: +0.00 | ExpNestRare: 0.00 | ActNestRare: 0.00 | DeltaRare: +0.00
+AvgRelicsEndWeek: 0.00
+AvgShopEntryBlood: 0.00
+Run-End Relics By End Week:
+- End Week 1: Runs 7 | AvgRelicsAtEnd 0.00
+- End Week 2: Runs 95 | AvgRelicsAtEnd 1.32
+- End Week 3: Runs 246 | AvgRelicsAtEnd 2.38
+- End Week 4: Runs 177 | AvgRelicsAtEnd 3.64
+- End Week 5: Runs 45 | AvgRelicsAtEnd 5.67
+- End Week 6: Runs 12 | AvgRelicsAtEnd 8.00
+- End Week 7: Runs 15 | AvgRelicsAtEnd 11.33
+- End Week 8: Runs 1 | AvgRelicsAtEnd 19.00
+- End Week 9: Runs 2 | AvgRelicsAtEnd 16.50
+
+Doctrine: RUIN
+Week 1 | PassRate: 98.8% | AvgRound: 45.85 | AvgWeek: 62.69 | AvgOverflow: 14.85 | AvgEarly: 10.03 | AvgEarned: 30.16 | AvgSpent: 31.99 | AvgPool: 15.85
+PowerFeel | TraitTrig: 85.4% | TraitAdd/Round: 5.96 | TraitBlood/Round: 0.91 | NestUse: 37.5% | NestBorn: 0.75 | WildBorn: 2.35 | NewbornTier: 5.97 | Rarity C/R/L/N: 0.60/0.21/0.05/0.14
+BreedingEV | ExpNestTier: 7.37 | ActNestTier: 7.41 | DeltaTier: +0.05 | ExpNestRare: 0.34 | ActNestRare: 0.37 | DeltaRare: +0.03
+AvgRelicsEndWeek: 1.63
+AvgShopEntryBlood: 35.38
+Wins: 593 | AvgRelicsOnWin: 1.65
+Losses: 7 | AvgRelicsOnLoss: 0.00
+Week 2 | PassRate: 93.8% | AvgRound: 52.73 | AvgWeek: 80.42 | AvgOverflow: 18.51 | AvgEarly: 7.23 | AvgEarned: 31.94 | AvgSpent: 27.54 | AvgPool: 15.46
+PowerFeel | TraitTrig: 85.1% | TraitAdd/Round: 5.88 | TraitBlood/Round: 0.88 | NestUse: 37.8% | NestBorn: 0.72 | WildBorn: 2.27 | NewbornTier: 6.90 | Rarity C/R/L/N: 0.57/0.23/0.05/0.15
+BreedingEV | ExpNestTier: 8.49 | ActNestTier: 8.56 | DeltaTier: +0.07 | ExpNestRare: 0.42 | ActNestRare: 0.40 | DeltaRare: -0.02
+AvgRelicsEndWeek: 3.05
+AvgShopEntryBlood: 36.47
+Wins: 563 | AvgRelicsOnWin: 3.14
+Losses: 30 | AvgRelicsOnLoss: 1.33
+Week 3 | PassRate: 79.2% | AvgRound: 60.45 | AvgWeek: 95.74 | AvgOverflow: 20.07 | AvgEarly: 4.40 | AvgEarned: 31.07 | AvgSpent: 27.59 | AvgPool: 14.67
+PowerFeel | TraitTrig: 81.2% | TraitAdd/Round: 5.26 | TraitBlood/Round: 0.85 | NestUse: 37.9% | NestBorn: 0.61 | WildBorn: 1.95 | NewbornTier: 7.66 | Rarity C/R/L/N: 0.56/0.25/0.05/0.14
+BreedingEV | ExpNestTier: 9.29 | ActNestTier: 9.24 | DeltaTier: -0.05 | ExpNestRare: 0.42 | ActNestRare: 0.42 | DeltaRare: -0.00
+AvgRelicsEndWeek: 4.66
+AvgShopEntryBlood: 44.52
+Wins: 475 | AvgRelicsOnWin: 4.92
+Losses: 88 | AvgRelicsOnLoss: 3.24
+Week 4 | PassRate: 51.2% | AvgRound: 69.85 | AvgWeek: 97.27 | AvgOverflow: 16.16 | AvgEarly: 2.53 | AvgEarned: 25.09 | AvgSpent: 19.79 | AvgPool: 13.88
+PowerFeel | TraitTrig: 76.4% | TraitAdd/Round: 5.44 | TraitBlood/Round: 0.76 | NestUse: 37.0% | NestBorn: 0.39 | WildBorn: 1.41 | NewbornTier: 8.31 | Rarity C/R/L/N: 0.55/0.26/0.07/0.13
+BreedingEV | ExpNestTier: 9.83 | ActNestTier: 9.81 | DeltaTier: -0.03 | ExpNestRare: 0.46 | ActNestRare: 0.47 | DeltaRare: +0.01
+AvgRelicsEndWeek: 6.19
+AvgShopEntryBlood: 53.04
+Wins: 307 | AvgRelicsOnWin: 7.08
+Losses: 168 | AvgRelicsOnLoss: 4.54
+Week 5 | PassRate: 26.7% | AvgRound: 97.04 | AvgWeek: 78.42 | AvgOverflow: 11.25 | AvgEarly: 1.23 | AvgEarned: 17.36 | AvgSpent: 12.27 | AvgPool: 14.37
+PowerFeel | TraitTrig: 79.4% | TraitAdd/Round: 5.53 | TraitBlood/Round: 0.87 | NestUse: 36.9% | NestBorn: 0.20 | WildBorn: 0.81 | NewbornTier: 8.62 | Rarity C/R/L/N: 0.53/0.25/0.09/0.13
+BreedingEV | ExpNestTier: 9.87 | ActNestTier: 9.79 | DeltaTier: -0.08 | ExpNestRare: 0.54 | ActNestRare: 0.52 | DeltaRare: -0.02
+AvgRelicsEndWeek: 8.29
+AvgShopEntryBlood: 70.19
+Wins: 160 | AvgRelicsOnWin: 9.60
+Losses: 147 | AvgRelicsOnLoss: 6.87
+Week 6 | PassRate: 10.8% | AvgRound: 127.42 | AvgWeek: 51.64 | AvgOverflow: 6.13 | AvgEarly: 0.97 | AvgEarned: 9.51 | AvgSpent: 5.55 | AvgPool: 15.63
+PowerFeel | TraitTrig: 72.2% | TraitAdd/Round: 4.94 | TraitBlood/Round: 0.78 | NestUse: 36.9% | NestBorn: 0.08 | WildBorn: 0.44 | NewbornTier: 8.91 | Rarity C/R/L/N: 0.50/0.30/0.08/0.12
+BreedingEV | ExpNestTier: 9.84 | ActNestTier: 9.80 | DeltaTier: -0.04 | ExpNestRare: 0.56 | ActNestRare: 0.56 | DeltaRare: -0.00
+AvgRelicsEndWeek: 10.62
+AvgShopEntryBlood: 99.31
+Wins: 65 | AvgRelicsOnWin: 12.55
+Losses: 95 | AvgRelicsOnLoss: 9.29
+Week 7 | PassRate: 6.5% | AvgRound: 340.62 | AvgWeek: 36.90 | AvgOverflow: 6.59 | AvgEarly: 0.53 | AvgEarned: 8.39 | AvgSpent: 3.95 | AvgPool: 23.68
+PowerFeel | TraitTrig: 81.6% | TraitAdd/Round: 6.58 | TraitBlood/Round: 0.80 | NestUse: 35.9% | NestBorn: 0.05 | WildBorn: 0.45 | NewbornTier: 9.03 | Rarity C/R/L/N: 0.56/0.20/0.11/0.13
+BreedingEV | ExpNestTier: 9.81 | ActNestTier: 9.89 | DeltaTier: +0.08 | ExpNestRare: 0.53 | ActNestRare: 0.54 | DeltaRare: +0.00
+AvgRelicsEndWeek: 14.34
+AvgShopEntryBlood: 180.44
+Wins: 39 | AvgRelicsOnWin: 15.97
+Losses: 26 | AvgRelicsOnLoss: 11.88
+Week 8 | PassRate: 4.3% | AvgRound: 3176.83 | AvgWeek: 31.79 | AvgOverflow: 5.74 | AvgEarly: 0.43 | AvgEarned: 7.11 | AvgSpent: 2.76 | AvgPool: 36.82
+PowerFeel | TraitTrig: 75.4% | TraitAdd/Round: 5.45 | TraitBlood/Round: 0.83 | NestUse: 36.5% | NestBorn: 0.03 | WildBorn: 0.60 | NewbornTier: 9.16 | Rarity C/R/L/N: 0.60/0.20/0.08/0.12
+BreedingEV | ExpNestTier: 9.91 | ActNestTier: 9.89 | DeltaTier: -0.01 | ExpNestRare: 0.54 | ActNestRare: 0.58 | DeltaRare: +0.04
+AvgRelicsEndWeek: 17.95
+AvgShopEntryBlood: 300.65
+Wins: 26 | AvgRelicsOnWin: 19.12
+Losses: 13 | AvgRelicsOnLoss: 15.62
+Week 9 | PassRate: 3.2% | AvgRound: 2693.23 | AvgWeek: 36.40 | AvgOverflow: 7.27 | AvgEarly: 0.30 | AvgEarned: 8.75 | AvgSpent: 2.17 | AvgPool: 63.85
+PowerFeel | TraitTrig: 79.1% | TraitAdd/Round: 5.37 | TraitBlood/Round: 0.88 | NestUse: 34.2% | NestBorn: 0.03 | WildBorn: 0.64 | NewbornTier: 9.33 | Rarity C/R/L/N: 0.54/0.22/0.07/0.17
+BreedingEV | ExpNestTier: 9.91 | ActNestTier: 9.87 | DeltaTier: -0.04 | ExpNestRare: 0.39 | ActNestRare: 0.47 | DeltaRare: +0.08
+AvgRelicsEndWeek: 20.65
+AvgShopEntryBlood: 541.63
+Wins: 19 | AvgRelicsOnWin: 21.00
+Losses: 7 | AvgRelicsOnLoss: 19.71
+Week 10 | PassRate: 2.0% | AvgRound: 25236.45 | AvgWeek: 40.06 | AvgOverflow: 8.02 | AvgEarly: 0.30 | AvgEarned: 9.40 | AvgSpent: 1.43 | AvgPool: 92.47
+PowerFeel | TraitTrig: 79.3% | TraitAdd/Round: 6.66 | TraitBlood/Round: 0.45 | NestUse: 29.2% | NestBorn: 0.01 | WildBorn: 0.78 | NewbornTier: 9.45 | Rarity C/R/L/N: 0.54/0.23/0.07/0.16
+BreedingEV | ExpNestTier: 9.90 | ActNestTier: 8.88 | DeltaTier: -1.03 | ExpNestRare: 0.31 | ActNestRare: 0.13 | DeltaRare: -0.18
+AvgRelicsEndWeek: 22.89
+AvgShopEntryBlood: 962.92
+Wins: 12 | AvgRelicsOnWin: 24.75
+Losses: 7 | AvgRelicsOnLoss: 19.71
+Run-End Relics By End Week:
+- End Week 1: Runs 7 | AvgRelicsAtEnd 0.00
+- End Week 2: Runs 30 | AvgRelicsAtEnd 1.33
+- End Week 3: Runs 88 | AvgRelicsAtEnd 3.24
+- End Week 4: Runs 168 | AvgRelicsAtEnd 4.54
+- End Week 5: Runs 147 | AvgRelicsAtEnd 6.87
+- End Week 6: Runs 95 | AvgRelicsAtEnd 9.29
+- End Week 7: Runs 26 | AvgRelicsAtEnd 11.88
+- End Week 8: Runs 13 | AvgRelicsAtEnd 15.62
+- End Week 9: Runs 7 | AvgRelicsAtEnd 19.71
+- End Week 10: Runs 19 | AvgRelicsAtEnd 22.89
+
+Doctrine: SILENCE
+Week 1 | PassRate: 96.5% | AvgRound: 53.92 | AvgWeek: 65.07 | AvgOverflow: 15.75 | AvgEarly: 9.77 | AvgEarned: 31.24 | AvgSpent: 32.21 | AvgPool: 15.63
+PowerFeel | TraitTrig: 80.2% | TraitAdd/Round: 4.88 | TraitBlood/Round: 0.83 | NestUse: 37.0% | NestBorn: 0.72 | WildBorn: 2.08 | NewbornTier: 5.45 | Rarity C/R/L/N: 0.59/0.22/0.04/0.15
+BreedingEV | ExpNestTier: 7.30 | ActNestTier: 7.27 | DeltaTier: -0.02 | ExpNestRare: 0.33 | ActNestRare: 0.31 | DeltaRare: -0.03
+AvgRelicsEndWeek: 1.63
+AvgShopEntryBlood: 37.06
+Wins: 579 | AvgRelicsOnWin: 1.68
+Losses: 21 | AvgRelicsOnLoss: 0.00
+Week 2 | PassRate: 86.8% | AvgRound: 63.21 | AvgWeek: 80.85 | AvgOverflow: 18.08 | AvgEarly: 7.90 | AvgEarned: 32.13 | AvgSpent: 27.76 | AvgPool: 15.05
+PowerFeel | TraitTrig: 80.3% | TraitAdd/Round: 5.06 | TraitBlood/Round: 0.82 | NestUse: 38.6% | NestBorn: 0.69 | WildBorn: 1.84 | NewbornTier: 6.58 | Rarity C/R/L/N: 0.59/0.22/0.05/0.13
+BreedingEV | ExpNestTier: 8.38 | ActNestTier: 8.37 | DeltaTier: -0.01 | ExpNestRare: 0.38 | ActNestRare: 0.35 | DeltaRare: -0.03
+AvgRelicsEndWeek: 3.17
+AvgShopEntryBlood: 39.63
+Wins: 521 | AvgRelicsOnWin: 3.35
+Losses: 58 | AvgRelicsOnLoss: 1.62
+Week 3 | PassRate: 66.3% | AvgRound: 72.78 | AvgWeek: 88.92 | AvgOverflow: 17.40 | AvgEarly: 5.67 | AvgEarned: 29.48 | AvgSpent: 24.84 | AvgPool: 14.28
+PowerFeel | TraitTrig: 78.3% | TraitAdd/Round: 5.06 | TraitBlood/Round: 0.80 | NestUse: 39.4% | NestBorn: 0.55 | WildBorn: 1.53 | NewbornTier: 7.38 | Rarity C/R/L/N: 0.60/0.23/0.04/0.13
+BreedingEV | ExpNestTier: 9.20 | ActNestTier: 9.17 | DeltaTier: -0.03 | ExpNestRare: 0.38 | ActNestRare: 0.41 | DeltaRare: +0.04
+AvgRelicsEndWeek: 4.83
+AvgShopEntryBlood: 49.13
+Wins: 398 | AvgRelicsOnWin: 5.29
+Losses: 123 | AvgRelicsOnLoss: 3.37
+Week 4 | PassRate: 36.8% | AvgRound: 77.81 | AvgWeek: 79.77 | AvgOverflow: 13.19 | AvgEarly: 2.47 | AvgEarned: 21.32 | AvgSpent: 16.25 | AvgPool: 13.49
+PowerFeel | TraitTrig: 78.3% | TraitAdd/Round: 5.30 | TraitBlood/Round: 0.81 | NestUse: 38.7% | NestBorn: 0.30 | WildBorn: 0.98 | NewbornTier: 8.10 | Rarity C/R/L/N: 0.54/0.26/0.05/0.14
+BreedingEV | ExpNestTier: 9.73 | ActNestTier: 9.68 | DeltaTier: -0.05 | ExpNestRare: 0.42 | ActNestRare: 0.40 | DeltaRare: -0.02
+AvgRelicsEndWeek: 6.56
+AvgShopEntryBlood: 61.05
+Wins: 221 | AvgRelicsOnWin: 7.84
+Losses: 177 | AvgRelicsOnLoss: 4.97
+Week 5 | PassRate: 15.5% | AvgRound: 179.29 | AvgWeek: 53.77 | AvgOverflow: 7.96 | AvgEarly: 1.13 | AvgEarned: 12.69 | AvgSpent: 7.85 | AvgPool: 13.82
+PowerFeel | TraitTrig: 75.5% | TraitAdd/Round: 4.69 | TraitBlood/Round: 0.79 | NestUse: 38.2% | NestBorn: 0.13 | WildBorn: 0.48 | NewbornTier: 8.34 | Rarity C/R/L/N: 0.53/0.25/0.07/0.15
+BreedingEV | ExpNestTier: 9.84 | ActNestTier: 9.68 | DeltaTier: -0.16 | ExpNestRare: 0.53 | ActNestRare: 0.49 | DeltaRare: -0.04
+AvgRelicsEndWeek: 8.97
+AvgShopEntryBlood: 85.49
+Wins: 93 | AvgRelicsOnWin: 10.87
+Losses: 128 | AvgRelicsOnLoss: 7.59
+Week 6 | PassRate: 6.5% | AvgRound: 170.77 | AvgWeek: 30.20 | AvgOverflow: 4.66 | AvgEarly: 0.53 | AvgEarned: 6.93 | AvgSpent: 3.60 | AvgPool: 16.90
+PowerFeel | TraitTrig: 72.9% | TraitAdd/Round: 4.88 | TraitBlood/Round: 0.69 | NestUse: 32.1% | NestBorn: 0.04 | WildBorn: 0.33 | NewbornTier: 8.50 | Rarity C/R/L/N: 0.50/0.27/0.07/0.16
+BreedingEV | ExpNestTier: 9.88 | ActNestTier: 9.73 | DeltaTier: -0.15 | ExpNestRare: 0.66 | ActNestRare: 0.65 | DeltaRare: -0.01
+AvgRelicsEndWeek: 12.06
+AvgShopEntryBlood: 130.77
+Wins: 39 | AvgRelicsOnWin: 14.92
+Losses: 54 | AvgRelicsOnLoss: 10.00
+Week 7 | PassRate: 3.2% | AvgRound: 247.07 | AvgWeek: 20.55 | AvgOverflow: 3.44 | AvgEarly: 0.33 | AvgEarned: 4.37 | AvgSpent: 1.85 | AvgPool: 24.15
+PowerFeel | TraitTrig: 82.4% | TraitAdd/Round: 5.71 | TraitBlood/Round: 0.66 | NestUse: 36.8% | NestBorn: 0.02 | WildBorn: 0.19 | NewbornTier: 8.28 | Rarity C/R/L/N: 0.45/0.29/0.05/0.20
+BreedingEV | ExpNestTier: 9.91 | ActNestTier: 9.86 | DeltaTier: -0.05 | ExpNestRare: 0.74 | ActNestRare: 0.71 | DeltaRare: -0.02
+AvgRelicsEndWeek: 16.33
+AvgShopEntryBlood: 200.58
+Wins: 19 | AvgRelicsOnWin: 17.68
+Losses: 20 | AvgRelicsOnLoss: 15.05
+Week 8 | PassRate: 1.8% | AvgRound: 399.13 | AvgWeek: 15.90 | AvgOverflow: 3.21 | AvgEarly: 0.23 | AvgEarned: 3.73 | AvgSpent: 1.13 | AvgPool: 28.37
+PowerFeel | TraitTrig: 77.4% | TraitAdd/Round: 3.81 | TraitBlood/Round: 0.55 | NestUse: 45.5% | NestBorn: 0.02 | WildBorn: 0.06 | NewbornTier: 8.23 | Rarity C/R/L/N: 0.56/0.29/0.10/0.04
+BreedingEV | ExpNestTier: 9.90 | ActNestTier: 9.55 | DeltaTier: -0.35 | ExpNestRare: 0.68 | ActNestRare: 0.55 | DeltaRare: -0.13
+AvgRelicsEndWeek: 19.37
+AvgShopEntryBlood: 361.73
+Wins: 11 | AvgRelicsOnWin: 21.00
+Losses: 8 | AvgRelicsOnLoss: 17.13
+Week 9 | PassRate: 1.3% | AvgRound: 2137.72 | AvgWeek: 16.00 | AvgOverflow: 3.17 | AvgEarly: 0.13 | AvgEarned: 4.19 | AvgSpent: 0.98 | AvgPool: 28.45
+PowerFeel | TraitTrig: 88.9% | TraitAdd/Round: 6.17 | TraitBlood/Round: 1.11 | NestUse: 43.8% | NestBorn: 0.01 | WildBorn: 0.06 | NewbornTier: 8.38 | Rarity C/R/L/N: 0.51/0.26/0.13/0.11
+BreedingEV | ExpNestTier: 9.90 | ActNestTier: 9.33 | DeltaTier: -0.57 | ExpNestRare: 0.59 | ActNestRare: 0.56 | DeltaRare: -0.03
+AvgRelicsEndWeek: 23.18
+AvgShopEntryBlood: 585.13
+Wins: 8 | AvgRelicsOnWin: 24.25
+Losses: 3 | AvgRelicsOnLoss: 20.33
+Week 10 | PassRate: 0.8% | AvgRound: 37424.55 | AvgWeek: 20.08 | AvgOverflow: 4.05 | AvgEarly: 0.17 | AvgEarned: 4.73 | AvgSpent: 0.42 | AvgPool: 35.13
+PowerFeel | TraitTrig: 54.5% | TraitAdd/Round: 3.45 | TraitBlood/Round: 0.64 | NestUse: 40.0% | NestBorn: 0.01 | WildBorn: 0.07 | NewbornTier: 7.57 | Rarity C/R/L/N: 0.57/0.19/0.13/0.11
+BreedingEV | ExpNestTier: 9.92 | ActNestTier: 9.20 | DeltaTier: -0.72 | ExpNestRare: 0.36 | ActNestRare: 0.40 | DeltaRare: +0.04
+AvgRelicsEndWeek: 26.13
+AvgShopEntryBlood: 1149.80
+Wins: 5 | AvgRelicsOnWin: 28.60
+Losses: 3 | AvgRelicsOnLoss: 22.00
+Run-End Relics By End Week:
+- End Week 1: Runs 21 | AvgRelicsAtEnd 0.00
+- End Week 2: Runs 58 | AvgRelicsAtEnd 1.62
+- End Week 3: Runs 123 | AvgRelicsAtEnd 3.37
+- End Week 4: Runs 177 | AvgRelicsAtEnd 4.97
+- End Week 5: Runs 128 | AvgRelicsAtEnd 7.59
+- End Week 6: Runs 54 | AvgRelicsAtEnd 10.00
+- End Week 7: Runs 20 | AvgRelicsAtEnd 15.05
+- End Week 8: Runs 8 | AvgRelicsAtEnd 17.13
+- End Week 9: Runs 3 | AvgRelicsAtEnd 20.33
+- End Week 10: Runs 8 | AvgRelicsAtEnd 26.13
+
+Breeding Contribution | WithNesting Pass: 1.6% (1688 runs) | WithoutNesting Pass: 0.0% (112 runs) | Delta: +1.6%
+Breeding Contribution | AvgEndWeek With: 4.24 | Without: 2.17 | Delta: +2.07
+
+=== Phase1 Power-Feel Summary (Expert) ===
+Weakest relics (by marginal score delta):
+- The Palimpsest | Delta -3361.01 | PickRate 73.7% | AvgWeek 6.43
+- The Drawn Curtain | Delta -3349.64 | PickRate 60.5% | AvgWeek 6.33
+- The Purifying Flame | Delta -3347.77 | PickRate 74.3% | AvgWeek 6.58
+- The Iron Tithe | Delta -3337.75 | PickRate 58.0% | AvgWeek 6.28
+- Grave Ledger | Delta -3336.99 | PickRate 61.4% | AvgWeek 6.28
+- Crimson Pact | Delta -3336.46 | PickRate 69.9% | AvgWeek 6.63
+- The Awakening Bell | Delta -3329.74 | PickRate 58.4% | AvgWeek 6.46
+- Null Covenant | Delta -3329.64 | PickRate 63.4% | AvgWeek 6.23
+- Crimson Interest | Delta -3323.71 | PickRate 60.8% | AvgWeek 6.46
+- The Expanding Rite | Delta -3322.92 | PickRate 66.9% | AvgWeek 6.67
+Weakest traits (by marginal score delta):
+- combo_024 | Delta -3455.14 | SeenInRuns 0.1% | AvgWeek 5.00
+- combo_019 | Delta -3440.54 | SeenInRuns 0.1% | AvgWeek 3.00
+- combo_002 | Delta -3439.49 | SeenInRuns 0.2% | AvgWeek 5.00
+- combo_006 | Delta -3417.76 | SeenInRuns 0.1% | AvgWeek 6.00
+- combo_015 | Delta -3416.67 | SeenInRuns 0.1% | AvgWeek 6.00
+- combo_014 | Delta -3415.64 | SeenInRuns 0.2% | AvgWeek 5.50
+- combo_009 | Delta -3406.15 | SeenInRuns 0.2% | AvgWeek 6.00
+- combo_020 | Delta -3405.39 | SeenInRuns 0.1% | AvgWeek 5.50
+- combo_025 | Delta -3404.86 | SeenInRuns 0.1% | AvgWeek 5.50
+- combo_028 | Delta -3401.40 | SeenInRuns 0.2% | AvgWeek 6.00
+
+=== Summary ===
+Tests: 45098
+Passing: 45098
+Failures: 36
+Warnings: 32
+Elapsed: 97574 ms
+FAIL: expert pass rate out of band week 1: 1.00 (target 0.90-0.99)
+FAIL: expert avg week devotion out of band week 1: 69.78 (target 38.00-54.00)
+FAIL: expert pass rate out of band week 2: 1.00 (target 0.87-0.97)
+FAIL: expert avg week devotion out of band week 2: 89.92 (target 52.25-74.25)
+FAIL: expert avg week devotion out of band week 3: 114.23 (target 71.25-101.25)
+FAIL: expert pass rate out of band week 4: 0.73 (target 0.80-0.94)
+FAIL: expert pass rate out of band week 5: 0.47 (target 0.77-0.93)
+FAIL: expert avg week devotion out of band week 5: 129.46 (target 137.75-195.75)
+FAIL: expert pass rate out of band week 6: 0.27 (target 0.73-0.91)
+FAIL: expert avg week devotion out of band week 6: 107.01 (target 190.00-270.00)
+FAIL: expert pass rate out of band week 7: 0.16 (target 0.70-0.90)
+FAIL: expert avg week devotion out of band week 7: 87.53 (target 261.25-371.25)
+FAIL: expert pass rate out of band week 8: 0.10 (target 0.67-0.88)
+FAIL: expert avg week devotion out of band week 8: 76.23 (target 380.00-540.00)
+FAIL: expert pass rate out of band week 9: 0.06 (target 0.63-0.87)
+FAIL: expert avg week devotion out of band week 9: 69.79 (target 589.00-837.00)
+FAIL: expert pass rate out of band week 10: 0.04 (target 0.60-0.85)
+FAIL: expert avg week devotion out of band week 10: 72.12 (target 950.00-1350.00)
+FAIL: average pass rate out of band week 1: 0.98 (target 0.75-0.92)
+FAIL: average avg week devotion out of band week 1: 61.56 (target 32.00-46.00)
+FAIL: average avg week devotion out of band week 2: 76.30 (target 44.00-63.25)
+FAIL: average pass rate out of band week 3: 0.63 (target 0.64-0.84)
+FAIL: average pass rate out of band week 4: 0.34 (target 0.58-0.80)
+FAIL: average avg week devotion out of band week 4: 71.77 (target 84.00-120.75)
+FAIL: average pass rate out of band week 5: 0.16 (target 0.53-0.76)
+FAIL: average avg week devotion out of band week 5: 49.56 (target 116.00-166.75)
+FAIL: average pass rate out of band week 6: 0.07 (target 0.47-0.71)
+FAIL: average avg week devotion out of band week 6: 30.85 (target 160.00-230.00)
+FAIL: average pass rate out of band week 7: 0.03 (target 0.42-0.67)
+FAIL: average avg week devotion out of band week 7: 20.96 (target 220.00-316.25)
+FAIL: average pass rate out of band week 8: 0.02 (target 0.36-0.63)
+FAIL: average avg week devotion out of band week 8: 16.61 (target 320.00-460.00)
+FAIL: average pass rate out of band week 9: 0.01 (target 0.31-0.59)
+FAIL: average avg week devotion out of band week 9: 17.98 (target 496.00-713.00)
+FAIL: average pass rate out of band week 10: 0.01 (target 0.25-0.55)
+FAIL: average avg week devotion out of band week 10: 20.05 (target 800.00-1150.00)
+WARN: expert avg round devotion outside band week 1: 81.34 (target 22.00-36.00)
+WARN: expert avg blood earned outside band week 1: 37.60 (target 5.00-14.00)
+WARN: expert avg round devotion outside band week 2: 90.96 (target 30.25-49.50)
+WARN: expert avg blood earned outside band week 2: 40.67 (target 5.33-14.89)
+WARN: expert avg round devotion outside band week 3: 94.61 (target 41.25-67.50)
+WARN: expert avg blood earned outside band week 3: 42.21 (target 5.67-15.78)
+WARN: expert avg round devotion outside band week 4: 112.01 (target 57.75-94.50)
+WARN: expert avg blood earned outside band week 4: 41.24 (target 6.00-16.67)
+WARN: expert avg round devotion outside band week 5: 145.00 (target 79.75-130.50)
+WARN: expert avg blood earned outside band week 5: 33.43 (target 6.33-17.56)
+WARN: expert avg round devotion outside band week 6: 1077.10 (target 110.00-180.00)
+WARN: expert avg blood earned outside band week 6: 24.46 (target 6.67-18.44)
+WARN: expert avg round devotion outside band week 7: 7548.75 (target 151.25-247.50)
+WARN: expert avg blood earned outside band week 7: 19.88 (target 7.00-19.33)
+WARN: expert avg round devotion outside band week 8: 96106.65 (target 220.00-360.00)
+WARN: expert avg round devotion outside band week 9: 2041.97 (target 341.00-558.00)
+WARN: expert avg round devotion outside band week 10: 2449.01 (target 550.00-900.00)
+WARN: average avg round devotion outside band week 1: 43.23 (target 16.00-28.00)
+WARN: average avg blood earned outside band week 1: 29.04 (target 3.00-10.00)
+WARN: average avg round devotion outside band week 2: 49.90 (target 22.00-38.50)
+WARN: average avg blood earned outside band week 2: 29.00 (target 3.22-10.67)
+WARN: average avg round devotion outside band week 3: 57.39 (target 30.00-52.50)
+WARN: average avg blood earned outside band week 3: 25.46 (target 3.44-11.33)
+WARN: average avg blood earned outside band week 4: 17.82 (target 3.67-12.00)
+WARN: average avg round devotion outside band week 5: 123.26 (target 58.00-101.50)
+WARN: average avg round devotion outside band week 7: 271.37 (target 110.00-192.50)
+WARN: average avg round devotion outside band week 8: 2158.36 (target 160.00-280.00)
+WARN: average avg blood earned outside band week 8: 3.70 (target 4.56-14.67)
+WARN: average avg round devotion outside band week 9: 2387.82 (target 248.00-434.00)
+WARN: average avg blood earned outside band week 9: 4.33 (target 4.78-15.33)
+WARN: average avg round devotion outside band week 10: 28588.17 (target 400.00-700.00)
+WARN: average avg blood earned outside band week 10: 4.71 (target 5.00-16.00)
+
+Report file: res://docs/test_reports/exhaustive_report_2026-03-09T17-25-47.txt

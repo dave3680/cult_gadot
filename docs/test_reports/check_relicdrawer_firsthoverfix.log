@@ -1,0 +1,8 @@
+Godot Engine v4.4.stable.mono.official.4c311cbee - https://godotengine.org
+
+SCRIPT ERROR: Parse Error: Name "minimum_size_changed" called as a function but is a "Signal".
+   at: GDScript::reload (res://scripts/RelicDrawer.gd:227)
+SCRIPT ERROR: Parse Error: Name "minimum_size_changed" called as a function but is a "Signal".
+   at: GDScript::reload (res://scripts/RelicDrawer.gd:228)
+ERROR: Failed to load script "res://scripts/RelicDrawer.gd" with error "Parse error".
+   at: load (modules/gdscript/gdscript.cpp:3022)

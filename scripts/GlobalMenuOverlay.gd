@@ -1,12 +1,22 @@
 extends CanvasLayer
 
 const MENU_SCENE := "res://scenes/MainMenu.tscn"
+const CodexBrowserScript = preload("res://scripts/CodexBrowser.gd")
+const LOCAL_MENU_SCENES := {
+	"res://scenes/RunGame.tscn": true,
+	"res://scenes/Shop.tscn": true,
+	"res://scenes/NestSelect.tscn": true,
+	"res://scenes/Breeding.tscn": true,
+}
 
 var menu_button: Button
 var popup: PopupPanel
 var close_button: Button
 var main_menu_button: Button
+var codex_button: Button
 var exit_button: Button
+var codex_popup: PopupPanel
+var codex_browser: Control
 
 func _ready() -> void:
 	layer = 100
@@ -57,6 +67,12 @@ func _build_ui() -> void:
 	main_menu_button.pressed.connect(_on_main_menu_pressed)
 	vbox.add_child(main_menu_button)
 
+	codex_button = Button.new()
+	codex_button.text = "Codex"
+	codex_button.custom_minimum_size = Vector2(180, 44)
+	codex_button.pressed.connect(_on_codex_pressed)
+	vbox.add_child(codex_button)
+
 	exit_button = Button.new()
 	exit_button.text = "Exit Game"
 	exit_button.custom_minimum_size = Vector2(180, 44)
@@ -69,14 +85,37 @@ func _build_ui() -> void:
 	close_button.pressed.connect(_on_close_pressed)
 	vbox.add_child(close_button)
 
+	codex_popup = PopupPanel.new()
+	codex_popup.size = Vector2i(1280, 760)
+	add_child(codex_popup)
+	codex_browser = CodexBrowserScript.new()
+	codex_browser.set("compact_mode", true)
+	codex_browser.anchors_preset = Control.PRESET_FULL_RECT
+	codex_browser.anchor_right = 1.0
+	codex_browser.anchor_bottom = 1.0
+	codex_browser.connect("close_requested", Callable(self, "_on_close_codex"))
+	codex_popup.add_child(codex_browser)
+
 func _on_menu_pressed() -> void:
+	open_menu()
+
+func open_menu() -> void:
 	popup.popup_centered()
 
 func _on_main_menu_pressed() -> void:
 	popup.hide()
+	codex_popup.hide()
 	if get_tree().current_scene != null and get_tree().current_scene.scene_file_path == MENU_SCENE:
 		return
 	get_tree().change_scene_to_file(MENU_SCENE)
+
+func _on_codex_pressed() -> void:
+	if codex_browser != null and codex_browser.has_method("refresh_codex"):
+		codex_browser.call("refresh_codex")
+	codex_popup.popup_centered_ratio(0.92)
+
+func _on_close_codex() -> void:
+	codex_popup.hide()
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
@@ -87,3 +126,8 @@ func _on_close_pressed() -> void:
 func _update_visibility() -> void:
 	# Keep button always visible during gameplay and menus after boot.
 	visible = true
+	var scene_path: String = ""
+	if get_tree().current_scene != null:
+		scene_path = get_tree().current_scene.scene_file_path
+	if menu_button != null:
+		menu_button.visible = not LOCAL_MENU_SCENES.has(scene_path)
