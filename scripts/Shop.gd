@@ -1,4 +1,5 @@
 extends Control
+const TutorialOverlayScript = preload("res://scripts/TutorialOverlay.gd")
 
 @onready var shop_label: Label = $RootVBox/TopBar/TopBarVBox/TopMainRow/ShopLabel
 @onready var top_center_label: Label = $RootVBox/TopBar/TopBarVBox/TopMainRow/TopCenterLabel
@@ -45,6 +46,8 @@ var pack_label: Label
 var pack_buttons: Array[Button] = []
 var pack_offers: Array[String] = []
 var offer_hover_tweens: Dictionary = {}
+var tutorial_overlay: CanvasLayer
+var tutorial_callout_running: bool = false
 
 func _ready() -> void:
 	_rng.randomize()
@@ -178,14 +181,19 @@ func _ready() -> void:
 	gs.generate_shop_recruits()
 	_setup_recruits()
 	_show_shop_view()
+	call_deferred("_start_tutorial_callouts")
 
 func _setup_offers() -> void:
 	_update_top_bar()
 
 	var week_cleared: int = gs.current_week
-	offers = _roll_offers(3, week_cleared, gs.guaranteed_rare_next_shop)
+	if gs.is_tutorial_active():
+		offers = gs.tutorial_shop_offers_for_week(week_cleared)
+	else:
+		offers = _roll_offers(3, week_cleared, gs.guaranteed_rare_next_shop)
 	gs.guaranteed_rare_next_shop = false
-	_offer_legendary_if_needed()
+	if not gs.is_tutorial_active():
+		_offer_legendary_if_needed()
 	_record_codex_offer_discoveries()
 	_render_offers(week_cleared)
 	_update_reroll_button()
@@ -239,6 +247,10 @@ func _rarity_color(rarity: String) -> Color:
 			return Color(0.56, 0.6, 0.68)
 
 func _update_reroll_button() -> void:
+	if gs.is_tutorial_active():
+		reroll_button.text = "Reroll Relics (Tutorial Locked)"
+		reroll_button.disabled = true
+		return
 	var reroll_cost: int = 5
 	if gs.shop_rerolls_used == 0 and (gs.relic_inventory["Sharpened Chalk"] > 0 or gs.shop_free_reroll_available):
 		reroll_cost = 0
@@ -325,6 +337,45 @@ func _on_menu_pressed() -> void:
 			return
 		if overlay.has_method("_on_menu_pressed"):
 			overlay.call("_on_menu_pressed")
+
+func _ensure_tutorial_overlay() -> void:
+	if tutorial_overlay != null and is_instance_valid(tutorial_overlay):
+		return
+	tutorial_overlay = TutorialOverlayScript.new()
+	add_child(tutorial_overlay)
+
+func _start_tutorial_callouts() -> void:
+	if not gs.is_tutorial_active():
+		return
+	if tutorial_callout_running:
+		return
+	var key: String = ""
+	var steps: Array[Dictionary] = []
+	if gs.current_week == 1:
+		key = "shop_intro_main"
+		steps = [
+			{"target": blood_label, "title": "Blood Currency", "text": "Blood is your shop currency. You earn it by clearing rounds and from some traits/relic effects."},
+			{"target": offer_row, "title": "Relics", "text": "Relics are the core of your build. They permanently shape how your future rounds score and scale."},
+			{"target": recruit_panel, "title": "Recruits", "text": "Recruits add followers to your pool. More options here means better sacrifices and breeding choices later."},
+			{"target": skip_button, "title": "Your Task", "text": "Buy at least one useful upgrade, then Continue to Nest Selection."},
+		]
+	elif gs.current_week == 2:
+		key = "shop_relic_drawer_tip"
+		var relic_button: Control = get_node_or_null("RelicDrawer/Root/Anchor/DrawerVBox/ToggleButton") as Control
+		steps = [
+			{"target": relic_button, "title": "Relics Drawer", "text": "Use this button anytime to review relics you already own and what they do."},
+		]
+	else:
+		return
+	if gs.tutorial_has_seen_callout(key):
+		return
+	_ensure_tutorial_overlay()
+	tutorial_callout_running = true
+	for step in steps:
+		tutorial_overlay.show_callout(step.get("target", null), str(step.get("text", "")), str(step.get("title", "Tutorial")), "next")
+		await tutorial_overlay.callout_closed
+	gs.tutorial_mark_callout_seen(key)
+	tutorial_callout_running = false
 
 func _apply_ui_theme() -> void:
 	_set_panel_style($RootVBox/TopBar, Color(0.12, 0.11, 0.14, 0.94), Color(0.22, 0.2, 0.24, 0.9), 1, 8)
@@ -510,6 +561,8 @@ func _setup_ritual_offer() -> void:
 	_apply_ritual_style(false)
 
 func _on_reroll_pressed() -> void:
+	if gs.is_tutorial_active():
+		return
 	if gs.shop_rerolls_used >= 1:
 		return
 	var reroll_cost: int = 5

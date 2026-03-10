@@ -1,4 +1,5 @@
 extends Control
+const TutorialOverlayScript = preload("res://scripts/TutorialOverlay.gd")
 
 @onready var report_label: Label = $RootVBox/TopBar/TopBarVBox/TopMainRow/ReportLabel
 @onready var blood_label: Label = $RootVBox/TopBar/TopBarVBox/TopMainRow/RightControls/BloodWrap/BloodLabel
@@ -15,6 +16,8 @@ extends Control
 var _nest_visual_refs: Array[Dictionary] = []
 var _continue_pulse_tween: Tween
 var _reveals_complete: bool = false
+var tutorial_overlay: CanvasLayer
+var tutorial_callout_running: bool = false
 
 func _ready() -> void:
 	continue_button.pressed.connect(_on_continue_pressed)
@@ -23,6 +26,7 @@ func _ready() -> void:
 	_build_report_content()
 	prepare_reveal_state()
 	call_deferred("_run_reveal_sequence")
+	call_deferred("_start_tutorial_callouts")
 
 func _apply_theme() -> void:
 	_set_panel_style($RootVBox/TopBar, Color(0.12, 0.11, 0.14, 0.94), Color(0.22, 0.2, 0.24, 0.9), 1, 8)
@@ -455,6 +459,9 @@ func _spring_in(node: Control) -> void:
 	await t.finished
 
 func _start_continue_pulse() -> void:
+	if gs != null and gs.is_tutorial_active():
+		continue_button.scale = Vector2.ONE
+		return
 	if _continue_pulse_tween != null and is_instance_valid(_continue_pulse_tween):
 		_continue_pulse_tween.kill()
 	_continue_pulse_tween = create_tween()
@@ -480,6 +487,36 @@ func _on_menu_pressed() -> void:
 			return
 		if overlay.has_method("_on_menu_pressed"):
 			overlay.call("_on_menu_pressed")
+
+func _ensure_tutorial_overlay() -> void:
+	if tutorial_overlay != null and is_instance_valid(tutorial_overlay):
+		return
+	tutorial_overlay = TutorialOverlayScript.new()
+	add_child(tutorial_overlay)
+
+func _start_tutorial_callouts() -> void:
+	if not gs.is_tutorial_active():
+		return
+	if tutorial_callout_running:
+		return
+	if gs.current_week != 1:
+		return
+	var key: String = "breeding_intro_main"
+	if gs.tutorial_has_seen_callout(key):
+		return
+	_ensure_tutorial_overlay()
+	tutorial_callout_running = true
+	var steps: Array[Dictionary] = [
+		{"target": nest_sections, "title": "Nest Results", "text": "Each section shows parents and this week's offspring result."},
+		{"target": wild_section, "title": "Wild Breeding", "text": "Wild breeding runs separately from nests and can add extra newborns."},
+		{"target": summary_line, "title": "Weekly Summary", "text": "Summary tracks pool growth, newborn counts, and trims."},
+		{"target": continue_button, "title": "Continue", "text": "Continue moves to shop for the next week."},
+	]
+	for step in steps:
+		tutorial_overlay.show_callout(step.get("target", null), str(step.get("text", "")), str(step.get("title", "Tutorial")), "next")
+		await tutorial_overlay.callout_closed
+	gs.tutorial_mark_callout_seen(key)
+	tutorial_callout_running = false
 
 func _parse_breeding_summary(summary: String) -> Dictionary:
 	var parsed: Dictionary = {

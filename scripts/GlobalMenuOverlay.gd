@@ -7,6 +7,7 @@ const LOCAL_MENU_SCENES := {
 	"res://scenes/Shop.tscn": true,
 	"res://scenes/NestSelect.tscn": true,
 	"res://scenes/Breeding.tscn": true,
+	"res://scenes/TutorialComplete.tscn": true,
 }
 
 var menu_button: Button

@@ -1,4 +1,5 @@
 extends Control
+const TutorialOverlayScript = preload("res://scripts/TutorialOverlay.gd")
 
 const DRAG_THRESHOLD := 10.0
 const PIT_HIGHLIGHT_COLOR := Color(0.82, 0.42, 0.22, 0.95)
@@ -65,6 +66,8 @@ var drag_index: int = -1
 var drag_start_pos: Vector2 = Vector2.ZERO
 var drag_preview_card: Control
 var pit_hovered: bool = false
+var tutorial_overlay: CanvasLayer
+var tutorial_callout_running: bool = false
 
 func _ready() -> void:
 	_init_hand_cards()
@@ -97,6 +100,7 @@ func _ready() -> void:
 		selected_hand_index = -1
 
 	_refresh_ui(false)
+	call_deferred("_start_tutorial_callouts")
 
 func _input(event: InputEvent) -> void:
 	if not drag_tracking:
@@ -958,6 +962,7 @@ func _on_confirm_pressed() -> void:
 	selected_hand_index = -1
 	_clear_info()
 	_refresh_ui(true)
+	call_deferred("_tutorial_post_confirm_callout")
 
 func _play_pit_pop_animation() -> void:
 	var cards: Array = pit_cards_row.get_children()
@@ -1048,7 +1053,10 @@ func _proceed_after_confirm() -> void:
 				gs.skeleton_archive_bonus += int(gs.relic_inventory.get("The Skeleton Archive", 0))
 				gs.skeleton_archive_awarded_run = true
 		var next_path: String = "res://scenes/Shop.tscn"
-		if gs.current_week >= gs.get_max_weeks():
+		if gs.is_tutorial_active() and gs.current_week >= gs.get_max_weeks():
+			gs.tutorial_completed = true
+			next_path = "res://scenes/TutorialComplete.tscn"
+		elif gs.current_week >= gs.get_max_weeks():
 			if gs.relic_inventory.get("The Sanguine Bank", 0) > 0:
 				gs.last_breakdown_text += "\nThe Sanguine Bank: final-week blood banked = %d" % gs.blood_currency
 			next_path = "res://scenes/Victory.tscn"
@@ -1376,6 +1384,84 @@ func _on_menu_pressed() -> void:
 			overlay.call("_on_menu_pressed")
 			return
 	_show_info("(Info) Menu unavailable.")
+
+func _ensure_tutorial_overlay() -> void:
+	if tutorial_overlay != null and is_instance_valid(tutorial_overlay):
+		return
+	tutorial_overlay = TutorialOverlayScript.new()
+	add_child(tutorial_overlay)
+
+func _start_tutorial_callouts() -> void:
+	if not gs.is_tutorial_active():
+		return
+	if tutorial_callout_running:
+		return
+	var key: String = "run_intro_w%d_r%d" % [gs.current_week, gs.week_round]
+	if gs.tutorial_has_seen_callout(key):
+		return
+	_ensure_tutorial_overlay()
+	tutorial_callout_running = true
+	var steps: Array[Dictionary] = []
+	if gs.current_week == 1 and gs.week_round == 1:
+		steps = [
+			{"target": target_value, "title": "Devotion Target", "text": "This is your goal. You score devotion by sacrificing followers in the altar. Reach or pass this number this week."},
+			{"target": week_label, "title": "Week and Round", "text": "Track your current week and round here."},
+			{"target": follower_row, "title": "Followers", "text": "Each follower has a Tier and a Type. Tier is raw strength. Higher tier usually means more score."},
+			{"target": follower_row, "title": "Types", "text": "Types shape scoring: BLOOD and BONE add direct devotion, VOID boosts your multiplier, and SOUL usually pays off through trait/relic effects."},
+			{"target": pit_drop_area, "title": "Altar", "text": "Drag followers into the altar to stage sacrifices."},
+			{"target": preview_text, "title": "Preview", "text": "This shows your live estimate before confirming. If the total is green, you're on pace to clear the target."},
+			{"target": confirm_button, "title": "Confirm", "text": "Confirm Sacrifice locks this play in and applies the result."},
+			{"target": pit_drop_area, "title": "Your Task", "text": "Try sacrificing some followers now. Drag cards into the altar, then press Confirm Sacrifice."},
+		]
+	elif gs.current_week == 2 and gs.week_round == 1:
+		var bloodbrand_card: Control = _tutorial_find_hand_card_by_trait_id("bloodbrand")
+		if bloodbrand_card == null:
+			bloodbrand_card = follower_row
+		steps = [
+			{"target": follower_row, "title": "Traits", "text": "Traits are bonus rules on followers. Hover a card to read exactly what its trait does."},
+			{"target": bloodbrand_card, "title": "Example Combo", "text": "Try the Bloodbrand follower this round. Bloodbrand gives +7 when sacrificed with at least 2 BLOOD followers."},
+			{"target": follower_row, "title": "Multi-Trait Badges", "text": "The 4 badge slots at the bottom are trait slots. Through breeding, followers can inherit multiple traits."},
+			{"target": preview_text, "title": "Lineage Bonus", "text": "If altar followers have lineage points, a lineage row appears here and boosts final devotion."},
+		]
+	elif gs.current_week == 2 and gs.week_round == 2:
+		steps = [
+			{"target": doctrine_button, "title": "Doctrine Action", "text": "Doctrine action is once per play. Use it before confirming sacrifice."},
+		]
+	elif gs.current_week == 4 and gs.week_round == 1:
+		steps = [
+			{"target": ritual_use, "title": "Rituals", "text": "Ritual cards are optional tactical effects for this play."},
+			{"target": preview_text, "title": "Final Tutorial Week", "text": "Combine relics, traits, doctrine, and lineage to clear this week."},
+		]
+	for step in steps:
+		tutorial_overlay.show_callout(step.get("target", null), str(step.get("text", "")), str(step.get("title", "Tutorial")), "next")
+		await tutorial_overlay.callout_closed
+	gs.tutorial_mark_callout_seen(key)
+	tutorial_callout_running = false
+
+func _tutorial_post_confirm_callout() -> void:
+	if not gs.is_tutorial_active():
+		return
+	if gs.current_week != 1 or gs.week_round != 1:
+		return
+	var key: String = "run_post_confirm_w%d_r%d" % [gs.current_week, gs.week_round]
+	if gs.tutorial_has_seen_callout(key):
+		return
+	_ensure_tutorial_overlay()
+	tutorial_overlay.show_callout(breakdown_panel, "This breakdown shows exactly where devotion and blood came from in this play.", "Breakdown", "next")
+	await tutorial_overlay.callout_closed
+	gs.tutorial_mark_callout_seen(key)
+
+func _tutorial_find_hand_card_by_trait_id(trait_id: String) -> Control:
+	if trait_id == "":
+		return null
+	for i in range(min(gs.current_hand.size(), hand_card_nodes.size())):
+		var follower: Dictionary = gs.current_hand[i]
+		if str(follower.get("trait_id", "")) != trait_id:
+			continue
+		var root: Control = hand_card_nodes[i].get("root", null) as Control
+		if root != null and root.visible:
+			return root
+	return null
 
 func _on_pool_pressed() -> void:
 	_refresh_pool_overlay()

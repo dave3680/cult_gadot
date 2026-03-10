@@ -2,6 +2,7 @@ extends Control
 
 const DraggablePoolRowScript = preload("res://scripts/DraggablePoolRow.gd")
 const NestSlotScript = preload("res://scripts/NestSlot.gd")
+const TutorialOverlayScript = preload("res://scripts/TutorialOverlay.gd")
 
 const NEST_FOCUS_NONE := "NONE"
 const NEST_FOCUS_RARITY := "RARITY"
@@ -43,6 +44,8 @@ var predicted_lineage_title: Label
 var predicted_lineage_badge: PanelContainer
 var predicted_lineage_badge_label: Label
 var predicted_lineage_detail: Label
+var tutorial_overlay: CanvasLayer
+var tutorial_callout_running: bool = false
 
 func _ready() -> void:
 	continue_button.pressed.connect(_on_continue_pressed)
@@ -61,6 +64,7 @@ func _ready() -> void:
 	_ensure_predicted_lineage_nodes()
 	_build_nest_panels()
 	_refresh_all()
+	call_deferred("_start_tutorial_callouts")
 
 func _process(_delta: float) -> void:
 	_update_drag_hover_visuals()
@@ -764,6 +768,39 @@ func _on_menu_pressed() -> void:
 			return
 		if overlay.has_method("_on_menu_pressed"):
 			overlay.call("_on_menu_pressed")
+
+func _ensure_tutorial_overlay() -> void:
+	if tutorial_overlay != null and is_instance_valid(tutorial_overlay):
+		return
+	tutorial_overlay = TutorialOverlayScript.new()
+	add_child(tutorial_overlay)
+
+func _start_tutorial_callouts() -> void:
+	if not gs.is_tutorial_active():
+		return
+	if tutorial_callout_running:
+		return
+	if gs.current_week != 1:
+		return
+	var key: String = "nest_intro_main"
+	if gs.tutorial_has_seen_callout(key):
+		return
+	_ensure_tutorial_overlay()
+	tutorial_callout_running = true
+	var details_target: Control = null
+	if not nest_slots.is_empty():
+		details_target = nest_slots[0].get("details", null)
+	var steps: Array[Dictionary] = [
+		{"target": nest_list, "title": "Breeding Overview", "text": "Breeding combines two parents to create offspring for future weeks. Those offspring can become stronger sacrifices later."},
+		{"target": pool_list, "title": "Assign Parents", "text": "Drag followers from the pool into Parent A and Parent B slots in a nest."},
+		{"target": details_target, "title": "Breeding Focus", "text": "Details lets you set focus and preview outcomes before battle."},
+		{"target": continue_button, "title": "Your Task", "text": "Set at least one nest with two parents now, then Continue to Battle."},
+	]
+	for step in steps:
+		tutorial_overlay.show_callout(step.get("target", null), str(step.get("text", "")), str(step.get("title", "Tutorial")), "next")
+		await tutorial_overlay.callout_closed
+	gs.tutorial_mark_callout_seen(key)
+	tutorial_callout_running = false
 
 func _follower_by_id(follower_id: int) -> Dictionary:
 	for f in gs.pool:

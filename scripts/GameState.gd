@@ -479,6 +479,169 @@ const RELIC_SCORING_HOOKS := {
 	},
 }
 
+const TUTORIAL_MAX_WEEKS := 4
+const TUTORIAL_WEEK_TARGETS := {
+	1: 40,
+	2: 55,
+	3: 75,
+	4: 105,
+}
+const TUTORIAL_DATA := {
+	1: {
+		"required_pool": [
+			{"trait": "BLOOD", "tier": 6, "trait_id": "high_chanter", "lineage": 0, "origin_tag": "start"},
+			{"trait": "BLOOD", "tier": 5, "trait_id": "twinborn", "lineage": 0, "origin_tag": "start"},
+			{"trait": "BLOOD", "tier": 5, "trait_id": "ember_saint", "lineage": 0, "origin_tag": "start"},
+			{"trait": "BLOOD", "tier": 4, "trait_id": "devout", "lineage": 0, "origin_tag": "start"},
+			{"trait": "BONE", "tier": 5, "trait_id": "ossuary_laborer", "lineage": 0, "origin_tag": "start"},
+			{"trait": "BONE", "tier": 4, "trait_id": "stalwart", "lineage": 0, "origin_tag": "start"},
+			{"trait": "BONE", "tier": 5, "trait_id": "bone_tithe", "lineage": 0, "origin_tag": "start"},
+			{"trait": "VOID", "tier": 0, "trait_id": "whispered", "lineage": 0, "origin_tag": "start"},
+			{"trait": "VOID", "tier": 0, "trait_id": "", "lineage": 0, "origin_tag": "start"},
+		],
+		"round_hands": {
+			1: [
+				{"trait": "BLOOD", "tier": 6, "trait_id": "high_chanter", "lineage": 0},
+				{"trait": "BONE", "tier": 4, "trait_id": "stalwart", "lineage": 0},
+				{"trait": "VOID", "tier": 0, "trait_id": "whispered", "lineage": 0},
+				{"trait": "BLOOD", "tier": 5, "trait_id": "twinborn", "lineage": 0},
+				{"trait": "BONE", "tier": 5, "trait_id": "ossuary_laborer", "lineage": 0},
+				{"trait": "BLOOD", "tier": 4, "trait_id": "devout", "lineage": 0},
+			],
+			2: [
+				{"trait": "BLOOD", "tier": 5, "trait_id": "ember_saint", "lineage": 0},
+				{"trait": "BLOOD", "tier": 5, "trait_id": "blood_oathling", "lineage": 0},
+				{"trait": "BONE", "tier": 5, "trait_id": "bone_tithe", "lineage": 0},
+				{"trait": "BLOOD", "tier": 4, "trait_id": "devout", "lineage": 0},
+				{"trait": "BONE", "tier": 4, "trait_id": "stalwart", "lineage": 0},
+				{"trait": "VOID", "tier": 0, "trait_id": "", "lineage": 0},
+			],
+		},
+		"shop_offers": ["Bone Idol", "Crimson Book", "Tithe Discount"],
+		"shop_recruits": [
+			{"trait": "BLOOD", "tier": 5, "trait_id": "devout", "lineage": 0},
+			{"trait": "BONE", "tier": 4, "trait_id": "stalwart", "lineage": 0},
+			{"trait": "VOID", "tier": 0, "trait_id": "whispered", "lineage": 0},
+		],
+	},
+	2: {
+		"required_pool": [
+			{"trait": "BLOOD", "tier": 5, "trait_id": "bloodbrand", "lineage": 1, "origin_tag": "nest_bred"},
+			{"trait": "BONE", "tier": 4, "trait_id": "stalwart", "lineage": 1, "origin_tag": "nest_bred"},
+			{"trait": "BLOOD", "tier": 4, "trait_id": "fervent", "lineage": 1, "origin_tag": "wild_bred"},
+			{"trait": "BLOOD", "tier": 6, "trait_id": "high_chanter", "lineage": 0, "origin_tag": "start"},
+			{"trait": "BONE", "tier": 5, "trait_id": "ossuary_laborer", "lineage": 0, "origin_tag": "start"},
+			{"trait": "VOID", "tier": 0, "trait_id": "whispered", "lineage": 0, "origin_tag": "start"},
+		],
+		"round_hands": {
+			1: [
+				{"trait": "BLOOD", "tier": 5, "trait_id": "bloodbrand", "lineage": 1},
+				{"trait": "BONE", "tier": 4, "trait_id": "stalwart", "lineage": 1},
+				{"trait": "BLOOD", "tier": 4, "trait_id": "fervent", "lineage": 1},
+				{"trait": "VOID", "tier": 0, "trait_id": "whispered", "lineage": 0},
+				{"trait": "BLOOD", "tier": 6, "trait_id": "high_chanter", "lineage": 0},
+				{"trait": "BONE", "tier": 5, "trait_id": "ossuary_laborer", "lineage": 0},
+			],
+			2: [
+				{"trait": "BONE", "tier": 5, "trait_id": "ossuary_laborer", "lineage": 0},
+				{"trait": "BLOOD", "tier": 5, "trait_id": "bloodbrand", "lineage": 1},
+				{"trait": "BLOOD", "tier": 5, "trait_id": "ember_saint", "lineage": 0},
+				{"trait": "BLOOD", "tier": 4, "trait_id": "devout", "lineage": 0},
+				{"trait": "VOID", "tier": 0, "trait_id": "whispered", "lineage": 0},
+				{"trait": "BONE", "tier": 4, "trait_id": "stalwart", "lineage": 1},
+			],
+		},
+		"shop_offers": ["Prayer Beads", "Black Contract", "Selective Breeding Scroll"],
+		"shop_recruits": [
+			{"trait": "BLOOD", "tier": 6, "trait_id": "straight_rite", "lineage": 0},
+			{"trait": "BONE", "tier": 5, "trait_id": "ossuary_king", "lineage": 0},
+			{"trait": "VOID", "tier": 0, "trait_id": "void_herald", "lineage": 0},
+		],
+		"nest_results": [
+			{"nest": 1, "success": true, "baby": {"trait": "BLOOD", "tier": 6, "trait_id": "straight_rite", "lineage": 2, "origin_tag": "nest_bred"}},
+			{"nest": 2, "success": true, "baby": {"trait": "VOID", "tier": 0, "trait_id": "void_herald", "lineage": 1, "origin_tag": "nest_bred"}},
+		],
+		"wild_results": [
+			{"trait": "BONE", "tier": 5, "trait_id": "pair_hunter", "lineage": 1, "origin_tag": "wild_bred"},
+		],
+	},
+	3: {
+		"required_pool": [
+			{"trait": "BLOOD", "tier": 6, "trait_id": "straight_rite", "lineage": 2, "origin_tag": "nest_bred"},
+			{"trait": "VOID", "tier": 0, "trait_id": "void_herald", "lineage": 1, "origin_tag": "nest_bred"},
+			{"trait": "BONE", "tier": 5, "trait_id": "pair_hunter", "lineage": 1, "origin_tag": "wild_bred"},
+			{"trait": "BLOOD", "tier": 6, "trait_id": "black_candlebearer", "lineage": 0, "origin_tag": "recruit"},
+			{"trait": "BONE", "tier": 6, "trait_id": "ossuary_king", "lineage": 0, "origin_tag": "recruit"},
+			{"trait": "BLOOD", "tier": 5, "trait_id": "lineage_tutor", "lineage": 0, "origin_tag": "start"},
+		],
+		"round_hands": {
+			1: [
+				{"trait": "BLOOD", "tier": 6, "trait_id": "straight_rite", "lineage": 2},
+				{"trait": "VOID", "tier": 0, "trait_id": "void_herald", "lineage": 1},
+				{"trait": "BONE", "tier": 5, "trait_id": "pair_hunter", "lineage": 1},
+				{"trait": "BLOOD", "tier": 6, "trait_id": "black_candlebearer", "lineage": 0},
+				{"trait": "BONE", "tier": 6, "trait_id": "ossuary_king", "lineage": 0},
+				{"trait": "BLOOD", "tier": 5, "trait_id": "lineage_tutor", "lineage": 0},
+			],
+			2: [
+				{"trait": "BLOOD", "tier": 6, "trait_id": "blood_prophet", "lineage": 0},
+				{"trait": "BLOOD", "tier": 6, "trait_id": "straight_rite", "lineage": 2},
+				{"trait": "BLOOD", "tier": 5, "trait_id": "devout", "lineage": 1},
+				{"trait": "BONE", "tier": 5, "trait_id": "pair_hunter", "lineage": 1},
+				{"trait": "VOID", "tier": 0, "trait_id": "void_herald", "lineage": 1},
+				{"trait": "BONE", "tier": 4, "trait_id": "stalwart", "lineage": 0},
+			],
+		},
+		"shop_offers": ["The Sanguine Chord", "Fertility Idol", "Scarlet Planetarium"],
+		"shop_recruits": [
+			{"trait": "BLOOD", "tier": 6, "trait_id": "blood_prophet", "lineage": 0},
+			{"trait": "BONE", "tier": 6, "trait_id": "ossuary_archon", "lineage": 0},
+			{"trait": "BLOOD", "tier": 5, "trait_id": "devout", "trait_ids": ["whispered"], "lineage": 0},
+		],
+		"nest_results": [
+			{"nest": 1, "success": true, "baby": {"trait": "BLOOD", "tier": 7, "trait_id": "crimson_ascendant", "lineage": 2, "origin_tag": "nest_bred"}},
+			{"nest": 2, "success": true, "baby": {"trait": "BONE", "tier": 6, "trait_id": "ossuary_archon", "lineage": 2, "origin_tag": "nest_bred"}},
+		],
+		"wild_results": [
+			{"trait": "BLOOD", "tier": 5, "trait_id": "devout", "lineage": 1, "origin_tag": "wild_bred"},
+			{"trait": "BONE", "tier": 5, "trait_id": "bone_tithe", "lineage": 1, "origin_tag": "wild_bred"},
+		],
+	},
+	4: {
+		"required_pool": [
+			{"trait": "BLOOD", "tier": 7, "trait_id": "crimson_ascendant", "lineage": 2, "origin_tag": "nest_bred"},
+			{"trait": "BONE", "tier": 6, "trait_id": "ossuary_archon", "lineage": 2, "origin_tag": "nest_bred"},
+			{"trait": "BLOOD", "tier": 6, "trait_id": "blood_prophet", "lineage": 0, "origin_tag": "recruit"},
+			{"trait": "VOID", "tier": 0, "trait_id": "void_herald", "lineage": 1, "origin_tag": "nest_bred"},
+		],
+		"round_hands": {
+			1: [
+				{"trait": "BLOOD", "tier": 7, "trait_id": "crimson_ascendant", "lineage": 2},
+				{"trait": "BONE", "tier": 6, "trait_id": "ossuary_archon", "lineage": 2},
+				{"trait": "BLOOD", "tier": 6, "trait_id": "blood_prophet", "lineage": 0},
+				{"trait": "VOID", "tier": 0, "trait_id": "void_herald", "lineage": 1},
+				{"trait": "BLOOD", "tier": 6, "trait_id": "straight_rite", "lineage": 2},
+				{"trait": "BONE", "tier": 6, "trait_id": "ossuary_king", "lineage": 0},
+			],
+			2: [
+				{"trait": "BLOOD", "tier": 7, "trait_id": "crimson_ascendant", "lineage": 2},
+				{"trait": "BLOOD", "tier": 6, "trait_id": "straight_rite", "lineage": 2},
+				{"trait": "BLOOD", "tier": 6, "trait_id": "blood_prophet", "lineage": 0},
+				{"trait": "BONE", "tier": 6, "trait_id": "ossuary_archon", "lineage": 2},
+				{"trait": "BONE", "tier": 6, "trait_id": "ossuary_king", "lineage": 0},
+				{"trait": "BLOOD", "tier": 5, "trait_id": "devout", "lineage": 1},
+			],
+		},
+		"nest_results": [
+			{"nest": 1, "success": true, "baby": {"trait": "BLOOD", "tier": 8, "trait_id": "crimson_ascendant", "lineage": 3, "origin_tag": "nest_bred"}},
+			{"nest": 2, "success": true, "baby": {"trait": "BONE", "tier": 7, "trait_id": "ossuary_oracle", "lineage": 3, "origin_tag": "nest_bred"}},
+		],
+		"wild_results": [
+			{"trait": "BLOOD", "tier": 6, "trait_id": "fervent", "lineage": 2, "origin_tag": "wild_bred"},
+		],
+	},
+}
+
 var current_week: int = 1
 var blood_currency: int = 0
 var week_round: int = 1
@@ -648,6 +811,9 @@ var palimpsest_used_run: bool = false
 var shop_any_purchase_this_visit: bool = false
 var director_uses_this_shop: int = 0
 var purchased_relic_history: Array[String] = []
+var tutorial_mode: bool = false
+var tutorial_completed: bool = false
+var tutorial_seen_callouts: Dictionary = {}
 var rusted_disabled_relic: String = ""
 var second_sight_used_shop: bool = false
 var last_week10_blood_bank_bonus: int = 0
@@ -1184,8 +1350,129 @@ func reset_run() -> void:
 	rusted_disabled_relic = ""
 	second_sight_used_shop = false
 	last_week10_blood_bank_bonus = 0
+	tutorial_mode = false
+	tutorial_completed = false
+	tutorial_seen_callouts.clear()
 	if combo_trait_catalog.is_empty():
 		_init_combo_trait_catalog()
+
+func start_tutorial_run() -> void:
+	reset_run()
+	tutorial_mode = true
+	tutorial_completed = false
+	tutorial_seen_callouts.clear()
+	selected_doctrine = "FLESH"
+	set_rng_seed(424242)
+	_tutorial_ensure_week_pool(1)
+	_init_nests()
+	start_week()
+
+func end_tutorial_run() -> void:
+	tutorial_mode = false
+	tutorial_completed = true
+	tutorial_seen_callouts.clear()
+
+func is_tutorial_active() -> bool:
+	return tutorial_mode and current_week <= TUTORIAL_MAX_WEEKS
+
+func tutorial_mark_callout_seen(key: String) -> void:
+	if key == "":
+		return
+	tutorial_seen_callouts[key] = true
+
+func tutorial_has_seen_callout(key: String) -> bool:
+	if key == "":
+		return false
+	return bool(tutorial_seen_callouts.get(key, false))
+
+func tutorial_week_data(week: int) -> Dictionary:
+	if TUTORIAL_DATA.has(week):
+		return TUTORIAL_DATA[week]
+	return {}
+
+func tutorial_shop_offers_for_week(week: int) -> Array[String]:
+	var data: Dictionary = tutorial_week_data(week)
+	var out: Array[String] = []
+	for offer in data.get("shop_offers", []):
+		out.append(str(offer))
+	return out
+
+func tutorial_recruits_for_week(week: int) -> Array[Dictionary]:
+	var data: Dictionary = tutorial_week_data(week)
+	var out: Array[Dictionary] = []
+	for spec in data.get("shop_recruits", []):
+		if spec is Dictionary:
+			out.append((spec as Dictionary).duplicate(true))
+	return out
+
+func _tutorial_make_follower(spec: Dictionary, default_origin: String) -> Dictionary:
+	var trait_name: String = str(spec.get("trait", "BLOOD"))
+	var tier: int = int(spec.get("tier", 1))
+	var trait_id: String = str(spec.get("trait_id", ""))
+	var origin_tag: String = str(spec.get("origin_tag", default_origin))
+	var made: Dictionary = _make_specific_follower(trait_name, tier, origin_tag, trait_id)
+	made["lineage"] = clamp(int(spec.get("lineage", 0)), 0, 10)
+	var extra_traits: Array = spec.get("trait_ids", [])
+	var trait_ids: Array[String] = []
+	for tid_value in extra_traits:
+		var tid: String = str(tid_value)
+		if tid != "" and tid != str(made.get("trait_id", "")) and not trait_ids.has(tid):
+			trait_ids.append(tid)
+	made["trait_ids"] = trait_ids
+	return made
+
+func _tutorial_find_pool_match(spec: Dictionary, nested_ids: Dictionary = {}) -> int:
+	var target_trait: String = str(spec.get("trait", ""))
+	var target_tier: int = int(spec.get("tier", 0))
+	var target_trait_id: String = str(spec.get("trait_id", ""))
+	var target_lineage: int = clamp(int(spec.get("lineage", 0)), 0, 10)
+	for i in range(pool.size()):
+		var follower: Dictionary = pool[i]
+		if nested_ids.has(int(follower.get("id", -1))):
+			continue
+		if str(follower.get("trait", "")) != target_trait:
+			continue
+		if int(follower.get("tier", 0)) != target_tier:
+			continue
+		if str(follower.get("trait_id", "")) != target_trait_id:
+			continue
+		if _follower_lineage_value(follower) != target_lineage:
+			continue
+		return i
+	return -1
+
+func _tutorial_take_matching_from_pool(spec: Dictionary) -> Dictionary:
+	var nested_ids: Dictionary = _nested_id_set()
+	var idx: int = _tutorial_find_pool_match(spec, nested_ids)
+	if idx >= 0:
+		var taken: Dictionary = pool[idx]
+		pool.remove_at(idx)
+		return taken
+	var created: Dictionary = _tutorial_make_follower(spec, "tutorial")
+	return created
+
+func _tutorial_ensure_week_pool(week: int) -> void:
+	var data: Dictionary = tutorial_week_data(week)
+	if data.is_empty():
+		return
+	var required_pool: Array = data.get("required_pool", [])
+	for raw_spec in required_pool:
+		if not (raw_spec is Dictionary):
+			continue
+		var spec: Dictionary = raw_spec as Dictionary
+		if _tutorial_find_pool_match(spec) >= 0:
+			continue
+		pool.append(_tutorial_make_follower(spec, str(spec.get("origin_tag", "tutorial"))))
+	# Also ensure scripted hand cards exist, so deterministic draws work even after player actions.
+	var round_hands: Dictionary = data.get("round_hands", {})
+	for round_key in round_hands.keys():
+		for raw_hand_spec in round_hands[round_key]:
+			if not (raw_hand_spec is Dictionary):
+				continue
+			var hand_spec: Dictionary = raw_hand_spec as Dictionary
+			if _tutorial_find_pool_match(hand_spec) >= 0:
+				continue
+			pool.append(_tutorial_make_follower(hand_spec, "tutorial"))
 
 func _init_combo_trait_catalog() -> void:
 	var ComboGenerator = load("res://scripts/ComboTraitGenerator.gd")
@@ -1308,6 +1595,8 @@ func start_week() -> void:
 		red_covenant_active_week = -1
 	if int(relic_inventory.get("The Sanguine Bank", 0)) > 0 and current_week == get_max_weeks():
 		last_week10_blood_bank_bonus = blood_currency
+	if is_tutorial_active():
+		_tutorial_ensure_week_pool(current_week)
 	_ensure_annihilation_sovereign()
 	_ensure_dynasty_forge_pair()
 
@@ -1815,6 +2104,14 @@ func generate_shop_recruits() -> void:
 	shop_recruit_free.clear()
 	shop_copy_used = false
 	shop_first_recruit_boost_used = false
+	if is_tutorial_active():
+		var scripted_recruits: Array[Dictionary] = tutorial_recruits_for_week(current_week)
+		if not scripted_recruits.is_empty():
+			for spec in scripted_recruits:
+				shop_recruit_offers.append(_tutorial_make_follower(spec, "recruit_shop"))
+				shop_recruit_purchased.append(false)
+				shop_recruit_free.append(false)
+			return
 	var tries: int = 0
 	var desired: int = 4 if relic_inventory["Blood Market Stall"] > 0 else 3
 	var free_slots: int = max(0, trine_offering_free_recruits_pending)
@@ -1908,6 +2205,33 @@ func ensure_pool_minimum_for_draw() -> void:
 		pool.append(_make_specific_follower("SOUL", 1, "soul"))
 
 func draw_hand_from_pool() -> void:
+	if is_tutorial_active():
+		current_hand.clear()
+		var week_data: Dictionary = tutorial_week_data(current_week)
+		var round_hands: Dictionary = week_data.get("round_hands", {})
+		var scripted_specs: Array = round_hands.get(week_round, [])
+		if not scripted_specs.is_empty():
+			for raw_spec in scripted_specs:
+				if not (raw_spec is Dictionary):
+					continue
+				var spec: Dictionary = raw_spec as Dictionary
+				current_hand.append(_tutorial_take_matching_from_pool(spec))
+		ensure_pool_minimum_for_draw()
+		var nested_ids_scripted: Dictionary = _nested_id_set()
+		var fallback_candidates: Array[Dictionary] = []
+		for f in pool:
+			if not nested_ids_scripted.has(int(f.get("id", -1))):
+				fallback_candidates.append(f)
+		_shuffle_array(fallback_candidates)
+		var needed: int = max(0, 6 - current_hand.size())
+		for i in range(min(needed, fallback_candidates.size())):
+			var fallback_id: int = int(fallback_candidates[i].get("id", -1))
+			for p in range(pool.size()):
+				if int(pool[p].get("id", -1)) == fallback_id:
+					current_hand.append(pool[p])
+					pool.remove_at(p)
+					break
+		return
 	ensure_pool_minimum_for_draw()
 	current_hand.clear()
 	var nested_ids: Dictionary = _nested_id_set()
@@ -2010,6 +2334,27 @@ func resolve_play_and_update_pool(selected_indices: Array[int]) -> void:
 	_refresh_bloodline_registers(true)
 
 func perform_weekly_breeding(week_cleared: int) -> void:
+	if is_tutorial_active():
+		var tutorial_nest_summary: Dictionary = resolve_nest_breeding(week_cleared)
+		var tutorial_wild_summary: Dictionary = resolve_wild_breeding(week_cleared)
+		favored_breeder_ids.clear()
+		for i in range(nests.size()):
+			var tutorial_entry: Dictionary = nests[i]
+			tutorial_entry["focus"] = NEST_FOCUS_NONE
+			nests[i] = tutorial_entry
+		last_breeding_summary = "Breeding Update (Week %d)\nNest newborns: %d\nWild newborns: %d\nPool: %d -> %d\nBlood: %d  Bone: %d  Void: %d  Soul: %d\nTrimmed: %d" % [
+			week_cleared,
+			int(tutorial_nest_summary.get("newborns", 0)),
+			int(tutorial_wild_summary.get("newborns", 0)),
+			int(tutorial_nest_summary.get("before", pool.size())),
+			int(tutorial_wild_summary.get("after", pool.size())),
+			int(tutorial_wild_summary.get("blood", 0)),
+			int(tutorial_wild_summary.get("bone", 0)),
+			int(tutorial_wild_summary.get("void", 0)),
+			int(tutorial_wild_summary.get("soul", 0)),
+			int(tutorial_nest_summary.get("trimmed", 0)) + int(tutorial_wild_summary.get("trimmed", 0)),
+		]
+		return
 	var nest_summary: Dictionary = resolve_nest_breeding(week_cleared)
 	var wild_summary: Dictionary = resolve_wild_breeding(week_cleared)
 	if int(relic_inventory.get("The Breeding Engine", 0)) > 0 and breeding_engine_used_week != week_cleared:
@@ -2045,6 +2390,8 @@ func perform_weekly_breeding(week_cleared: int) -> void:
 	]
 
 func resolve_nest_breeding(week_cleared: int) -> Dictionary:
+	if is_tutorial_active():
+		return _tutorial_resolve_nest_breeding(week_cleared)
 	_sanitize_nests()
 	last_nest_results.clear()
 	var before: int = pool.size()
@@ -2218,6 +2565,8 @@ func resolve_nest_breeding(week_cleared: int) -> Dictionary:
 	}
 
 func resolve_wild_breeding(week_cleared: int) -> Dictionary:
+	if is_tutorial_active():
+		return _tutorial_resolve_wild_breeding(week_cleared)
 	_sanitize_nests()
 	_ensure_dynasty_forge_pair()
 	var before: int = pool.size()
@@ -2337,6 +2686,105 @@ func resolve_wild_breeding(week_cleared: int) -> Dictionary:
 		newborns,
 		trimmed,
 	])
+	_refresh_bloodline_registers(true)
+	return {
+		"before": before,
+		"after": pool.size(),
+		"newborns": newborns,
+		"trimmed": trimmed,
+		"blood": int(summary.get("blood", 0)),
+		"bone": int(summary.get("bone", 0)),
+		"void": int(summary.get("void", 0)),
+		"soul": int(summary.get("soul", 0)),
+	}
+
+func _tutorial_resolve_nest_breeding(week_cleared: int) -> Dictionary:
+	_sanitize_nests()
+	last_nest_results.clear()
+	var before: int = pool.size()
+	var newborns: int = 0
+	var trimmed: int = 0
+	var week_data: Dictionary = tutorial_week_data(week_cleared)
+	var scripted: Array = week_data.get("nest_results", [])
+	var scripted_by_nest: Dictionary = {}
+	for item in scripted:
+		if item is Dictionary:
+			var row: Dictionary = item as Dictionary
+			scripted_by_nest[int(row.get("nest", 0))] = row
+	for n in range(nests.size()):
+		var entry: Dictionary = nests[n]
+		var a_id: int = int(entry.get("a", -1))
+		var b_id: int = int(entry.get("b", -1))
+		var focus_mode: String = _nest_entry_focus(entry)
+		var result: Dictionary = {
+			"nest": n + 1,
+			"a_id": a_id,
+			"b_id": b_id,
+			"focus": focus_mode,
+			"success": false,
+			"reason": "",
+			"baby": {},
+		}
+		if a_id < 0 or b_id < 0:
+			result["reason"] = "missing parent"
+			last_nest_results.append(result)
+			continue
+		if not scripted_by_nest.has(n + 1):
+			result["reason"] = "no scripted outcome"
+			last_nest_results.append(result)
+			continue
+		var scripted_row: Dictionary = scripted_by_nest[n + 1]
+		var scripted_success: bool = bool(scripted_row.get("success", false))
+		if not scripted_success:
+			result["reason"] = str(scripted_row.get("reason", "no offspring"))
+			last_nest_results.append(result)
+			continue
+		if is_pool_at_capacity():
+			result["reason"] = "pool full"
+			trimmed += 1
+			last_nest_results.append(result)
+			continue
+		var baby_spec: Dictionary = scripted_row.get("baby", {})
+		if baby_spec.is_empty():
+			result["reason"] = "no offspring"
+			last_nest_results.append(result)
+			continue
+		var baby: Dictionary = _tutorial_make_follower(baby_spec, "nest_bred")
+		pool.append(baby)
+		newborns += 1
+		result["success"] = true
+		result["baby"] = baby
+		last_nest_results.append(result)
+	var summary: Dictionary = pool_summary_counts()
+	_refresh_bloodline_registers(true)
+	return {
+		"before": before,
+		"after": pool.size(),
+		"newborns": newborns,
+		"trimmed": trimmed,
+		"blood": int(summary.get("blood", 0)),
+		"bone": int(summary.get("bone", 0)),
+		"void": int(summary.get("void", 0)),
+		"soul": int(summary.get("soul", 0)),
+	}
+
+func _tutorial_resolve_wild_breeding(week_cleared: int) -> Dictionary:
+	var before: int = pool.size()
+	var newborns: int = 0
+	var trimmed: int = 0
+	var week_data: Dictionary = tutorial_week_data(week_cleared)
+	var scripted: Array = week_data.get("wild_results", [])
+	for item in scripted:
+		if not (item is Dictionary):
+			continue
+		if is_pool_at_capacity():
+			trimmed += 1
+			continue
+		var baby_spec: Dictionary = item as Dictionary
+		var baby: Dictionary = _tutorial_make_follower(baby_spec, "wild_bred")
+		pool.append(baby)
+		newborns += 1
+	var summary: Dictionary = pool_summary_counts()
 	_refresh_bloodline_registers(true)
 	return {
 		"before": before,
@@ -3113,6 +3561,8 @@ func can_offer_relic(name: String) -> bool:
 	return true
 
 func get_week_target(week: int) -> int:
+	if tutorial_mode and TUTORIAL_WEEK_TARGETS.has(week):
+		return int(TUTORIAL_WEEK_TARGETS[week])
 	var computed: int = 0
 	if next_week_target_overrides.has(week):
 		computed = int(next_week_target_overrides[week])
@@ -3135,6 +3585,8 @@ func get_week_target(week: int) -> int:
 	return computed
 
 func get_max_weeks() -> int:
+	if tutorial_mode:
+		return TUTORIAL_MAX_WEEKS
 	var cfg := get_run_config()
 	return int(cfg.get("max_weeks", 10))
 
