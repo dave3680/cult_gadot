@@ -65,6 +65,7 @@ const SHOP_LEGENDARY_TRAIT_CHANCE := 0.04
 const BREEDING_ANY_TRAIT_CHANCE := 0.80
 const BREEDING_COMMON_CHANCE := 0.70
 const BREEDING_RARE_CHANCE := 0.22
+const BREEDING_PRIMARY_MUTATION_CHANCE := 0.10
 const NEST_LEGENDARY_TO_RARE_CHANCE := 0.65
 const NEST_SINGLE_RARE_TO_RARE_CHANCE := 0.55
 const MULTIPLIER_TRAIT_CAP := 2
@@ -1902,16 +1903,30 @@ func _apply_nest_tier_bonuses(base_tier: int, flags: Dictionary, nest_focus: Str
 		tier = min(MAX_TIER, tier + 1)
 	return tier
 
+func _base_tier_from_parents_for_offspring_trait(parent_a: Dictionary, parent_b: Dictionary, offspring_trait: String) -> int:
+	var baby_trait: String = offspring_trait.strip_edges().to_upper()
+	if baby_trait == "VOID":
+		return 0
+	var parent_a_trait: String = str(parent_a.get("trait", "")).strip_edges().to_upper()
+	var parent_b_trait: String = str(parent_b.get("trait", "")).strip_edges().to_upper()
+	var parent_a_tier: int = int(parent_a.get("tier", 1))
+	var parent_b_tier: int = int(parent_b.get("tier", 1))
+	var parent_a_is_void: bool = parent_a_trait == "VOID"
+	var parent_b_is_void: bool = parent_b_trait == "VOID"
+	if parent_a_is_void != parent_b_is_void:
+		var inherited_tier: int = parent_b_tier if parent_a_is_void else parent_a_tier
+		return clamp(inherited_tier, 1, MAX_TIER)
+	return clamp(int(floor((parent_a_tier + parent_b_tier) / 2.0)), 1, MAX_TIER)
+
 func _follower_lineage_value(follower: Dictionary) -> int:
 	return clamp(int(follower.get("lineage", 0)), 0, 10)
 
 func _inherited_lineage_value(parent_a: Dictionary, parent_b: Dictionary) -> int:
 	var lineage_a: int = _follower_lineage_value(parent_a)
 	var lineage_b: int = _follower_lineage_value(parent_b)
-	var inherited: int = max(lineage_a, lineage_b)
-	if inherited <= 0:
-		inherited = 1
-	return clamp(inherited, 0, 10)
+	var highest_parent_lineage: int = max(lineage_a, lineage_b)
+	# Offspring lineage always advances one step from the highest parent lineage.
+	return clamp(highest_parent_lineage + 1, 0, 10)
 
 func _compute_wild_offspring_lineage(parent_a: Dictionary, parent_b: Dictionary) -> int:
 	return _inherited_lineage_value(parent_a, parent_b)
@@ -1920,7 +1935,7 @@ func _compute_nest_lineage_components(parent_a: Dictionary, parent_b: Dictionary
 	var a_lineage: int = _follower_lineage_value(parent_a)
 	var b_lineage: int = _follower_lineage_value(parent_b)
 	var base: int = max(a_lineage, b_lineage)
-	var generation_bonus: int = 1 if base == 0 else 0
+	var generation_bonus: int = 1
 	var focus_bonus: int = 0
 	var trait_bonus: int = 0
 	var total: int = clamp(base + generation_bonus + focus_bonus + trait_bonus, 0, 10)
@@ -1952,11 +1967,8 @@ func _estimate_nest_expected_tier(parent_a: Dictionary, parent_b: Dictionary, ne
 	var focus_mode: String = _normalize_nest_focus(nest_focus)
 	var parent_a_trait: String = str(parent_a.get("trait", ""))
 	var parent_b_trait: String = str(parent_b.get("trait", ""))
-	var parent_a_tier: int = int(parent_a.get("tier", 1))
-	var parent_b_tier: int = int(parent_b.get("tier", 1))
 	var flags: Dictionary = _nest_parent_flags(parent_a, parent_b)
 	var trait_probs: Dictionary = _baby_trait_probabilities(parent_a_trait, parent_b_trait)
-	var base_mid: int = int(floor((parent_a_tier + parent_b_tier) / 2.0))
 	var expected: float = 0.0
 	var deltas: Array = [
 		{"delta": 1, "chance": 0.20},
@@ -1966,12 +1978,15 @@ func _estimate_nest_expected_tier(parent_a: Dictionary, parent_b: Dictionary, ne
 	for trait_key in trait_probs.keys():
 		var baby_trait: String = str(trait_key)
 		var trait_chance: float = float(trait_probs[trait_key])
+		var base_mid: int = _base_tier_from_parents_for_offspring_trait(parent_a, parent_b, baby_trait)
 		for bucket in deltas:
 			var roll_delta: int = int(bucket["delta"])
 			var roll_chance: float = float(bucket["chance"])
-			var tier: int = clamp(base_mid + roll_delta, 1, MAX_TIER)
+			var tier: int = 0
 			if baby_trait == "VOID":
 				tier = 0
+			else:
+				tier = clamp(base_mid + roll_delta, 1, MAX_TIER)
 			tier = _apply_nest_tier_bonuses(tier, flags, focus_mode)
 			expected += trait_chance * roll_chance * float(tier)
 	return expected
@@ -2431,13 +2446,14 @@ func resolve_nest_breeding(week_cleared: int) -> Dictionary:
 			last_nest_results.append(result)
 			continue
 		var baby_trait: String = _inherit_trait_breeding(str(a.get("trait", "")), str(b.get("trait", "")))
-		var base_tier: int = int(floor((int(a.get("tier", 1)) + int(b.get("tier", 1))) / 2.0))
-		var roll: float = _rng.randf()
-		if roll < 0.2:
-			base_tier += 1
-		elif roll < 0.3:
-			base_tier -= 1
-		base_tier = clamp(base_tier, 1, MAX_TIER)
+		var base_tier: int = _base_tier_from_parents_for_offspring_trait(a, b, baby_trait)
+		if base_tier > 0:
+			var roll: float = _rng.randf()
+			if roll < 0.2:
+				base_tier += 1
+			elif roll < 0.3:
+				base_tier -= 1
+			base_tier = clamp(base_tier, 1, MAX_TIER)
 		if generation_mark_copies > 0 and int(a.get("tier", 0)) >= 5 and int(b.get("tier", 0)) >= 5:
 			base_tier = min(MAX_TIER, base_tier + generation_mark_copies)
 		base_tier = min(MAX_TIER, base_tier + _consume_grave_compact_bonus())
@@ -2637,13 +2653,14 @@ func resolve_wild_breeding(week_cleared: int) -> Dictionary:
 		if _rng.randf() > chance:
 			continue
 		var baby_trait: String = _inherit_trait_breeding(str(a.get("trait", "")), str(b.get("trait", "")))
-		var base_tier: int = int(floor((int(a.get("tier", 1)) + int(b.get("tier", 1))) / 2.0))
-		var roll: float = _rng.randf()
-		if roll < 0.2:
-			base_tier += 1
-		elif roll < 0.3:
-			base_tier -= 1
-		base_tier = clamp(base_tier, 1, MAX_TIER)
+		var base_tier: int = _base_tier_from_parents_for_offspring_trait(a, b, baby_trait)
+		if base_tier > 0:
+			var roll: float = _rng.randf()
+			if roll < 0.2:
+				base_tier += 1
+			elif roll < 0.3:
+				base_tier -= 1
+			base_tier = clamp(base_tier, 1, MAX_TIER)
 		base_tier = min(MAX_TIER, base_tier + _consume_grave_compact_bonus())
 		if baby_trait == "VOID":
 			base_tier = 0
@@ -2819,11 +2836,14 @@ func boost_pool_tiers_weekly() -> void:
 	_refresh_bloodline_registers(true)
 
 func _inherit_trait_breeding(a: String, b: String) -> String:
-	if a == b:
-		return a
-	var pick: String = a if _rng.randf() < 0.5 else b
-	if (a == "VOID" or b == "VOID") and pick == "VOID":
-		return "VOID" if _rng.randf() < 0.30 else (b if a == "VOID" else a)
+	var type_a: String = a.strip_edges().to_upper()
+	var type_b: String = b.strip_edges().to_upper()
+	if type_a != "" and type_a == type_b:
+		# Hard guarantee: two parents of the same type always produce that type.
+		return type_a
+	var pick: String = type_a if _rng.randf() < 0.5 else type_b
+	if (type_a == "VOID" or type_b == "VOID") and pick == "VOID":
+		return "VOID" if _rng.randf() < 0.30 else (type_b if type_a == "VOID" else type_a)
 	return pick
 
 func _trait_info(trait_id: String) -> Dictionary:
@@ -3027,12 +3047,46 @@ func _pick_any_combo_trait_for_parents(parent_a_trait_id: String, parent_b_trait
 		parent_b_traits.append(parent_b_trait_id)
 	return _pick_any_combo_trait_for_parent_trait_lists(parent_a_traits, parent_b_traits)
 
+func _shared_parent_trait_from_lists(parent_a_traits: Array[String], parent_b_traits: Array[String]) -> String:
+	var shared: Array[String] = []
+	for tid in parent_a_traits:
+		if tid == "":
+			continue
+		if parent_b_traits.has(tid) and not shared.has(tid):
+			shared.append(tid)
+	if shared.is_empty():
+		return ""
+	if shared.size() == 1:
+		return shared[0]
+	var best_rank: int = -1
+	var best: Array[String] = []
+	for tid in shared:
+		var rank: int = _rarity_rank(_trait_rarity(tid))
+		if rank > best_rank:
+			best_rank = rank
+			best = [tid]
+		elif rank == best_rank:
+			best.append(tid)
+	return best[_rng.randi_range(0, best.size() - 1)]
+
+func _maybe_roll_primary_trait_mutation() -> String:
+	if _rng.randf() >= BREEDING_PRIMARY_MUTATION_CHANCE:
+		return ""
+	return _roll_random_trait_id()
+
 func _resolve_nest_trait_id(parent_a: Dictionary, parent_b: Dictionary, nest_focus: String = NEST_FOCUS_NONE) -> String:
 	var focus_mode: String = _normalize_nest_focus(nest_focus)
 	var parent_a_tid: String = str(parent_a.get("trait_id", ""))
 	var parent_b_tid: String = str(parent_b.get("trait_id", ""))
 	var parent_a_all_traits: Array[String] = _trait_ids_for_follower(parent_a)
 	var parent_b_all_traits: Array[String] = _trait_ids_for_follower(parent_b)
+	var shared_trait: String = _shared_parent_trait_from_lists(parent_a_all_traits, parent_b_all_traits)
+	if shared_trait != "":
+		# Hard guarantee: same trait on both parents must be inherited.
+		return shared_trait
+	var mutation_trait: String = _maybe_roll_primary_trait_mutation()
+	if mutation_trait != "":
+		return mutation_trait
 	if relic_inventory["Seal of Inheritance"] > 0:
 		var inherited: String = _pick_parent_trait_from_lists(parent_a_all_traits, parent_b_all_traits)
 		if inherited != "":
@@ -3234,6 +3288,12 @@ func _roll_breeding_trait(parent_a: Dictionary, parent_b: Dictionary) -> String:
 	var trait_id: String = ""
 	var parent_a_traits: Array[String] = _trait_ids_for_follower(parent_a)
 	var parent_b_traits: Array[String] = _trait_ids_for_follower(parent_b)
+	var shared_trait: String = _shared_parent_trait_from_lists(parent_a_traits, parent_b_traits)
+	if shared_trait != "":
+		return shared_trait
+	var mutation_trait: String = _maybe_roll_primary_trait_mutation()
+	if mutation_trait != "":
+		return mutation_trait
 	var guaranteed: bool = parent_a_traits.has("chosen_veil") or parent_b_traits.has("chosen_veil")
 	if relic_inventory["Seal of Inheritance"] > 0:
 		var inherited: String = _pick_parent_trait_from_lists(parent_a_traits, parent_b_traits)
@@ -3259,6 +3319,13 @@ func _roll_breeding_trait(parent_a: Dictionary, parent_b: Dictionary) -> String:
 func _roll_wild_breeding_trait(parent_a: Dictionary, parent_b: Dictionary) -> String:
 	var parent_a_all_traits: Array[String] = _trait_ids_for_follower(parent_a)
 	var parent_b_all_traits: Array[String] = _trait_ids_for_follower(parent_b)
+	var shared_trait: String = _shared_parent_trait_from_lists(parent_a_all_traits, parent_b_all_traits)
+	if shared_trait != "":
+		# Hard guarantee: same trait on both parents must be inherited.
+		return shared_trait
+	var mutation_trait: String = _maybe_roll_primary_trait_mutation()
+	if mutation_trait != "":
+		return mutation_trait
 	var brood_sovereign_parent: bool = parent_a_all_traits.has("brood_sovereign") or parent_b_all_traits.has("brood_sovereign")
 	if relic_inventory["Seal of Inheritance"] > 0:
 		var inherited: String = _pick_parent_trait_from_lists(parent_a_all_traits, parent_b_all_traits)

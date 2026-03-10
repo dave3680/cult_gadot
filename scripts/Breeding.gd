@@ -99,15 +99,16 @@ func _build_nest_section(item: Dictionary) -> Dictionary:
 	var section: PanelContainer = PanelContainer.new()
 	_set_panel_style(section, Color(0.16, 0.15, 0.2, 0.96), Color(0.31, 0.29, 0.35, 0.9), 1, 10)
 	section.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	section.custom_minimum_size = Vector2(0, 286)
 	nest_sections.add_child(section)
 
 	var outer: VBoxContainer = VBoxContainer.new()
 	outer.anchor_right = 1.0
 	outer.anchor_bottom = 1.0
 	outer.offset_left = 12.0
-	outer.offset_top = 10.0
+	outer.offset_top = 12.0
 	outer.offset_right = -12.0
-	outer.offset_bottom = -10.0
+	outer.offset_bottom = -12.0
 	outer.add_theme_constant_override("separation", 8)
 	section.add_child(outer)
 
@@ -397,8 +398,8 @@ func prepare_reveal_state() -> void:
 		arrow_node.visible = true
 		arrow_node.modulate = Color(1, 1, 1, 0)
 		var offspring_node: Control = entry["offspring"]
-		offspring_node.visible = true
-		offspring_node.scale = Vector2.ZERO
+		offspring_node.visible = false
+		offspring_node.scale = Vector2.ONE
 		offspring_node.modulate = Color(1, 1, 1, 1)
 	wild_section.visible = false
 	wild_section.modulate = Color(1, 1, 1, 0)
@@ -421,6 +422,7 @@ func _run_reveal_sequence() -> void:
 		await _fade_in_control(arrow_node, 0.12)
 
 		await get_tree().create_timer(0.4).timeout
+		offspring_node.visible = true
 		offspring_node.scale = Vector2.ZERO
 		offspring_node.modulate = Color(1, 1, 1, 1)
 		await _spring_in(offspring_node)
@@ -738,7 +740,18 @@ func _lineage_pulse_start(node: CanvasItem) -> void:
 
 func _update_lineage_badge(card_root: Control, follower: Dictionary) -> void:
 	var lineage: int = _lineage_value(follower)
-	var badge: PanelContainer = card_root.get_node_or_null("LineageBadge") as PanelContainer
+	var legacy_badge: PanelContainer = card_root.get_node_or_null("LineageBadge") as PanelContainer
+	if legacy_badge != null and legacy_badge.get_parent() == card_root:
+		legacy_badge.queue_free()
+	var overlay: Control = card_root.get_node_or_null("LineageOverlay") as Control
+	if overlay == null:
+		overlay = Control.new()
+		overlay.name = "LineageOverlay"
+		overlay.anchor_right = 1.0
+		overlay.anchor_bottom = 1.0
+		overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		card_root.add_child(overlay)
+	var badge: PanelContainer = overlay.get_node_or_null("LineageBadge") as PanelContainer
 	if lineage <= 0:
 		if badge != null:
 			_lineage_pulse_stop(badge)
@@ -765,7 +778,7 @@ func _update_lineage_badge(card_root: Control, follower: Dictionary) -> void:
 		label.add_theme_font_size_override("font_size", 11)
 		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		badge.add_child(label)
-		card_root.add_child(badge)
+		overlay.add_child(badge)
 	var sb: StyleBoxFlat = StyleBoxFlat.new()
 	sb.bg_color = _lineage_badge_color(lineage)
 	sb.corner_radius_top_left = 8

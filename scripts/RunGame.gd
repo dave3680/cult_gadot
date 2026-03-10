@@ -494,44 +494,68 @@ func _refresh_pit_cards() -> void:
 		pit_cards_row.add_child(card)
 
 func _build_small_card(hand_index: int) -> PanelContainer:
+	var dragging_this: bool = drag_active and drag_source == "pit" and drag_index == hand_index
+	return _build_compact_card(hand_index, Vector2(108, 126), dragging_this, Control.MOUSE_FILTER_STOP)
+
+func _build_compact_card(hand_index: int, card_size: Vector2, dimmed: bool, mouse_mode: int) -> PanelContainer:
 	var follower: Dictionary = gs.current_hand[hand_index]
 	var card: PanelContainer = PanelContainer.new()
-	card.custom_minimum_size = Vector2(108, 126)
-	card.mouse_filter = Control.MOUSE_FILTER_STOP
+	card.custom_minimum_size = card_size
+	card.size = card_size
+	card.mouse_filter = mouse_mode
+
+	var margin: MarginContainer = MarginContainer.new()
+	margin.name = "CardMargin"
+	margin.anchor_right = 1.0
+	margin.anchor_bottom = 1.0
+	margin.offset_left = 6.0
+	margin.offset_top = 6.0
+	margin.offset_right = -6.0
+	margin.offset_bottom = -6.0
+	margin.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	card.add_child(margin)
 
 	var vbox: VBoxContainer = VBoxContainer.new()
+	vbox.name = "CardVBox"
+	vbox.anchor_right = 1.0
+	vbox.anchor_bottom = 1.0
 	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	vbox.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	vbox.add_theme_constant_override("separation", 2)
-	card.add_child(vbox)
+	vbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	margin.add_child(vbox)
 
 	var tier: Label = Label.new()
+	tier.name = "TierLabel"
 	tier.text = "T%d" % int(follower.get("tier", 0))
 	tier.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	tier.add_theme_font_size_override("font_size", 24)
+	tier.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	vbox.add_child(tier)
 
 	var tlabel: Label = Label.new()
+	tlabel.name = "TypeLabel"
 	tlabel.text = str(follower.get("trait", ""))
 	tlabel.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	tlabel.add_theme_font_size_override("font_size", 14)
 	tlabel.add_theme_color_override("font_color", _get_trait_font_color(str(follower.get("trait", ""))))
+	tlabel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	vbox.add_child(tlabel)
 
-	var spacer: Control = Control.new()
-	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	vbox.add_child(spacer)
-
 	var trait_label: Label = Label.new()
+	trait_label.name = "TraitLabel"
 	trait_label.text = _get_trait_display(str(follower.get("trait_id", ""))) + _follower_trait_badge(follower)
 	trait_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	trait_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	trait_label.add_theme_font_size_override("font_size", 11)
+	trait_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	vbox.add_child(trait_label)
 
+	var badge_nodes: Dictionary = _ensure_hand_card_badge_layout(card)
+	_update_hand_trait_slots(badge_nodes.get("trait_slots", []), follower, dimmed)
+
 	var bg: Color = _get_trait_color(str(follower.get("trait", ""))).lerp(Color(0.08, 0.08, 0.08), 0.18)
-	var dragging_this: bool = drag_active and drag_source == "pit" and drag_index == hand_index
-	if dragging_this:
+	if dimmed:
 		bg = Color(bg.r, bg.g, bg.b, 0.2)
 	card.add_theme_stylebox_override("panel", _make_card_style(bg, Color(0.12, 0.12, 0.12, 0.95), 1))
 	card.tooltip_text = "\n".join(_follower_trait_tooltip_lines(follower))
@@ -623,47 +647,7 @@ func _build_drag_preview(hand_index: int, compact: bool) -> Control:
 	return card
 
 func _build_compact_drag_preview(hand_index: int) -> Control:
-	var follower: Dictionary = gs.current_hand[hand_index]
-	var card: PanelContainer = PanelContainer.new()
-	card.custom_minimum_size = Vector2(112, 126)
-	card.size = card.custom_minimum_size
-	card.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-	var vbox: VBoxContainer = VBoxContainer.new()
-	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	vbox.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	vbox.add_theme_constant_override("separation", 2)
-	card.add_child(vbox)
-
-	var tier: Label = Label.new()
-	tier.text = "T%d" % int(follower.get("tier", 0))
-	tier.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	tier.add_theme_font_size_override("font_size", 24)
-	vbox.add_child(tier)
-
-	var tlabel: Label = Label.new()
-	tlabel.text = str(follower.get("trait", ""))
-	tlabel.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	tlabel.add_theme_font_size_override("font_size", 14)
-	tlabel.add_theme_color_override("font_color", _get_trait_font_color(str(follower.get("trait", ""))))
-	vbox.add_child(tlabel)
-
-	var spacer: Control = Control.new()
-	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	vbox.add_child(spacer)
-
-	var trait_label: Label = Label.new()
-	trait_label.text = _get_trait_display(str(follower.get("trait_id", ""))) + _follower_trait_badge(follower)
-	trait_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	trait_label.autowrap_mode = TextServer.AUTOWRAP_OFF
-	trait_label.clip_text = true
-	trait_label.add_theme_font_size_override("font_size", 11)
-	vbox.add_child(trait_label)
-
-	var bg: Color = _get_trait_color(str(follower.get("trait", ""))).lerp(Color(0.08, 0.08, 0.08), 0.18)
-	card.add_theme_stylebox_override("panel", _make_card_style(bg, Color(0.12, 0.12, 0.12, 0.95), 1))
-	_update_lineage_badge(card, follower)
-	return card
+	return _build_compact_card(hand_index, Vector2(112, 126), false, Control.MOUSE_FILTER_IGNORE)
 
 func _update_drag_preview_position() -> void:
 	if drag_preview_card == null:
@@ -862,12 +846,18 @@ func _doctrine_action_desc(name: String) -> String:
 
 func _update_confirm_state() -> void:
 	if confirmed or gs.pending_confirmed:
-		confirm_button.disabled = true
-		continue_button.disabled = scene_change_queued
+		confirm_button.visible = true
+		confirm_button.text = "Continue"
+		confirm_button.disabled = scene_change_queued
+		continue_button.visible = false
+		continue_button.disabled = true
 		contract_toggle.disabled = true
 		doctrine_button.disabled = true
 		ritual_use.disabled = true
 		return
+	confirm_button.visible = true
+	confirm_button.text = "Confirm Sacrifice"
+	continue_button.visible = false
 	var selected_count: int = pit_indices.size()
 	var max_allowed: int = _get_required_sacrifice_count()
 	confirm_button.disabled = selected_count == 0 or selected_count > max_allowed
@@ -884,6 +874,7 @@ func _on_clear_pressed() -> void:
 
 func _on_confirm_pressed() -> void:
 	if gs.pending_confirmed or confirmed:
+		_proceed_after_confirm()
 		return
 	var selected_indices: Array[int] = pit_indices.duplicate()
 	var required: int = _get_required_sacrifice_count()
